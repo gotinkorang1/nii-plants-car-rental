@@ -41,6 +41,8 @@ function parseModelForm(formData: FormData) {
     airConditioning: formCheckbox(formData, "airConditioning"),
     featured: formCheckbox(formData, "featured"),
     published: formCheckbox(formData, "published"),
+    usdDailyRateFrom: formString(formData, "usdDailyRateFrom"),
+    usdDailyRateTo: formString(formData, "usdDailyRateTo"),
     generation: formString(formData, "generation"),
     trimLevel: formString(formData, "trimLevel"),
     bodyType: formString(formData, "bodyType"),

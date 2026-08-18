@@ -39,6 +39,8 @@ export type ModelValues = {
   airConditioning: boolean;
   featured: boolean;
   published: boolean;
+  usdDailyRateFrom?: number | null;
+  usdDailyRateTo?: number | null;
   generation?: string | null;
   trimLevel?: string | null;
   bodyType?: string | null;
@@ -236,8 +238,8 @@ export function VehicleModelForm({
       doors: imported.doors === null ? current.doors : String(imported.doors),
       transmission: imported.transmission ?? current.transmission,
       fuelType: imported.fuelType ?? current.fuelType,
-      // Class, rate, deposit, description, luggage, published and featured stay
-      // exactly as staff left them.
+      // Class, GHS rate, deposit, USD catalogue rate, description, luggage,
+      // published and featured stay exactly as staff left them.
     }));
 
     setProvenance({
@@ -770,9 +772,36 @@ export function VehicleModelForm({
           </select>
         </Field>
         <p className="text-sm text-muted-foreground">
-          Daily rate and refundable security deposit come from the vehicle class.
-          They are never changed by a vehicle database import.
+          GHS daily rate and refundable security deposit come from the vehicle
+          class. Published USD can be set on this model when it differs from the
+          class band. A vehicle database import never changes rates.
         </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Field label="Published USD / day from" htmlFor="usdDailyRateFrom">
+            <Input
+              id="usdDailyRateFrom"
+              name="usdDailyRateFrom"
+              type="number"
+              inputMode="numeric"
+              min={1}
+              step={1}
+              disabled={disabled}
+              defaultValue={defaults?.usdDailyRateFrom ?? ""}
+            />
+          </Field>
+          <Field label="Published USD / day to" htmlFor="usdDailyRateTo">
+            <Input
+              id="usdDailyRateTo"
+              name="usdDailyRateTo"
+              type="number"
+              inputMode="numeric"
+              min={1}
+              step={1}
+              disabled={disabled}
+              defaultValue={defaults?.usdDailyRateTo ?? ""}
+            />
+          </Field>
+        </div>
         <div className="flex flex-wrap gap-4 text-sm">
           <label className="flex items-center gap-2">
             <input

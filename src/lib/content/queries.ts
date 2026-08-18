@@ -95,6 +95,9 @@ export async function getPublicLocations() {
         name: locations.name,
         slug: locations.slug,
         type: locations.type,
+        address: locations.address,
+        latitude: locations.latitude,
+        longitude: locations.longitude,
       })
       .from(locations)
       .where(eq(locations.active, true))

@@ -55,3 +55,26 @@ describe("phase 2 RLS and storage SQL", () => {
     expect(phase2).toContain("vc.active = true");
   });
 });
+
+describe("phase 12 shop rates and OSM", () => {
+  it("adds USD catalogue columns and keeps the public view off anon", () => {
+    const phase12 = readSource("drizzle/0011_phase12_shop_rates_osm.sql");
+
+    expect(phase12).toContain("usd_daily_rate_from");
+    expect(phase12).toContain("CREATE OR REPLACE VIEW public.public_vehicle_catalogue");
+    expect(phase12).not.toContain("registration_number");
+    expect(phase12).not.toMatch(
+      /GRANT SELECT ON public\.public_vehicle_catalogue TO anon/,
+    );
+  });
+
+  it("keeps production catalogue upsert free of physical vehicles", () => {
+    const script = readSource("scripts/upsert-production-catalog.mjs");
+    const helper = readSource("scripts/lib/upsert-catalog.mjs");
+
+    expect(script).toContain("upsertLocationsClassesAndModels");
+    expect(script).not.toMatch(/INSERT INTO vehicles/);
+    expect(helper).not.toMatch(/INSERT INTO vehicles/);
+    expect(helper).not.toMatch(/INSERT INTO promotions/);
+  });
+});

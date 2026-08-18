@@ -59,6 +59,40 @@ describe("vehicle class validation", () => {
 
     expect(parsed.success).toBe(false);
   });
+
+  it("stores optional published USD catalogue rates", () => {
+    const parsed = vehicleClassSchema.parse({
+      name: "Economy",
+      description: "Compact self-drive class.",
+      seats: 4,
+      luggage: 2,
+      transmission: "automatic",
+      defaultDailyRateGhs: "715.00",
+      defaultSecurityDepositGhs: "1000",
+      usdDailyRateFrom: "65",
+      usdDailyRateTo: "",
+      active: true,
+    });
+
+    expect(parsed.usdDailyRateFrom).toBe(65);
+    expect(parsed.usdDailyRateTo).toBe(65);
+  });
+
+  it("rejects a USD to below USD from", () => {
+    const parsed = vehicleClassSchema.safeParse({
+      name: "Economy",
+      description: "Class",
+      seats: 4,
+      luggage: 2,
+      transmission: "automatic",
+      defaultDailyRateGhs: "10",
+      defaultSecurityDepositGhs: "10",
+      usdDailyRateFrom: "100",
+      usdDailyRateTo: "80",
+    });
+
+    expect(parsed.success).toBe(false);
+  });
 });
 
 describe("slug handling", () => {

@@ -47,7 +47,7 @@ test.describe("public fleet", () => {
     page,
   }) => {
     await page.goto("/fleet");
-    const details = page.getByRole("link", { name: "View details" }).first();
+    const details = page.getByRole("link", { name: "View vehicle" }).first();
 
     if ((await details.count()) === 0) {
       test.info().annotations.push({

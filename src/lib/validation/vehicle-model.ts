@@ -1,7 +1,13 @@
 import { z } from "zod";
 
 import { isValidSlug, requireSlug } from "@/lib/fleet/slug";
-import { fuelTypeSchema, transmissionSchema } from "@/lib/validation/vehicle-class";
+import { normalizeUsdDailyRange } from "@/lib/money";
+import {
+  fuelTypeSchema,
+  optionalUsdInputSchema,
+  refineUsdDailyRange,
+  transmissionSchema,
+} from "@/lib/validation/vehicle-class";
 import { vehicleCustomFieldsJsonSchema } from "@/lib/validation/vehicle-custom-fields";
 
 /** Providers whose data may be recorded as the source of a model. */
@@ -65,6 +71,8 @@ export const vehicleModelInputSchema = z
     airConditioning: z.boolean().default(true),
     featured: z.boolean().default(false),
     published: z.boolean().default(false),
+    usdDailyRateFrom: optionalUsdInputSchema,
+    usdDailyRateTo: optionalUsdInputSchema,
 
     // Imported specifications. Units are fixed by the field name; a blank input
     // stays blank rather than being guessed.
@@ -131,6 +139,8 @@ export const vehicleModelInputSchema = z
         message: "Vehicle database provenance is incomplete.",
       });
     }
+
+    refineUsdDailyRange(value.usdDailyRateFrom, value.usdDailyRateTo, ctx);
   });
 
 export const vehicleModelSchema = vehicleModelInputSchema.transform((value) => {
@@ -161,6 +171,8 @@ export const vehicleModelSchema = vehicleModelInputSchema.transform((value) => {
     dcChargingKw,
     externalProvider,
     externalVehicleId,
+    usdDailyRateFrom,
+    usdDailyRateTo,
     ...rest
   } = value;
 
@@ -190,6 +202,7 @@ export const vehicleModelSchema = vehicleModelInputSchema.transform((value) => {
     dcChargingKw: dcChargingKw ?? null,
     externalProvider: externalProvider ?? null,
     externalVehicleId: externalVehicleId ?? null,
+    ...normalizeUsdDailyRange(usdDailyRateFrom, usdDailyRateTo),
   };
 });
 

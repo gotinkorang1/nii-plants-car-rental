@@ -19,6 +19,7 @@
     "db:migrate": "drizzle-kit migrate",
     "db:seed": "node scripts/seed.mjs",
     "db:bootstrap-production": "node scripts/bootstrap-production.mjs",
+    "db:upsert-production-catalog": "node scripts/upsert-production-catalog.mjs",
     "ci:ensure-staff": "node scripts/ensure-ci-staff.mjs",
     "verify:fresh-migration": "node scripts/fresh-migration-verify.mjs",
     "db:studio": "drizzle-kit studio",

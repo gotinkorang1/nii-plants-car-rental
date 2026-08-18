@@ -58,6 +58,8 @@ export function toPublicVehicleModel(
     className: vehicleClass.name,
     classSlug: vehicleClass.slug,
     dailyRatePesewas: vehicleClass.defaultDailyRate,
+    usdDailyRateFrom: model.usdDailyRateFrom ?? vehicleClass.usdDailyRateFrom,
+    usdDailyRateTo: model.usdDailyRateTo ?? vehicleClass.usdDailyRateTo,
     primaryImage,
     images: mappedImages,
 

@@ -1,6 +1,12 @@
 import { truncateMetaDescription } from "@/lib/content/seo";
+import { osmBrowseUrl } from "@/lib/maps/openstreetmap";
 
 /** Confirmed public facts from the live site, AmCham Ghana, Graphic/GTA, JoyOnline, Daily Guide, BFT, GNBCC, and Ghana hire practice. */
+
+const plantsville = {
+  latitude: 5.5448458,
+  longitude: -0.2680674,
+} as const;
 
 export const COMPANY = {
   legalName: "Nii Plants Car Rentals Co. Ltd",
@@ -13,7 +19,9 @@ export const COMPANY = {
   addressRegion: "Greater Accra",
   addressCountry: "GH",
   postalBox: "P.O. Box MP 2390, Mamprobi, Accra",
-  mapsUrl: "https://goo.gl/maps/xNq7jWiCySyC6f2z5",
+  latitude: plantsville.latitude,
+  longitude: plantsville.longitude,
+  mapsUrl: osmBrowseUrl(plantsville.latitude, plantsville.longitude),
   telephone: "+233593835941",
   telephoneDisplay: "+233 59 383 5941",
   officeTelephoneDisplay: "+233 30 244 1805",

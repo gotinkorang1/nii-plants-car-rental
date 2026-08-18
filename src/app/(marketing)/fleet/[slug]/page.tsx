@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { CatalogueDailyRate } from "@/components/fleet/catalogue-daily-rate";
 import { FleetCard } from "@/components/fleet/fleet-card";
 import { ModelGallery } from "@/components/fleet/model-gallery";
 import { JsonLd } from "@/components/marketing/json-ld";
@@ -14,7 +15,6 @@ import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd, carJsonLd } from "@/lib/content/structured-data";
 import { getPublicModel } from "@/lib/fleet/get-public-model";
 import { getRelatedModels } from "@/lib/fleet/get-related-models";
-import { formatGhs } from "@/lib/money";
 import { kwToHp } from "@/lib/vehicle-data/normalize";
 
 export const dynamic = "force-dynamic";
@@ -90,6 +90,8 @@ export default async function VehicleDetailPage({
           slug: model.slug,
           imageUrl: model.primaryImage?.url ?? undefined,
           dailyRatePesewas: model.dailyRatePesewas,
+          usdDailyRateFrom: model.usdDailyRateFrom,
+          usdDailyRateTo: model.usdDailyRateTo,
         })}
       />
       <p className="text-sm">
@@ -110,13 +112,19 @@ export default async function VehicleDetailPage({
           </p>
           <p className="text-lg">
             From{" "}
-            <strong>
-              {model.dailyRatePesewas > 0
-                ? formatGhs(model.dailyRatePesewas)
-                : "quote on request"}
-            </strong>
-            <span className="text-muted-foreground"> / day</span>
+            <CatalogueDailyRate
+              usdDailyRateFrom={model.usdDailyRateFrom}
+              usdDailyRateTo={model.usdDailyRateTo}
+              dailyRatePesewas={model.dailyRatePesewas}
+              emphasize
+            />
           </p>
+          {model.usdDailyRateFrom ? (
+            <p className="text-sm text-muted-foreground">
+              Catalogue rate in US dollars, matching the live shop. Online
+              reservation payments are in Ghana cedis.
+            </p>
+          ) : null}
           <div className="flex flex-col gap-2 sm:flex-row">
             <Button asChild>
               <Link href={`/book?vehicle=${model.slug}`}>Book vehicle</Link>

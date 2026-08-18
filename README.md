@@ -69,6 +69,7 @@ Production guards (fail fast): `src/lib/env/guards.ts` via `src/lib/env.server.t
 | `npm run db:migrate` | Apply Drizzle migrations |
 | `npm run db:seed` | **Development only** catalogue seed |
 | `npm run db:bootstrap-production` | Production-safe site settings bootstrap |
+| `npm run db:upsert-production-catalog` | Production locations, classes, and models (no demo plates) |
 | `npm run ci:ensure-staff` | Create CI/local test staff user |
 
 ## Staff access

@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { OsmMapEmbed } from "@/components/maps/osm-map-embed";
 import { COMPANY, PAGE_SEO } from "@/lib/content/company";
+import { getPublicLocations } from "@/lib/content/queries";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
 import { getSiteSettings } from "@/lib/settings/get-site-settings";
@@ -21,9 +23,18 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default async function ContactPage() {
-  const contact = toPublicContact(await getSiteSettings());
+  const [settings, locations] = await Promise.all([
+    getSiteSettings(),
+    getPublicLocations(),
+  ]);
+  const contact = toPublicContact(settings);
   const hasDirect =
     Boolean(contact.phone) || Boolean(contact.whatsapp) || Boolean(contact.email);
+  const mappedLocations = locations.filter(
+    (location): location is typeof location & { latitude: number; longitude: number } =>
+      typeof location.latitude === "number" &&
+      typeof location.longitude === "number",
+  );
 
   return (
     <main>
@@ -84,7 +95,7 @@ export default async function ContactPage() {
                 rel="noreferrer"
                 target="_blank"
               >
-                Open Plantsville on Google Maps
+                Open Plantsville on OpenStreetMap
               </a>
             </p>
             {!hasDirect && !contact.address ? (
@@ -96,6 +107,31 @@ export default async function ContactPage() {
           <EnquiryForm serviceType="general" submitLabel="Send message" />
         </div>
       </Section>
+      {mappedLocations.length > 0 ? (
+        <Section className="pt-0 pb-20">
+          <h2 className="font-heading text-2xl">Pickup locations</h2>
+          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
+            Maps use OpenStreetMap. Plantsville is shown at the Dansoman
+            neighbourhood pin; the exact street is not in the public map data.
+          </p>
+          <ul className="mt-8 grid gap-6 lg:grid-cols-2">
+            {mappedLocations.map((location) => (
+              <li key={location.id}>
+                <OsmMapEmbed
+                  name={location.name}
+                  latitude={location.latitude}
+                  longitude={location.longitude}
+                />
+                {location.address ? (
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {location.address}
+                  </p>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </Section>
+      ) : null}
     </main>
   );
 }

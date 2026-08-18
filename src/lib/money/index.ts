@@ -52,6 +52,14 @@ export function formatGhs(pesewas: number): string {
   }).format(cedis);
 }
 
+export {
+  USD_GHS_BOOKING_RATE,
+  formatUsd,
+  formatUsdDailyRate,
+  normalizeUsdDailyRange,
+  usdToPesewas,
+} from "./usd";
+
 export function calculatePercentage(pesewas: number, percent: number): number {
   const amount = assertIntegerPesewas(pesewas, "pesewas");
 

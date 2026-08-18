@@ -44,6 +44,11 @@ export function autoRentalJsonLd(input?: {
       },
     ],
     areaServed: { "@type": "Country", name: COMPANY.areaServed },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: COMPANY.latitude,
+      longitude: COMPANY.longitude,
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: COMPANY.streetAddress,
@@ -137,6 +142,8 @@ export function carJsonLd(input: {
   slug: string;
   imageUrl?: string;
   dailyRatePesewas: number;
+  usdDailyRateFrom?: number | null;
+  usdDailyRateTo?: number | null;
 }): Record<string, unknown> {
   const data: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -152,7 +159,24 @@ export function carJsonLd(input: {
   if (input.imageUrl) {
     data.image = input.imageUrl;
   }
-  if (input.dailyRatePesewas > 0) {
+  if (input.usdDailyRateFrom) {
+    const to = input.usdDailyRateTo ?? input.usdDailyRateFrom;
+    data.offers =
+      to > input.usdDailyRateFrom
+        ? {
+            "@type": "AggregateOffer",
+            priceCurrency: "USD",
+            lowPrice: input.usdDailyRateFrom,
+            highPrice: to,
+            availability: "https://schema.org/InStock",
+          }
+        : {
+            "@type": "Offer",
+            priceCurrency: "USD",
+            price: String(input.usdDailyRateFrom),
+            availability: "https://schema.org/InStock",
+          };
+  } else if (input.dailyRatePesewas > 0) {
     data.offers = {
       "@type": "Offer",
       priceCurrency: "GHS",

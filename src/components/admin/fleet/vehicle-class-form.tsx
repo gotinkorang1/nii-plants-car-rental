@@ -23,6 +23,8 @@ type ClassValues = {
   transmission: "automatic" | "manual";
   defaultDailyRate: number;
   defaultSecurityDeposit: number;
+  usdDailyRateFrom?: number | null;
+  usdDailyRateTo?: number | null;
   active: boolean;
 };
 
@@ -126,6 +128,34 @@ export function VehicleClassForm({
           />
         </Field>
       </div>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <Field label="Published USD / day from" htmlFor="usdDailyRateFrom">
+          <Input
+            id="usdDailyRateFrom"
+            name="usdDailyRateFrom"
+            type="number"
+            inputMode="numeric"
+            min={1}
+            step={1}
+            defaultValue={defaults?.usdDailyRateFrom ?? ""}
+          />
+        </Field>
+        <Field label="Published USD / day to" htmlFor="usdDailyRateTo">
+          <Input
+            id="usdDailyRateTo"
+            name="usdDailyRateTo"
+            type="number"
+            inputMode="numeric"
+            min={1}
+            step={1}
+            defaultValue={defaults?.usdDailyRateTo ?? ""}
+          />
+        </Field>
+      </div>
+      <p className="text-xs text-muted-foreground">
+        Shop catalogue prices are USD. Booking still uses the GHS daily rate
+        (Paystack). Leave USD blank if this class has no published dollar band.
+      </p>
       <label className="flex items-center gap-2 text-sm">
         <input
           type="checkbox"

@@ -4,10 +4,13 @@ import {
   assertIntegerPesewas,
   calculatePercentage,
   formatGhs,
+  formatUsd,
+  formatUsdDailyRate,
   ghsInputToPesewas,
   ghsToPesewas,
   pesewasToGhs,
   pesewasToGhsInput,
+  usdToPesewas,
 } from "@/lib/money";
 
 describe("pesewas money helpers", () => {
@@ -30,5 +33,20 @@ describe("pesewas money helpers", () => {
     expect(ghsInputToPesewas("100")).toBe(10000);
     expect(ghsToPesewas("350.00")).toBe(35000);
     expect(() => ghsInputToPesewas("10.123")).toThrow(/two decimal/);
+  });
+});
+
+describe("published USD catalogue rates", () => {
+  it("converts whole dollars to GHS pesewas at the booking rate", () => {
+    expect(usdToPesewas(65)).toBe(71500);
+    expect(usdToPesewas(88)).toBe(96800);
+    expect(usdToPesewas(120)).toBe(132000);
+    expect(() => usdToPesewas(65.5)).toThrow(/whole dollars/);
+  });
+
+  it("formats a single rate or a published band", () => {
+    expect(formatUsd(65)).toBe("$65");
+    expect(formatUsdDailyRate(65, 65)).toBe("$65");
+    expect(formatUsdDailyRate(80, 100)).toBe("$80–$100");
   });
 });

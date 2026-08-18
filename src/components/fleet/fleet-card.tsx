@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { CatalogueDailyRate } from "@/components/fleet/catalogue-daily-rate";
 import { VehicleImageFallback } from "@/components/fleet/vehicle-image-fallback";
-import { MoneyDisplay } from "@/components/money/money-display";
 import type { PublicVehicleModel } from "@/lib/fleet/public-types";
 
 export function FleetCard({ model }: { model: PublicVehicleModel }) {
@@ -54,11 +54,11 @@ export function FleetCard({ model }: { model: PublicVehicleModel }) {
         </dl>
         <p className="mt-auto text-sm">
           From{" "}
-          <MoneyDisplay
-            amountPesewas={model.dailyRatePesewas}
-            suffix="/ day"
+          <CatalogueDailyRate
+            usdDailyRateFrom={model.usdDailyRateFrom}
+            usdDailyRateTo={model.usdDailyRateTo}
+            dailyRatePesewas={model.dailyRatePesewas}
             emphasize
-            placeholder="quote on request"
           />
         </p>
         <div className="flex flex-col gap-2 sm:flex-row">

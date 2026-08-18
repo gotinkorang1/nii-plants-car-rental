@@ -31,6 +31,8 @@ export const vehicleClasses = pgTable(
     transmission: transmissionTypeEnum("transmission").notNull(),
     defaultDailyRate: integer("default_daily_rate").notNull(),
     defaultSecurityDeposit: integer("default_security_deposit").notNull(),
+    usdDailyRateFrom: integer("usd_daily_rate_from"),
+    usdDailyRateTo: integer("usd_daily_rate_to"),
     active: boolean("active").default(true).notNull(),
     ...timestamps,
   },
@@ -56,6 +58,10 @@ export const vehicleClasses = pgTable(
       "vehicle_classes_default_security_deposit_nonnegative",
       sql`${table.defaultSecurityDeposit} >= 0`,
     ),
+    check(
+      "vehicle_classes_usd_daily_rate_range",
+      sql`(${table.usdDailyRateFrom} IS NULL AND ${table.usdDailyRateTo} IS NULL) OR (${table.usdDailyRateFrom} IS NOT NULL AND ${table.usdDailyRateTo} IS NOT NULL AND ${table.usdDailyRateFrom} > 0 AND ${table.usdDailyRateTo} >= ${table.usdDailyRateFrom})`,
+    ),
   ],
 ).enableRLS();
 
@@ -80,6 +86,8 @@ export const vehicleModels = pgTable(
     airConditioning: boolean("air_conditioning").default(true).notNull(),
     featured: boolean("featured").default(false).notNull(),
     published: boolean("published").default(false).notNull(),
+    usdDailyRateFrom: integer("usd_daily_rate_from"),
+    usdDailyRateTo: integer("usd_daily_rate_to"),
 
     // Import provenance. The local row stays authoritative: nothing refreshes
     // these values from the provider automatically.
@@ -145,6 +153,10 @@ export const vehicleModels = pgTable(
     check(
       "vehicle_models_external_reference_complete",
       sql`(${table.externalProvider} IS NULL AND ${table.externalVehicleId} IS NULL) OR (${table.externalProvider} IS NOT NULL AND ${table.externalVehicleId} IS NOT NULL)`,
+    ),
+    check(
+      "vehicle_models_usd_daily_rate_range",
+      sql`(${table.usdDailyRateFrom} IS NULL AND ${table.usdDailyRateTo} IS NULL) OR (${table.usdDailyRateFrom} IS NOT NULL AND ${table.usdDailyRateTo} IS NOT NULL AND ${table.usdDailyRateFrom} > 0 AND ${table.usdDailyRateTo} >= ${table.usdDailyRateFrom})`,
     ),
   ],
 ).enableRLS();

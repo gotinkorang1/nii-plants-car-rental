@@ -11,7 +11,7 @@ export default async function NewVehicleClassPage() {
     <div className="space-y-6">
       <AdminPageHeader
         title="New vehicle class"
-        description="Rates are entered in GHS and stored as integer pesewas."
+        description="GHS booking rates are stored as pesewas. Optional USD fields match the published shop catalogue."
       />
       <VehicleClassForm action={createVehicleClass} submitLabel="Create class" />
     </div>

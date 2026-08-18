@@ -74,6 +74,9 @@ test.describe("public marketing site", () => {
     await page.goto("/contact");
     await expect(page.getByRole("heading", { name: /contact nii plants in accra/i })).toBeVisible();
     await expect(page.getByRole("button", { name: "Send message" })).toBeEnabled();
+    await expect(
+      page.getByRole("link", { name: /open plantsville on openstreetmap/i }),
+    ).toBeVisible();
     await expectNoSeriousA11yViolations(page, "contact");
   });
 

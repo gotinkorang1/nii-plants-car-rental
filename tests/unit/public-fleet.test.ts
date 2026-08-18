@@ -108,6 +108,8 @@ describe("public fleet payload safety", () => {
       className: "Compact sedan",
       classSlug: "compact-sedan",
       dailyRatePesewas: 0,
+      usdDailyRateFrom: 65,
+      usdDailyRateTo: 65,
       primaryImage: null,
       images: [],
       bodyType: "Sedan",

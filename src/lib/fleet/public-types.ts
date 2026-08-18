@@ -30,6 +30,8 @@ export type PublicVehicleModel = {
   className: string;
   classSlug: string;
   dailyRatePesewas: number;
+  usdDailyRateFrom: number | null;
+  usdDailyRateTo: number | null;
   primaryImage: PublicVehicleImage | null;
   images: PublicVehicleImage[];
 

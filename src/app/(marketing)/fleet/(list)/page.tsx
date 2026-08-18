@@ -62,8 +62,8 @@ export default async function FleetPage({ searchParams }: FleetPageProps) {
         </h1>
         <p className="text-base text-muted-foreground">
           You book a representative model or similar, not a registration plate.
-          Staff assign the physical car. Rates are quoted in Ghana cedis before
-          you pay.
+          Staff assign the physical car. Catalogue rates are in US dollars,
+          matching the live shop. Online reservation payments are in Ghana cedis.
         </p>
       </header>
 

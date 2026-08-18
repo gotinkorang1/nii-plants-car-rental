@@ -26,6 +26,8 @@ function parseClassForm(formData: FormData) {
     transmission: formString(formData, "transmission"),
     defaultDailyRateGhs: formString(formData, "defaultDailyRateGhs"),
     defaultSecurityDepositGhs: formString(formData, "defaultSecurityDepositGhs"),
+    usdDailyRateFrom: formString(formData, "usdDailyRateFrom"),
+    usdDailyRateTo: formString(formData, "usdDailyRateTo"),
     active: formCheckbox(formData, "active"),
   });
 }

@@ -5,6 +5,8 @@
       "slug": "plantsville-dansoman",
       "type": "branch",
       "address": "Poultry Farm Avenue, Akokor Foto, Dansoman, Accra",
+      "latitude": 5.5448458,
+      "longitude": -0.2680674,
       "active": true
     },
     {
@@ -12,6 +14,8 @@
       "slug": "kotoka-international-airport",
       "type": "airport",
       "address": "Kotoka International Airport, Accra. Pickup by arrangement, including evenings until 23:00.",
+      "latitude": 5.6038402,
+      "longitude": -0.1682694,
       "active": true
     },
     {
@@ -19,6 +23,8 @@
       "slug": "alisa-hotel-north-ridge",
       "type": "pickup_point",
       "address": "Alisa Hotel, North Ridge, Accra",
+      "latitude": 5.5706703,
+      "longitude": -0.1968599,
       "active": true
     },
     {
@@ -26,6 +32,8 @@
       "slug": "best-western-plus-atlantic-takoradi",
       "type": "pickup_point",
       "address": "Best Western Plus Atlantic Hotel, Takoradi",
+      "latitude": 4.8819654,
+      "longitude": -1.7551218,
       "active": true
     }
   ],
@@ -37,7 +45,9 @@
       "seats": 5,
       "luggage": 2,
       "transmission": "automatic",
-      "defaultDailyRate": 35000,
+      "usdDailyRateFrom": 65,
+      "usdDailyRateTo": 65,
+      "defaultDailyRate": 71500,
       "defaultSecurityDeposit": 100000,
       "active": true
     },
@@ -48,7 +58,9 @@
       "seats": 5,
       "luggage": 3,
       "transmission": "automatic",
-      "defaultDailyRate": 40000,
+      "usdDailyRateFrom": 80,
+      "usdDailyRateTo": 100,
+      "defaultDailyRate": 88000,
       "defaultSecurityDeposit": 120000,
       "active": true
     },
@@ -59,7 +71,9 @@
       "seats": 5,
       "luggage": 3,
       "transmission": "automatic",
-      "defaultDailyRate": 55000,
+      "usdDailyRateFrom": 120,
+      "usdDailyRateTo": 140,
+      "defaultDailyRate": 132000,
       "defaultSecurityDeposit": 150000,
       "active": true
     },
@@ -70,7 +84,9 @@
       "seats": 5,
       "luggage": 3,
       "transmission": "automatic",
-      "defaultDailyRate": 45000,
+      "usdDailyRateFrom": 88,
+      "usdDailyRateTo": 105,
+      "defaultDailyRate": 96800,
       "defaultSecurityDeposit": 130000,
       "active": true
     },
@@ -81,7 +97,9 @@
       "seats": 5,
       "luggage": 4,
       "transmission": "automatic",
-      "defaultDailyRate": 50000,
+      "usdDailyRateFrom": 100,
+      "usdDailyRateTo": 120,
+      "defaultDailyRate": 110000,
       "defaultSecurityDeposit": 150000,
       "active": true
     },
@@ -92,7 +110,9 @@
       "seats": 7,
       "luggage": 4,
       "transmission": "automatic",
-      "defaultDailyRate": 60000,
+      "usdDailyRateFrom": 120,
+      "usdDailyRateTo": 170,
+      "defaultDailyRate": 132000,
       "defaultSecurityDeposit": 180000,
       "active": true
     },
@@ -103,6 +123,8 @@
       "seats": 12,
       "luggage": 6,
       "transmission": "automatic",
+      "usdDailyRateFrom": 120,
+      "usdDailyRateTo": 150,
       "defaultDailyRate": 0,
       "defaultSecurityDeposit": 0,
       "active": true
@@ -114,6 +136,8 @@
       "seats": 30,
       "luggage": 10,
       "transmission": "automatic",
+      "usdDailyRateFrom": 150,
+      "usdDailyRateTo": 240,
       "defaultDailyRate": 0,
       "defaultSecurityDeposit": 0,
       "active": true
@@ -144,7 +168,9 @@
       "luggage": 2,
       "airConditioning": true,
       "featured": false,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 65,
+      "usdDailyRateTo": 65
     },
     {
       "classSlug": "compact-sedan",
@@ -159,7 +185,9 @@
       "luggage": 2,
       "airConditioning": true,
       "featured": true,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 65,
+      "usdDailyRateTo": 65
     },
     {
       "classSlug": "mid-size-sedan",
@@ -174,7 +202,9 @@
       "luggage": 3,
       "airConditioning": true,
       "featured": false,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 80,
+      "usdDailyRateTo": 100
     },
     {
       "classSlug": "mid-size-sedan",
@@ -189,14 +219,16 @@
       "luggage": 3,
       "airConditioning": true,
       "featured": false,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 80,
+      "usdDailyRateTo": 100
     },
     {
       "classSlug": "luxury-sedan",
       "make": "Honda",
       "model": "Accord",
       "slug": "honda-accord",
-      "description": "A Honda Accord for executive travel, chauffeur days, and visitor transport in Accra.",
+      "description": "A Honda Accord for executive travel, chauffeur days, and visitor transport in Accra. Listed historically as Hyundai Accord on the previous shop.",
       "seats": 5,
       "doors": 4,
       "transmission": "automatic",
@@ -204,7 +236,9 @@
       "luggage": 3,
       "airConditioning": true,
       "featured": false,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 120,
+      "usdDailyRateTo": 140
     },
     {
       "classSlug": "compact-suv",
@@ -219,7 +253,9 @@
       "luggage": 3,
       "airConditioning": true,
       "featured": false,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 88,
+      "usdDailyRateTo": 105
     },
     {
       "classSlug": "compact-suv",
@@ -234,7 +270,9 @@
       "luggage": 3,
       "airConditioning": true,
       "featured": true,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 88,
+      "usdDailyRateTo": 105
     },
     {
       "classSlug": "suv",
@@ -249,7 +287,9 @@
       "luggage": 4,
       "airConditioning": true,
       "featured": false,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 100,
+      "usdDailyRateTo": 120
     },
     {
       "classSlug": "suv",
@@ -266,7 +306,9 @@
       "luggage": 4,
       "airConditioning": true,
       "featured": false,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 100,
+      "usdDailyRateTo": 120
     },
     {
       "classSlug": "4x4",
@@ -283,7 +325,9 @@
       "luggage": 4,
       "airConditioning": true,
       "featured": false,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 120,
+      "usdDailyRateTo": 140
     },
     {
       "classSlug": "4x4",
@@ -300,7 +344,9 @@
       "luggage": 5,
       "airConditioning": true,
       "featured": true,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 140,
+      "usdDailyRateTo": 170
     },
     {
       "classSlug": "van",
@@ -317,7 +363,9 @@
       "luggage": 6,
       "airConditioning": true,
       "featured": false,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 120,
+      "usdDailyRateTo": 150
     },
     {
       "classSlug": "coach",
@@ -332,7 +380,9 @@
       "luggage": 10,
       "airConditioning": true,
       "featured": false,
-      "published": true
+      "published": true,
+      "usdDailyRateFrom": 150,
+      "usdDailyRateTo": 240
     },
     {
       "classSlug": "van",
@@ -361,8 +411,8 @@
       "fuelType": "diesel",
       "luggage": 0,
       "airConditioning": false,
-      "featured": true,
-      "published": true
+      "featured": false,
+      "published": false
     }
   ],
   "faqs": [

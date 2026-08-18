@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { ghsInputToPesewas } from "@/lib/money";
+import { ghsInputToPesewas, normalizeUsdDailyRange } from "@/lib/money";
 import { isValidSlug, requireSlug } from "@/lib/fleet/slug";
 
 export const transmissionSchema = z.enum(["automatic", "manual"]);
@@ -31,22 +31,54 @@ const ghsAmountSchema = z
     }
   });
 
-export const vehicleClassInputSchema = z.object({
-  name: z.string().trim().min(1, "Name is required.").max(80),
-  slug: z
-    .string()
-    .trim()
-    .max(80)
-    .optional()
-    .transform((value) => value ?? ""),
-  description: z.string().trim().min(1, "Description is required.").max(2000),
-  seats: z.coerce.number().int().min(1).max(20),
-  luggage: z.coerce.number().int().min(0).max(30),
-  transmission: transmissionSchema,
-  defaultDailyRateGhs: ghsAmountSchema,
-  defaultSecurityDepositGhs: ghsAmountSchema,
-  active: z.boolean().default(true),
-});
+export const optionalUsdInputSchema = z.preprocess((value) => {
+  if (value === null || value === undefined) {
+    return undefined;
+  }
+
+  if (typeof value === "string" && value.trim() === "") {
+    return undefined;
+  }
+
+  return value;
+}, z.coerce.number().int().min(1).max(10000).optional());
+
+export function refineUsdDailyRange(
+  from: number | undefined,
+  to: number | undefined,
+  ctx: z.RefinementCtx,
+) {
+  if (from !== undefined && to !== undefined && to < from) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["usdDailyRateTo"],
+      message: "USD daily rate to cannot be less than from.",
+    });
+  }
+}
+
+export const vehicleClassInputSchema = z
+  .object({
+    name: z.string().trim().min(1, "Name is required.").max(80),
+    slug: z
+      .string()
+      .trim()
+      .max(80)
+      .optional()
+      .transform((value) => value ?? ""),
+    description: z.string().trim().min(1, "Description is required.").max(2000),
+    seats: z.coerce.number().int().min(1).max(20),
+    luggage: z.coerce.number().int().min(0).max(30),
+    transmission: transmissionSchema,
+    defaultDailyRateGhs: ghsAmountSchema,
+    defaultSecurityDepositGhs: ghsAmountSchema,
+    usdDailyRateFrom: optionalUsdInputSchema,
+    usdDailyRateTo: optionalUsdInputSchema,
+    active: z.boolean().default(true),
+  })
+  .superRefine((value, ctx) => {
+    refineUsdDailyRange(value.usdDailyRateFrom, value.usdDailyRateTo, ctx);
+  });
 
 export const vehicleClassSchema = vehicleClassInputSchema.transform(
   (value) => {
@@ -64,6 +96,7 @@ export const vehicleClassSchema = vehicleClassInputSchema.transform(
       transmission: value.transmission,
       defaultDailyRate: value.defaultDailyRateGhs,
       defaultSecurityDeposit: value.defaultSecurityDepositGhs,
+      ...normalizeUsdDailyRange(value.usdDailyRateFrom, value.usdDailyRateTo),
       active: value.active,
     };
   },

@@ -192,3 +192,41 @@ describe("imported vehicle specifications", () => {
     );
   });
 });
+
+describe("published USD model rates", () => {
+  it("stores a shop USD band without changing class GHS rates", () => {
+    const parsed = vehicleModelSchema.parse({
+      vehicleClassId: classId,
+      make: "Hyundai",
+      model: "Elantra",
+      description: "Mid-size saloon.",
+      seats: 5,
+      doors: 4,
+      transmission: "automatic",
+      fuelType: "petrol",
+      luggage: 3,
+      usdDailyRateFrom: "80",
+      usdDailyRateTo: "100",
+    });
+
+    expect(parsed.usdDailyRateFrom).toBe(80);
+    expect(parsed.usdDailyRateTo).toBe(100);
+  });
+
+  it("leaves USD blank when staff do not publish a dollar rate", () => {
+    const parsed = vehicleModelSchema.parse({
+      vehicleClassId: classId,
+      make: "Toyota",
+      model: "Corolla",
+      description: "Compact sedan or similar.",
+      seats: 5,
+      doors: 4,
+      transmission: "automatic",
+      fuelType: "petrol",
+      luggage: 3,
+    });
+
+    expect(parsed.usdDailyRateFrom).toBeNull();
+    expect(parsed.usdDailyRateTo).toBeNull();
+  });
+});

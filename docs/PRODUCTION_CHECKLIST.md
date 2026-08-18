@@ -25,8 +25,9 @@ Use this checklist before pointing `niiplantsghana.com` at the new platform. Eng
 
 - [ ] Create dedicated **production** Supabase project (separate from preview/staging)
 - [ ] Set `PRODUCTION_SUPABASE_PROJECT_REF` in operator secrets (blocks dev seed accidents)
-- [ ] Apply migrations `0000`–`0009` on empty production database
+- [ ] Apply migrations `0000`–`0011` on empty production database
 - [ ] Run `npm run db:bootstrap-production` — **not** `npm run db:seed`
+- [ ] Run `npm run db:upsert-production-catalog` with production `DATABASE_URL` (locations, classes, models only; no plates)
 - [ ] Verify RLS matrix in [RLS_AUDIT.md](./RLS_AUDIT.md)
 - [ ] Verify storage buckets: public fleet media, private `inspection-media`
 - [ ] Confirm backup plan in [BACKUP_RESTORE.md](./BACKUP_RESTORE.md)
@@ -67,7 +68,7 @@ Production LIVE switch (**after** all gates above + production checklist):
 
 ### Content & fleet
 
-- [ ] Enter real daily rates and security deposits (no 0-placeholder tariffs for launch)
+- [ ] Confirm published USD shop rates after `db:upsert-production-catalog`
 - [ ] Register real physical vehicles (no `INTERNAL-UNSET-*` units live)
 - [ ] Publish approved fleet images and models
 - [ ] Verify site settings: phone, WhatsApp, email, address, payment percent, hold duration
