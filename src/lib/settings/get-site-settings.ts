@@ -3,16 +3,17 @@ import "server-only";
 import { log } from "@/lib/logger";
 import { tryGetDb } from "@/lib/db";
 import { siteSettings } from "@/lib/db/schema";
-import {
-  DEFAULT_SITE_SETTINGS,
-  parseSiteSettingsRecord,
-  type SiteSettings,
-} from "@/lib/settings/schema";
+import { getRuntimeEnvironment } from "@/lib/env/runtime-environment";
+import { parseSiteSettingsRecord, type SiteSettings } from "@/lib/settings/schema";
+
+function settingsForCurrentEnvironment(record: Record<string, unknown> = {}) {
+  return parseSiteSettingsRecord(record, getRuntimeEnvironment());
+}
 
 export async function getSiteSettings(): Promise<SiteSettings> {
   const db = tryGetDb();
   if (!db) {
-    return DEFAULT_SITE_SETTINGS;
+    return settingsForCurrentEnvironment();
   }
 
   try {
@@ -28,11 +29,11 @@ export async function getSiteSettings(): Promise<SiteSettings> {
       record[row.key] = row.value;
     }
 
-    return parseSiteSettingsRecord(record);
+    return settingsForCurrentEnvironment(record);
   } catch (error) {
     log("error", "Failed to load site settings.", {
       error: error instanceof Error ? error.message : "unknown",
     });
-    return DEFAULT_SITE_SETTINGS;
+    return settingsForCurrentEnvironment();
   }
 }

@@ -37,3 +37,56 @@ describe("site settings", () => {
     expect(parsed.currency).toBe("GHS");
   });
 });
+
+describe("operational kill switches", () => {
+  it("fails closed in production when settings are missing", () => {
+    const parsed = parseSiteSettingsRecord({}, "production");
+
+    expect(parsed.bookingEnabled).toBe(false);
+    expect(parsed.onlinePaymentEnabled).toBe(false);
+  });
+
+  it("honours explicit false in production", () => {
+    const parsed = parseSiteSettingsRecord(
+      { bookingEnabled: false, onlinePaymentEnabled: false },
+      "production",
+    );
+
+    expect(parsed.bookingEnabled).toBe(false);
+    expect(parsed.onlinePaymentEnabled).toBe(false);
+  });
+
+  it("honours booking true and payment false in production", () => {
+    const parsed = parseSiteSettingsRecord(
+      { bookingEnabled: true, onlinePaymentEnabled: false },
+      "production",
+    );
+
+    expect(parsed.bookingEnabled).toBe(true);
+    expect(parsed.onlinePaymentEnabled).toBe(false);
+  });
+
+  it("honours explicit true for both in production", () => {
+    const parsed = parseSiteSettingsRecord(
+      { bookingEnabled: true, onlinePaymentEnabled: true },
+      "production",
+    );
+
+    expect(parsed.bookingEnabled).toBe(true);
+    expect(parsed.onlinePaymentEnabled).toBe(true);
+  });
+
+  it("keeps development convenience defaults when switches are missing", () => {
+    const parsed = parseSiteSettingsRecord({}, "development");
+
+    expect(parsed.bookingEnabled).toBe(true);
+    expect(parsed.onlinePaymentEnabled).toBe(true);
+  });
+
+  it("keeps preview convenience defaults when switches are missing", () => {
+    const parsed = parseSiteSettingsRecord({}, "preview");
+
+    expect(parsed.bookingEnabled).toBe(true);
+    expect(parsed.onlinePaymentEnabled).toBe(true);
+  });
+});

@@ -51,6 +51,29 @@ export const siteSettingsSchema = z.object({
 
 export type SiteSettings = z.infer<typeof siteSettingsSchema>;
 
+/** development | preview | production — kill-switch defaults only. */
+export type KillSwitchEnvironment = "development" | "preview" | "production";
+
+/**
+ * Operational kill switches fail closed in production when unset.
+ * Development and preview keep convenient defaults (both enabled) so local
+ * and staging work without an explicit site_settings row.
+ * Production requires an explicit stored `true` to enable either capability.
+ */
+export function operationalKillSwitchDefaults(
+  environment: KillSwitchEnvironment,
+): Pick<SiteSettings, "bookingEnabled" | "onlinePaymentEnabled"> {
+  if (environment === "production") {
+    return { bookingEnabled: false, onlinePaymentEnabled: false };
+  }
+
+  return { bookingEnabled: true, onlinePaymentEnabled: true };
+}
+
+function hasOwnSetting(records: Record<string, unknown>, key: string): boolean {
+  return Object.prototype.hasOwnProperty.call(records, key);
+}
+
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   businessName: "Nii Plants Car Rentals",
   phone: "+233 59 383 5941",
@@ -80,9 +103,18 @@ export const DEVELOPMENT_SITE_SETTINGS = DEFAULT_SITE_SETTINGS;
 
 export function parseSiteSettingsRecord(
   records: Record<string, unknown>,
+  environment: KillSwitchEnvironment = "development",
 ): SiteSettings {
+  const killSwitches = operationalKillSwitchDefaults(environment);
+
   return siteSettingsSchema.parse({
     ...DEFAULT_SITE_SETTINGS,
     ...records,
+    bookingEnabled: hasOwnSetting(records, "bookingEnabled")
+      ? records.bookingEnabled
+      : killSwitches.bookingEnabled,
+    onlinePaymentEnabled: hasOwnSetting(records, "onlinePaymentEnabled")
+      ? records.onlinePaymentEnabled
+      : killSwitches.onlinePaymentEnabled,
   });
 }
