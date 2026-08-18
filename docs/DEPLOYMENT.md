@@ -67,13 +67,16 @@ npm run dev
 
 ## Preview deploy (Vercel)
 
+**First deploy on `main`/`master`:** Vercel sets `VERCEL_ENV=production` for the production deployment slot. Until real production launch, set **`APP_ENV=preview`** in the Vercel **Production** environment (along with staging Supabase and Paystack TEST keys). That keeps production guards from requiring LIVE Paystack and full production secrets during Stage A staging validation. Remove or change to `APP_ENV=production` only after the launch checklist.
+
 1. Connect repository to Vercel.
-2. Set Preview environment variables:
+2. Set **Production** and **Preview** environment variables (names only — use staging/non-production values until launch):
+   - `APP_ENV=preview` (mandatory on production slot until launch)
    - Staging Supabase URL, anon key, service role, `DATABASE_URL`
-   - `PAYSTACK_MOCK=1` or Paystack **TEST** secret
-   - `EMAIL_DEV_OUTBOX=1` or Resend test strategy
-   - `BOOKING_OTP_SECRET` (staging-specific)
-   - `NEXT_PUBLIC_APP_URL` = preview URL or staging canonical URL
+   - Paystack **TEST** secret (`sk_test_*`) — not LIVE
+   - `BOOKING_OTP_SECRET`, `CRON_SECRET` (unique staging values)
+   - `RESEND_API_KEY`, `EMAIL_FROM`, `ENQUIRY_NOTIFICATION_EMAIL` (or `EMAIL_DEV_OUTBOX=1` for early smoke tests)
+   - `NEXT_PUBLIC_APP_URL` = your Vercel deployment HTTPS URL (update after first deploy if needed)
 3. Deploy branch → verify preview URL.
 4. Run smoke tests: `/`, `/fleet`, `/book`, `/api/health`, enquiry flow.
 5. Confirm `robots: noindex` on preview (automatic when `VERCEL_ENV=preview`).

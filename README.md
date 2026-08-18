@@ -116,4 +116,4 @@ GitHub Actions workflow: `.github/workflows/ci.yml`
 
 Runs lint, typecheck, tests, build, Playwright (Chromium full + cross-browser smoke) against local Supabase.
 
-Node 20 (see `.nvmrc` and `package.json` engines).
+Node 24 (see `.nvmrc` and `package.json` engines).
