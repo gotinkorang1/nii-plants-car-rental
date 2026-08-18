@@ -1,0 +1,27 @@
+---
+description: Verify with lint, types, tests, browser inspection, and the matching domain checks. Never claim something works only because the code looks correct.
+alwaysApply: true
+---
+
+# Verification
+
+Do not weaken TypeScript strictness, ESLint rules, database constraints, accessibility expectations, or test assertions to make checks pass.
+
+After meaningful work, run the relevant commands and inspect real output:
+
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+```
+
+Then add the matching extra check:
+
+- **UI:** inspect the rendered page with Playwright Test or Playwright MCP. Check mobile and desktop. Use axe helpers in `tests/e2e/a11y` for accessibility.
+- **Reusable components:** review Storybook and the a11y addon, not only the source file.
+- **Performance-sensitive frontend:** `npm run analyze` and, when pages exist, `npm run lhci` against a production build. Align with LCP ≤ 2.5s, INP ≤ 200ms, CLS ≤ 0.1 without making early CI impossibly strict.
+- **Database / migrations:** generate and review the Drizzle or SQL migration, keep types in sync, and do not bypass constraints.
+- **Payments / webhooks:** prove idempotency with tests. Never trust a browser redirect.
+
+Never say a feature works only because the code looks correct.

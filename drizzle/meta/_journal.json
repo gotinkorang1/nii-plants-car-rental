@@ -1,0 +1,76 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1787025259072,
+      "tag": "0000_phase1_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1787025269924,
+      "tag": "0001_phase1_rls_auth",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1787028849501,
+      "tag": "0002_phase2_public_catalogue_storage",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1787030051871,
+      "tag": "0003_phase3_cms",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1787031219586,
+      "tag": "0004_phase4_availability_pricing",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1787055900000,
+      "tag": "0005_phase4_hold_lock_one",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1787058000000,
+      "tag": "0006_phase5_bookings",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1787061000000,
+      "tag": "0007_phase6_payments",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1787064000000,
+      "tag": "0008_phase7_operations",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1787067000000,
+      "tag": "0009_phase8_enquiries",
+      "breakpoints": true
+    }
+  ]
+}

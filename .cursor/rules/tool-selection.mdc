@@ -1,0 +1,24 @@
+---
+description: Choose MCP servers, plugins, and checks only when they match the current task. Do not call every tool on every request.
+alwaysApply: true
+---
+
+# Tool selection
+
+Use one or two relevant tools. Do not call every MCP server on every request.
+
+- **shadcn:** composing or installing UI primitives. Treat shadcn as source to customize, not a finished look.
+- **Figma:** implementing or evaluating a provided design. Skip if no Figma file or frame is in scope. Leave OAuth to the user.
+- **Context7:** current package, framework, CLI, or API documentation. Do not rely on remembered syntax for Next.js, React, Tailwind, Drizzle, Supabase, Playwright, Storybook, or Paystack.
+- **Next.js DevTools:** live runtime, build, route, or log problems while `npm run dev` is running.
+- **Playwright Test:** committed, deterministic E2E and accessibility checks. **Playwright MCP:** exploratory browser work. Do not replace committed tests with MCP sessions.
+- **Supabase:** database, Auth, Storage, RLS, or Postgres work. Use the development project only. Never connect to production data.
+- **GitHub:** repository, PR, issue, or check work. This repo is not connected to GitHub yet.
+- **Vercel:** deployment, preview, or production-hosting problems. Do not deploy during ordinary feature work.
+- **Sentry:** production or preview runtime errors. Skip during local feature work unless investigating an existing issue.
+- **SonarQube / SonarQube for IDE:** targeted code-quality or security review. Do not invent tokens or a Sonar project.
+- **Lighthouse CI:** performance, SEO, and best-practice checks after meaningful frontend work. Measure a production build, not `next dev`.
+- **axe / Storybook a11y:** accessibility of reusable components and key user journeys.
+- **Modern Web Guidance:** performance-sensitive frontend work, native HTML/CSS capabilities, and avoiding legacy JS workarounds.
+
+If a server needs login, stop and tell the user exactly what to authenticate. Never put tokens in source control.

@@ -1,0 +1,81 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
+import { JsonLd } from "@/components/marketing/json-ld";
+import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { Button } from "@/components/ui/button";
+import { getEnquiryByReference } from "@/lib/enquiries/queries";
+import { enquiryServiceLabel } from "@/lib/enquiries/status";
+import { breadcrumbJsonLd } from "@/lib/content/structured-data";
+import { getSiteSettings } from "@/lib/settings/get-site-settings";
+import {
+  mailHref,
+  telHref,
+  toPublicContact,
+  whatsappHref,
+} from "@/lib/settings/public-contact";
+
+type PageProps = {
+  params: Promise<{ reference: string }>;
+};
+
+export default async function EnquiryCompletePage({ params }: PageProps) {
+  const { reference } = await params;
+  const enquiry = await getEnquiryByReference(reference);
+  if (!enquiry) {
+    notFound();
+  }
+
+  const contact = toPublicContact(await getSiteSettings());
+
+  return (
+    <main>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Request received", path: `/enquiry/complete/${enquiry.reference}` },
+        ])}
+      />
+      <Section className="pt-10">
+        <PageIntro
+          eyebrow="Request received"
+          title="We've received your request"
+          lede="Our team will review your enquiry and contact you. This is not a confirmed booking."
+        />
+        <div className="mt-8 max-w-xl space-y-4 rounded-2xl bg-card p-6 ring-1 ring-border">
+          <p className="text-sm">
+            <span className="text-muted-foreground">Reference:</span>{" "}
+            <strong>{enquiry.reference}</strong>
+          </p>
+          <p className="text-sm">
+            <span className="text-muted-foreground">Service:</span>{" "}
+            {enquiryServiceLabel(enquiry.serviceType)}
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Thank you, {enquiry.firstName}. We typically respond during business hours.
+          </p>
+          <div className="flex flex-col gap-2 pt-2 sm:flex-row">
+            {contact.phone ? (
+              <Button asChild variant="outline">
+                <a href={telHref(contact.phone)}>Call us</a>
+              </Button>
+            ) : null}
+            {contact.whatsapp ? (
+              <Button asChild variant="outline">
+                <a href={whatsappHref(contact.whatsapp)}>WhatsApp</a>
+              </Button>
+            ) : null}
+            {contact.email ? (
+              <Button asChild variant="outline">
+                <a href={mailHref(contact.email)}>Email us</a>
+              </Button>
+            ) : null}
+            <Button asChild>
+              <Link href="/">Back to homepage</Link>
+            </Button>
+          </div>
+        </div>
+      </Section>
+    </main>
+  );
+}

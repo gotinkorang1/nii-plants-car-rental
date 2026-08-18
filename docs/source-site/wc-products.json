@@ -1,0 +1,2170 @@
+﻿[
+    {
+        "id":  8495,
+        "name":  "KIA PERGAS",
+        "slug":  "kia-pergas",
+        "parent":  0,
+        "type":  "simple",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/kia-pergas/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eIntroducing the Kia Pegas, a compact sedan that combines modern design, advanced features, and exceptional fuel efficiency to redefine your daily commute.\u003c/p\u003e",
+        "description":  "\u003cdiv class=\"flex-1 overflow-hidden\"\u003e\n\u003cdiv class=\"react-scroll-to-bottom--css-uufuz-79elbk h-full\"\u003e\n\u003cdiv class=\"react-scroll-to-bottom--css-uufuz-1n7m0yu\"\u003e\n\u003cdiv\u003e\n\u003cdiv class=\"flex flex-col text-sm pb-9\"\u003e\n\u003cdiv class=\"w-full text-token-text-primary\" dir=\"auto\" data-testid=\"conversation-turn-33\"\u003e\n\u003cdiv class=\"px-4 py-2 justify-center text-base md:gap-6 m-auto\"\u003e\n\u003cdiv class=\"flex flex-1 text-base mx-auto gap-3 juice:gap-4 juice:md:gap-6 md:px-5 lg:px-1 xl:px-5 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem] group final-completion\"\u003e\n\u003cdiv class=\"relative flex w-full flex-col agent-turn\"\u003e\n\u003cdiv class=\"flex-col gap-1 md:gap-3\"\u003e\n\u003cdiv class=\"flex flex-grow flex-col max-w-full\"\u003e\n\u003cdiv class=\"min-h-[20px] text-message flex flex-col items-start gap-3 whitespace-pre-wrap break-words [.text-message+\u0026amp;]:mt-5 overflow-x-auto\" dir=\"auto\" data-message-author-role=\"assistant\" data-message-id=\"6463b26f-2978-41ea-ba1f-b5eed4d21b88\"\u003e\n\u003cdiv class=\"markdown prose w-full break-words dark:prose-invert dark\"\u003e\n\u003cp\u003eElevate Your Commute with Style and Efficiency\u003c/p\u003e\n\u003cp\u003eIntroducing the Kia Pegas, a compact sedan that combines modern design, advanced features, and exceptional fuel efficiency to redefine your daily commute. Whether you\u0026#8217;re navigating city streets or cruising on the highway, the Pegas offers a comfortable and enjoyable driving experience that\u0026#8217;s sure to impress.\u003c/p\u003e\n\u003cp\u003eKey Features:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eContemporary Design: The Kia Pegas features a sleek and aerodynamic exterior design, with clean lines and stylish accents that make a bold statement on the road. Its compact size and elegant silhouette ensure nimble maneuverability and easy parking in urban environments.\u003c/li\u003e\n\u003cli\u003eSpacious and Comfortable Interior: Step inside the Pegas and discover a spacious and well-appointed cabin designed with your comfort in mind. With ample legroom, supportive seating, and premium materials throughout, the Pegas provides a refined and relaxing environment for both driver and passengers.\u003c/li\u003e\n\u003cli\u003eAdvanced Technology: Stay connected and entertained on the go with the Kia Pegas\u0026#8217;s advanced technology features. From the intuitive touchscreen infotainment system to available smartphone integration and voice recognition, the Pegas keeps you connected and in control at all times.\u003c/li\u003e\n\u003cli\u003eFuel-Efficient Performance: Powered by a fuel-efficient engine, the Kia Pegas delivers impressive performance and excellent fuel economy. Whether you\u0026#8217;re commuting to work or running errands around town, you\u0026#8217;ll enjoy responsive handling and smooth acceleration without compromising on efficiency.\u003c/li\u003e\n\u003cli\u003eSafety and Peace of Mind: Drive with confidence knowing that the Kia Pegas is equipped with advanced safety features to protect you and your passengers. From its reinforced body structure to its comprehensive airbag system and available driver-assistance features, the Pegas prioritizes safety in every journey.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eExperience the perfect combination of style, efficiency, and comfort with the Kia Pegas. Elevate your daily commute and discover a new level of driving satisfaction today!\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"mt-1 flex gap-3 empty:hidden\"\u003e\n\u003cdiv class=\"text-gray-400 flex self-end lg:self-center items-center justify-center lg:justify-start mt-0 -ml-1 h-7 gap-[2px] visible\"\u003e\n\u003cp\u003e\u0026nbsp;\u003c/p\u003e\n\u003cdiv class=\"flex items-center gap-1.5 text-xs\"\u003e\u003c/div\u003e\n\u003cdiv class=\"flex\"\u003e\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"pr-2 lg:pr-0\"\u003e\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"absolute\"\u003e\n\u003cdiv class=\"flex w-full gap-2 items-center justify-center\"\u003e\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"w-full pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:w-[calc(100%-.5rem)]\"\u003e\n\u003cdiv class=\"relative flex h-full flex-1 flex-col\"\u003e\n\u003cdiv class=\"absolute bottom-full left-0 right-0\"\u003e\u003c/div\u003e\n\u003cdiv class=\"flex w-full items-center\"\u003e\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "6500",
+                       "regular_price":  "6500",
+                       "sale_price":  "6500",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8495\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e65.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8497,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-300x200.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1.webp 2225w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-300x200.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-600x400.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-1024x683.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-768x512.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-1536x1024.webp 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-2048x1365.webp 2048w",
+                           "sizes":  "(max-width: 2225px) 100vw, 2225px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-300x200.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-600x400.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-1024x683.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-768x512.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-1536x1024.webp 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Pegas-1-2048x1365.webp 2048w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "Kia-Pegas-1",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8499,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas-300x225.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas.jpg 1920w, https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas-600x450.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas-1024x768.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas-768x576.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas-1536x1152.jpg 1536w",
+                           "sizes":  "(max-width: 1920px) 100vw, 1920px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas-600x450.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas-1024x768.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas-768x576.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas-1536x1152.jpg 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/eth_kia_pegas.jpg 1920w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "eth_kia_pegas",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8498,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8-300x200.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8.jpg 1600w, https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8-600x400.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8-1024x683.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8-768x512.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8-1536x1024.jpg 1536w",
+                           "sizes":  "(max-width: 1600px) 100vw, 1600px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8-600x400.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8-1024x683.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8-768x512.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8-1536x1024.jpg 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/21Kia-Pegas-8.jpg 1600w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "21Kia-Pegas-8",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8496,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/12972507.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/12972507-300x150.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/12972507.jpg 640w, https://niiplantsghana.com/wp-content/uploads/2024/04/12972507-300x150.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/12972507-600x300.jpg 600w",
+                           "sizes":  "(max-width: 640px) 100vw, 640px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/12972507-300x150.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/12972507-600x300.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/12972507.jpg 640w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "12972507",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  119,
+                               "name":  "CDMPACT SEDAN",
+                               "slug":  "cdmpact-sedan",
+                               "link":  "https://niiplantsghana.com/product-category/cdmpact-sedan/"
+                           },
+                           {
+                               "id":  114,
+                               "name":  "Saloon",
+                               "slug":  "saloon",
+                               "link":  "https://niiplantsghana.com/product-category/saloon/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+                           {
+                               "id":  0,
+                               "name":  "Location",
+                               "taxonomy":  null,
+                               "has_variations":  false,
+                               "terms":  [
+                                             {
+                                                 "id":  0,
+                                                 "name":  "In Accra",
+                                                 "slug":  "In Accra"
+                                             },
+                                             {
+                                                 "id":  0,
+                                                 "name":  "Outside Accra",
+                                                 "slug":  "Outside Accra"
+                                             }
+                                         ]
+                           }
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Add to basket",
+                            "description":  "Add to basket: \u0026ldquo;KIA PERGAS\u0026rdquo;",
+                            "url":  "/wp-json/wc/store/v1/products?per_page=100\u0026#038;add-to-cart=8495",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8495",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8495\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8481,
+        "name":  "KIA SPORTAGE",
+        "slug":  "kia-sportage",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/kia-sportage/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eDiscover the Kia Sportage, a dynamic compact SUV that combines style, performance, and versatility to fuel your sense of adventure.\u003c/p\u003e",
+        "description":  "\u003cdiv class=\"flex-1 overflow-hidden\"\u003e\n\u003cdiv class=\"react-scroll-to-bottom--css-uufuz-79elbk h-full\"\u003e\n\u003cdiv class=\"react-scroll-to-bottom--css-uufuz-1n7m0yu\"\u003e\n\u003cdiv\u003e\n\u003cdiv class=\"flex flex-col text-sm pb-9\"\u003e\n\u003cdiv class=\"w-full text-token-text-primary\" dir=\"auto\" data-testid=\"conversation-turn-27\"\u003e\n\u003cdiv class=\"px-4 py-2 justify-center text-base md:gap-6 m-auto\"\u003e\n\u003cdiv class=\"flex flex-1 text-base mx-auto gap-3 juice:gap-4 juice:md:gap-6 md:px-5 lg:px-1 xl:px-5 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem] group final-completion\"\u003e\n\u003cdiv class=\"relative flex w-full flex-col agent-turn\"\u003e\n\u003cdiv class=\"flex-col gap-1 md:gap-3\"\u003e\n\u003cdiv class=\"flex flex-grow flex-col max-w-full\"\u003e\n\u003cdiv class=\"min-h-[20px] text-message flex flex-col items-start gap-3 whitespace-pre-wrap break-words [.text-message+\u0026amp;]:mt-5 overflow-x-auto\" dir=\"auto\" data-message-author-role=\"assistant\" data-message-id=\"7b585e30-7963-4925-b930-6653db8849d2\"\u003e\n\u003cdiv class=\"markdown prose w-full break-words dark:prose-invert dark\"\u003e\n\u003cp\u003eDiscover the Kia Sportage, a dynamic compact SUV that combines style, performance, and versatility to fuel your sense of adventure. Whether you\u0026#8217;re cruising through city streets or exploring rugged terrain, the Sportage is your reliable companion for every journey.\u003c/p\u003e\n\u003cp\u003eKey Features:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eBold and Athletic Design: With its sleek lines, aggressive grille, and distinctive LED lighting, the Kia Sportage commands attention wherever it goes. Its athletic stance and sculpted body give it a sporty and dynamic presence on the road.\u003c/li\u003e\n\u003cli\u003eSpacious and Comfortable Interior: Step inside the Sportage and experience a spacious and inviting cabin designed with your comfort in mind. With ample legroom, supportive seating, and premium materials throughout, the Sportage provides a luxurious and enjoyable ride for all passengers.\u003c/li\u003e\n\u003cli\u003eAdvanced Technology: Stay connected and entertained on the go with the Kia Sportage\u0026#8217;s advanced technology features. From the intuitive touchscreen infotainment system to available smartphone integration and driver-assistance features, the Sportage keeps you connected and in control at all times.\u003c/li\u003e\n\u003cli\u003eDynamic Performance: Whether you\u0026#8217;re navigating urban streets or tackling off-road trails, the Kia Sportage delivers exhilarating performance and confident handling. With its responsive engines, available all-wheel drive system, and advanced suspension technology, the Sportage offers a thrilling driving experience in any environment.\u003c/li\u003e\n\u003cli\u003eSafety and Peace of Mind: Drive with confidence knowing that the Kia Sportage is equipped with advanced safety features to protect you and your passengers. From its reinforced body structure to its comprehensive suite of driver-assistance systems, the Sportage prioritizes safety in every journey.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eExperience the thrill of adventure with the Kia Sportage. Elevate your driving experience and embark on new adventures with confidence and style!\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"mt-1 flex gap-3 empty:hidden\"\u003e\n\u003cdiv class=\"text-gray-400 flex self-end lg:self-center items-center justify-center lg:justify-start mt-0 -ml-1 h-7 gap-[2px] visible\"\u003e\n\u003cp\u003e\u0026nbsp;\u003c/p\u003e\n\u003cdiv class=\"flex items-center gap-1.5 text-xs\"\u003e\u003c/div\u003e\n\u003cdiv class=\"flex\"\u003e\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"pr-2 lg:pr-0\"\u003e\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"absolute\"\u003e\n\u003cdiv class=\"flex w-full gap-2 items-center justify-center\"\u003e\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"w-full pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:w-[calc(100%-.5rem)]\"\u003e\n\u003cdiv class=\"relative flex h-full flex-1 flex-col\"\u003e\n\u003cdiv class=\"absolute bottom-full left-0 right-0\"\u003e\u003c/div\u003e\n\u003cdiv class=\"flex w-full items-center\"\u003e\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "0",
+                       "regular_price":  "0",
+                       "sale_price":  "0",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8481\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e100.00\u003c/span\u003e \u0026#8211; \u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e120.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8489,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy-300x188.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy.jpg 1920w, https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy-300x188.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy-600x375.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy-1024x640.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy-768x480.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy-1536x960.jpg 1536w",
+                           "sizes":  "(max-width: 1920px) 100vw, 1920px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy-300x188.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy-600x375.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy-1024x640.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy-768x480.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy-1536x960.jpg 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/279676_1920-copy.jpg 1920w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "279676_1920 copy",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8486,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-2014.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-2014-300x200.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-2014.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-2014-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-2014-600x400.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-2014-768x512.jpg 768w",
+                           "sizes":  "(max-width: 1024px) 100vw, 1024px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-2014-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-2014-600x400.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-2014-768x512.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-2014.jpg 1024w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "kia-sportage-2014",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8485,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014-300x176.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014.webp 1200w, https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014-300x176.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014-600x352.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014-1024x601.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014-768x451.webp 768w",
+                           "sizes":  "(max-width: 1200px) 100vw, 1200px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014-300x176.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014-600x352.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014-1024x601.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014-768x451.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/330333-frontal-kia-sportage-2014.webp 1200w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "330333-frontal-kia-sportage-2014",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8484,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/D_NQ_NP_2X_981330-MRD74195896577_012024-T.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/D_NQ_NP_2X_981330-MRD74195896577_012024-T-300x240.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/D_NQ_NP_2X_981330-MRD74195896577_012024-T.webp 320w, https://niiplantsghana.com/wp-content/uploads/2024/04/D_NQ_NP_2X_981330-MRD74195896577_012024-T-300x240.webp 300w",
+                           "sizes":  "(max-width: 320px) 100vw, 320px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/D_NQ_NP_2X_981330-MRD74195896577_012024-T-300x240.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/D_NQ_NP_2X_981330-MRD74195896577_012024-T.webp 320w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "D_NQ_NP_2X_981330-MRD74195896577_012024-T",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8483,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-M-804553-de1cb1be7bba951213a23dd4c6e03a63.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-M-804553-de1cb1be7bba951213a23dd4c6e03a63-300x221.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-M-804553-de1cb1be7bba951213a23dd4c6e03a63.jpg 720w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-M-804553-de1cb1be7bba951213a23dd4c6e03a63-300x221.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-M-804553-de1cb1be7bba951213a23dd4c6e03a63-600x442.jpg 600w",
+                           "sizes":  "(max-width: 720px) 100vw, 720px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-M-804553-de1cb1be7bba951213a23dd4c6e03a63-300x221.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-M-804553-de1cb1be7bba951213a23dd4c6e03a63-600x442.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-sportage-M-804553-de1cb1be7bba951213a23dd4c6e03a63.jpg 720w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "kia-sportage-M-804553-de1cb1be7bba951213a23dd4c6e03a63",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8482,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/5f4e440ed9c559.42308381.jpeg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/5f4e440ed9c559.42308381-300x200.jpeg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/5f4e440ed9c559.42308381.jpeg 800w, https://niiplantsghana.com/wp-content/uploads/2024/04/5f4e440ed9c559.42308381-300x200.jpeg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/5f4e440ed9c559.42308381-600x400.jpeg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/5f4e440ed9c559.42308381-768x512.jpeg 768w",
+                           "sizes":  "(max-width: 800px) 100vw, 800px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/5f4e440ed9c559.42308381-300x200.jpeg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/5f4e440ed9c559.42308381-600x400.jpeg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/5f4e440ed9c559.42308381-768x512.jpeg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/5f4e440ed9c559.42308381.jpeg 800w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "5f4e440ed9c559.42308381",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  42,
+                               "name":  "Expensive",
+                               "slug":  "expensive",
+                               "link":  "https://niiplantsghana.com/product-category/expensive/"
+                           },
+                           {
+                               "id":  117,
+                               "name":  "Mini SUV",
+                               "slug":  "mini-suv",
+                               "link":  "https://niiplantsghana.com/product-category/mini-suv/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;KIA SPORTAGE\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/kia-sportage/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8481",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8481\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8470,
+        "name":  "HYUNDAI CRETA",
+        "slug":  "hyundai-creta",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/hyundai-creta/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eIntroducing the Hyundai Creta, a compact SUV that seamlessly blends style, comfort, and versatility to elevate your driving experience.\u003c/p\u003e",
+        "description":  "\u003cp\u003eIntroducing the Hyundai Creta, a compact SUV that seamlessly blends style, comfort, and versatility to elevate your driving experience. Designed to tackle urban streets and adventurous trails with equal ease, the Creta is your ultimate companion for every journey.\u003c/p\u003e\n\u003cp\u003eKey Features:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eStriking Design: With its bold stance, sleek lines, and signature cascading grille, the Hyundai Creta makes a powerful statement on the road. Its contemporary design elements and attention to detail ensure that you\u0026#8217;ll turn heads wherever you go.\u003c/li\u003e\n\u003cli\u003eSpacious and Comfortable Interior: Step inside the Creta and discover a spacious and well-appointed cabin designed to provide comfort and convenience for all occupants. With ample legroom, versatile seating configurations, and premium materials throughout, every journey feels like a first-class experience.\u003c/li\u003e\n\u003cli\u003eAdvanced Technology: Stay connected and entertained on the go with the Hyundai Creta\u0026#8217;s advanced technology features. From the intuitive touchscreen infotainment system to available smartphone integration and wireless charging, the Creta keeps you connected and in control at all times.\u003c/li\u003e\n\u003cli\u003eDynamic Performance: Whether you\u0026#8217;re navigating city streets or venturing off the beaten path, the Hyundai Creta delivers a dynamic driving experience. With its responsive engines, smooth transmission options, and available all-wheel drive system, the Creta offers confident performance and excellent fuel efficiency.\u003c/li\u003e\n\u003cli\u003eSafety and Peace of Mind: Drive with confidence knowing that the Hyundai Creta is equipped with advanced safety features to protect you and your passengers. From its robust body structure to its comprehensive suite of active and passive safety systems, the Creta prioritizes safety in every journey.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eExperience the perfect combination of style, comfort, and capability with the Hyundai Creta. Elevate your driving experience and embark on new adventures with confidence and style!\u003c/p\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "0",
+                       "regular_price":  "0",
+                       "sale_price":  "0",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8470\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e88.00\u003c/span\u003e \u0026#8211; \u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e105.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8472,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Article_155969_860_575.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Article_155969_860_575-300x201.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Article_155969_860_575.jpg 860w, https://niiplantsghana.com/wp-content/uploads/2024/04/Article_155969_860_575-300x201.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Article_155969_860_575-600x401.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Article_155969_860_575-768x513.jpg 768w",
+                           "sizes":  "(max-width: 860px) 100vw, 860px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Article_155969_860_575-300x201.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Article_155969_860_575-600x401.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Article_155969_860_575-768x513.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/Article_155969_860_575.jpg 860w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "Article_155969_860_575",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8476,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta-300x200.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta.jpg 1200w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta-600x400.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta-1024x682.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta-768x511.jpg 768w",
+                           "sizes":  "(max-width: 1200px) 100vw, 1200px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta-600x400.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta-1024x682.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta-768x511.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai_Creta.jpg 1200w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "Hyundai_Creta",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8475,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/4c090556c22dc235.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/4c090556c22dc235-300x200.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/4c090556c22dc235.jpg 559w, https://niiplantsghana.com/wp-content/uploads/2024/04/4c090556c22dc235-300x200.jpg 300w",
+                           "sizes":  "(max-width: 559px) 100vw, 559px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/4c090556c22dc235-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/4c090556c22dc235.jpg 559w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "4c090556c22dc235",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8474,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/320x240.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/320x240-300x225.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/320x240.webp 320w, https://niiplantsghana.com/wp-content/uploads/2024/04/320x240-300x225.webp 300w",
+                           "sizes":  "(max-width: 320px) 100vw, 320px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/320x240-300x225.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/320x240.webp 320w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "320\u0026#215;240",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8473,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg-300x188.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg.webp 1200w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg-300x188.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg-600x375.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg-1024x640.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg-768x480.webp 768w",
+                           "sizes":  "(max-width: 1200px) 100vw, 1200px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg-300x188.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg-600x375.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg-1024x640.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg-768x480.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/Hyundai-Creta-2018-2.jpg.webp 1200w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "Hyundai-Creta-2018-2.jpg",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8471,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/creta02.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/creta02-300x225.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/creta02.jpg 1600w, https://niiplantsghana.com/wp-content/uploads/2024/04/creta02-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/creta02-600x450.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/creta02-1024x768.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/creta02-768x576.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/creta02-1536x1152.jpg 1536w",
+                           "sizes":  "(max-width: 1600px) 100vw, 1600px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/creta02-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/creta02-600x450.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/creta02-1024x768.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/creta02-768x576.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/creta02-1536x1152.jpg 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/creta02.jpg 1600w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "creta02",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  117,
+                               "name":  "Mini SUV",
+                               "slug":  "mini-suv",
+                               "link":  "https://niiplantsghana.com/product-category/mini-suv/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;HYUNDAI CRETA\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/hyundai-creta/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8470",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8470\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8463,
+        "name":  "KIA SELTOS",
+        "slug":  "kia-seltos",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/kia-seltos/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eIntroducing the Kia Seltos, a compact SUV that combines sleek design, advanced technology, and rugged capability to enhance every journey.\u003c/p\u003e",
+        "description":  "\u003cp\u003eIntroducing the Kia Seltos, a compact SUV that combines sleek design, advanced technology, and rugged capability to enhance every journey. Whether you\u0026#8217;re navigating city streets or exploring off-the-beaten-path destinations, the Seltos is your perfect companion for all your adventures.\u003c/p\u003e\n\u003cp\u003eKey Features:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eStriking Design: With its bold lines, distinctive grille, and eye-catching LED lighting, the Kia Seltos commands attention wherever it goes. Its compact yet muscular silhouette exudes confidence and versatility on the road.\u003c/li\u003e\n\u003cli\u003eSpacious and Flexible Interior: Step inside the Seltos and discover a comfortable and versatile cabin designed to adapt to your lifestyle. With ample cargo space, adjustable seating configurations, and premium materials throughout, the Seltos provides a first-class experience for all occupants.\u003c/li\u003e\n\u003cli\u003eAdvanced Technology: Stay connected and entertained on the go with the Kia Seltos\u0026#8217;s cutting-edge technology features. From the intuitive touchscreen infotainment system to available smartphone integration and driver-assistance features, the Seltos keeps you connected and in control at all times.\u003c/li\u003e\n\u003cli\u003eDynamic Performance: Whether you\u0026#8217;re cruising on the highway or tackling challenging terrain, the Kia Seltos delivers a thrilling driving experience. With its responsive engines, available all-wheel drive system, and advanced suspension technology, the Seltos offers confident handling and impressive fuel efficiency.\u003c/li\u003e\n\u003cli\u003eSafety and Peace of Mind: Drive with confidence knowing that the Kia Seltos is equipped with advanced safety features to protect you and your passengers. From its reinforced body structure to its comprehensive suite of driver-assistance systems, the Seltos prioritizes safety in every journey.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eExperience the perfect blend of style, versatility, and capability with the Kia Seltos. Elevate your adventure and discover a new level of driving enjoyment today!\u003c/p\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "0",
+                       "regular_price":  "0",
+                       "sale_price":  "0",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8463\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e88.00\u003c/span\u003e \u0026#8211; \u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e105.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8468,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/312520_w620_h500.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/312520_w620_h500-300x224.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/312520_w620_h500.jpg 620w, https://niiplantsghana.com/wp-content/uploads/2024/04/312520_w620_h500-300x224.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/312520_w620_h500-600x447.jpg 600w",
+                           "sizes":  "(max-width: 620px) 100vw, 620px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/312520_w620_h500-300x224.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/312520_w620_h500-600x447.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/312520_w620_h500.jpg 620w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "312520_w620_h500",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8467,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/front-left-side-47.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/front-left-side-47-300x200.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/front-left-side-47.webp 930w, https://niiplantsghana.com/wp-content/uploads/2024/04/front-left-side-47-300x200.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/front-left-side-47-600x400.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/front-left-side-47-768x512.webp 768w",
+                           "sizes":  "(max-width: 930px) 100vw, 930px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/front-left-side-47-300x200.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/front-left-side-47-600x400.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/front-left-side-47-768x512.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/front-left-side-47.webp 930w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "front-left-side-47",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8466,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1-300x145.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1.webp 1140w, https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1-300x145.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1-600x289.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1-1024x494.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1-768x371.webp 768w",
+                           "sizes":  "(max-width: 1140px) 100vw, 1140px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1-300x145.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1-600x289.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1-1024x494.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1-768x371.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/5e412fbaec05c45b18000015-1140x550-1.webp 1140w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "5e412fbaec05c45b18000015-1140\u0026#215;550",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8465,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-seltos-2019-2024-1682428267.0514297.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-seltos-2019-2024-1682428267.0514297-300x200.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-seltos-2019-2024-1682428267.0514297.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-seltos-2019-2024-1682428267.0514297-300x200.jpg 300w",
+                           "sizes":  "(max-width: 600px) 100vw, 600px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-seltos-2019-2024-1682428267.0514297-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-seltos-2019-2024-1682428267.0514297.jpg 600w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "kia-seltos-2019-2024-1682428267.0514297",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8464,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p-300x169.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p.jpg 1139w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p-300x169.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p-600x339.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p-1024x578.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p-768x434.jpg 768w",
+                           "sizes":  "(max-width: 1139px) 100vw, 1139px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p-300x169.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p-600x339.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p-1024x578.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p-768x434.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-Kia-Seltos-Sport-SUV-1001x565p.jpg 1139w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "2020-Kia-Seltos-Sport-SUV-1001x565p",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  118,
+                               "name":  "SUV",
+                               "slug":  "suv",
+                               "link":  "https://niiplantsghana.com/product-category/suv/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;KIA SELTOS\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/kia-seltos/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8463",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8463\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8457,
+        "name":  "HYUNDAI ACCORD",
+        "slug":  "hyundai-accord",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/hyundai-accord/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eMeet the Honda Accord, a legendary nameplate that continues to set the standard for excellence in the midsize sedan segment.\u003c/p\u003e",
+        "description":  "\u003cdiv class=\"flex-1 overflow-hidden\"\u003e\n\u003cdiv class=\"react-scroll-to-bottom--css-uufuz-79elbk h-full\"\u003e\n\u003cdiv class=\"react-scroll-to-bottom--css-uufuz-1n7m0yu\"\u003e\n\u003cdiv class=\"flex flex-col text-sm pb-9\"\u003e\n\u003cdiv class=\"w-full text-token-text-primary\" dir=\"auto\" data-testid=\"conversation-turn-21\"\u003e\n\u003cdiv class=\"px-4 py-2 justify-center text-base md:gap-6 m-auto\"\u003e\n\u003cdiv class=\"flex flex-1 text-base mx-auto gap-3 juice:gap-4 juice:md:gap-6 md:px-5 lg:px-1 xl:px-5 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem] group final-completion\"\u003e\n\u003cdiv class=\"relative flex w-full flex-col agent-turn\"\u003e\n\u003cdiv class=\"flex-col gap-1 md:gap-3\"\u003e\n\u003cdiv class=\"flex flex-grow flex-col max-w-full\"\u003e\n\u003cdiv class=\"min-h-[20px] text-message flex flex-col items-start gap-3 whitespace-pre-wrap break-words [.text-message+\u0026amp;]:mt-5 overflow-x-auto\" dir=\"auto\" data-message-author-role=\"assistant\" data-message-id=\"30a87bdf-18e1-4834-9dfc-9753979b949c\"\u003e\n\u003cdiv class=\"markdown prose w-full break-words dark:prose-invert dark\"\u003e\n\u003cp\u003eMeet the Honda Accord, a legendary nameplate that continues to set the standard for excellence in the midsize sedan segment. Renowned for its reliability, comfort, and performance, the Accord embodies Honda\u0026#8217;s commitment to engineering innovation and driver satisfaction.\u003c/p\u003e\n\u003cp\u003eKey Features:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eTimeless Design: With its sleek lines, bold grille, and refined details, the Honda Accord exudes confidence and sophistication on the road. Its aerodynamic shape not only enhances its visual appeal but also contributes to improved fuel efficiency and handling.\u003c/li\u003e\n\u003cli\u003eSpacious and Luxurious Interior: Step inside the Accord and experience a world of comfort and refinement. From the premium materials to the ergonomic design, every aspect of the interior is meticulously crafted to elevate your driving experience.\u003c/li\u003e\n\u003cli\u003eAdvanced Technology: Stay connected and entertained on the go with the Honda Accord\u0026#8217;s advanced technology features. From the intuitive touchscreen infotainment system to available smartphone integration and driver-assistance features, the Accord keeps you connected and informed wherever you go.\u003c/li\u003e\n\u003cli\u003eDynamic Performance: Whether you choose the efficient and responsive turbocharged engine or the hybrid powertrain, the Honda Accord delivers a thrilling driving experience. With its precise handling, smooth ride, and impressive fuel economy, the Accord is designed to exceed your expectations.\u003c/li\u003e\n\u003cli\u003eSafety First: Drive with confidence knowing that the Honda Accord is equipped with advanced safety features to protect you and your passengers. From Honda Sensing® safety suite, including Collision Mitigation Braking System™ and Lane Keeping Assist System, to its comprehensive airbag system, the Accord prioritizes safety in every journey.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eExperience the unparalleled blend of style, performance, and technology with the Honda Accord. Elevate your driving experience and discover why it\u0026#8217;s been a favorite among drivers for generations.\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "0",
+                       "regular_price":  "0",
+                       "sale_price":  "0",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8457\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e120.00\u003c/span\u003e \u0026#8211; \u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e140.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8461,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Honda-Accord-old.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Honda-Accord-old-300x199.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Honda-Accord-old.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/Honda-Accord-old-300x199.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Honda-Accord-old-600x398.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Honda-Accord-old-768x510.jpg 768w",
+                           "sizes":  "(max-width: 1024px) 100vw, 1024px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Honda-Accord-old-300x199.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Honda-Accord-old-600x398.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Honda-Accord-old-768x510.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/Honda-Accord-old.jpg 1024w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "Honda-Accord-old",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8460,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04-300x225.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04.jpg 1280w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04-600x450.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04-1024x768.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04-768x576.jpg 768w",
+                           "sizes":  "(max-width: 1280px) 100vw, 1280px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04-600x450.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04-1024x768.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04-768x576.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2011-gebrauchtwagen-check-04.jpg 1280w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "honda-accord-2011-gebrauchtwagen-check-04",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8459,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10-300x200.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10.webp 1280w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10-300x200.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10-600x400.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10-1024x682.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10-768x512.webp 768w",
+                           "sizes":  "(max-width: 1280px) 100vw, 1280px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10-300x200.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10-600x400.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10-1024x682.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10-768x512.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/honda-accord-2.4-10.webp 1280w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "honda-accord-2.4-10",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8458,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/b676128s-960.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/b676128s-960-300x169.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/b676128s-960.jpg 480w, https://niiplantsghana.com/wp-content/uploads/2024/04/b676128s-960-300x169.jpg 300w",
+                           "sizes":  "(max-width: 480px) 100vw, 480px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/b676128s-960-300x169.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/b676128s-960.jpg 480w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "b676128s-960",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  121,
+                               "name":  "Luxury Sedan",
+                               "slug":  "luxury-sedan",
+                               "link":  "https://niiplantsghana.com/product-category/luxury-sedan/"
+                           },
+                           {
+                               "id":  114,
+                               "name":  "Saloon",
+                               "slug":  "saloon",
+                               "link":  "https://niiplantsghana.com/product-category/saloon/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;HYUNDAI ACCORD\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/hyundai-accord/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8457",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8457\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8446,
+        "name":  "KIA CERATO",
+        "slug":  "kiacerato",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/kiacerato/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eIntroducing the Kia Cerato, a compact car that combines reliability, style, and efficiency to elevate your daily driving experience.\u003c/p\u003e",
+        "description":  "\u003cp\u003eIntroducing the Kia Cerato, a compact car that combines reliability, style, and efficiency to elevate your daily driving experience. With its sleek design, advanced features, and impressive performance, the Kia Cerato is the perfect choice for individuals seeking comfort and practicality without compromising on style.\u003c/p\u003e\n\u003cp\u003eKey Features:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eSleek Exterior Design: The Kia Cerato boasts a modern and aerodynamic exterior that turns heads on the road. Its refined lines and bold grille make a lasting impression wherever you go.\u003c/li\u003e\n\u003cli\u003eSpacious and Comfortable Interior: Step inside the Kia Cerato and experience a spacious and inviting cabin designed with your comfort in mind. With ample legroom and supportive seats, every journey feels like a first-class experience.\u003c/li\u003e\n\u003cli\u003eAdvanced Technology: Stay connected and entertained on the go with the Kia Cerato\u0026#8217;s advanced technology features. From the intuitive infotainment system to available smartphone integration, you\u0026#8217;ll have everything you need right at your fingertips.\u003c/li\u003e\n\u003cli\u003eEfficient Performance: Powered by a fuel-efficient engine, the Kia Cerato delivers a smooth and responsive driving experience. Whether you\u0026#8217;re navigating city streets or cruising on the highway, you\u0026#8217;ll enjoy impressive performance and excellent fuel economy.\u003c/li\u003e\n\u003cli\u003eSafety and Peace of Mind: Drive with confidence knowing that the Kia Cerato is equipped with a range of advanced safety features designed to protect you and your passengers on every journey. From active safety systems to passive safety features, the Cerato has you covered.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eExperience the perfect blend of style, comfort, and performance with the Kia Cerato. Upgrade your daily drive and discover a new level of driving satisfaction today!\u003c/p\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "0",
+                       "regular_price":  "0",
+                       "sale_price":  "0",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8446\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e80.00\u003c/span\u003e \u0026#8211; \u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e100.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8449,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante-300x196.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante.jpg 1280w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante-300x196.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante-600x392.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante-1024x669.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante-768x502.jpg 768w",
+                           "sizes":  "(max-width: 1280px) 100vw, 1280px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante-300x196.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante-600x392.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante-1024x669.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante-768x502.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-2022-adelante.jpg 1280w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "Kia-Cerato-2022-adelante",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8452,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/231356f21a7d90a10455b30378add422.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/231356f21a7d90a10455b30378add422-300x200.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/231356f21a7d90a10455b30378add422.jpg 360w, https://niiplantsghana.com/wp-content/uploads/2024/04/231356f21a7d90a10455b30378add422-300x200.jpg 300w",
+                           "sizes":  "(max-width: 360px) 100vw, 360px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/231356f21a7d90a10455b30378add422-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/231356f21a7d90a10455b30378add422.jpg 360w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "231356f21a7d90a10455b30378add422",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8451,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-300x300.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1.jpg 1440w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-300x300.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-100x100.jpg 100w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-600x600.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-1024x1024.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-150x150.jpg 150w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-768x768.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-650x650.jpg 650w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-1300x1300.jpg 1300w",
+                           "sizes":  "(max-width: 1440px) 100vw, 1440px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-300x300.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-100x100.jpg 100w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-600x600.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-1024x1024.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-150x150.jpg 150w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-768x768.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-650x650.jpg 650w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1-1300x1300.jpg 1300w, https://niiplantsghana.com/wp-content/uploads/2024/04/Kia-Cerato-Feature-1-1440x1440-1.jpg 1440w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "Kia-Cerato-Feature-1-1440\u0026#215;1440",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8448,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4-300x175.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4.webp 1300w, https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4-300x175.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4-600x351.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4-1024x599.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4-768x449.webp 768w",
+                           "sizes":  "(max-width: 1300px) 100vw, 1300px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4-300x175.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4-600x351.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4-1024x599.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4-768x449.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4.webp 1300w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "78e4e8b4-f4fb-4390-82a9-7b04fd2f21c4",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8447,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/premiere-fuer-den-uebersee-ceed.avif",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/premiere-fuer-den-uebersee-ceed-300x200.avif",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/premiere-fuer-den-uebersee-ceed.avif 800w, https://niiplantsghana.com/wp-content/uploads/2024/04/premiere-fuer-den-uebersee-ceed-300x200.avif 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/premiere-fuer-den-uebersee-ceed-600x400.avif 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/premiere-fuer-den-uebersee-ceed-768x512.avif 768w",
+                           "sizes":  "(max-width: 800px) 100vw, 800px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/premiere-fuer-den-uebersee-ceed-300x200.avif 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/premiere-fuer-den-uebersee-ceed-600x400.avif 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/premiere-fuer-den-uebersee-ceed-768x512.avif 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/premiere-fuer-den-uebersee-ceed.avif 800w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "premiere-fuer-den-uebersee-ceed",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8450,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi-300x169.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi.jpg 1280w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi-300x169.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi-600x338.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi-1024x576.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi-768x432.jpg 768w",
+                           "sizes":  "(max-width: 1280px) 100vw, 1280px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi-300x169.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi-600x338.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi-1024x576.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi-768x432.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/kia-cerato-v-tri-chetverti-speredi.jpg 1280w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "kia-cerato-v-tri-chetverti-speredi",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  120,
+                               "name":  "MID SIZE SEDAN",
+                               "slug":  "mid-size-sedan",
+                               "link":  "https://niiplantsghana.com/product-category/mid-size-sedan/"
+                           },
+                           {
+                               "id":  114,
+                               "name":  "Saloon",
+                               "slug":  "saloon",
+                               "link":  "https://niiplantsghana.com/product-category/saloon/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;KIA CERATO\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/kiacerato/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8446",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8446\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8440,
+        "name":  "HYUNDAI ELANTRA",
+        "slug":  "hyundai-elantra",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/hyundai-elantra/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eElevate Your Drive with the Hyundai Elantra: Stylish, Efficient, and Packed with Features\u003c/p\u003e",
+        "description":  "\u003cdiv class=\"flex-1 overflow-hidden\"\u003e\n\u003cdiv class=\"react-scroll-to-bottom--css-ismzl-79elbk h-full\"\u003e\n\u003cdiv class=\"react-scroll-to-bottom--css-ismzl-1n7m0yu\"\u003e\n\u003cdiv class=\"flex flex-col text-sm pb-9\"\u003e\n\u003cdiv class=\"w-full text-token-text-primary\" dir=\"auto\" data-testid=\"conversation-turn-5\"\u003e\n\u003cdiv class=\"px-4 py-2 justify-center text-base md:gap-6 m-auto\"\u003e\n\u003cdiv class=\"flex flex-1 text-base mx-auto gap-3 juice:gap-4 juice:md:gap-6 md:px-5 lg:px-1 xl:px-5 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem] group final-completion\"\u003e\n\u003cdiv class=\"relative flex w-full flex-col agent-turn\"\u003e\n\u003cdiv class=\"flex-col gap-1 md:gap-3\"\u003e\n\u003cdiv class=\"flex flex-grow flex-col max-w-full\"\u003e\n\u003cdiv class=\"min-h-[20px] text-message flex flex-col items-start gap-3 whitespace-pre-wrap break-words [.text-message+\u0026amp;]:mt-5 overflow-x-auto\" dir=\"auto\" data-message-author-role=\"assistant\" data-message-id=\"ca5f40c3-aee4-43cc-a06b-2f3ee34c86e4\"\u003e\n\u003cdiv class=\"markdown prose w-full break-words dark:prose-invert dark\"\u003e\n\u003cp\u003eElevate Your Drive with the Hyundai Elantra: Stylish, Efficient, and Packed with Features\u003c/p\u003e\n\u003cp\u003eMeet the Hyundai Elantra, a compact sedan that redefines the driving experience with its sleek design, advanced technology, and impressive performance. Whether you\u0026#8217;re commuting to work or embarking on a weekend adventure, the Elantra delivers a dynamic driving experience that\u0026#8217;s sure to impress.\u003c/p\u003e\n\u003cp\u003eKey Features:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eDynamic Exterior Design: The Hyundai Elantra commands attention with its bold lines, stylish grille, and modern LED lighting. Its aerodynamic shape not only enhances its visual appeal but also improves fuel efficiency and performance.\u003c/li\u003e\n\u003cli\u003eSpacious and Comfortable Interior: Step inside the Elantra and discover a welcoming cabin designed with your comfort in mind. With ample legroom, supportive seats, and premium materials throughout, every journey is a pleasure.\u003c/li\u003e\n\u003cli\u003eAdvanced Technology: Stay connected and entertained on the go with the Hyundai Elantra\u0026#8217;s cutting-edge technology features. From the intuitive infotainment system with smartphone integration to available driver-assistance features, you\u0026#8217;ll enjoy a seamless driving experience.\u003c/li\u003e\n\u003cli\u003eEfficient Performance: Powered by a fuel-efficient engine, the Hyundai Elantra offers impressive performance and excellent fuel economy. Whether you\u0026#8217;re navigating city streets or cruising on the highway, you\u0026#8217;ll appreciate the Elantra\u0026#8217;s responsive handling and smooth ride.\u003c/li\u003e\n\u003cli\u003eSafety and Peace of Mind: Drive with confidence knowing that the Hyundai Elantra is equipped with advanced safety features designed to protect you and your passengers. From active safety systems like Forward Collision-Avoidance Assist to passive safety features like a comprehensive airbag system, the Elantra prioritizes your safety on every journey.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eExperience the perfect balance of style, performance, and technology with the Hyundai Elantra. Elevate your drive and discover a new level of driving enjoyment today!\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e\n\u003cdiv class=\"w-full pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:w-[calc(100%-.5rem)]\"\u003e\n\u003cdiv class=\"relative flex h-full flex-1 flex-col\"\u003e\n\u003cdiv class=\"flex w-full items-center\"\u003e\u003c/div\u003e\n\u003c/div\u003e\n\u003c/div\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "0",
+                       "regular_price":  "0",
+                       "sale_price":  "0",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8440\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e80.00\u003c/span\u003e \u0026#8211; \u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e100.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8441,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936-300x201.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936.jpg 1397w, https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936-300x201.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936-600x401.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936-1024x685.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936-768x513.jpg 768w",
+                           "sizes":  "(max-width: 1397px) 100vw, 1397px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936-300x201.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936-600x401.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936-1024x685.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936-768x513.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/1400x936.jpg 1397w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "1400\u0026#215;936",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8444,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2.png",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2-300x186.png",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2.png 1907w, https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2-300x186.png 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2-600x371.png 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2-1024x634.png 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2-768x475.png 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2-1536x950.png 1536w",
+                           "sizes":  "(max-width: 1907px) 100vw, 1907px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2-300x186.png 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2-600x371.png 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2-1024x634.png 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2-768x475.png 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2-1536x950.png 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/1626443308_hyundai-transparent2.png 1907w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "1626443308_hyundai-transparent2",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8442,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1045005.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1045005-300x200.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1045005.jpg 1200w, https://niiplantsghana.com/wp-content/uploads/2024/04/1045005-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/1045005-600x401.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/1045005-1024x684.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/1045005-768x513.jpg 768w",
+                           "sizes":  "(max-width: 1200px) 100vw, 1200px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1045005-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/1045005-600x401.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/1045005-1024x684.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/1045005-768x513.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/1045005.jpg 1200w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "1045005",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8443,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hero.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hero-300x225.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hero.webp 400w, https://niiplantsghana.com/wp-content/uploads/2024/04/hero-300x225.webp 300w",
+                           "sizes":  "(max-width: 400px) 100vw, 400px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hero-300x225.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/hero.webp 400w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "hero",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  120,
+                               "name":  "MID SIZE SEDAN",
+                               "slug":  "mid-size-sedan",
+                               "link":  "https://niiplantsghana.com/product-category/mid-size-sedan/"
+                           },
+                           {
+                               "id":  114,
+                               "name":  "Saloon",
+                               "slug":  "saloon",
+                               "link":  "https://niiplantsghana.com/product-category/saloon/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;HYUNDAI ELANTRA\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/hyundai-elantra/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8440",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8440\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8432,
+        "name":  "HYUNDAI ACCENT",
+        "slug":  "kia-pergas-hyundai-accent",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/kia-pergas-hyundai-accent/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eMeet the Hyundai Accent, a compact car that sets new standards for style, efficiency, and value.\u003c/p\u003e",
+        "description":  "\u003cp\u003eMeet the Hyundai Accent, a compact car that sets new standards for style, efficiency, and value. With its sleek design, advanced features, and reliable performance, the Accent is the perfect choice for drivers who demand more from their daily commute.\u003c/p\u003e\n\u003cp\u003eKey Features:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eSleek Exterior Design: The Hyundai Accent boasts a modern and aerodynamic exterior that turns heads wherever you go. Its sculpted lines, bold grille, and available LED lighting create a striking impression on the road.\u003c/li\u003e\n\u003cli\u003eComfortable and Well-Equipped Interior: Step inside the Accent and discover a spacious and well-appointed cabin designed with your comfort in mind. With supportive seats, intuitive controls, and premium materials throughout, the Accent provides a refined and enjoyable driving experience.\u003c/li\u003e\n\u003cli\u003eAdvanced Technology: Stay connected and entertained on the go with the Hyundai Accent\u0026#8217;s advanced technology features. From the touchscreen infotainment system to available smartphone integration and voice recognition, the Accent keeps you connected and in control at all times.\u003c/li\u003e\n\u003cli\u003eEfficient Performance: Powered by a fuel-efficient engine, the Hyundai Accent delivers impressive performance and excellent fuel economy. Whether you\u0026#8217;re navigating city streets or cruising on the highway, you\u0026#8217;ll enjoy responsive handling and smooth acceleration.\u003c/li\u003e\n\u003cli\u003eSafety and Peace of Mind: Drive with confidence knowing that the Hyundai Accent is equipped with advanced safety features to protect you and your passengers. From its reinforced body structure to its comprehensive airbag system, the Accent prioritizes safety in every journey.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eExperience the perfect combination of style, efficiency, and value with the Hyundai Accent. Elevate your daily drive and discover a new level of driving satisfaction today!\u003c/p\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "6500",
+                       "regular_price":  "6500",
+                       "sale_price":  "6500",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8432\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e65.00\u003c/span\u003e / Day\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8433,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/img-1-600x400-1.avif",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/img-1-600x400-1-300x200.avif",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/img-1-600x400-1.avif 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/img-1-600x400-1-300x200.avif 300w",
+                           "sizes":  "(max-width: 600px) 100vw, 600px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/img-1-600x400-1-300x200.avif 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/img-1-600x400-1.avif 600w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "img-1-600\u0026#215;400",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8438,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/l-1605487073.7222-5fb1c9e1b0513.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/l-1605487073.7222-5fb1c9e1b0513-300x225.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/l-1605487073.7222-5fb1c9e1b0513.webp 800w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1605487073.7222-5fb1c9e1b0513-300x225.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1605487073.7222-5fb1c9e1b0513-600x450.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1605487073.7222-5fb1c9e1b0513-768x576.webp 768w",
+                           "sizes":  "(max-width: 800px) 100vw, 800px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/l-1605487073.7222-5fb1c9e1b0513-300x225.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1605487073.7222-5fb1c9e1b0513-600x450.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1605487073.7222-5fb1c9e1b0513-768x576.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1605487073.7222-5fb1c9e1b0513.webp 800w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "l-1605487073.7222-5fb1c9e1b0513",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8437,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/l-1612339507.7097-601a5933ad44f.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/l-1612339507.7097-601a5933ad44f-300x225.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/l-1612339507.7097-601a5933ad44f.webp 800w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1612339507.7097-601a5933ad44f-300x225.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1612339507.7097-601a5933ad44f-600x450.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1612339507.7097-601a5933ad44f-768x576.webp 768w",
+                           "sizes":  "(max-width: 800px) 100vw, 800px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/l-1612339507.7097-601a5933ad44f-300x225.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1612339507.7097-601a5933ad44f-600x450.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1612339507.7097-601a5933ad44f-768x576.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/l-1612339507.7097-601a5933ad44f.webp 800w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "l-1612339507.7097-601a5933ad44f",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8436,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled-300x168.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled.webp 1920w, https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled-300x168.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled-600x337.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled-1024x575.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled-768x431.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled-1536x862.webp 1536w",
+                           "sizes":  "(max-width: 1920px) 100vw, 1920px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled-300x168.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled-600x337.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled-1024x575.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled-768x431.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled-1536x862.webp 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled.webp 1920w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "generation_64a31dab89ad1_hyundai-accent-cover-front-left-angled",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8435,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-accent_100800864_h.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-accent_100800864_h-300x157.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-accent_100800864_h.jpg 1000w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-accent_100800864_h-300x157.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-accent_100800864_h-600x314.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-accent_100800864_h-768x402.jpg 768w",
+                           "sizes":  "(max-width: 1000px) 100vw, 1000px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-accent_100800864_h-300x157.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-accent_100800864_h-600x314.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-accent_100800864_h-768x402.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-accent_100800864_h.jpg 1000w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "hyundai-accent_100800864_h",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8434,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274-300x225.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274.jpg 1600w, https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274-600x450.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274-1024x768.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274-768x576.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274-1536x1152.jpg 1536w",
+                           "sizes":  "(max-width: 1600px) 100vw, 1600px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274-600x450.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274-1024x768.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274-768x576.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274-1536x1152.jpg 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/fc2a737b25d5a59cdf0476cb4029b274.jpg 1600w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "fc2a737b25d5a59cdf0476cb4029b274",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  119,
+                               "name":  "CDMPACT SEDAN",
+                               "slug":  "cdmpact-sedan",
+                               "link":  "https://niiplantsghana.com/product-category/cdmpact-sedan/"
+                           },
+                           {
+                               "id":  114,
+                               "name":  "Saloon",
+                               "slug":  "saloon",
+                               "link":  "https://niiplantsghana.com/product-category/saloon/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;HYUNDAI ACCENT\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/kia-pergas-hyundai-accent/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8432",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8432\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8373,
+        "name":  "TOYOTA COASTER\t 30 Seater Bus",
+        "slug":  "toyota-coaster-30-seater-bus",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/toyota-coaster-30-seater-bus/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eVersatile bus is the ideal choice for various travel scenarios, from city tours to corporate shuttles, and everything in between.\u003c/p\u003e",
+        "description":  "\u003cp\u003eIntroducing the Toyota Coaster 30-Seater Bus, the epitome of comfort, reliability, and efficiency in transportation. Designed to meet the diverse needs of passengers and operators alike, this spacious and versatile bus is the ideal choice for various travel scenarios, from city tours to corporate shuttles, and everything in between.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eKey Features:\u003c/strong\u003e\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eAmple Seating Capacity: With seating for up to 30 passengers, including the driver, the Toyota Coaster offers generous space for group outings, excursions, and daily commutes, ensuring everyone travels in comfort.\u003c/li\u003e\n\u003cli\u003eComfortable Interior: Step inside the Toyota Coaster, and you\u0026#8217;ll find a wellappointed interior designed to enhance the passenger experience. Comfortable seating, ample legroom, and strategically placed amenities create a welcoming environment for all occupants.\u003c/li\u003e\n\u003cli\u003eDurable and Reliable: Built with Toyota\u0026#8217;s renowned reputation for durability and reliability, the Coaster 30 Seater Bus delivers peace of mind to operators and passengers alike. Its robust construction and dependable performance make it a trusted companion on any journey.\u003c/li\u003e\n\u003cli\u003eEfficient Performance: Equipped with a powerful yet fuelefficient engine, the Toyota Coaster maximizes performance while minimizing operating costs. Whether navigating urban streets or cruising on highways, this bus delivers smooth acceleration and responsive handling.\u003c/li\u003e\n\u003cli\u003eSafety and Security: Safety is paramount in the Toyota Coaster, with advanced features and technologies designed to protect passengers and enhance driver confidence. From sturdy construction to active safety systems, every aspect is engineered to prioritize passenger wellbeing.\u003c/li\u003e\n\u003cli\u003eVersatile Applications: Whether used for public transportation, tourism, school transportation, or corporate shuttles, the Toyota Coaster adapts seamlessly to various applications. Its flexible design and customizable options make it suitable for a wide range of purposes.\u003c/li\u003e\n\u003cli\u003eModern Amenities: The Toyota Coaster is equipped with modern amenities to enhance passenger comfort and convenience. From air conditioning to entertainment systems, every detail is crafted to elevate the travel experience.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e\u003cstrong\u003eWhy Choose the Toyota Coaster 30 Seater Bus?\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eProven Performance: Backed by Toyota\u0026#8217;s legacy of quality and excellence.\u003cbr /\u003e\nSpacious Interior: Offers ample room for passengers and cargo, ensuring a comfortable journey.\u003cbr /\u003e\nReliable and Efficient: Engineered for durability, reliability, and fuel efficiency, reducing operating costs.\u003cbr /\u003e\nVersatile: Suitable for various applications, from public transportation to tourism and corporate transport.\u003cbr /\u003e\nPeace of Mind: Builtin safety features and robust construction prioritize passenger safety and security.\u003c/p\u003e\n\u003cp\u003eExperience the ultimate in passenger transportation with the Toyota Coaster 30 Seater Bus. Whether you\u0026#8217;re planning a group trip or need a reliable shuttle service, trust the Toyota Coaster to get you there safely and comfortably.\u003c/p\u003e\n\u003cp\u003e\u0026nbsp;\u003c/p\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "0",
+                       "regular_price":  "0",
+                       "sale_price":  "0",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8373\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e150.00\u003c/span\u003e \u0026#8211; \u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e240.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8374,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2-300x133.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2.webp 616w, https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2-300x133.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2-600x266.webp 600w",
+                           "sizes":  "(max-width: 616px) 100vw, 616px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2-300x133.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2-600x266.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2.webp 616w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "1233__2",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8377,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-300x200.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel.jpg 750w, https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-600x400.jpg 600w",
+                           "sizes":  "(max-width: 750px) 100vw, 750px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-600x400.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel.jpg 750w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "toyota-coaster-bus-30-seater-high-roof-diesel",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8376,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault-300x169.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault.jpg 1280w, https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault-300x169.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault-600x338.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault-1024x576.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault-768x432.jpg 768w",
+                           "sizes":  "(max-width: 1280px) 100vw, 1280px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault-300x169.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault-600x338.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault-1024x576.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault-768x432.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/maxresdefault.jpg 1280w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "maxresdefault",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8375,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-3.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-3-300x225.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-3.jpg 750w, https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-3-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-3-600x450.jpg 600w",
+                           "sizes":  "(max-width: 750px) 100vw, 750px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-3-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-3-600x450.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/toyota-coaster-bus-30-seater-high-roof-diesel-3.jpg 750w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "toyota-coaster-bus-30-seater-high-roof-diesel-3",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8374,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2-300x133.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2.webp 616w, https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2-300x133.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2-600x266.webp 600w",
+                           "sizes":  "(max-width: 616px) 100vw, 616px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2-300x133.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2-600x266.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/1233__2.webp 616w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "1233__2",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  116,
+                               "name":  "Bus",
+                               "slug":  "bus",
+                               "link":  "https://niiplantsghana.com/product-category/bus/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;TOYOTA COASTER\t 30 Seater Bus\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/toyota-coaster-30-seater-bus/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8373",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8373\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8334,
+        "name":  "HYUNDAI TUCSON 2018",
+        "slug":  "hyundai-tucson-2018",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/hyundai-tucson-2018/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eThe Hyundai Tucson 2018 is a stylish and versatile compact SUV that offers a comfortable and enjoyable driving experience.\u003c/p\u003e",
+        "description":  "\u003cp\u003eThe Hyundai Tucson 2018 is a stylish and versatile compact SUV that offers a comfortable and enjoyable driving experience. With its sleek design and modern features, the Tucson stands out on the road while providing practicality for everyday use. Its spacious interior accommodates passengers with ease, offering ample legroom and cargo space for both short trips and longer journeys. Equipped with advanced safety technology, the Tucson prioritizes the security and peace of mind of its occupants. Whether you\u0026#8217;re navigating urban streets or venturing off the beaten path, the Hyundai Tucson 2018 delivers a smooth ride, reliability, and versatility, making it an excellent choice for short-term rentals.\u003c/p\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "0",
+                       "regular_price":  "0",
+                       "sale_price":  "0",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8334\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e100.00\u003c/span\u003e \u0026#8211; \u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e120.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8346,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1-300x182.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1.jpg 1765w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1-300x182.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1-600x364.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1-1024x622.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1-768x466.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1-1536x933.jpg 1536w",
+                           "sizes":  "(max-width: 1765px) 100vw, 1765px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1-300x182.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1-600x364.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1-1024x622.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1-768x466.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1-1536x933.jpg 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-diesel-test-1.jpg 1765w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "hyundai-tucson-diesel-test",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8337,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1-300x181.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1.jpg 1200w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1-300x181.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1-600x361.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1-1024x616.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1-768x462.jpg 768w",
+                           "sizes":  "(max-width: 1200px) 100vw, 1200px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1-300x181.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1-600x361.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1-1024x616.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1-768x462.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-facelift-1.jpg 1200w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "hyundai-tucson-facelift-1",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8336,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/LJ961555_wrKGDT1jYz9R88_600x600.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/LJ961555_wrKGDT1jYz9R88_600x600-300x225.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/LJ961555_wrKGDT1jYz9R88_600x600.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/LJ961555_wrKGDT1jYz9R88_600x600-300x225.jpg 300w",
+                           "sizes":  "(max-width: 600px) 100vw, 600px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/LJ961555_wrKGDT1jYz9R88_600x600-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/LJ961555_wrKGDT1jYz9R88_600x600.jpg 600w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "LJ961555_wrKGDT1jYz9R88_600x600",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8335,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-2018-900x600-thumbnail.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-2018-900x600-thumbnail-300x200.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-2018-900x600-thumbnail.jpg 900w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-2018-900x600-thumbnail-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-2018-900x600-thumbnail-600x400.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-2018-900x600-thumbnail-768x512.jpg 768w",
+                           "sizes":  "(max-width: 900px) 100vw, 900px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-2018-900x600-thumbnail-300x200.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-2018-900x600-thumbnail-600x400.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-2018-900x600-thumbnail-768x512.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/hyundai-tucson-2018-900x600-thumbnail.jpg 900w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "hyundai-tucson-2018-900\u0026#215;600-thumbnail",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  115,
+                               "name":  "4×4",
+                               "slug":  "4x4",
+                               "link":  "https://niiplantsghana.com/product-category/4x4/"
+                           },
+                           {
+                               "id":  118,
+                               "name":  "SUV",
+                               "slug":  "suv",
+                               "link":  "https://niiplantsghana.com/product-category/suv/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;HYUNDAI TUCSON 2018\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/hyundai-tucson-2018/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8334",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8334\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8326,
+        "name":  "MITSUBISHI PAJERO 2018",
+        "slug":  "mitsubishi-pajero-2018",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/mitsubishi-pajero-2018/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eThe Mitsubishi Pajero 2018 is a rugged and versatile SUV that combines off-road capability with comfort and style.\u003c/p\u003e",
+        "description":  "\u003cp\u003eThe Mitsubishi Pajero 2018 is a rugged and versatile SUV that combines off-road capability with comfort and style. Renowned for its robust build and reliable performance, the Pajero is equally at home on city streets as it is on challenging terrain. Its spacious interior provides ample room for passengers and cargo, making it ideal for family trips or outdoor adventures. Equipped with advanced safety features and modern amenities, the Pajero prioritizes both security and comfort for all occupants. Whether you\u0026#8217;re exploring the great outdoors or navigating urban landscapes, the Mitsubishi Pajero 2018 offers a blend of power, versatility, and refinement, making it an excellent choice for short-term rentals.\u003c/p\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "0",
+                       "regular_price":  "0",
+                       "sale_price":  "0",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8326\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e120.00\u003c/span\u003e \u0026#8211; \u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e140.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8341,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2018-Mitsubishi-Pajero-GLS-SUV-silver-Tim-Robson-1200x800p-2-1.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2018-Mitsubishi-Pajero-GLS-SUV-silver-Tim-Robson-1200x800p-2-1-300x182.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2018-Mitsubishi-Pajero-GLS-SUV-silver-Tim-Robson-1200x800p-2-1.jpg 965w, https://niiplantsghana.com/wp-content/uploads/2024/04/2018-Mitsubishi-Pajero-GLS-SUV-silver-Tim-Robson-1200x800p-2-1-300x182.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/2018-Mitsubishi-Pajero-GLS-SUV-silver-Tim-Robson-1200x800p-2-1-600x364.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/2018-Mitsubishi-Pajero-GLS-SUV-silver-Tim-Robson-1200x800p-2-1-768x466.jpg 768w",
+                           "sizes":  "(max-width: 965px) 100vw, 965px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2018-Mitsubishi-Pajero-GLS-SUV-silver-Tim-Robson-1200x800p-2-1-300x182.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/2018-Mitsubishi-Pajero-GLS-SUV-silver-Tim-Robson-1200x800p-2-1-600x364.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/2018-Mitsubishi-Pajero-GLS-SUV-silver-Tim-Robson-1200x800p-2-1-768x466.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/2018-Mitsubishi-Pajero-GLS-SUV-silver-Tim-Robson-1200x800p-2-1.jpg 965w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "2018-Mitsubishi-Pajero-GLS-SUV-silver-Tim-Robson-1200x800p-(2)",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8331,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/sddefault.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/sddefault-300x225.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/sddefault.jpg 640w, https://niiplantsghana.com/wp-content/uploads/2024/04/sddefault-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/sddefault-600x450.jpg 600w",
+                           "sizes":  "(max-width: 640px) 100vw, 640px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/sddefault-300x225.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/sddefault-600x450.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/sddefault.jpg 640w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "sddefault",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8330,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018-300x198.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018.jpg 1316w, https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018-300x198.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018-600x397.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018-1024x677.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018-768x508.jpg 768w",
+                           "sizes":  "(max-width: 1316px) 100vw, 1316px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018-300x198.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018-600x397.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018-1024x677.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018-768x508.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/mitsubishi-pajero-2018.jpg 1316w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "mitsubishi-pajero-2018",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8329,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/teaser_image_ap-19968-bild00_praxistest_mitsubishi_pajero_32_di-d-jpg.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/teaser_image_ap-19968-bild00_praxistest_mitsubishi_pajero_32_di-d-jpg-300x208.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/teaser_image_ap-19968-bild00_praxistest_mitsubishi_pajero_32_di-d-jpg.jpg 700w, https://niiplantsghana.com/wp-content/uploads/2024/04/teaser_image_ap-19968-bild00_praxistest_mitsubishi_pajero_32_di-d-jpg-300x208.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/teaser_image_ap-19968-bild00_praxistest_mitsubishi_pajero_32_di-d-jpg-600x416.jpg 600w",
+                           "sizes":  "(max-width: 700px) 100vw, 700px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/teaser_image_ap-19968-bild00_praxistest_mitsubishi_pajero_32_di-d-jpg-300x208.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/teaser_image_ap-19968-bild00_praxistest_mitsubishi_pajero_32_di-d-jpg-600x416.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/teaser_image_ap-19968-bild00_praxistest_mitsubishi_pajero_32_di-d-jpg.jpg 700w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "teaser_image_ap-19968-bild00_praxistest_mitsubishi_pajero_32_di-d-jpg",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  115,
+                               "name":  "4×4",
+                               "slug":  "4x4",
+                               "link":  "https://niiplantsghana.com/product-category/4x4/"
+                           },
+                           {
+                               "id":  118,
+                               "name":  "SUV",
+                               "slug":  "suv",
+                               "link":  "https://niiplantsghana.com/product-category/suv/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;MITSUBISHI PAJERO 2018\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/mitsubishi-pajero-2018/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8326",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8326\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8308,
+        "name":  "Toyota Hiace 2020",
+        "slug":  "toyota-hiace-2020",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/toyota-hiace-2020/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eThe Toyota Hiace 2020 is a versatile and reliable van, renowned for its durability and spacious interior.\u003c/p\u003e",
+        "description":  "\u003cp\u003eThe Toyota Hiace 2020 is a versatile and reliable van, renowned for its durability and spacious interior. Perfect for various commercial and personal needs, it offers ample cargo space, comfortable seating, and advanced safety features. With its efficient engine and smooth handling, the Hiace ensures a comfortable ride for both driver and passengers. Whether for business deliveries, group transportation, or family trips, the Toyota Hiace 2020 is an ideal choice for short-term rental, offering convenience and practicality in every journey.\u003c/p\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "0",
+                       "regular_price":  "0",
+                       "sale_price":  "0",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8308\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e120.00\u003c/span\u003e \u0026#8211; \u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e150.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  8309,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-scaled.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-scaled-300x190.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-scaled.jpg 2560w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-300x190.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-scaled-600x381.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-1024x650.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-768x488.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-1536x975.jpg 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-2048x1300.jpg 2048w",
+                           "sizes":  "(max-width: 2560px) 100vw, 2560px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-300x190.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-scaled-600x381.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-1024x650.jpg 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-768x488.jpg 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-1536x975.jpg 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020_Toyota_HiAce_front-2048x1300.jpg 2048w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "2020_Toyota_HiAce_(front)",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8311,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1-300x169.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1.webp 1139w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1-300x169.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1-600x339.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1-1024x578.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1-768x434.webp 768w",
+                           "sizes":  "(max-width: 1139px) 100vw, 1139px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1-300x169.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1-600x339.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1-1024x578.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1-768x434.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-HiAce-lwb-van-white-mark-oastler-1001x565-1.webp 1139w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "2020-toyota-HiAce-lwb-van-white-mark-oastler-1001\u0026#215;565-(1)",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8310,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1.webp",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1-300x169.webp",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1.webp 1139w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1-300x169.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1-600x339.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1-1024x578.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1-768x434.webp 768w",
+                           "sizes":  "(max-width: 1139px) 100vw, 1139px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1-300x169.webp 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1-600x339.webp 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1-1024x578.webp 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1-768x434.webp 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001x565-1.webp 1139w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "2020-toyota-hiace-Commuter-GL-blue-people-mover-mark-oastler-1001\u0026#215;565-(1)",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8312,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a.avif",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a-300x169.avif",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a.avif 1920w, https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a-300x169.avif 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a-600x338.avif 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a-1024x576.avif 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a-768x432.avif 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a-1536x864.avif 1536w",
+                           "sizes":  "(max-width: 1920px) 100vw, 1920px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a-300x169.avif 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a-600x338.avif 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a-1024x576.avif 1024w, https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a-768x432.avif 768w, https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a-1536x864.avif 1536w, https://niiplantsghana.com/wp-content/uploads/2024/04/rqkwpmu4qtwknmoolv5a.avif 1920w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "rqkwpmu4qtwknmoolv5a",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  8327,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2024/04/640px-2019_Toyota_HiAce_Premio_2.8_GDH322R_20190722.jpg",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2024/04/640px-2019_Toyota_HiAce_Premio_2.8_GDH322R_20190722-300x228.jpg",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/640px-2019_Toyota_HiAce_Premio_2.8_GDH322R_20190722.jpg 640w, https://niiplantsghana.com/wp-content/uploads/2024/04/640px-2019_Toyota_HiAce_Premio_2.8_GDH322R_20190722-300x228.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/640px-2019_Toyota_HiAce_Premio_2.8_GDH322R_20190722-600x457.jpg 600w",
+                           "sizes":  "(max-width: 640px) 100vw, 640px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2024/04/640px-2019_Toyota_HiAce_Premio_2.8_GDH322R_20190722-300x228.jpg 300w, https://niiplantsghana.com/wp-content/uploads/2024/04/640px-2019_Toyota_HiAce_Premio_2.8_GDH322R_20190722-600x457.jpg 600w, https://niiplantsghana.com/wp-content/uploads/2024/04/640px-2019_Toyota_HiAce_Premio_2.8_GDH322R_20190722.jpg 640w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "640px-2019_Toyota_HiAce_Premio_2.8_GDH322R_(20190722)",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  116,
+                               "name":  "Bus",
+                               "slug":  "bus",
+                               "link":  "https://niiplantsghana.com/product-category/bus/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;Toyota Hiace 2020\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/toyota-hiace-2020/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8308",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8308\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "id":  8305,
+        "name":  "Toyota Land Cruiser Prado 2016",
+        "slug":  "toyota-land-cruiser-prado-2016",
+        "parent":  0,
+        "type":  "ovabrw_car_rental",
+        "variation":  "",
+        "permalink":  "https://niiplantsghana.com/product/toyota-land-cruiser-prado-2016/",
+        "sku":  "",
+        "short_description":  "\u003cp\u003eToyota Land Cruiser Prado is a versatile and capable SUV that combines rugged off-road prowess with refined comfort and safety features\u003c/p\u003e",
+        "description":  "\u003cp\u003eThe 2016 Toyota Land Cruiser Prado is a rugged and versatile SUV renowned for its off-road capabilities and luxurious interior. This mid-size SUV offers seating for up to seven passengers and boasts a powerful engine suitable for tackling various terrains with ease.\u003c/p\u003e\n\u003cp\u003eKey features of the 2016 Toyota Land Cruiser Prado include:\u003c/p\u003e\n\u003cp\u003e1. Off-road prowess: With its robust four-wheel-drive system and advanced suspension, the Land Cruiser Prado excels in challenging off-road environments. It can conquer mud, sand, rocks, and steep inclines with confidence.\u003c/p\u003e\n\u003cp\u003e2. Spacious and comfortable interior: The Prado offers ample space for passengers and cargo alike, making it ideal for family adventures or group outings. The interior is well-appointed with premium materials and features, ensuring a comfortable ride even on long journeys.\u003c/p\u003e\n\u003cp\u003e3. Advanced safety features: Equipped with the latest safety technologies, the 2016 Land Cruiser Prado prioritizes the protection of its occupants. Features such as adaptive cruise control, lane departure warning, and automatic emergency braking help prevent accidents and enhance overall safety.\u003c/p\u003e\n\u003cp\u003e4. Powerful performance: The Land Cruiser Prado is powered by a robust engine that delivers impressive performance both on and off the road. Whether navigating city streets or exploring rugged terrain, this SUV offers a smooth and responsive driving experience.\u003c/p\u003e\n\u003cp\u003e5. Versatility: From daily commuting to weekend getaways, the Land Cruiser Prado is designed to accommodate a wide range of activities and lifestyles. Its adaptable interior configuration and towing capabilities make it suitable for various types of adventures.\u003c/p\u003e\n\u003cp\u003eOverall, the 2016 Toyota Land Cruiser Prado is a versatile and capable SUV that combines rugged off-road prowess with refined comfort and safety features, making it an excellent choice for both urban and outdoor exploration.\u003c/p\u003e",
+        "on_sale":  false,
+        "prices":  {
+                       "price":  "0",
+                       "regular_price":  "0",
+                       "sale_price":  "0",
+                       "price_range":  null,
+                       "currency_code":  "USD",
+                       "currency_symbol":  "$",
+                       "currency_minor_unit":  2,
+                       "currency_decimal_separator":  ".",
+                       "currency_thousand_separator":  ",",
+                       "currency_prefix":  "$",
+                       "currency_suffix":  ""
+                   },
+        "price_html":  "\u003cspan class=\"wmc-cache-pid wmc-cache-loading\" data-wmc_product_id=\"8305\"\u003e\u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e140.00\u003c/span\u003e \u0026#8211; \u003cspan class=\"woocommerce-Price-amount amount\"\u003e\u003cspan class=\"woocommerce-Price-currencySymbol\"\u003e\u0026#036;\u003c/span\u003e170.00\u003c/span\u003e\u003c/span\u003e",
+        "average_rating":  "0",
+        "review_count":  0,
+        "images":  [
+                       {
+                           "id":  7640,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-92016.png",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-92016-300x182.png",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-92016.png 500w, https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-92016-300x182.png 300w",
+                           "sizes":  "(max-width: 500px) 100vw, 500px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-92016-300x182.png 300w, https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-92016.png 500w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "Toyota Land Cruiser Prado 92016",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  7643,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016-1.png",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016-1-300x182.png",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016-1.png 500w, https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016-1-300x182.png 300w",
+                           "sizes":  "(max-width: 500px) 100vw, 500px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016-1-300x182.png 300w, https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016-1.png 500w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "Toyota Land Cruiser Prado 2016",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  7642,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-5-2016.png",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-5-2016-300x182.png",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-5-2016.png 500w, https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-5-2016-300x182.png 300w",
+                           "sizes":  "(max-width: 500px) 100vw, 500px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-5-2016-300x182.png 300w, https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-5-2016.png 500w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "Toyota Land Cruiser Prado 5 2016",
+                           "alt":  ""
+                       },
+                       {
+                           "id":  7641,
+                           "src":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016.png",
+                           "thumbnail":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016-300x182.png",
+                           "srcset":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016.png 500w, https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016-300x182.png 300w",
+                           "sizes":  "(max-width: 500px) 100vw, 500px",
+                           "thumbnail_srcset":  "https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016-300x182.png 300w, https://niiplantsghana.com/wp-content/uploads/2023/04/Toyota-Land-Cruiser-Prado-2016.png 500w",
+                           "thumbnail_sizes":  "(max-width: 300px) 100vw, 300px",
+                           "name":  "Toyota Land Cruiser Prado 2016",
+                           "alt":  ""
+                       }
+                   ],
+        "categories":  [
+                           {
+                               "id":  115,
+                               "name":  "4×4",
+                               "slug":  "4x4",
+                               "link":  "https://niiplantsghana.com/product-category/4x4/"
+                           },
+                           {
+                               "id":  118,
+                               "name":  "SUV",
+                               "slug":  "suv",
+                               "link":  "https://niiplantsghana.com/product-category/suv/"
+                           }
+                       ],
+        "tags":  [
+
+                 ],
+        "brands":  [
+
+                   ],
+        "attributes":  [
+
+                       ],
+        "variations":  [
+
+                       ],
+        "grouped_products":  [
+
+                             ],
+        "has_options":  false,
+        "is_purchasable":  true,
+        "is_in_stock":  true,
+        "is_on_backorder":  false,
+        "low_stock_remaining":  null,
+        "stock_availability":  {
+                                   "text":  "",
+                                   "class":  "in-stock"
+                               },
+        "sold_individually":  false,
+        "weight":  "",
+        "dimensions":  {
+                           "length":  "",
+                           "width":  "",
+                           "height":  ""
+                       },
+        "formatted_weight":  "N/A",
+        "formatted_dimensions":  "N/A",
+        "add_to_cart":  {
+                            "text":  "Read more",
+                            "description":  "Read more about \u0026ldquo;Toyota Land Cruiser Prado 2016\u0026rdquo;",
+                            "url":  "https://niiplantsghana.com/product/toyota-land-cruiser-prado-2016/",
+                            "single_text":  "Add to basket",
+                            "minimum":  1,
+                            "maximum":  9999,
+                            "multiple_of":  1
+                        },
+        "is_password_protected":  false,
+        "extensions":  {
+
+                       },
+        "_links":  {
+                       "self":  [
+                                    {
+                                        "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products/8305",
+                                        "targetHints":  {
+                                                            "allow":  [
+                                                                          "GET"
+                                                                      ]
+                                                        }
+                                    }
+                                ],
+                       "collection":  [
+                                          {
+                                              "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products"
+                                          }
+                                      ],
+                       "related":  [
+                                       {
+                                           "embeddable":  true,
+                                           "href":  "https://niiplantsghana.com/wp-json/wc/store/v1/products?related=8305\u0026per_page=10"
+                                       }
+                                   ]
+                   }
+    }
+]

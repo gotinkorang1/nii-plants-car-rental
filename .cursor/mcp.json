@@ -1,0 +1,45 @@
+{
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "shadcn@latest",
+        "mcp"
+      ]
+    },
+    "figma": {
+      "url": "https://mcp.figma.com/mcp"
+    },
+    "next-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "next-devtools-mcp@latest"
+      ]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ]
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/mcp/oauth"
+    },
+    "supabase": {
+      "url": "https://mcp.supabase.com/mcp?read_only=true",
+      "headers": {
+        "X-Source-Name": "cursor-plugin",
+        "X-Source-Version": "0.1.14"
+      }
+    },
+    "vercel": {
+      "url": "https://mcp.vercel.com"
+    },
+    "sentry": {
+      "url": "https://mcp.sentry.dev/mcp"
+    }
+  }
+}

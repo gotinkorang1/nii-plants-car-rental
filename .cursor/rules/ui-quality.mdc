@@ -1,0 +1,24 @@
+---
+description: Nii Plants UI must look custom and premium. shadcn primitives are a starting point, not the finished design.
+globs: src/components/**/*.tsx,src/app/**/*.tsx,src/**/*.stories.tsx
+alwaysApply: false
+---
+
+# UI quality
+
+Nii Plants must feel modern, premium, warm, and Ghanaian without clichés. Do not ship a generic shadcn template, a black-and-gold supercar look, or default Inter/Geist marketing pages.
+
+shadcn components are primitives. After adding one, restyle spacing, type, states, and composition to match the project tokens in `src/app/globals.css`.
+
+Required on every user-facing surface:
+
+- Mobile-first layouts that still work at 360px, tablet, and desktop
+- Clear typography hierarchy (display font for major titles, interface font for UI)
+- Consistent spacing, selective radius, simple shadows, clearly defined cards
+- Hover, focus-visible, disabled, loading, empty, and error states
+- Accessible names, labels, keyboard support, and contrast
+- `next/image` for photographs; no huge autoplay video
+
+After UI changes, inspect the actual page in a browser (Playwright or the running app). Do not claim visual quality from code inspection alone.
+
+Do not invent prices, phone numbers, fleet, reviews, or other live business facts. Use labelled placeholders.

@@ -1,0 +1,2598 @@
+{
+  "id": "77e1b24c-244a-4cf8-8b74-8272d824d471",
+  "prevId": "da82859e-347f-4ea9-8d64-976645e782d2",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.audit_logs": {
+      "name": "audit_logs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "actor_type": {
+          "name": "actor_type",
+          "type": "audit_actor_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "actor_id": {
+          "name": "actor_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "action": {
+          "name": "action",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "entity_type": {
+          "name": "entity_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "entity_id": {
+          "name": "entity_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'::jsonb"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "audit_logs_created_at_idx": {
+          "name": "audit_logs_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "audit_logs_actor_idx": {
+          "name": "audit_logs_actor_idx",
+          "columns": [
+            {
+              "expression": "actor_type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "actor_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "audit_logs_entity_idx": {
+          "name": "audit_logs_entity_idx",
+          "columns": [
+            {
+              "expression": "entity_type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "entity_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "audit_logs_action_idx": {
+          "name": "audit_logs_action_idx",
+          "columns": [
+            {
+              "expression": "action",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "audit_logs_action_not_blank": {
+          "name": "audit_logs_action_not_blank",
+          "value": "char_length(btrim(\"audit_logs\".\"action\")) > 0"
+        },
+        "audit_logs_entity_type_not_blank": {
+          "name": "audit_logs_entity_type_not_blank",
+          "value": "char_length(btrim(\"audit_logs\".\"entity_type\")) > 0"
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.quotes": {
+      "name": "quotes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "vehicle_model_id": {
+          "name": "vehicle_model_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "vehicle_class_id": {
+          "name": "vehicle_class_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pickup_location_id": {
+          "name": "pickup_location_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "return_location_id": {
+          "name": "return_location_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pickup_at": {
+          "name": "pickup_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "return_at": {
+          "name": "return_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "chargeable_days": {
+          "name": "chargeable_days",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "daily_rate": {
+          "name": "daily_rate",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "base_rental": {
+          "name": "base_rental",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "extras_total": {
+          "name": "extras_total",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "discount_total": {
+          "name": "discount_total",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rental_total": {
+          "name": "rental_total",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "reservation_payment": {
+          "name": "reservation_payment",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "remaining_balance": {
+          "name": "remaining_balance",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "security_deposit_required": {
+          "name": "security_deposit_required",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "promotion_id": {
+          "name": "promotion_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pricing_snapshot": {
+          "name": "pricing_snapshot",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "quotes_model_idx": {
+          "name": "quotes_model_idx",
+          "columns": [
+            {
+              "expression": "vehicle_model_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "quotes_class_idx": {
+          "name": "quotes_class_idx",
+          "columns": [
+            {
+              "expression": "vehicle_class_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "quotes_expires_at_idx": {
+          "name": "quotes_expires_at_idx",
+          "columns": [
+            {
+              "expression": "expires_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "quotes_pickup_at_idx": {
+          "name": "quotes_pickup_at_idx",
+          "columns": [
+            {
+              "expression": "pickup_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "quotes_vehicle_model_id_vehicle_models_id_fk": {
+          "name": "quotes_vehicle_model_id_vehicle_models_id_fk",
+          "tableFrom": "quotes",
+          "tableTo": "vehicle_models",
+          "columnsFrom": [
+            "vehicle_model_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "quotes_vehicle_class_id_vehicle_classes_id_fk": {
+          "name": "quotes_vehicle_class_id_vehicle_classes_id_fk",
+          "tableFrom": "quotes",
+          "tableTo": "vehicle_classes",
+          "columnsFrom": [
+            "vehicle_class_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "quotes_pickup_location_id_locations_id_fk": {
+          "name": "quotes_pickup_location_id_locations_id_fk",
+          "tableFrom": "quotes",
+          "tableTo": "locations",
+          "columnsFrom": [
+            "pickup_location_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "quotes_return_location_id_locations_id_fk": {
+          "name": "quotes_return_location_id_locations_id_fk",
+          "tableFrom": "quotes",
+          "tableTo": "locations",
+          "columnsFrom": [
+            "return_location_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "quotes_promotion_id_promotions_id_fk": {
+          "name": "quotes_promotion_id_promotions_id_fk",
+          "tableFrom": "quotes",
+          "tableTo": "promotions",
+          "columnsFrom": [
+            "promotion_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "quotes_chargeable_days_positive": {
+          "name": "quotes_chargeable_days_positive",
+          "value": "\"quotes\".\"chargeable_days\" > 0"
+        },
+        "quotes_daily_rate_nonnegative": {
+          "name": "quotes_daily_rate_nonnegative",
+          "value": "\"quotes\".\"daily_rate\" >= 0"
+        },
+        "quotes_base_rental_nonnegative": {
+          "name": "quotes_base_rental_nonnegative",
+          "value": "\"quotes\".\"base_rental\" >= 0"
+        },
+        "quotes_extras_total_nonnegative": {
+          "name": "quotes_extras_total_nonnegative",
+          "value": "\"quotes\".\"extras_total\" >= 0"
+        },
+        "quotes_discount_total_nonnegative": {
+          "name": "quotes_discount_total_nonnegative",
+          "value": "\"quotes\".\"discount_total\" >= 0"
+        },
+        "quotes_rental_total_nonnegative": {
+          "name": "quotes_rental_total_nonnegative",
+          "value": "\"quotes\".\"rental_total\" >= 0"
+        },
+        "quotes_reservation_payment_nonnegative": {
+          "name": "quotes_reservation_payment_nonnegative",
+          "value": "\"quotes\".\"reservation_payment\" >= 0"
+        },
+        "quotes_remaining_balance_nonnegative": {
+          "name": "quotes_remaining_balance_nonnegative",
+          "value": "\"quotes\".\"remaining_balance\" >= 0"
+        },
+        "quotes_security_deposit_nonnegative": {
+          "name": "quotes_security_deposit_nonnegative",
+          "value": "\"quotes\".\"security_deposit_required\" >= 0"
+        },
+        "quotes_pickup_before_return": {
+          "name": "quotes_pickup_before_return",
+          "value": "\"quotes\".\"pickup_at\" < \"quotes\".\"return_at\""
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.vehicle_allocations": {
+      "name": "vehicle_allocations",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "vehicle_id": {
+          "name": "vehicle_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "booking_id": {
+          "name": "booking_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quote_id": {
+          "name": "quote_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "allocation_type": {
+          "name": "allocation_type",
+          "type": "allocation_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "allocation_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start_at": {
+          "name": "start_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "end_at": {
+          "name": "end_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "reason": {
+          "name": "reason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_by": {
+          "name": "created_by",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "vehicle_allocations_vehicle_idx": {
+          "name": "vehicle_allocations_vehicle_idx",
+          "columns": [
+            {
+              "expression": "vehicle_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicle_allocations_quote_idx": {
+          "name": "vehicle_allocations_quote_idx",
+          "columns": [
+            {
+              "expression": "quote_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicle_allocations_status_idx": {
+          "name": "vehicle_allocations_status_idx",
+          "columns": [
+            {
+              "expression": "status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicle_allocations_type_idx": {
+          "name": "vehicle_allocations_type_idx",
+          "columns": [
+            {
+              "expression": "allocation_type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicle_allocations_range_idx": {
+          "name": "vehicle_allocations_range_idx",
+          "columns": [
+            {
+              "expression": "start_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "end_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "vehicle_allocations_vehicle_id_vehicles_id_fk": {
+          "name": "vehicle_allocations_vehicle_id_vehicles_id_fk",
+          "tableFrom": "vehicle_allocations",
+          "tableTo": "vehicles",
+          "columnsFrom": [
+            "vehicle_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "vehicle_allocations_quote_id_quotes_id_fk": {
+          "name": "vehicle_allocations_quote_id_quotes_id_fk",
+          "tableFrom": "vehicle_allocations",
+          "tableTo": "quotes",
+          "columnsFrom": [
+            "quote_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "vehicle_allocations_created_by_staff_profiles_id_fk": {
+          "name": "vehicle_allocations_created_by_staff_profiles_id_fk",
+          "tableFrom": "vehicle_allocations",
+          "tableTo": "staff_profiles",
+          "columnsFrom": [
+            "created_by"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "vehicle_allocations_start_before_end": {
+          "name": "vehicle_allocations_start_before_end",
+          "value": "\"vehicle_allocations\".\"start_at\" < \"vehicle_allocations\".\"end_at\""
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.content_pages": {
+      "name": "content_pages",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "excerpt": {
+          "name": "excerpt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "seo_title": {
+          "name": "seo_title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "seo_description": {
+          "name": "seo_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "published": {
+          "name": "published",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "published_at": {
+          "name": "published_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "content_pages_slug_uidx": {
+          "name": "content_pages_slug_uidx",
+          "columns": [
+            {
+              "expression": "slug",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "content_pages_published_idx": {
+          "name": "content_pages_published_idx",
+          "columns": [
+            {
+              "expression": "published",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "content_pages_title_not_blank": {
+          "name": "content_pages_title_not_blank",
+          "value": "char_length(btrim(\"content_pages\".\"title\")) > 0"
+        },
+        "content_pages_slug_not_blank": {
+          "name": "content_pages_slug_not_blank",
+          "value": "char_length(btrim(\"content_pages\".\"slug\")) > 0"
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.faqs": {
+      "name": "faqs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "question": {
+          "name": "question",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "answer": {
+          "name": "answer",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "published": {
+          "name": "published",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "faqs_published_idx": {
+          "name": "faqs_published_idx",
+          "columns": [
+            {
+              "expression": "published",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "faqs_category_sort_idx": {
+          "name": "faqs_category_sort_idx",
+          "columns": [
+            {
+              "expression": "category",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "sort_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "faqs_question_not_blank": {
+          "name": "faqs_question_not_blank",
+          "value": "char_length(btrim(\"faqs\".\"question\")) > 0"
+        },
+        "faqs_answer_not_blank": {
+          "name": "faqs_answer_not_blank",
+          "value": "char_length(btrim(\"faqs\".\"answer\")) > 0"
+        },
+        "faqs_category_not_blank": {
+          "name": "faqs_category_not_blank",
+          "value": "char_length(btrim(\"faqs\".\"category\")) > 0"
+        },
+        "faqs_sort_order_nonnegative": {
+          "name": "faqs_sort_order_nonnegative",
+          "value": "\"faqs\".\"sort_order\" >= 0"
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.media_assets": {
+      "name": "media_assets",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "storage_path": {
+          "name": "storage_path",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "alt_text": {
+          "name": "alt_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "original_filename": {
+          "name": "original_filename",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mime_type": {
+          "name": "mime_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "size_bytes": {
+          "name": "size_bytes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "media_assets_storage_path_uidx": {
+          "name": "media_assets_storage_path_uidx",
+          "columns": [
+            {
+              "expression": "storage_path",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "media_assets_storage_path_not_blank": {
+          "name": "media_assets_storage_path_not_blank",
+          "value": "char_length(btrim(\"media_assets\".\"storage_path\")) > 0"
+        },
+        "media_assets_alt_text_not_blank": {
+          "name": "media_assets_alt_text_not_blank",
+          "value": "char_length(btrim(\"media_assets\".\"alt_text\")) > 0"
+        },
+        "media_assets_size_positive": {
+          "name": "media_assets_size_positive",
+          "value": "\"media_assets\".\"size_bytes\" > 0"
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.customers": {
+      "name": "customers",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "phone": {
+          "name": "phone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "auth_user_id": {
+          "name": "auth_user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "customers_email_uidx": {
+          "name": "customers_email_uidx",
+          "columns": [
+            {
+              "expression": "email",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "customers_phone_idx": {
+          "name": "customers_phone_idx",
+          "columns": [
+            {
+              "expression": "phone",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "customers_auth_user_id_idx": {
+          "name": "customers_auth_user_id_idx",
+          "columns": [
+            {
+              "expression": "auth_user_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "customers_first_name_not_blank": {
+          "name": "customers_first_name_not_blank",
+          "value": "char_length(btrim(\"customers\".\"first_name\")) > 0"
+        },
+        "customers_last_name_not_blank": {
+          "name": "customers_last_name_not_blank",
+          "value": "char_length(btrim(\"customers\".\"last_name\")) > 0"
+        },
+        "customers_email_not_blank": {
+          "name": "customers_email_not_blank",
+          "value": "char_length(btrim(\"customers\".\"email\")) > 0"
+        },
+        "customers_phone_not_blank": {
+          "name": "customers_phone_not_blank",
+          "value": "char_length(btrim(\"customers\".\"phone\")) > 0"
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.vehicle_classes": {
+      "name": "vehicle_classes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "seats": {
+          "name": "seats",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "luggage": {
+          "name": "luggage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "transmission": {
+          "name": "transmission",
+          "type": "transmission_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "default_daily_rate": {
+          "name": "default_daily_rate",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "default_security_deposit": {
+          "name": "default_security_deposit",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "vehicle_classes_slug_uidx": {
+          "name": "vehicle_classes_slug_uidx",
+          "columns": [
+            {
+              "expression": "slug",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicle_classes_name_uidx": {
+          "name": "vehicle_classes_name_uidx",
+          "columns": [
+            {
+              "expression": "name",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicle_classes_active_idx": {
+          "name": "vehicle_classes_active_idx",
+          "columns": [
+            {
+              "expression": "active",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "vehicle_classes_name_not_blank": {
+          "name": "vehicle_classes_name_not_blank",
+          "value": "char_length(btrim(\"vehicle_classes\".\"name\")) > 0"
+        },
+        "vehicle_classes_slug_not_blank": {
+          "name": "vehicle_classes_slug_not_blank",
+          "value": "char_length(btrim(\"vehicle_classes\".\"slug\")) > 0"
+        },
+        "vehicle_classes_seats_positive": {
+          "name": "vehicle_classes_seats_positive",
+          "value": "\"vehicle_classes\".\"seats\" > 0"
+        },
+        "vehicle_classes_luggage_nonnegative": {
+          "name": "vehicle_classes_luggage_nonnegative",
+          "value": "\"vehicle_classes\".\"luggage\" >= 0"
+        },
+        "vehicle_classes_default_daily_rate_nonnegative": {
+          "name": "vehicle_classes_default_daily_rate_nonnegative",
+          "value": "\"vehicle_classes\".\"default_daily_rate\" >= 0"
+        },
+        "vehicle_classes_default_security_deposit_nonnegative": {
+          "name": "vehicle_classes_default_security_deposit_nonnegative",
+          "value": "\"vehicle_classes\".\"default_security_deposit\" >= 0"
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.vehicle_images": {
+      "name": "vehicle_images",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "vehicle_model_id": {
+          "name": "vehicle_model_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "storage_path": {
+          "name": "storage_path",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "alt_text": {
+          "name": "alt_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "is_primary": {
+          "name": "is_primary",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "vehicle_images_model_idx": {
+          "name": "vehicle_images_model_idx",
+          "columns": [
+            {
+              "expression": "vehicle_model_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicle_images_sort_idx": {
+          "name": "vehicle_images_sort_idx",
+          "columns": [
+            {
+              "expression": "vehicle_model_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "sort_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "vehicle_images_vehicle_model_id_vehicle_models_id_fk": {
+          "name": "vehicle_images_vehicle_model_id_vehicle_models_id_fk",
+          "tableFrom": "vehicle_images",
+          "tableTo": "vehicle_models",
+          "columnsFrom": [
+            "vehicle_model_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "vehicle_images_storage_path_not_blank": {
+          "name": "vehicle_images_storage_path_not_blank",
+          "value": "char_length(btrim(\"vehicle_images\".\"storage_path\")) > 0"
+        },
+        "vehicle_images_alt_text_not_blank": {
+          "name": "vehicle_images_alt_text_not_blank",
+          "value": "char_length(btrim(\"vehicle_images\".\"alt_text\")) > 0"
+        },
+        "vehicle_images_sort_order_nonnegative": {
+          "name": "vehicle_images_sort_order_nonnegative",
+          "value": "\"vehicle_images\".\"sort_order\" >= 0"
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.vehicle_models": {
+      "name": "vehicle_models",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "vehicle_class_id": {
+          "name": "vehicle_class_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "make": {
+          "name": "make",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "model": {
+          "name": "model",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "year_from": {
+          "name": "year_from",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "year_to": {
+          "name": "year_to",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "seats": {
+          "name": "seats",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "doors": {
+          "name": "doors",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "transmission": {
+          "name": "transmission",
+          "type": "transmission_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fuel_type": {
+          "name": "fuel_type",
+          "type": "fuel_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "luggage": {
+          "name": "luggage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "air_conditioning": {
+          "name": "air_conditioning",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "featured": {
+          "name": "featured",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "published": {
+          "name": "published",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "vehicle_models_slug_uidx": {
+          "name": "vehicle_models_slug_uidx",
+          "columns": [
+            {
+              "expression": "slug",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicle_models_class_idx": {
+          "name": "vehicle_models_class_idx",
+          "columns": [
+            {
+              "expression": "vehicle_class_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicle_models_published_idx": {
+          "name": "vehicle_models_published_idx",
+          "columns": [
+            {
+              "expression": "published",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicle_models_featured_idx": {
+          "name": "vehicle_models_featured_idx",
+          "columns": [
+            {
+              "expression": "featured",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "vehicle_models_vehicle_class_id_vehicle_classes_id_fk": {
+          "name": "vehicle_models_vehicle_class_id_vehicle_classes_id_fk",
+          "tableFrom": "vehicle_models",
+          "tableTo": "vehicle_classes",
+          "columnsFrom": [
+            "vehicle_class_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "vehicle_models_make_not_blank": {
+          "name": "vehicle_models_make_not_blank",
+          "value": "char_length(btrim(\"vehicle_models\".\"make\")) > 0"
+        },
+        "vehicle_models_model_not_blank": {
+          "name": "vehicle_models_model_not_blank",
+          "value": "char_length(btrim(\"vehicle_models\".\"model\")) > 0"
+        },
+        "vehicle_models_slug_not_blank": {
+          "name": "vehicle_models_slug_not_blank",
+          "value": "char_length(btrim(\"vehicle_models\".\"slug\")) > 0"
+        },
+        "vehicle_models_seats_positive": {
+          "name": "vehicle_models_seats_positive",
+          "value": "\"vehicle_models\".\"seats\" > 0"
+        },
+        "vehicle_models_doors_positive": {
+          "name": "vehicle_models_doors_positive",
+          "value": "\"vehicle_models\".\"doors\" > 0"
+        },
+        "vehicle_models_luggage_nonnegative": {
+          "name": "vehicle_models_luggage_nonnegative",
+          "value": "\"vehicle_models\".\"luggage\" >= 0"
+        },
+        "vehicle_models_year_range": {
+          "name": "vehicle_models_year_range",
+          "value": "\"vehicle_models\".\"year_from\" IS NULL OR \"vehicle_models\".\"year_to\" IS NULL OR \"vehicle_models\".\"year_to\" >= \"vehicle_models\".\"year_from\""
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.vehicles": {
+      "name": "vehicles",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "vehicle_model_id": {
+          "name": "vehicle_model_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "vehicle_class_id": {
+          "name": "vehicle_class_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "internal_code": {
+          "name": "internal_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "registration_number": {
+          "name": "registration_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "colour": {
+          "name": "colour",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "current_mileage": {
+          "name": "current_mileage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "status": {
+          "name": "status",
+          "type": "vehicle_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'inactive'"
+        },
+        "branch_location_id": {
+          "name": "branch_location_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "notes": {
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "vehicles_internal_code_uidx": {
+          "name": "vehicles_internal_code_uidx",
+          "columns": [
+            {
+              "expression": "internal_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicles_registration_number_uidx": {
+          "name": "vehicles_registration_number_uidx",
+          "columns": [
+            {
+              "expression": "registration_number",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicles_status_idx": {
+          "name": "vehicles_status_idx",
+          "columns": [
+            {
+              "expression": "status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicles_model_idx": {
+          "name": "vehicles_model_idx",
+          "columns": [
+            {
+              "expression": "vehicle_model_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicles_class_idx": {
+          "name": "vehicles_class_idx",
+          "columns": [
+            {
+              "expression": "vehicle_class_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vehicles_branch_idx": {
+          "name": "vehicles_branch_idx",
+          "columns": [
+            {
+              "expression": "branch_location_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "vehicles_vehicle_model_id_vehicle_models_id_fk": {
+          "name": "vehicles_vehicle_model_id_vehicle_models_id_fk",
+          "tableFrom": "vehicles",
+          "tableTo": "vehicle_models",
+          "columnsFrom": [
+            "vehicle_model_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "vehicles_vehicle_class_id_vehicle_classes_id_fk": {
+          "name": "vehicles_vehicle_class_id_vehicle_classes_id_fk",
+          "tableFrom": "vehicles",
+          "tableTo": "vehicle_classes",
+          "columnsFrom": [
+            "vehicle_class_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "vehicles_branch_location_id_locations_id_fk": {
+          "name": "vehicles_branch_location_id_locations_id_fk",
+          "tableFrom": "vehicles",
+          "tableTo": "locations",
+          "columnsFrom": [
+            "branch_location_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "vehicles_internal_code_not_blank": {
+          "name": "vehicles_internal_code_not_blank",
+          "value": "char_length(btrim(\"vehicles\".\"internal_code\")) > 0"
+        },
+        "vehicles_registration_number_not_blank": {
+          "name": "vehicles_registration_number_not_blank",
+          "value": "char_length(btrim(\"vehicles\".\"registration_number\")) > 0"
+        },
+        "vehicles_colour_not_blank": {
+          "name": "vehicles_colour_not_blank",
+          "value": "char_length(btrim(\"vehicles\".\"colour\")) > 0"
+        },
+        "vehicles_mileage_nonnegative": {
+          "name": "vehicles_mileage_nonnegative",
+          "value": "\"vehicles\".\"current_mileage\" >= 0"
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.locations": {
+      "name": "locations",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "location_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "address": {
+          "name": "address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "locations_slug_uidx": {
+          "name": "locations_slug_uidx",
+          "columns": [
+            {
+              "expression": "slug",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "locations_active_idx": {
+          "name": "locations_active_idx",
+          "columns": [
+            {
+              "expression": "active",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "locations_type_idx": {
+          "name": "locations_type_idx",
+          "columns": [
+            {
+              "expression": "type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "locations_name_not_blank": {
+          "name": "locations_name_not_blank",
+          "value": "char_length(btrim(\"locations\".\"name\")) > 0"
+        },
+        "locations_slug_not_blank": {
+          "name": "locations_slug_not_blank",
+          "value": "char_length(btrim(\"locations\".\"slug\")) > 0"
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.extras": {
+      "name": "extras",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "price": {
+          "name": "price",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pricing_type": {
+          "name": "pricing_type",
+          "type": "extra_pricing_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "extras_name_uidx": {
+          "name": "extras_name_uidx",
+          "columns": [
+            {
+              "expression": "name",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "extras_active_idx": {
+          "name": "extras_active_idx",
+          "columns": [
+            {
+              "expression": "active",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "extras_name_not_blank": {
+          "name": "extras_name_not_blank",
+          "value": "char_length(btrim(\"extras\".\"name\")) > 0"
+        },
+        "extras_price_nonnegative": {
+          "name": "extras_price_nonnegative",
+          "value": "\"extras\".\"price\" >= 0"
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.promotions": {
+      "name": "promotions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "promotion_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "starts_at": {
+          "name": "starts_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ends_at": {
+          "name": "ends_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "max_uses": {
+          "name": "max_uses",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "usage_count": {
+          "name": "usage_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "promotions_code_uidx": {
+          "name": "promotions_code_uidx",
+          "columns": [
+            {
+              "expression": "code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "promotions_active_idx": {
+          "name": "promotions_active_idx",
+          "columns": [
+            {
+              "expression": "active",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "promotions_schedule_idx": {
+          "name": "promotions_schedule_idx",
+          "columns": [
+            {
+              "expression": "starts_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "ends_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "promotions_code_not_blank": {
+          "name": "promotions_code_not_blank",
+          "value": "char_length(btrim(\"promotions\".\"code\")) > 0"
+        },
+        "promotions_value_nonnegative": {
+          "name": "promotions_value_nonnegative",
+          "value": "\"promotions\".\"value\" >= 0"
+        },
+        "promotions_percentage_value_range": {
+          "name": "promotions_percentage_value_range",
+          "value": "\"promotions\".\"type\" <> 'percentage' OR (\"promotions\".\"value\" >= 0 AND \"promotions\".\"value\" <= 100)"
+        },
+        "promotions_usage_count_nonnegative": {
+          "name": "promotions_usage_count_nonnegative",
+          "value": "\"promotions\".\"usage_count\" >= 0"
+        },
+        "promotions_max_uses_positive": {
+          "name": "promotions_max_uses_positive",
+          "value": "\"promotions\".\"max_uses\" IS NULL OR \"promotions\".\"max_uses\" > 0"
+        },
+        "promotions_usage_within_max": {
+          "name": "promotions_usage_within_max",
+          "value": "\"promotions\".\"max_uses\" IS NULL OR \"promotions\".\"usage_count\" <= \"promotions\".\"max_uses\""
+        },
+        "promotions_date_range": {
+          "name": "promotions_date_range",
+          "value": "\"promotions\".\"ends_at\" >= \"promotions\".\"starts_at\""
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.site_settings": {
+      "name": "site_settings",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "site_settings_key_uidx": {
+          "name": "site_settings_key_uidx",
+          "columns": [
+            {
+              "expression": "key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "site_settings_key_not_blank": {
+          "name": "site_settings_key_not_blank",
+          "value": "char_length(btrim(\"site_settings\".\"key\")) > 0"
+        }
+      },
+      "isRLSEnabled": true
+    },
+    "public.staff_profiles": {
+      "name": "staff_profiles",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "auth_user_id": {
+          "name": "auth_user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "display_name": {
+          "name": "display_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "staff_role",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "staff_profiles_auth_user_id_uidx": {
+          "name": "staff_profiles_auth_user_id_uidx",
+          "columns": [
+            {
+              "expression": "auth_user_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "staff_profiles_email_uidx": {
+          "name": "staff_profiles_email_uidx",
+          "columns": [
+            {
+              "expression": "email",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "staff_profiles_role_idx": {
+          "name": "staff_profiles_role_idx",
+          "columns": [
+            {
+              "expression": "role",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "staff_profiles_active_idx": {
+          "name": "staff_profiles_active_idx",
+          "columns": [
+            {
+              "expression": "active",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "staff_profiles_display_name_not_blank": {
+          "name": "staff_profiles_display_name_not_blank",
+          "value": "char_length(btrim(\"staff_profiles\".\"display_name\")) > 0"
+        },
+        "staff_profiles_email_not_blank": {
+          "name": "staff_profiles_email_not_blank",
+          "value": "char_length(btrim(\"staff_profiles\".\"email\")) > 0"
+        }
+      },
+      "isRLSEnabled": true
+    }
+  },
+  "enums": {
+    "public.allocation_status": {
+      "name": "allocation_status",
+      "schema": "public",
+      "values": [
+        "hold",
+        "confirmed",
+        "ready",
+        "checked_out",
+        "completed",
+        "expired",
+        "cancelled"
+      ]
+    },
+    "public.allocation_type": {
+      "name": "allocation_type",
+      "schema": "public",
+      "values": [
+        "booking",
+        "maintenance",
+        "manual_block"
+      ]
+    },
+    "public.audit_actor_type": {
+      "name": "audit_actor_type",
+      "schema": "public",
+      "values": [
+        "staff",
+        "system",
+        "customer"
+      ]
+    },
+    "public.extra_pricing_type": {
+      "name": "extra_pricing_type",
+      "schema": "public",
+      "values": [
+        "once",
+        "per_day"
+      ]
+    },
+    "public.fuel_type": {
+      "name": "fuel_type",
+      "schema": "public",
+      "values": [
+        "petrol",
+        "diesel",
+        "hybrid",
+        "electric"
+      ]
+    },
+    "public.location_type": {
+      "name": "location_type",
+      "schema": "public",
+      "values": [
+        "branch",
+        "airport",
+        "city",
+        "pickup_point",
+        "service_area"
+      ]
+    },
+    "public.promotion_type": {
+      "name": "promotion_type",
+      "schema": "public",
+      "values": [
+        "percentage",
+        "fixed"
+      ]
+    },
+    "public.staff_role": {
+      "name": "staff_role",
+      "schema": "public",
+      "values": [
+        "administrator",
+        "reservations",
+        "fleet",
+        "finance",
+        "content_editor"
+      ]
+    },
+    "public.transmission_type": {
+      "name": "transmission_type",
+      "schema": "public",
+      "values": [
+        "automatic",
+        "manual"
+      ]
+    },
+    "public.vehicle_status": {
+      "name": "vehicle_status",
+      "schema": "public",
+      "values": [
+        "available",
+        "rented",
+        "maintenance",
+        "inactive"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

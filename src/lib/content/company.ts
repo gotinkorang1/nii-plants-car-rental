@@ -1,0 +1,175 @@
+import { truncateMetaDescription } from "@/lib/content/seo";
+
+/** Confirmed public facts from the live site, AmCham Ghana, Graphic/GTA, JoyOnline, Daily Guide, BFT, GNBCC, and Ghana hire practice. */
+
+export const COMPANY = {
+  legalName: "Nii Plants Car Rentals Co. Ltd",
+  brandName: "Nii Plants Car Rentals",
+  tagline: "Your key to mobility",
+  foundedDate: "2007-10-22",
+  foundedYear: 2007,
+  streetAddress: "Plantsville, Poultry Farm Avenue, Akokor Foto",
+  addressLocality: "Dansoman",
+  addressRegion: "Greater Accra",
+  addressCountry: "GH",
+  postalBox: "P.O. Box MP 2390, Mamprobi, Accra",
+  mapsUrl: "https://goo.gl/maps/xNq7jWiCySyC6f2z5",
+  telephone: "+233593835941",
+  telephoneDisplay: "+233 59 383 5941",
+  officeTelephoneDisplay: "+233 30 244 1805",
+  email: "info@niiplantsghana.com",
+  openingHours: "Mo-Sa 09:00-17:00",
+  openingHoursDisplay: "Monday–Saturday 09:00–17:00; Sunday closed",
+  airportHoursNote: "Kotoka collections by arrangement until 23:00",
+  areaServed: "Ghana",
+  award:
+    "Ghana Tourism Authority National Tourism Awards 2024, Car Rentals (Greater Accra)",
+  sameAs: [
+    "https://web.facebook.com/niiplants/",
+    "https://www.linkedin.com/company/nii-plants-car-rental/",
+  ],
+} as const;
+
+export const AWARDS = [
+  {
+    year: 2022,
+    dateLabel: "3 November 2022",
+    name: "Best Car Rental Service Provider of the Year",
+    issuer: "Ghana National Tourism Awards",
+  },
+  {
+    year: 2024,
+    dateLabel: "October 2024",
+    name: "Car Rental Service of the Year",
+    issuer: "Greater Accra Regional Tourism Awards, Ghana Tourism Authority",
+  },
+  {
+    year: 2024,
+    dateLabel: "25 October 2024",
+    name: "Car Rentals, Greater Accra",
+    issuer: "Ghana Tourism Authority National Tourism Awards",
+    venue: "Osu Castle Gardens, Accra",
+  },
+] as const;
+
+export const MEMBERSHIPS = [
+  {
+    name: "Ghana Netherlands Business & Culture Council",
+    short: "GNBCC",
+    status: "member",
+  },
+  {
+    name: "American Chamber of Commerce Ghana",
+    short: "AmCham Ghana",
+    status: "profiled",
+  },
+] as const;
+
+export const MANAGEMENT = {
+  managingDirector: {
+    name: "Theophilus Ayitey-Adjin",
+    role: "Managing Director and Chief Executive",
+    credentials:
+      "M.Sc. Coastal Engineering (University of Kiel), B.Sc. Geodetic Engineering (KNUST), certificate in project management",
+    industryRole:
+      "Vice President, Car Rentals Association of Ghana (CRAG), inducted 17 August 2023",
+  },
+  deputyManagingDirector: {
+    name: "Mary Ayitey-Adjin",
+    role: "Deputy Managing Director and co-owner",
+    credentials:
+      "Member, Chartered Institute of Bankers (Ghana); B.A. Humanities (University of Ghana); MBA Finance (Paris Graduate School)",
+  },
+} as const;
+
+export const PAGE_SEO = {
+  home: {
+    title: "Car Rental Accra, Ghana | Self-Drive, Chauffeur & Airport Pickup",
+    description:
+      "Rent a sedan, SUV, 4x4 or van from Nii Plants in Dansoman, Accra. Self-drive, chauffeur, and Kotoka pickup. GTA car-rental awards in 2022 and 2024.",
+  },
+  fleet: {
+    title: "Sedans, SUVs, 4x4s and Coaches in Accra",
+    description:
+      "Browse Nii Plants car hire in Accra. Compact and mid-size saloons, SUVs, Land Cruiser Prado, Hiace vans and a 30-seater Coaster. Book a model or similar.",
+  },
+  services: {
+    title: "Car Hire Services in Ghana",
+    description:
+      "Self-drive car rental in Accra, chauffeur-driven cars, Kotoka airport transfers, long-term hire, weddings and corporate mobility from Nii Plants.",
+  },
+  selfDrive: {
+    title: "Self-Drive Car Rental in Accra",
+    description:
+      "Hire a car and drive yourself in Ghana. 24-hour rental days, drivers 25+, Ghana Card or passport, and use inside Ghana only. Pickup in Dansoman or at Kotoka.",
+  },
+  chauffeur: {
+    title: "Chauffeur Service in Accra",
+    description:
+      "Book a professional driver with a Nii Plants sedan, SUV or 4x4. Daily chauffeur hire is a 10-hour duty day. Ideal for meetings, visitors and intercity trips.",
+  },
+  airport: {
+    title: "Kotoka Airport Car Hire and Transfers",
+    description:
+      "Airport pickup and drop-off at Kotoka International Airport. Meet-and-greet, evening collections until 23:00, or collect a self-drive car after your flight.",
+  },
+  longTerm: {
+    title: "Long-Term Car Rental in Ghana",
+    description:
+      "Keep a Nii Plants car for weeks, months or longer assignments in Accra and across Ghana. Staff quote weekly and monthly self-drive or chauffeur packages.",
+  },
+  events: {
+    title: "Wedding and Event Car Hire in Accra",
+    description:
+      "Cars, Hiace vans and a 30-seater Coaster for weddings, conferences and group travel in Ghana. Chauffeur-led and quoted by the Nii Plants operations team.",
+  },
+  corporate: {
+    title: "Corporate Car Rental in Accra",
+    description:
+      "Company travel, visiting staff and client cars in Accra since 2007. GTA award-winning hire, Kotoka meet-and-greet, and hotel desks in Accra and Takoradi.",
+  },
+  about: {
+    title: "Accra Car Rental Since 2007",
+    description:
+      "Ghanaian-owned Accra car hire since 2007. GTA awards in 2022 and 2024. Plantsville HQ in Dansoman. GNBCC member; profiled by AmCham Ghana.",
+  },
+  contact: {
+    title: "Contact Us in Dansoman, Accra",
+    description:
+      "Call +233 59 383 5941, WhatsApp, or email info@niiplantsghana.com. Plantsville, Dansoman. Mon–Sat 09:00–17:00. Kotoka pickup by arrangement.",
+  },
+  help: {
+    title: "Car Rental Help in Ghana",
+    description:
+      "Age 25+, full licence, Ghana Card or passport, 48-hour free cancellation, and Ghana-only use. How Nii Plants self-drive and chauffeur hire works.",
+  },
+  requirements: {
+    title: "Licence, Age and Deposit Rules",
+    description:
+      "Self-drive with Nii Plants: 25 or older, full driving licence, Ghana Card or passport, 24-hour minimum, refundable deposit at pickup. Cars stay in Ghana.",
+  },
+  faqs: {
+    title: "Booking, Insurance and Cancellation FAQs",
+    description:
+      "Answers on Nii Plants booking, payments, Kotoka pickup, insurance, extra drivers, and free cancellation 48 hours before pickup.",
+  },
+} as const;
+
+export function vehicleSeoTitle(make: string, model: string): string {
+  return `${make} ${model} Rental Accra`;
+}
+
+export function vehicleSeoDescription(input: {
+  make: string;
+  modelName: string;
+  className: string;
+  description: string;
+  seats: number;
+}): string {
+  const lead =
+    input.description.trim() ||
+    `Hire a ${input.make} ${input.modelName} (${input.className}, ${input.seats} seats) from Nii Plants in Accra.`;
+  const suffix = " Car rental in Ghana, model or similar.";
+  const combined = lead.endsWith(".") ? `${lead}${suffix}` : `${lead}.${suffix}`;
+  return truncateMetaDescription(combined) ?? combined;
+}

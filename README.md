@@ -1,34 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nii Plants Car Rentals
 
-## Getting Started
+Digital platform for Nii Plants Car Rentals (`niiplantsghana.com`).
 
-First, run the development server:
+Single Next.js application: public website, guest self-drive booking, Paystack payments, and staff dashboard.
+
+The full product specification lives in [PROJECT_SPEC.md](./PROJECT_SPEC.md).
+
+## Status
+
+Phases 0–9 are implemented. Phase 10 adds production readiness: environment guards, CI, security headers, health/cron endpoints, operational kill switches, and launch runbooks.
+
+| Phase | Scope |
+| --- | --- |
+| 0–9 | Foundation through enquiries, UX, accessibility, SEO |
+| 10 | Production readiness — see [docs/PRODUCTION_CHECKLIST.md](./docs/PRODUCTION_CHECKLIST.md) |
+
+## Stack
+
+- Next.js App Router, TypeScript, Tailwind, shadcn/ui
+- Supabase (Auth, PostgreSQL, Storage, RLS)
+- Drizzle ORM
+- Paystack, Resend
+- Vitest, Playwright, Lighthouse CI
+
+## Local setup
 
 ```bash
+cp .env.example .env.local
+npm install
+supabase start
+npm run db:migrate
+npm run db:seed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Default local/testing flags in `.env.example`:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `PAYSTACK_MOCK=1` — local hosted checkout mock
+- `EMAIL_DEV_OUTBOX=1` — capture emails in `.email-outbox.json`
 
-## Learn More
+Never commit `.env.local` or real secrets.
 
-To learn more about Next.js, take a look at the following resources:
+## Environment model
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Variable | Purpose |
+| --- | --- |
+| `APP_ENV` | `development` \| `preview` \| `production` (preferred over `NODE_ENV` alone) |
+| `VERCEL_ENV` | Set automatically on Vercel |
+| `PRODUCTION_SUPABASE_PROJECT_REF` | Blocks `npm run db:seed` against production project |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Runtime helper: `src/lib/env/runtime-environment.ts`
 
-## Deploy on Vercel
+Production guards (fail fast): `src/lib/env/guards.ts` via `src/lib/env.server.ts`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | Purpose |
+| --- | --- |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript |
+| `npm run test` | Vitest unit + integration |
+| `npm run test:e2e` | Playwright (port 3001) |
+| `npm run build` | Production build |
+| `npm run analyze` | Bundle analysis |
+| `npm run lhci` | Lighthouse CI (production build) |
+| `npm run db:migrate` | Apply Drizzle migrations |
+| `npm run db:seed` | **Development only** catalogue seed |
+| `npm run db:bootstrap-production` | Production-safe site settings bootstrap |
+| `npm run ci:ensure-staff` | Create CI/local test staff user |
+
+## Staff access
+
+1. Create Supabase Auth user (dashboard or CLI).
+2. Insert matching `staff_profiles` row with role (`administrator`, `reservations`, etc.).
+3. Sign in at `/admin/login`.
+
+For Playwright admin tests:
+
+```bash
+TEST_STAFF_EMAIL=...
+TEST_STAFF_PASSWORD=...
+npm run ci:ensure-staff   # optional helper for local/CI
+```
+
+## Paystack
+
+- Local/CI: `PAYSTACK_MOCK=1`
+- Staging: Paystack **TEST** keys
+- Production: **LIVE** keys only after launch checklist
+
+Webhook: `/api/webhooks/paystack`  
+Callback: `/payment/callback`
+
+## Email
+
+- Local/CI: development outbox (`.email-outbox.json`, gitignored)
+- Production: Resend with verified domain — see [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)
+
+## Production endpoints
+
+- `GET /api/health` — liveness (no secrets)
+- `GET /api/cron/cleanup` — housekeeping (requires `CRON_SECRET`)
+
+## Operations documentation
+
+- [Production checklist](./docs/PRODUCTION_CHECKLIST.md)
+- [Deployment](./docs/DEPLOYMENT.md)
+- [Backup & restore](./docs/BACKUP_RESTORE.md)
+- [Security operations](./docs/SECURITY_OPERATIONS.md)
+- [RLS audit](./docs/RLS_AUDIT.md)
+
+## CI
+
+GitHub Actions workflow: `.github/workflows/ci.yml`
+
+Runs lint, typecheck, tests, build, Playwright (Chromium full + cross-browser smoke) against local Supabase.
+
+Node 20 (see `.nvmrc` and `package.json` engines).

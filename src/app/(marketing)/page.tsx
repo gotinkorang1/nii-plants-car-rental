@@ -1,0 +1,273 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+
+import { BookingSearchWidget } from "@/components/marketing/booking-search-widget";
+import { FaqList } from "@/components/marketing/faq-list";
+import { JsonLd } from "@/components/marketing/json-ld";
+import { Section } from "@/components/marketing/page-intro";
+import { Button } from "@/components/ui/button";
+import { FeaturedModels } from "@/components/fleet/featured-models";
+import { PAGE_SEO } from "@/lib/content/company";
+import { getPublishedFaqs, getPublicLocations } from "@/lib/content/queries";
+import { pageMetadata } from "@/lib/content/seo";
+import {
+  autoRentalJsonLd,
+  faqPageJsonLd,
+} from "@/lib/content/structured-data";
+import { getFeaturedModels } from "@/lib/fleet/get-featured-models";
+import { getSiteSettings } from "@/lib/settings/get-site-settings";
+import { toPublicContact } from "@/lib/settings/public-contact";
+
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({
+    title: PAGE_SEO.home.title,
+    description: PAGE_SEO.home.description,
+    path: "/",
+    absolute: true,
+  });
+}
+
+const services = [
+  {
+    href: "/services/self-drive",
+    title: "Self-drive car rental",
+    body: "Drive yourself from Accra for 24-hour days. Book a published model or similar.",
+  },
+  {
+    href: "/services/chauffeur",
+    title: "Chauffeur service",
+    body: "A professional driver for meetings, visitors, and intercity trips. 10-hour duty day.",
+  },
+  {
+    href: "/services/airport-transfer",
+    title: "Kotoka airport pickup",
+    body: "Meet-and-greet at Kotoka International Airport, including evenings until 23:00.",
+  },
+  {
+    href: "/corporate",
+    title: "Corporate mobility",
+    body: "Staff travel, visiting employees, and longer assignments quoted by our Accra team.",
+  },
+  {
+    href: "/services/long-term",
+    title: "Long-term hire",
+    body: "Weekly, monthly, and multi-month cars for work in Accra or travel around Ghana.",
+  },
+  {
+    href: "/services/events",
+    title: "Weddings and groups",
+    body: "Hiace vans and a 30-seater Coaster for weddings, conferences, and group travel.",
+  },
+] as const;
+
+export default async function HomePage() {
+  const [settings, locations, featured, faqs] = await Promise.all([
+    getSiteSettings(),
+    getPublicLocations(),
+    getFeaturedModels(3).catch(() => []),
+    getPublishedFaqs(),
+  ]);
+  const contact = toPublicContact(settings);
+  const featuredImage = featured[0]?.primaryImage;
+  const previewFaqs = faqs.slice(0, 4);
+  const faqSchema = faqPageJsonLd(previewFaqs);
+
+  return (
+    <main>
+      <JsonLd
+        data={autoRentalJsonLd({
+          telephone: contact.phone || undefined,
+          email: contact.email || undefined,
+          description: PAGE_SEO.home.description,
+        })}
+      />
+      {faqSchema ? <JsonLd data={faqSchema} /> : null}
+      <section className="border-b border-border bg-[linear-gradient(180deg,#f7f3eb_0%,#efe8d9_100%)]">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:py-16">
+          <div className="space-y-5">
+            <p className="text-sm font-medium tracking-wide text-primary uppercase">
+              Car rental in Accra since 2007
+            </p>
+            <h1 className="font-heading text-4xl tracking-tight sm:text-6xl">
+              {contact.homepageHeadline ||
+                "Rent a car in Accra — self-drive or chauffeur"}
+            </h1>
+            <p className="max-w-xl text-base text-muted-foreground sm:text-lg">
+              {contact.homepageSubheadline || PAGE_SEO.home.description}
+            </p>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <Button asChild>
+                <Link href="/book">Book a Vehicle</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/fleet">View the fleet</Link>
+              </Button>
+            </div>
+          </div>
+          <div className="relative min-h-72 overflow-hidden rounded-2xl bg-primary">
+            {featuredImage?.url ? (
+              <Image
+                src={featuredImage.url}
+                alt={featuredImage.altText}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover"
+              />
+            ) : (
+              <div className="flex h-full min-h-72 flex-col justify-end p-6 text-primary-foreground">
+                <p className="font-heading text-3xl">Self-drive or chauffeur across Ghana.</p>
+                <p className="mt-2 text-sm text-primary-foreground/80">
+                  Pickup at Plantsville, Dansoman, or at Kotoka International Airport.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="mx-auto max-w-6xl px-4 pb-12 sm:px-6">
+          <BookingSearchWidget locations={locations} />
+        </div>
+      </section>
+
+      <Section className="py-10">
+        <ul className="grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              title: "Hire since 2007",
+              body: "Ghanaian-owned Nii Plants Car Rentals Co. Ltd has hired cars from Accra for travel across Ghana.",
+            },
+            {
+              title: "GTA awards, 2022 and 2024",
+              body: "National Best Car Rental Service Provider in 2022, then Greater Accra car-rental honours at the 2024 GTA awards.",
+            },
+            {
+              title: "Kotoka pickup",
+              body: "Airport collections by arrangement until 23:00. The Dansoman office is open Monday to Saturday, 09:00 to 17:00.",
+            },
+          ].map((item) => (
+            <li key={item.title} className="border-t-2 border-accent pt-4">
+              <h2 className="font-medium">{item.title}</h2>
+              <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section className="pt-0">
+        {featured.length > 0 ? (
+          <FeaturedModels models={featured} title="Cars to hire in Accra" />
+        ) : (
+          <div className="rounded-2xl bg-card p-6 ring-1 ring-border">
+            <h2 className="font-heading text-2xl">Cars to hire in Accra</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Browse saloons, SUVs, 4x4s and coaches when the catalogue is published.
+            </p>
+            <Button asChild className="mt-4" variant="outline">
+              <Link href="/fleet">Open fleet</Link>
+            </Button>
+          </div>
+        )}
+      </Section>
+
+      <Section className="pt-0">
+        <h2 className="font-heading text-2xl">Car hire services in Ghana</h2>
+        <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="block h-full border-l-2 border-primary bg-card p-5 ring-1 ring-border transition-transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <h3 className="font-medium">{item.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section className="pt-0">
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div>
+            <h2 className="font-heading text-2xl">Why hire from Nii Plants</h2>
+            <p className="mt-3 text-muted-foreground">
+              You book a model or similar, not a registration plate. Staff assign
+              a roadworthy car, confirm the Ghana cedi rate before you pay, and
+              keep mileage included for ordinary use inside Ghana. The Ghana
+              Tourism Authority has twice named the company in its car-rental
+              awards, in 2022 and 2024.
+            </p>
+          </div>
+          <div>
+            <h2 className="font-heading text-2xl">Airport arrivals at Kotoka</h2>
+            <p className="mt-3 text-muted-foreground">
+              Share your flight details when you book. We can meet you after
+              landing, or you can collect a self-drive car. Evening collections
+              run until 23:00 by arrangement.
+            </p>
+            <Button asChild variant="outline" className="mt-4">
+              <Link href="/services/airport-transfer">Airport transfers</Link>
+            </Button>
+          </div>
+        </div>
+      </Section>
+
+      <Section className="pt-0">
+        <div className="rounded-2xl bg-primary px-6 py-10 text-primary-foreground sm:px-10">
+          <h2 className="font-heading text-3xl">Corporate car rental in Accra</h2>
+          <p className="mt-3 max-w-2xl text-primary-foreground/85">
+            Company travel, visiting staff, and longer assignments are quoted by
+            the Plantsville operations team — including chauffeur cars and
+            airport meet-and-greet.
+          </p>
+          <Button asChild variant="secondary" className="mt-6">
+            <Link href="/corporate">Request corporate mobility</Link>
+          </Button>
+        </div>
+      </Section>
+
+      <Section className="pt-0">
+        <h2 className="font-heading text-2xl">Travel around Ghana</h2>
+        <p className="mt-3 max-w-2xl text-muted-foreground">
+          Use the fleet for Accra days, Cape Coast or Kumasi road trips, and
+          Takoradi pickup. Hire stays inside Ghana. Land-border crossing is not
+          permitted.
+        </p>
+      </Section>
+
+      <Section className="pt-0">
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="font-heading text-2xl">Car rental questions</h2>
+          <Link href="/help/faqs" className="text-sm text-primary hover:underline">
+            All FAQs
+          </Link>
+        </div>
+        <div className="mt-6">
+          <FaqList items={previewFaqs} />
+        </div>
+      </Section>
+
+      <Section className="pt-0 pb-20">
+        <div className="flex flex-col items-start justify-between gap-4 rounded-2xl bg-card p-6 ring-1 ring-border sm:flex-row sm:items-center">
+          <div>
+            <h2 className="font-heading text-2xl">Ready to hire a car?</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Check Accra availability or browse published models.
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <Button asChild>
+              <Link href="/book">Book a Vehicle</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/contact">Contact</Link>
+            </Button>
+          </div>
+        </div>
+      </Section>
+    </main>
+  );
+}
