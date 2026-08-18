@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 
 import { getPublishedContentPages } from "@/lib/content/queries";
-import { getPublicModels } from "@/lib/fleet/get-public-models";
 import { publicEnv } from "@/lib/env";
+import { getPublicModels } from "@/lib/fleet/get-public-models";
+import { log } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 
@@ -26,10 +27,19 @@ const staticPaths = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = publicEnv.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ?? "";
-  const [models, pages] = await Promise.all([
-    getPublicModels(),
-    getPublishedContentPages(),
-  ]);
+  let models: Awaited<ReturnType<typeof getPublicModels>> = [];
+  let pages: Awaited<ReturnType<typeof getPublishedContentPages>> = [];
+
+  try {
+    [models, pages] = await Promise.all([
+      getPublicModels(),
+      getPublishedContentPages(),
+    ]);
+  } catch (error) {
+    log("error", "Failed to load sitemap catalogue entries.", {
+      error: error instanceof Error ? error.message : "unknown",
+    });
+  }
 
   const entries: MetadataRoute.Sitemap = staticPaths.map((path) => ({
     url: `${base}${path}`,

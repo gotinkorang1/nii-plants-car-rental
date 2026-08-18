@@ -16,17 +16,26 @@ describe("postgres client pool options", () => {
     });
   });
 
-  it("keeps max 1 and disables prepared statements on the transaction pooler", () => {
+  it("disables prepared statements on the transaction pooler and allows concurrent queries", () => {
     expect(
       resolvePostgresClientOptions(
         "postgres://postgres.abc:secret@aws-0-eu-west-1.pooler.supabase.com:6543/postgres",
         "",
       ),
     ).toEqual({
-      max: 1,
+      max: 5,
       prepare: false,
       idle_timeout: 20,
     });
+  });
+
+  it("honors an explicit DATABASE_POOL_MAX of 1 on the transaction pooler", () => {
+    expect(
+      resolvePostgresClientOptions(
+        "postgres://postgres.abc:secret@aws-0-eu-west-1.pooler.supabase.com:6543/postgres",
+        "1",
+      ).max,
+    ).toBe(1);
   });
 
   it("caps an explicit DATABASE_POOL_MAX", () => {

@@ -7,7 +7,7 @@ export type PostgresClientOptions = {
 };
 
 const TRANSACTION_POOLER_PORT = "6543";
-const DEFAULT_SESSION_POOL = 5;
+const DEFAULT_POOL = 5;
 const MAX_APP_POOL = 10;
 
 function parseConnectionUrl(connectionString: string): URL | null {
@@ -38,11 +38,13 @@ export function resolvePostgresClientOptions(
   const configured = asOptionalString(poolMaxEnv);
   const parsed = configured ? Number.parseInt(configured, 10) : Number.NaN;
   const hasExplicitMax = Number.isInteger(parsed) && parsed > 0;
+  // Transaction-mode Supavisor cannot pipeline. postgres.js still pipelines
+  // concurrent queries on one connection when max is 1, which hangs until
+  // statement_timeout. Keep the same default as session URLs so Promise.all
+  // on public pages can run.
   const max = hasExplicitMax
     ? Math.min(parsed, MAX_APP_POOL)
-    : transactionPooler
-      ? 1
-      : DEFAULT_SESSION_POOL;
+    : DEFAULT_POOL;
 
   return {
     max,
