@@ -110,9 +110,39 @@ describe("public fleet payload safety", () => {
       dailyRatePesewas: 0,
       primaryImage: null,
       images: [],
+      bodyType: "Sedan",
+      trimLevel: null,
+      engineName: null,
+      engineDisplacementL: null,
+      powerKw: null,
+      driveType: null,
+      fuelEconomyLPer100Km: null,
+      batteryCapacityKwh: null,
+      evRangeKm: null,
+      acChargingKw: null,
+      dcChargingKw: null,
+      customSpecs: [{ label: "Ground clearance", value: "170 mm" }],
     };
 
     expect(() => assertNoInternalVehicleFields(publicModel)).not.toThrow();
+  });
+
+  it("rejects the raw custom_fields column and private custom specs", () => {
+    expect(() =>
+      assertNoInternalVehicleFields({
+        slug: "hyundai-accent",
+        customFields: [{ label: "Internal code", value: "NP-1", showPublicly: false }],
+      }),
+    ).toThrow(/internal vehicle fields/i);
+
+    expect(() =>
+      assertNoInternalVehicleFields({
+        slug: "hyundai-accent",
+        customSpecs: [
+          { label: "Internal code", value: "NP-1", showPublicly: false },
+        ],
+      }),
+    ).toThrow(/showPublicly/i);
   });
 });
 

@@ -15,6 +15,7 @@ import { breadcrumbJsonLd, carJsonLd } from "@/lib/content/structured-data";
 import { getPublicModel } from "@/lib/fleet/get-public-model";
 import { getRelatedModels } from "@/lib/fleet/get-related-models";
 import { formatGhs } from "@/lib/money";
+import { kwToHp } from "@/lib/vehicle-data/normalize";
 
 export const dynamic = "force-dynamic";
 
@@ -65,6 +66,9 @@ export default async function VehicleDetailPage({
     model.yearFrom || model.yearTo
       ? [model.yearFrom, model.yearTo].filter(Boolean).join("–")
       : null;
+  const engine =
+    model.engineName ??
+    (model.engineDisplacementL ? `${model.engineDisplacementL} L` : null);
 
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
@@ -125,15 +129,70 @@ export default async function VehicleDetailPage({
           <dl className="grid grid-cols-2 gap-3 text-sm">
             <Spec label="Seats" value={String(model.seats)} />
             <Spec label="Doors" value={String(model.doors)} />
-            <Spec label="Transmission" value={model.transmission} />
-            <Spec label="Fuel" value={model.fuelType.replace("_", " ")} />
+            <Spec
+              label="Transmission"
+              value={model.transmission}
+              capitalize
+            />
+            <Spec
+              label="Fuel"
+              value={model.fuelType.replace("_", " ")}
+              capitalize
+            />
             <Spec label="Luggage" value={String(model.luggage)} />
             <Spec
               label="Air conditioning"
               value={model.airConditioning ? "Yes" : "No"}
             />
             {years ? <Spec label="Years" value={years} /> : null}
+            {model.bodyType ? (
+              <Spec label="Body" value={model.bodyType} />
+            ) : null}
+            {model.trimLevel ? (
+              <Spec label="Trim" value={model.trimLevel} />
+            ) : null}
+            {model.driveType ? (
+              <Spec label="Drive" value={model.driveType} />
+            ) : null}
+            {engine ? <Spec label="Engine" value={engine} /> : null}
+            {model.powerKw ? (
+              <Spec
+                label="Power"
+                value={`${model.powerKw} kW (${kwToHp(model.powerKw)} hp)`}
+              />
+            ) : null}
+            {model.fuelEconomyLPer100Km ? (
+              <Spec
+                label="Fuel economy"
+                value={`${model.fuelEconomyLPer100Km} L/100 km`}
+              />
+            ) : null}
+            {model.evRangeKm ? (
+              <Spec label="Range" value={`${model.evRangeKm} km`} />
+            ) : null}
+            {model.batteryCapacityKwh ? (
+              <Spec label="Battery" value={`${model.batteryCapacityKwh} kWh`} />
+            ) : null}
+            {model.acChargingKw ? (
+              <Spec label="AC charging" value={`${model.acChargingKw} kW`} />
+            ) : null}
+            {model.dcChargingKw ? (
+              <Spec label="DC charging" value={`${model.dcChargingKw} kW`} />
+            ) : null}
           </dl>
+
+          {model.customSpecs.length > 0 ? (
+            <section aria-labelledby="additional-specs">
+              <h2 id="additional-specs" className="font-heading text-xl">
+                Additional specifications
+              </h2>
+              <dl className="mt-3 grid grid-cols-2 gap-3 text-sm">
+                {model.customSpecs.map((spec) => (
+                  <Spec key={spec.label} label={spec.label} value={spec.value} />
+                ))}
+              </dl>
+            </section>
+          ) : null}
         </div>
       </div>
 
@@ -153,11 +212,19 @@ export default async function VehicleDetailPage({
   );
 }
 
-function Spec({ label, value }: { label: string; value: string }) {
+function Spec({
+  label,
+  value,
+  capitalize = false,
+}: {
+  label: string;
+  value: string;
+  capitalize?: boolean;
+}) {
   return (
     <div className="rounded-xl bg-card px-3 py-2 ring-1 ring-border">
       <dt className="text-muted-foreground">{label}</dt>
-      <dd className="capitalize">{value}</dd>
+      <dd className={capitalize ? "capitalize" : undefined}>{value}</dd>
     </div>
   );
 }

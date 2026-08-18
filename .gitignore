@@ -42,6 +42,7 @@ yarn-error.log*
 
 # local development email capture for OTP tests
 .email-outbox.json
+.email-outbox/
 
 # database dumps and local artifacts
 *.sql.gz

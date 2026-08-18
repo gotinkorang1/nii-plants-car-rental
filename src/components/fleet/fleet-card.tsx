@@ -44,8 +44,8 @@ export function FleetCard({ model }: { model: PublicVehicleModel }) {
             <dd className="capitalize">{model.transmission}</dd>
           </div>
           <div>
-            <dt className="text-muted-foreground">Luggage</dt>
-            <dd>{model.luggage}</dd>
+            <dt className="text-muted-foreground">Fuel</dt>
+            <dd className="capitalize">{model.fuelType.replace("_", " ")}</dd>
           </div>
           <div>
             <dt className="text-muted-foreground">Air conditioning</dt>

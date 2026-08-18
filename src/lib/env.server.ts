@@ -16,6 +16,9 @@ export const serverEnvSchema = z.object({
   RESEND_API_KEY: z.string().min(1).optional(),
   EMAIL_FROM: z.string().min(1).optional(),
   CRON_SECRET: z.string().min(16).optional(),
+  CARDATABASE_API_KEY: z.string().min(1).optional(),
+  CARDATABASE_BASE_URL: z.string().url().optional(),
+  CARDATABASE_IMAGE_IMPORT_ENABLED: z.string().optional(),
 });
 
 export type ServerEnv = z.infer<typeof serverEnvSchema>;
@@ -31,6 +34,11 @@ function readServerEnv(): ServerEnv {
     RESEND_API_KEY: asOptionalString(process.env.RESEND_API_KEY),
     EMAIL_FROM: asOptionalString(process.env.EMAIL_FROM),
     CRON_SECRET: asOptionalString(process.env.CRON_SECRET),
+    CARDATABASE_API_KEY: asOptionalString(process.env.CARDATABASE_API_KEY),
+    CARDATABASE_BASE_URL: asOptionalString(process.env.CARDATABASE_BASE_URL),
+    CARDATABASE_IMAGE_IMPORT_ENABLED: asOptionalString(
+      process.env.CARDATABASE_IMAGE_IMPORT_ENABLED,
+    ),
   });
 
   if (!parsed.success) {

@@ -71,6 +71,13 @@
       "when": 1787067000000,
       "tag": "0009_phase8_enquiries",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1787070000000,
+      "tag": "0010_phase11_vehicle_data_import",
+      "breakpoints": true
     }
   ]
 }

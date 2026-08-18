@@ -6,6 +6,12 @@ export type PublicVehicleImage = {
   url: string | null;
 };
 
+/** A custom specification a member of staff chose to publish. */
+export type PublicVehicleSpec = {
+  label: string;
+  value: string;
+};
+
 export type PublicVehicleModel = {
   id: string;
   slug: string;
@@ -26,6 +32,24 @@ export type PublicVehicleModel = {
   dailyRatePesewas: number;
   primaryImage: PublicVehicleImage | null;
   images: PublicVehicleImage[];
+
+  // Curated subset of the imported specifications. Dimensions, torque,
+  // cylinders and wheelbase are stored but stay admin-only; staff can publish
+  // any of them through a custom specification instead.
+  bodyType: string | null;
+  trimLevel: string | null;
+  engineName: string | null;
+  engineDisplacementL: number | null;
+  powerKw: number | null;
+  driveType: string | null;
+  fuelEconomyLPer100Km: number | null;
+  batteryCapacityKwh: number | null;
+  evRangeKm: number | null;
+  acChargingKw: number | null;
+  dcChargingKw: number | null;
+
+  /** Only rows explicitly marked public. Internal rows never appear here. */
+  customSpecs: PublicVehicleSpec[];
 };
 
 export const PUBLIC_MODEL_FIELDS = [
@@ -59,11 +83,27 @@ export function assertNoInternalVehicleFields(value: unknown) {
     "notes",
     "currentMileage",
     "current_mileage",
+    // The raw column would carry rows staff marked internal.
+    "customFields",
+    "custom_fields",
   ].filter((key) => key in record);
 
   if (leaked.length > 0) {
     throw new Error(
       `Public fleet data must not include internal vehicle fields: ${leaked.join(", ")}`,
     );
+  }
+
+  if (Array.isArray(record.customSpecs)) {
+    const privateSpec = record.customSpecs.find(
+      (spec) =>
+        spec && typeof spec === "object" && "showPublicly" in (spec as object),
+    );
+
+    if (privateSpec) {
+      throw new Error(
+        "Public custom specifications must not carry the showPublicly flag.",
+      );
+    }
   }
 }

@@ -38,6 +38,8 @@ Default local/testing flags in `.env.example`:
 
 - `PAYSTACK_MOCK=1` — local hosted checkout mock
 - `EMAIL_DEV_OUTBOX=1` — capture emails in `.email-outbox.json`
+- `CARDATABASE_MOCK=1` — fixture vehicles for the admin catalogue lookup instead
+  of live CarDatabase calls (see [docs/VEHICLE_DATA_IMPORT.md](docs/VEHICLE_DATA_IMPORT.md))
 
 Never commit `.env.local` or real secrets.
 

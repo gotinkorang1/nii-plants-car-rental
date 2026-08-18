@@ -11,7 +11,20 @@ export type EmailOutboxEntry = {
   otp?: string;
 };
 
-export const EMAIL_OUTBOX_PATH = path.join(process.cwd(), ".email-outbox.json");
+/**
+ * Path to the capture file.
+ *
+ * `EMAIL_OUTBOX_WORKER` gives each parallel test worker its own file inside a
+ * fixed directory; without it, concurrent read-modify-write cycles drop
+ * entries. The directory is a literal so build-time tracing stays scoped.
+ */
+export const EMAIL_OUTBOX_PATH = process.env.EMAIL_OUTBOX_WORKER
+  ? path.join(
+      process.cwd(),
+      ".email-outbox",
+      `${process.env.EMAIL_OUTBOX_WORKER}.json`,
+    )
+  : path.join(process.cwd(), ".email-outbox.json");
 
 export async function appendDevOutbox(entry: EmailOutboxEntry) {
   await mkdir(path.dirname(EMAIL_OUTBOX_PATH), { recursive: true });
