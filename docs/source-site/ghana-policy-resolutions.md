@@ -1,6 +1,6 @@
 # Ghana policy resolutions — live-site conflicts
 
-Decided 18 August 2026 for the rebuild. These close the contradictions on niiplantsghana.com using Ghana law, Ghana Tourism Authority (GTA) car-rental rules, DVLA/NIC practice, and the master spec. They do **not** invent GHS prices, deposit amounts, or unconfirmed phone numbers.
+Decided 18 August 2026 for the rebuild. These close the contradictions on the old site (now at email.niiplantsghana.com) using Ghana law, Ghana Tourism Authority (GTA) car-rental rules, DVLA/NIC practice, and the master spec. They do **not** invent GHS prices, deposit amounts, or unconfirmed phone numbers.
 
 **Status:** approved for public copy and product rules, except items marked *unset until finance/ops enter a figure*.
 

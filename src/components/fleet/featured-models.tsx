@@ -22,7 +22,7 @@ export function FeaturedModels({
         id="featured-vehicles-heading"
         title={title}
         action={
-          <Link href="/fleet" className="flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+          <Link href="/fleet" className="flex items-center gap-1 text-sm font-medium text-accent hover:underline">
             All vehicles
             <ArrowRight className="size-3.5" />
           </Link>

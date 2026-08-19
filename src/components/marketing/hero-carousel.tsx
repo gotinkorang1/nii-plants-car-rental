@@ -97,7 +97,7 @@ export function HeroCarousel({
         aria-hidden
       />
       <div
-        className="absolute bottom-24 left-[5%] h-40 w-64 rounded-full bg-primary/[0.10] blur-3xl"
+        className="absolute bottom-24 left-[5%] h-40 w-64 rounded-full bg-accent/[0.10] blur-3xl"
         aria-hidden
       />
 
@@ -139,7 +139,7 @@ export function HeroCarousel({
             )}
           >
             {subheadline ||
-              "Sedans, SUVs, 4x4s and vans from Plantsville, Dansoman. Kotoka pickup by arrangement. GTA car-rental awards in 2022 and 2024."}
+              "Saloons, SUVs, 4x4s and vans from Plantsville, Dansoman. Collect in Accra or at Kotoka International Airport. Ghana Tourism Authority car-rental awards in 2022 and 2024."}
           </p>
 
           {/* CTAs */}
@@ -154,7 +154,7 @@ export function HeroCarousel({
             <Button
               asChild
               size="lg"
-              className="h-12 px-6 text-base shadow-lg shadow-primary/20"
+              className="h-12 bg-accent px-6 text-base text-accent-foreground shadow-lg shadow-accent/30 hover:bg-accent/90"
             >
               <Link href="/book">
                 <CalendarCheck className="size-5" />

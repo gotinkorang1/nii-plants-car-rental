@@ -160,7 +160,7 @@
       "make": "Kia",
       "model": "Pegas",
       "slug": "kia-pegas",
-      "description": "A compact saloon for Accra commuting. Easy to park, fuel-efficient, automatic.",
+      "description": "A compact saloon for Accra commuting and Kotoka runs. Easy to park, fuel-efficient, automatic. Hire as this model or similar.",
       "seats": 5,
       "doors": 4,
       "transmission": "automatic",
@@ -177,7 +177,7 @@
       "make": "Hyundai",
       "model": "Accent",
       "slug": "hyundai-accent",
-      "description": "A compact Accra hire saloon that balances comfort, efficiency, and everyday use.",
+      "description": "A compact Accra hire saloon that balances comfort, efficiency, and everyday Ghana use. Book this model or similar.",
       "seats": 5,
       "doors": 4,
       "transmission": "automatic",
@@ -228,7 +228,7 @@
       "make": "Honda",
       "model": "Accord",
       "slug": "honda-accord",
-      "description": "A Honda Accord for executive travel, chauffeur days, and visitor transport in Accra. Listed historically as Hyundai Accord on the previous shop.",
+      "description": "A Honda Accord for executive travel, chauffeur days, and visitor transport in Accra. Automatic, air-conditioned, five seats.",
       "seats": 5,
       "doors": 4,
       "transmission": "automatic",
@@ -336,7 +336,7 @@
       "slug": "toyota-land-cruiser-prado",
       "yearFrom": 2016,
       "yearTo": 2016,
-      "description": "A seven-seat Land Cruiser Prado for family trips and rougher Ghana routes.",
+      "description": "A seven-seat Land Cruiser Prado for family trips and rougher Ghana routes. Accra and upcountry; this model or similar.",
       "seats": 7,
       "doors": 5,
       "transmission": "automatic",
@@ -355,7 +355,7 @@
       "slug": "toyota-hiace",
       "yearFrom": 2020,
       "yearTo": 2020,
-      "description": "A group van for families and small teams in Accra. Chauffeur or staff quote; not online self-drive.",
+      "description": "A group van for families and small teams in Accra. Arranged with a chauffeur or staff quote; not online self-drive.",
       "seats": 12,
       "doors": 4,
       "transmission": "automatic",
@@ -418,21 +418,21 @@
   "faqs": [
     {
       "question": "How do I start a self-drive booking?",
-      "answer": "Use Check availability on the homepage or Book a vehicle. Choose dates, a pickup location, and a published model. Only standard self-drive is booked online. Chauffeur, airport transfer, long-term, events, and group vans are arranged with staff.",
+      "answer": "Use Check availability on the homepage or Book a vehicle. Choose dates, a pickup location in Accra (or another published point), and a published model. Only standard self-drive is booked online. Chauffeur, airport transfer, long-term hire, events, and group vans are arranged with staff.",
       "category": "Booking",
       "sortOrder": 0,
       "published": true
     },
     {
       "question": "What is the minimum hire period?",
-      "answer": "Self-drive hire is charged in 24-hour days, with a minimum of 24 hours. Chauffeur and airport trips use a 10-hour duty day and are quoted by staff.",
+      "answer": "Self-drive is charged in 24-hour days, with a minimum of 24 hours. Chauffeur and airport trips use a 10-hour duty day (three-hour minimum for short jobs) and are quoted by staff.",
       "category": "Booking",
       "sortOrder": 1,
       "published": true
     },
     {
       "question": "When is the reservation payment taken?",
-      "answer": "A reservation payment is due when you book. The share of the rental total is shown on the rental requirements page. The remaining balance is due before pickup.",
+      "answer": "A reservation payment is due when you book. The share of the rental total is shown on the rental requirements page. The remaining balance is due before pickup. Payments on this site are in Ghana cedis.",
       "category": "Payments",
       "sortOrder": 0,
       "published": true
@@ -467,14 +467,14 @@
     },
     {
       "question": "What is the cancellation policy?",
-      "answer": "Cancel 48 hours or more before pickup for a refund of the reservation payment, minus any confirmed payment-processor fee. Cancellations inside 48 hours incur a fee. If you do not arrive and do not notify us, the reservation payment is forfeited. Staff process cancellations in this version of the site.",
+      "answer": "Cancel 48 hours or more before pickup for a refund of the reservation payment, minus any confirmed payment-processor fee. Cancellations inside 48 hours incur a fee. If you do not arrive and do not notify us, the reservation payment is forfeited. Staff process cancellations; this site does not auto-refund.",
       "category": "Cancellations",
       "sortOrder": 0,
       "published": true
     },
     {
       "question": "Can I rent a car if I am under 25?",
-      "answer": "Self-drive renters and extra drivers must be 25 or older and hold a full driving licence. If you need a driven car, request chauffeur or airport transfer instead.",
+      "answer": "Self-drive renters and extra drivers must be 25 or older and hold a full driving licence. Eighteen is the legal driving age in Ghana, not our hire age. If you need a driven car, request chauffeur or airport transfer instead.",
       "category": "Requirements",
       "sortOrder": 0,
       "published": true
@@ -536,7 +536,7 @@
       "excerpt": "Self-drive car hire in Ghana: 24-hour days, drivers 25+, Ghana-only use, and Kotoka pickup from Dansoman.",
       "seoTitle": "Driving in Ghana | Self-Drive Car Hire Rules",
       "seoDescription": "Nii Plants self-drive stays inside Ghana. Drivers 25+, full licence, Ghana Card or passport. Collect in Dansoman or at Kotoka airport.",
-      "body": "<p>Nii Plants Car Rentals hires cars for use inside Ghana only. You may drive Accra, Cape Coast, Kumasi, Takoradi and other Ghana routes. Crossing a land border is not permitted.</p><p>A self-drive day is 24 hours. Named drivers must be 25 or older and hold a full driving licence, not a learner permit. Bring a Ghana Card or passport. Mileage for ordinary use inside Ghana is included.</p><p>Chauffeur hire is different: a duty day is 10 hours, with a three-hour minimum for short city or airport jobs.</p><p>Collect at Plantsville in Dansoman, at Kotoka International Airport (evenings until 23:00 by arrangement), at Alisa Hotel North Ridge, or at Best Western Plus Atlantic Hotel in Takoradi. The office is open Monday to Saturday, 09:00 to 17:00.</p>",
+      "body": "<p>Nii Plants Car Rentals hires cars for use inside Ghana only. You may drive Accra, Cape Coast, Kumasi, Takoradi and other Ghana routes. Crossing a land border is not permitted.</p><p>A self-drive day is 24 hours. Named drivers must be 25 or older and hold a full driving licence, not a learner permit. Bring a Ghana Card or passport. Visitors should bring a passport and home licence; an International Driving Permit is strongly recommended. Mileage for ordinary use inside Ghana is included.</p><p>Chauffeur hire is different: a duty day is 10 hours, with a three-hour minimum for short city or airport jobs.</p><p>Collect at Plantsville in Dansoman, at Kotoka International Airport (evenings until 23:00 by arrangement), at Alisa Hotel North Ridge, or at Best Western Plus Atlantic Hotel in Takoradi. The office is open Monday to Saturday, 09:00 to 17:00, and closed on Sunday.</p><p>Cancel 48 hours or more before pickup for a refund of the reservation payment, minus any confirmed payment-processor fee. Cancellations inside 48 hours incur a fee. Staff process cancellations; this website does not auto-refund.</p>",
       "published": true
     },
     {

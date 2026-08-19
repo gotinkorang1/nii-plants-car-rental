@@ -56,6 +56,8 @@ export const adminNavigation: AdminNavItem[] = [
     label: "Website",
     children: [
       { label: "Pages", href: "/admin/content/pages" },
+      { label: "News & video", href: "/admin/content/stories" },
+      { label: "Gallery", href: "/admin/content/gallery" },
       { label: "FAQs", href: "/admin/content/faqs" },
       { label: "Media", href: "/admin/content/media" },
     ],

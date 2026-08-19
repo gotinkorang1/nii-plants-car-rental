@@ -3,20 +3,22 @@ import { CalendarDays, Car, KeyRound } from "lucide-react";
 import { SectionHeading } from "@/components/marketing/page-intro";
 import { Card, CardContent } from "@/components/ui/card";
 
+import { COPY } from "@/lib/content/copy";
+
 const steps = [
   {
-    title: "Choose dates and pickup",
-    body: "Select an Accra location and a 24-hour self-drive window. Staff still assign the physical car.",
+    title: COPY.howHireWorks[0].title,
+    body: COPY.howHireWorks[0].body,
     icon: CalendarDays,
   },
   {
-    title: "Pick a model or similar",
-    body: "Browse published saloons, SUVs, 4x4s and coaches. You hire a class of car, not a plate.",
+    title: COPY.howHireWorks[1].title,
+    body: COPY.howHireWorks[1].body,
     icon: Car,
   },
   {
-    title: "Collect in Accra",
-    body: "Handover at Plantsville, Kotoka, or a listed hotel desk, with documents checked before keys.",
+    title: COPY.howHireWorks[2].title,
+    body: COPY.howHireWorks[2].body,
     icon: KeyRound,
   },
 ] as const;
@@ -36,7 +38,7 @@ export function HowHireWorks() {
               <span className="block h-0.5 bg-accent" aria-hidden />
               <CardContent className="p-5">
                 <div className="flex items-center gap-3">
-                  <p className="flex size-8 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">
+                  <p className="flex size-8 items-center justify-center rounded-full bg-accent text-xs font-medium text-accent-foreground">
                     <span className="sr-only">Step </span>
                     {index + 1}
                   </p>

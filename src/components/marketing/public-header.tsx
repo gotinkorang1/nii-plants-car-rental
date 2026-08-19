@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarCheck, Menu, X } from "lucide-react";
+import { CalendarCheck, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -99,24 +100,16 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
         <Link
           href="/"
-          className="group flex min-w-0 flex-col justify-center leading-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          className="group flex shrink-0 items-center focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
         >
-          <span
-            className={cn(
-              "font-heading text-lg tracking-tight",
-              homeTop ? "text-white" : "text-foreground",
-            )}
-          >
-            Nii Plants
-          </span>
-          <span
-            className={cn(
-              "mt-0.5 text-[0.65rem] tracking-[0.18em] uppercase",
-              homeTop ? "text-white/70" : "text-muted-foreground",
-            )}
-          >
-            Car Rentals
-          </span>
+          <Image
+            src="/brand/logo.png"
+            alt="Nii Plants Car Rentals"
+            width={48}
+            height={48}
+            className="size-10 object-contain sm:size-12"
+            priority
+          />
         </Link>
         <nav
           aria-label="Primary"
@@ -153,7 +146,10 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
               size="sm"
               className={cn("hidden sm:inline-flex", homeTop && "text-white hover:bg-white/10 hover:text-white")}
             >
-              <a href={telHref(contact.phone)}>Call</a>
+              <a href={telHref(contact.phone)}>
+                <Phone className="size-4" />
+                Call
+              </a>
             </Button>
           ) : null}
           {contact.whatsapp ? (
@@ -163,7 +159,10 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
               size="sm"
               className={cn("hidden md:inline-flex", homeTop && "text-white hover:bg-white/10 hover:text-white")}
             >
-              <a href={whatsappHref(contact.whatsapp)}>WhatsApp</a>
+              <a href={whatsappHref(contact.whatsapp)}>
+                <MessageCircle className="size-4" />
+                WhatsApp
+              </a>
             </Button>
           ) : null}
           <Button
@@ -217,8 +216,9 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                   <a
                     href={telHref(contact.phone)}
                     onClick={closeMenu}
-                    className="rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    className="flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                   >
+                    <Phone className="size-4" />
                     Call {contact.phone}
                   </a>
                 ) : null}
@@ -226,8 +226,9 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                   <a
                     href={whatsappHref(contact.whatsapp)}
                     onClick={closeMenu}
-                    className="rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    className="flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                   >
+                    <MessageCircle className="size-4" />
                     WhatsApp
                   </a>
                 ) : null}
@@ -265,7 +266,13 @@ export function PublicFooter({ contact }: { contact: PublicContact }) {
       <div className="h-0.5 w-full bg-[linear-gradient(90deg,transparent,var(--accent),transparent)]" />
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4 sm:px-6">
         <div>
-          <p className="font-heading text-lg">Nii Plants</p>
+          <Image
+            src="/brand/logo.png"
+            alt="Nii Plants Car Rentals"
+            width={56}
+            height={56}
+            className="size-14 object-contain"
+          />
           <p className="mt-1 text-xs tracking-[0.18em] text-muted-foreground uppercase">
             {COMPANY.tagline}
           </p>

@@ -13,6 +13,7 @@ import {
   vehicleSeoDescription,
   vehicleSeoTitle,
 } from "@/lib/content/company";
+import { COPY } from "@/lib/content/copy";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd, carJsonLd } from "@/lib/content/structured-data";
 import { getPublicModel } from "@/lib/fleet/get-public-model";
@@ -121,8 +122,7 @@ export default async function VehicleDetailPage({
           <PageEyebrow>{model.className}</PageEyebrow>
           <h1 className="mt-2 font-heading text-4xl tracking-tight">{heading}</h1>
           <p className="text-muted-foreground">
-            Hire this {model.className.toLowerCase()} in Accra as this model or
-            similar. Staff assign the physical car at pickup.
+            {COPY.vehicleHireNote}
           </p>
           <p className="text-lg">
             From{" "}
@@ -135,8 +135,7 @@ export default async function VehicleDetailPage({
           </p>
           {model.usdDailyRateFrom ? (
             <p className="text-sm text-muted-foreground">
-              Catalogue rate in US dollars, matching the live shop. Online
-              reservation payments are in Ghana cedis.
+              {COPY.catalogueRateNote}
             </p>
           ) : null}
           <div className="flex flex-col gap-2 sm:flex-row">

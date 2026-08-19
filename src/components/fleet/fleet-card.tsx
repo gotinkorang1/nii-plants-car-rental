@@ -76,7 +76,7 @@ export function FleetCard({ model }: { model: PublicVehicleModel }) {
               View
             </Link>
           </Button>
-          <Button asChild className="h-11 flex-1 text-sm">
+          <Button asChild className="h-11 flex-1 bg-accent text-sm text-accent-foreground hover:bg-accent/90">
             <Link href={`/book?vehicle=${model.slug}`}>Book a Vehicle</Link>
           </Button>
         </div>

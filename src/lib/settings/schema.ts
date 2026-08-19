@@ -89,7 +89,7 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   currency: "GHS",
   homepageHeadline: "Rent a car in Accra — self-drive or chauffeur",
   homepageSubheadline:
-    "Sedans, SUVs, 4x4s and vans from Plantsville, Dansoman. Kotoka pickup by arrangement. GTA car-rental awards in 2022 and 2024.",
+    "Saloons, SUVs, 4x4s and vans from Plantsville, Dansoman. Collect in Accra or at Kotoka International Airport. Ghana Tourism Authority car-rental awards in 2022 and 2024.",
   socialLinks: {
     facebook: "https://web.facebook.com/niiplants/",
     linkedin: "https://www.linkedin.com/company/nii-plants-car-rental/",

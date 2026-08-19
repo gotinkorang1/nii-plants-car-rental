@@ -46,7 +46,7 @@ export function PageBanner({
 
       {/* Decorative corner flourish */}
       <div className="absolute top-16 right-0 h-40 w-40 rounded-full bg-accent/[0.06] blur-3xl" aria-hidden />
-      <div className="absolute bottom-0 left-0 h-32 w-56 rounded-full bg-primary/[0.12] blur-3xl" aria-hidden />
+      <div className="absolute bottom-0 left-0 h-32 w-56 rounded-full bg-accent/[0.12] blur-3xl" aria-hidden />
 
       <div
         className={cn(

@@ -12,17 +12,51 @@ import {
 } from "drizzle-orm/pg-core";
 
 import { timestamps } from "./common";
+import { contentKindEnum } from "./enums";
+
+export const mediaAssets = pgTable(
+  "media_assets",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    storagePath: text("storage_path").notNull(),
+    altText: text("alt_text").notNull(),
+    originalFilename: text("original_filename").notNull(),
+    mimeType: text("mime_type").notNull(),
+    sizeBytes: integer("size_bytes").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true, mode: "date" })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [
+    uniqueIndex("media_assets_storage_path_uidx").on(table.storagePath),
+    check(
+      "media_assets_storage_path_not_blank",
+      sql`char_length(btrim(${table.storagePath})) > 0`,
+    ),
+    check(
+      "media_assets_alt_text_not_blank",
+      sql`char_length(btrim(${table.altText})) > 0`,
+    ),
+    check("media_assets_size_positive", sql`${table.sizeBytes} > 0`),
+  ],
+).enableRLS();
 
 export const contentPages = pgTable(
   "content_pages",
   {
     id: uuid("id").defaultRandom().primaryKey(),
+    kind: contentKindEnum("kind").default("page").notNull(),
     title: text("title").notNull(),
     slug: text("slug").notNull(),
     excerpt: text("excerpt").notNull(),
     body: text("body").notNull(),
     seoTitle: text("seo_title"),
     seoDescription: text("seo_description"),
+    coverMediaId: uuid("cover_media_id").references(() => mediaAssets.id, {
+      onDelete: "set null",
+    }),
+    videoUrl: text("video_url"),
+    sortOrder: integer("sort_order").default(0).notNull(),
     published: boolean("published").default(false).notNull(),
     publishedAt: timestamp("published_at", {
       withTimezone: true,
@@ -33,6 +67,7 @@ export const contentPages = pgTable(
   (table) => [
     uniqueIndex("content_pages_slug_uidx").on(table.slug),
     index("content_pages_published_idx").on(table.published),
+    index("content_pages_kind_published_idx").on(table.kind, table.published),
     check(
       "content_pages_title_not_blank",
       sql`char_length(btrim(${table.title})) > 0`,
@@ -41,6 +76,7 @@ export const contentPages = pgTable(
       "content_pages_slug_not_blank",
       sql`char_length(btrim(${table.slug})) > 0`,
     ),
+    check("content_pages_sort_order_nonnegative", sql`${table.sortOrder} >= 0`),
   ],
 ).enableRLS();
 
@@ -74,29 +110,28 @@ export const faqs = pgTable(
   ],
 ).enableRLS();
 
-export const mediaAssets = pgTable(
-  "media_assets",
+export const contentPageMedia = pgTable(
+  "content_page_media",
   {
     id: uuid("id").defaultRandom().primaryKey(),
-    storagePath: text("storage_path").notNull(),
-    altText: text("alt_text").notNull(),
-    originalFilename: text("original_filename").notNull(),
-    mimeType: text("mime_type").notNull(),
-    sizeBytes: integer("size_bytes").notNull(),
-    createdAt: timestamp("created_at", { withTimezone: true, mode: "date" })
-      .defaultNow()
-      .notNull(),
+    pageId: uuid("page_id")
+      .notNull()
+      .references(() => contentPages.id, { onDelete: "cascade" }),
+    mediaId: uuid("media_id")
+      .notNull()
+      .references(() => mediaAssets.id, { onDelete: "restrict" }),
+    caption: text("caption"),
+    sortOrder: integer("sort_order").default(0).notNull(),
   },
   (table) => [
-    uniqueIndex("media_assets_storage_path_uidx").on(table.storagePath),
-    check(
-      "media_assets_storage_path_not_blank",
-      sql`char_length(btrim(${table.storagePath})) > 0`,
+    uniqueIndex("content_page_media_page_media_uidx").on(
+      table.pageId,
+      table.mediaId,
     ),
+    index("content_page_media_page_sort_idx").on(table.pageId, table.sortOrder),
     check(
-      "media_assets_alt_text_not_blank",
-      sql`char_length(btrim(${table.altText})) > 0`,
+      "content_page_media_sort_order_nonnegative",
+      sql`${table.sortOrder} >= 0`,
     ),
-    check("media_assets_size_positive", sql`${table.sizeBytes} > 0`),
   ],
 ).enableRLS();

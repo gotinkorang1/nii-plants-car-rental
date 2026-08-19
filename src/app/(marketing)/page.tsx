@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Building2, Plane } from "lucide-react";
 
 import { BookingSearchWidget } from "@/components/marketing/booking-search-widget";
+import { ClienteleLogos } from "@/components/marketing/clientele-logos";
 import { CtaPanel } from "@/components/marketing/cta-panel";
 import { FaqList } from "@/components/marketing/faq-list";
 import { HowHireWorks } from "@/components/marketing/how-hire-works";
@@ -14,8 +15,10 @@ import { ServiceCard } from "@/components/marketing/service-card";
 import { Button } from "@/components/ui/button";
 import { FeaturedModels } from "@/components/fleet/featured-models";
 import { PAGE_SEO } from "@/lib/content/company";
+import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublishedFaqs, getPublicLocations } from "@/lib/content/queries";
+import { listPublishedStories } from "@/lib/content/published-stories";
 import { pageMetadata } from "@/lib/content/seo";
 import {
   autoRentalJsonLd,
@@ -33,6 +36,13 @@ export async function generateMetadata(): Promise<Metadata> {
     description: PAGE_SEO.home.description,
     path: "/",
     absolute: true,
+    keywords: [
+      "car rental Accra",
+      "self-drive Ghana",
+      "chauffeur Accra",
+      "Kotoka airport car hire",
+      "Nii Plants",
+    ],
   });
 }
 
@@ -40,51 +50,53 @@ const services = [
   {
     href: "/services/self-drive",
     title: "Self-drive car rental",
-    body: "Drive yourself from Accra for 24-hour days. Book a published model or similar.",
+    body: COPY.services.selfDrive,
     image: marketingImages.selfDrive,
   },
   {
     href: "/services/chauffeur",
     title: "Chauffeur service",
-    body: "A professional driver for meetings, visitors, and intercity trips. 10-hour duty day.",
+    body: COPY.services.chauffeur,
     image: marketingImages.chauffeur,
   },
   {
     href: "/services/airport-transfer",
     title: "Kotoka airport pickup",
-    body: "Meet-and-greet at Kotoka International Airport, including evenings until 23:00.",
+    body: COPY.services.airport,
     image: marketingImages.airport,
   },
   {
     href: "/corporate",
     title: "Corporate mobility",
-    body: "Staff travel, visiting employees, and longer assignments quoted by our Accra team.",
+    body: COPY.services.corporate,
     image: marketingImages.corporate,
   },
   {
     href: "/services/long-term",
     title: "Long-term hire",
-    body: "Weekly, monthly, and multi-month cars for work in Accra or travel around Ghana.",
+    body: COPY.services.longTerm,
     image: marketingImages.longTerm,
   },
   {
     href: "/services/events",
     title: "Weddings and groups",
-    body: "Hiace vans and a 30-seater Coaster for weddings, conferences, and group travel.",
+    body: COPY.services.events,
     image: marketingImages.events,
   },
 ] as const;
 
 export default async function HomePage() {
-  const [settings, locations, featured, faqs] = await Promise.all([
+  const [settings, locations, featured, faqs, stories] = await Promise.all([
     getSiteSettings(),
     getPublicLocations(),
     getFeaturedModels(3).catch(() => []),
     getPublishedFaqs(),
+    listPublishedStories(),
   ]);
   const contact = toPublicContact(settings);
   const previewFaqs = faqs.slice(0, 4);
   const faqSchema = faqPageJsonLd(previewFaqs);
+  const previewStories = stories.slice(0, 3);
 
   return (
     <main>
@@ -155,11 +167,7 @@ export default async function HomePage() {
               Why hire from Nii Plants
             </h2>
             <p className="mt-3 text-muted-foreground">
-              You book a model or similar, not a registration plate. Staff assign
-              a roadworthy car, confirm the Ghana cedi rate before you pay, and
-              keep mileage included for ordinary use inside Ghana. The Ghana
-              Tourism Authority has twice named the company in its car-rental
-              awards, in 2022 and 2024.
+              {COPY.whyHire}
             </p>
           </div>
           <div>
@@ -173,9 +181,7 @@ export default async function HomePage() {
               Airport arrivals at Kotoka
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Share your flight details when you book. We can meet you after
-              landing, or you can collect a self-drive car. Evening collections
-              run until 23:00 by arrangement.
+              {COPY.airportHome}
             </p>
             <Button asChild variant="outline" className="mt-4">
               <Link href="/services/airport-transfer">
@@ -199,9 +205,7 @@ export default async function HomePage() {
           <div className="absolute inset-0 flex flex-col justify-end px-6 py-10 text-primary-foreground sm:px-10">
             <h2 className="font-heading text-3xl">Corporate car rental in Accra</h2>
             <p className="mt-3 max-w-2xl text-primary-foreground/85">
-              Company travel, visiting staff, and longer assignments are quoted by
-              the Plantsville operations team — including chauffeur cars and
-              airport meet-and-greet.
+              {COPY.corporateHome}
             </p>
             <Button asChild variant="secondary" className="mt-6 h-11 w-fit px-4">
               <Link href="/corporate">
@@ -224,10 +228,44 @@ export default async function HomePage() {
           Travel around Ghana
         </h2>
         <p className="mt-3 max-w-2xl text-muted-foreground">
-          Use the fleet for Accra days, Cape Coast or Kumasi road trips, and
-          Takoradi pickup. Hire stays inside Ghana. Land-border crossing is not
-          permitted.
+          {COPY.ghanaTravel}
         </p>
+      </Section>
+
+      <Section className="pt-0" reveal>
+        <SectionHeading
+          title="News from Accra"
+          action={
+            <Link href="/news" className="text-sm font-medium text-accent hover:underline">
+              All news
+            </Link>
+          }
+        />
+        <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+          {previewStories.map((article) => (
+            <li key={article.slug}>
+              <Link
+                href={`/news/${article.slug}`}
+                className="group flex h-full flex-col overflow-hidden rounded-2xl bg-card ring-1 ring-border"
+              >
+                <MarketingPhoto
+                  image={article.image}
+                  className="aspect-[16/9]"
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  zoomOnHover
+                />
+                <span className="p-4">
+                  <span className="block text-xs font-medium tracking-[0.16em] text-accent uppercase">
+                    {article.dateLabel}
+                  </span>
+                  <span className="mt-2 block font-heading text-lg group-hover:text-accent">
+                    {article.title}
+                  </span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section className="pt-0" reveal>
@@ -244,10 +282,37 @@ export default async function HomePage() {
         </div>
       </Section>
 
+      <Section className="pt-0" reveal>
+        <ClienteleLogos />
+      </Section>
+
+      <Section className="pt-0" reveal>
+        <SectionHeading title="What travellers say" />
+        <ul className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-3">
+          {COPY.testimonials.map((item) => (
+            <li
+              key={item.name}
+              className="rounded-2xl bg-card p-5 ring-1 ring-border"
+            >
+              <p className="text-xs font-medium tracking-[0.16em] text-accent uppercase">
+                {item.title}
+              </p>
+              <blockquote className="mt-3 text-sm text-muted-foreground">
+                “{item.quote}”
+              </blockquote>
+              <p className="mt-4 text-sm font-medium">
+                {item.name}
+                {"place" in item && item.place ? `, ${item.place}` : ""}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
       <Section className="pt-0 pb-20" reveal>
         <CtaPanel
-          title="Ready to hire a car?"
-          body="Check Accra availability or browse published models."
+          title={COPY.ctaTitle}
+          body={COPY.ctaBody}
         />
       </Section>
     </main>

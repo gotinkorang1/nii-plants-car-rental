@@ -47,7 +47,7 @@ function buildContentSecurityPolicy(isDev: boolean): string {
     "img-src 'self' data: blob: https://*.supabase.co",
     "font-src 'self' data:",
     `connect-src ${connectSrc.join(" ")}`,
-    "frame-src 'self' https://www.openstreetmap.org",
+    "frame-src 'self' https://www.openstreetmap.org https://www.youtube-nocookie.com https://player.vimeo.com",
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self' https://checkout.paystack.com",

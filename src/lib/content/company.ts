@@ -1,5 +1,5 @@
 import { truncateMetaDescription } from "@/lib/content/seo";
-import { osmBrowseUrl } from "@/lib/maps/openstreetmap";
+import { COPY } from "@/lib/content/copy";
 
 /** Confirmed public facts from the live site, AmCham Ghana, Graphic/GTA, JoyOnline, Daily Guide, BFT, GNBCC, and Ghana hire practice. */
 
@@ -21,7 +21,7 @@ export const COMPANY = {
   postalBox: "P.O. Box MP 2390, Mamprobi, Accra",
   latitude: plantsville.latitude,
   longitude: plantsville.longitude,
-  mapsUrl: osmBrowseUrl(plantsville.latitude, plantsville.longitude),
+  mapsUrl: "https://goo.gl/maps/xNq7jWiCySyC6f2z5",
   telephone: "+233593835941",
   telephoneDisplay: "+233 59 383 5941",
   officeTelephoneDisplay: "+233 30 244 1805",
@@ -92,22 +92,20 @@ export const MANAGEMENT = {
 
 export const PAGE_SEO = {
   home: {
-    title: "Car Rental Accra, Ghana | Self-Drive, Chauffeur & Airport Pickup",
-    description:
-      "Rent a sedan, SUV, 4x4 or van from Nii Plants in Dansoman, Accra. Self-drive, chauffeur, and Kotoka pickup. GTA car-rental awards in 2022 and 2024.",
+    title: "Car Rental Accra, Ghana | Self-Drive, Chauffeur & Kotoka Pickup",
+    description: COPY.heroSubheadline,
   },
   fleet: {
-    title: "Sedans, SUVs, 4x4s and Coaches in Accra",
+    title: "Car Hire Fleet in Accra: Saloons, SUVs, 4x4s and Coaches",
     description:
       "Browse Nii Plants car hire in Accra. Compact and mid-size saloons, SUVs, Land Cruiser Prado, Hiace vans and a 30-seater Coaster. Book a model or similar.",
   },
   services: {
-    title: "Car Hire Services in Ghana",
-    description:
-      "Self-drive car rental in Accra, chauffeur-driven cars, Kotoka airport transfers, long-term hire, weddings and corporate mobility from Nii Plants.",
+    title: "Car Hire Services in Ghana | Self-Drive, Chauffeur, Airport",
+    description: COPY.servicesIntro,
   },
   selfDrive: {
-    title: "Self-Drive Car Rental in Accra",
+    title: "Self-Drive Car Rental in Accra and Ghana",
     description:
       "Hire a car and drive yourself in Ghana. 24-hour rental days, drivers 25+, Ghana Card or passport, and use inside Ghana only. Pickup in Dansoman or at Kotoka.",
   },
@@ -137,14 +135,14 @@ export const PAGE_SEO = {
       "Company travel, visiting staff and client cars in Accra since 2007. GTA award-winning hire, Kotoka meet-and-greet, and hotel desks in Accra and Takoradi.",
   },
   about: {
-    title: "Accra Car Rental Since 2007",
+    title: "About Nii Plants | Accra Car Rental Since 2007",
     description:
       "Ghanaian-owned Accra car hire since 2007. GTA awards in 2022 and 2024. Plantsville HQ in Dansoman. GNBCC member; profiled by AmCham Ghana.",
   },
   contact: {
-    title: "Contact Us in Dansoman, Accra",
+    title: "Contact Nii Plants in Dansoman, Accra",
     description:
-      "Call +233 59 383 5941, WhatsApp, or email info@niiplantsghana.com. Plantsville, Dansoman. Mon–Sat 09:00–17:00. Kotoka pickup by arrangement.",
+      "Call +233 59 383 5941, office +233 30 244 1805, or email info@niiplantsghana.com. Plantsville, Dansoman. Monday–Saturday 09:00–17:00. Kotoka pickup by arrangement.",
   },
   help: {
     title: "Car Rental Help in Ghana",
@@ -161,10 +159,20 @@ export const PAGE_SEO = {
     description:
       "Answers on Nii Plants booking, payments, Kotoka pickup, insurance, extra drivers, and free cancellation 48 hours before pickup.",
   },
+  news: {
+    title: "News | Accra Car Rental Awards, Plantsville, Hotel Desks",
+    description:
+      "Nii Plants news: GTA car-rental awards in 2022 and 2024, the Plantsville office in Dansoman, and pickup at Alisa North Ridge and in Takoradi.",
+  },
+  gallery: {
+    title: "Photo Gallery | Car Hire in Accra and Ghana",
+    description:
+      "Photos of Nii Plants self-drive, chauffeur cars, Kotoka handover, and the Plantsville desk in Dansoman, Accra.",
+  },
 } as const;
 
 export function vehicleSeoTitle(make: string, model: string): string {
-  return `${make} ${model} Rental Accra`;
+  return `${make} ${model} Hire Accra | Car Rental Ghana`;
 }
 
 export function vehicleSeoDescription(input: {
@@ -177,7 +185,7 @@ export function vehicleSeoDescription(input: {
   const lead =
     input.description.trim() ||
     `Hire a ${input.make} ${input.modelName} (${input.className}, ${input.seats} seats) from Nii Plants in Accra.`;
-  const suffix = " Car rental in Ghana, model or similar.";
+  const suffix = " Self-drive or chauffeur car rental in Ghana; model or similar.";
   const combined = lead.endsWith(".") ? `${lead}${suffix}` : `${lead}.${suffix}`;
   return truncateMetaDescription(combined) ?? combined;
 }

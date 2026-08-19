@@ -144,7 +144,7 @@ export function BookingSearchForm({
       <Button
         type="submit"
         size="lg"
-        className={cn("h-11 w-full px-5 transition-all duration-300", !compact && "sm:w-auto")}
+        className={cn("h-11 w-full bg-accent px-5 text-accent-foreground transition-all duration-300 hover:bg-accent/90", !compact && "sm:w-auto")}
         disabled={pending}
       >
         {pending ? (
@@ -197,7 +197,7 @@ export function BookingSearchForm({
         )}
       >
         <div>
-          <p className="flex items-center gap-2 text-xs font-medium tracking-[0.16em] text-primary uppercase">
+          <p className="flex items-center gap-2 text-xs font-medium tracking-[0.16em] text-accent uppercase">
             <span className="h-px w-5 bg-accent" aria-hidden />
             Standard self-drive
           </p>
@@ -239,7 +239,7 @@ export function BookingSearchForm({
       ) : (
         <div className="space-y-4">
           <fieldset className="grid gap-3 rounded-xl bg-muted/50 p-3 ring-1 ring-border/70 sm:grid-cols-3">
-            <legend className="flex items-center gap-1.5 px-1 text-[0.7rem] font-medium tracking-[0.16em] text-primary uppercase">
+            <legend className="flex items-center gap-1.5 px-1 text-[0.7rem] font-medium tracking-[0.16em] text-accent uppercase">
               <LogIn className="size-3.5" />
               Collect
             </legend>
@@ -248,7 +248,7 @@ export function BookingSearchForm({
             {pickupTime}
           </fieldset>
           <fieldset className="grid gap-3 rounded-xl bg-muted/50 p-3 ring-1 ring-border/70 sm:grid-cols-3">
-            <legend className="flex items-center gap-1.5 px-1 text-[0.7rem] font-medium tracking-[0.16em] text-primary uppercase">
+            <legend className="flex items-center gap-1.5 px-1 text-[0.7rem] font-medium tracking-[0.16em] text-accent uppercase">
               <LogOutIcon className="size-3.5" />
               Return
             </legend>

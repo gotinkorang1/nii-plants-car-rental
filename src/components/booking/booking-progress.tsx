@@ -17,7 +17,7 @@ export function BookingProgress({ current }: { current: BookingStep }) {
     <nav aria-label="Booking progress" className="mb-8">
       <div className="relative mb-3 h-1 overflow-hidden rounded-full bg-border">
         <div
-          className="absolute inset-y-0 left-0 rounded-full bg-primary transition-[width] duration-700 ease-out"
+          className="absolute inset-y-0 left-0 rounded-full bg-accent transition-[width] duration-700 ease-out"
           style={{ width: `${progressPercent}%` }}
         />
       </div>
@@ -37,7 +37,7 @@ export function BookingProgress({ current }: { current: BookingStep }) {
                 className={cn(
                   "flex size-7 shrink-0 items-center justify-center rounded-full border text-xs",
                   "transition-all duration-500",
-                  done && "border-primary bg-primary text-primary-foreground scale-100",
+                  done && "border-accent bg-accent text-accent-foreground scale-100",
                   active &&
                     "border-accent bg-background text-primary ring-2 ring-accent/35 scale-110",
                   !done && !active && "border-border bg-background text-muted-foreground scale-100",

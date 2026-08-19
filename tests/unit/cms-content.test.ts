@@ -3,9 +3,11 @@ import { describe, expect, it } from "vitest";
 import { isReservedPublicSlug } from "@/lib/content/reserved-slugs";
 import { sanitizeCmsHtml } from "@/lib/content/sanitize-html";
 import { cmsSeoDescription, cmsSeoTitle } from "@/lib/content/seo";
+import { parseVideoEmbedUrl } from "@/lib/content/video-embed";
 import { canManageCms } from "@/lib/content/permissions";
 import {
   contentPageSchema,
+  contentPostSchema,
   faqSchema,
   mediaAssetMetadataSchema,
 } from "@/lib/validation/content";
@@ -17,7 +19,8 @@ describe("reserved public slugs", () => {
     expect(isReservedPublicSlug("API")).toBe(true);
     expect(isReservedPublicSlug("book")).toBe(true);
     expect(isReservedPublicSlug("booking")).toBe(true);
-    expect(isReservedPublicSlug("fleet")).toBe(true);
+    expect(isReservedPublicSlug("news")).toBe(true);
+    expect(isReservedPublicSlug("gallery")).toBe(true);
     expect(isReservedPublicSlug("admin/pages")).toBe(true);
   });
 
@@ -67,6 +70,52 @@ describe("CMS page validation", () => {
       });
       expect(parsed.success, slug).toBe(false);
     }
+  });
+});
+
+describe("CMS post validation", () => {
+  it("accepts a news story and a YouTube video post", () => {
+    const news = contentPostSchema.parse({
+      kind: "news",
+      title: "GTA awards in Accra",
+      slug: "",
+      excerpt: "Confirmed award news.",
+      body: "<p>The ceremony was in Accra.</p>",
+      published: true,
+      publishedOn: "2024-10-25",
+    });
+    expect(news.slug).toBe("gta-awards-in-accra");
+    expect(news.kind).toBe("news");
+
+    const video = contentPostSchema.parse({
+      kind: "video",
+      title: "Plantsville walkthrough",
+      body: "",
+      videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      published: false,
+    });
+    expect(video.videoUrl).toContain("youtube.com");
+  });
+
+  it("rejects a video post without a YouTube or Vimeo link", () => {
+    const parsed = contentPostSchema.safeParse({
+      kind: "video",
+      title: "Clip",
+      videoUrl: "https://example.com/not-a-video",
+    });
+    expect(parsed.success).toBe(false);
+  });
+});
+
+describe("video embed URLs", () => {
+  it("rewrites YouTube and Vimeo links to privacy-safe embeds", () => {
+    expect(parseVideoEmbedUrl("https://youtu.be/dQw4w9WgXcQ")).toBe(
+      "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+    );
+    expect(
+      parseVideoEmbedUrl("https://vimeo.com/123456789"),
+    ).toBe("https://player.vimeo.com/video/123456789");
+    expect(parseVideoEmbedUrl("https://example.com/watch")).toBeNull();
   });
 });
 

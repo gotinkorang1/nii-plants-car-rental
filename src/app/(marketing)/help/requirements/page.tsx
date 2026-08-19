@@ -4,6 +4,7 @@ import Link from "next/link";
 import { PageBanner } from "@/components/marketing/page-banner";
 import { Section, SectionHeading } from "@/components/marketing/page-intro";
 import { PAGE_SEO } from "@/lib/content/company";
+import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
 import { getSiteSettings } from "@/lib/settings/get-site-settings";
@@ -14,12 +15,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/help/requirements",
 });
 
-const pickupChecklist = [
-  "Full driving licence for every named driver",
-  "Ghana Card or passport matching the licence",
-  "Driver aged 25 or older",
-  "Travel inside Ghana only",
-] as const;
+const pickupChecklist = COPY.pickupChecklist;
 
 export default async function RequirementsPage() {
   const settings = await getSiteSettings();
@@ -30,7 +26,7 @@ export default async function RequirementsPage() {
       image={marketingImages.keys}
       eyebrow="Help"
       title="What you need to rent a car in Ghana"
-      lede="Self-drive renters and extra drivers must be 25 or older, hold a full licence, and use the car inside Ghana only."
+        lede={COPY.requirementsIntro}
       breadcrumbs={[
         { name: "Home", href: "/" },
         { name: "Help", href: "/help" },
@@ -83,10 +79,13 @@ export default async function RequirementsPage() {
         <div className="rounded-2xl bg-card p-5 ring-1 ring-border">
           <dt className="text-sm text-muted-foreground">Cancellation</dt>
           <dd className="mt-1 font-medium">
-            Free 48 hours or more before pickup. A fee applies inside 48 hours.
+            {COPY.cancellation}
           </dd>
         </div>
       </dl>
+      <p className="mt-6 max-w-3xl text-sm text-muted-foreground">{COPY.insurance}</p>
+      <p className="mt-3 max-w-3xl text-sm text-muted-foreground">{COPY.mileage}</p>
+      <p className="mt-3 max-w-3xl text-sm text-muted-foreground">{COPY.hours}</p>
       <p className="mt-6 text-sm">
         <Link href="/help/faqs" className="text-primary hover:underline">
           Read FAQs

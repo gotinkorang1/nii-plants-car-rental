@@ -33,11 +33,11 @@ export function TripSummary({
   return (
     <div className="flex flex-col gap-1.5 rounded-2xl border-l-2 border-accent bg-primary/5 px-4 py-3 text-sm ring-1 ring-primary/15">
       <span className="flex items-center gap-1.5 font-medium">
-        <MapPin className="size-3.5 shrink-0 text-primary" />
+        <MapPin className="size-3.5 shrink-0 text-accent" />
         {route}
       </span>
       <span className="flex items-center gap-1.5 text-muted-foreground">
-        <CalendarDays className="size-3.5 shrink-0 text-primary" />
+        <CalendarDays className="size-3.5 shrink-0 text-accent" />
         {windowLabel}
         {preview.status === "ready"
           ? ` · ${preview.days} chargeable ${preview.days === 1 ? "day" : "days"}`

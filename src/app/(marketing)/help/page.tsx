@@ -6,6 +6,7 @@ import { PageBanner } from "@/components/marketing/page-banner";
 import { Section } from "@/components/marketing/page-intro";
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { PAGE_SEO } from "@/lib/content/company";
+import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
@@ -67,7 +68,7 @@ export default function HelpPage() {
         image={marketingImages.phone}
         eyebrow="Help"
         title="Car rental help for Ghana hire"
-        lede="Licence rules, payments, Kotoka pickup, and cancellation for self-drive and chauffeur hire with Nii Plants."
+        lede={COPY.helpIntro}
         breadcrumbs={[
           { name: "Home", href: "/" },
           { name: "Help" },

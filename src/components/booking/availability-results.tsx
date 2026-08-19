@@ -106,7 +106,7 @@ export function AvailabilityResults({
                   {formatGhs(model.estimatedTotal)}
                 </span>
               </p>
-              <Button asChild className="mt-auto h-11" size="lg">
+              <Button asChild className="mt-auto h-11 bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
                 <Link href={`/book/vehicle/${model.slug}?${query}`}>
                   Select vehicle
                 </Link>

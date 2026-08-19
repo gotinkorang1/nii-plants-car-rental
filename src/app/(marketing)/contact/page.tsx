@@ -8,6 +8,7 @@ import { PageBanner } from "@/components/marketing/page-banner";
 import { Section, SectionHeading } from "@/components/marketing/page-intro";
 import { GoogleMapEmbed } from "@/components/maps/google-map-embed";
 import { COMPANY, PAGE_SEO } from "@/lib/content/company";
+import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublicLocations } from "@/lib/content/queries";
 import { pageMetadata } from "@/lib/content/seo";
@@ -47,7 +48,7 @@ export default async function ContactPage() {
         image={marketingImages.valet}
         eyebrow="Contact"
         title="Contact Nii Plants in Accra"
-        lede={`Call, WhatsApp, or email from ${COMPANY.openingHoursDisplay}. ${COMPANY.airportHoursNote}.`}
+        lede={COPY.contactLede}
         breadcrumbs={[
           { name: "Home", href: "/" },
           { name: "Contact" },
@@ -65,7 +66,7 @@ export default async function ContactPage() {
                 rel="noreferrer"
                 target="_blank"
               >
-                Open Plantsville on OpenStreetMap
+                Open Plantsville on Google Maps
               </a>
             </p>
             {!hasDirect && !contact.address ? (
@@ -76,8 +77,8 @@ export default async function ContactPage() {
           </div>
           <div>
             <p className="mb-4 text-sm text-muted-foreground">
-              We reply during Monday–Saturday hours. This form is a message, not a
-              confirmed booking.
+              We reply during Monday–Saturday office hours. This form is a
+              message, not a confirmed booking.
             </p>
             <EnquiryForm serviceType="general" submitLabel="Send message" />
           </div>
@@ -87,8 +88,7 @@ export default async function ContactPage() {
         <Section className="pt-0 pb-20" reveal>
           <SectionHeading title="Pickup locations" />
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            Maps use OpenStreetMap. Plantsville is shown at the Dansoman
-            neighbourhood pin; the exact street is not in the public map data.
+            Maps use Google Maps. {COPY.mapsNote}
           </p>
           <MarketingPhoto
             image={marketingImages.arrival}

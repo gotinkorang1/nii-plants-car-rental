@@ -78,7 +78,7 @@ export function ContactDesk({ contact }: { contact: PublicContact }) {
             )}
           >
             <CardContent className="flex items-start gap-3 p-4">
-              <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
                 <Icon className="size-4" aria-hidden />
               </span>
               <span>

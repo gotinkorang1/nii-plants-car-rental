@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
+import { ClienteleLogos } from "@/components/marketing/clientele-logos";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageBanner } from "@/components/marketing/page-banner";
@@ -58,7 +59,7 @@ export default function CorporatePage() {
         image={marketingImages.executiveSuv}
         eyebrow="Corporate"
         title="Corporate car rental for Accra teams and visitors"
-        lede="Nii Plants has hired cars to organisations in Ghana since 2007. GTA award-winning Accra hire, Kotoka meet-and-greet, and hotel desks at Alisa North Ridge and in Takoradi. Quoted by the operations team."
+        lede="Nii Plants has hired cars to organisations in Ghana since 2007. GTA award-winning Accra hire, Kotoka meet-and-greet, and hotel desks at Alisa North Ridge and in Takoradi. Quoted by the operations team in Ghana cedis."
         breadcrumbs={[
           { name: "Home", href: "/" },
           { name: "Corporate" },
@@ -90,6 +91,9 @@ export default function CorporatePage() {
           </div>
           <EnquiryForm serviceType="corporate" submitLabel="Request corporate mobility" />
         </div>
+      </Section>
+      <Section className="pt-0 pb-20" reveal>
+        <ClienteleLogos heading="Clientele" />
       </Section>
     </main>
   );

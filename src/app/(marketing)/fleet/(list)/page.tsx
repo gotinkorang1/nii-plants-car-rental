@@ -6,6 +6,7 @@ import { FleetFilters } from "@/components/fleet/fleet-filters";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { PageBanner } from "@/components/marketing/page-banner";
 import { PAGE_SEO } from "@/lib/content/company";
+import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
 import {
@@ -63,7 +64,7 @@ export default async function FleetPage({ searchParams }: FleetPageProps) {
         image={marketingImages.driving}
         eyebrow="Car hire fleet, Accra"
         title="Cars to hire in Accra: saloons, SUVs, 4x4s and coaches"
-        lede="You book a representative model or similar, not a registration plate. Staff assign the physical car. Catalogue rates are in US dollars, matching the live shop. Online reservation payments are in Ghana cedis."
+        lede={COPY.fleetLede}
         breadcrumbs={[
           { name: "Home", href: "/" },
           { name: "Fleet" },
