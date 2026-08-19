@@ -310,6 +310,12 @@ export function VehicleModelForm({
           </div>
         </section>
       ) : null}
+      {!lookupEnabled && !contentOnly && !defaults ? (
+        <p className="rounded-lg border border-border bg-muted/40 px-3 py-2 text-sm text-muted-foreground">
+          Vehicle database lookup is not configured on this deployment. Enter
+          the vehicle manually.
+        </p>
+      ) : null}
 
       {provenance ? (
         <div className="rounded-lg border border-border bg-muted/40 px-3 py-2 text-sm">

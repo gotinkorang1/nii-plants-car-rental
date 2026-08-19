@@ -24,7 +24,7 @@ The OpenAPI description is published at `https://cardatabase.dev/swagger/swagger
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `CARDATABASE_API_KEY` | no | Server-only key. Without it the lookup UI is hidden and manual model creation is unaffected. |
+| `CARDATABASE_API_KEY` | no | Server-only key. Without it the lookup UI is hidden and manual model creation is unaffected. `CAR_DATABASE_API_KEY` is accepted as an alias. |
 | `CARDATABASE_BASE_URL` | no | Override the API origin. Image URLs are only accepted on this origin. |
 | `CARDATABASE_IMAGE_IMPORT_ENABLED` | no | Set to `1` to allow copying provider images into Supabase Storage. See "Image rights" below. |
 | `CARDATABASE_MOCK` | no | Serve fixture vehicles instead of calling the provider. Refused in production by `src/lib/env/guards.ts`. |

@@ -3,6 +3,7 @@ import "server-only";
 import { z } from "zod";
 
 import { asOptionalString } from "@/lib/env";
+import { readCardatabaseApiKey } from "@/lib/env/cardatabase-key";
 import {
   assertPreviewEnvironmentSafety,
   assertProductionEnvironmentSafety,
@@ -34,7 +35,7 @@ function readServerEnv(): ServerEnv {
     RESEND_API_KEY: asOptionalString(process.env.RESEND_API_KEY),
     EMAIL_FROM: asOptionalString(process.env.EMAIL_FROM),
     CRON_SECRET: asOptionalString(process.env.CRON_SECRET),
-    CARDATABASE_API_KEY: asOptionalString(process.env.CARDATABASE_API_KEY),
+    CARDATABASE_API_KEY: readCardatabaseApiKey(),
     CARDATABASE_BASE_URL: asOptionalString(process.env.CARDATABASE_BASE_URL),
     CARDATABASE_IMAGE_IMPORT_ENABLED: asOptionalString(
       process.env.CARDATABASE_IMAGE_IMPORT_ENABLED,
