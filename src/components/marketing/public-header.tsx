@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { Button } from "@/components/ui/button";
 import { COMPANY } from "@/lib/content/company";
 import {
@@ -99,24 +100,9 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
         <Link
           href="/"
-          className="group flex min-w-0 flex-col justify-center leading-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          className="group flex min-w-0 items-center focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
         >
-          <span
-            className={cn(
-              "font-heading text-lg tracking-tight",
-              homeTop ? "text-white" : "text-foreground",
-            )}
-          >
-            Nii Plants
-          </span>
-          <span
-            className={cn(
-              "mt-0.5 text-[0.65rem] tracking-[0.18em] uppercase",
-              homeTop ? "text-white/70" : "text-muted-foreground",
-            )}
-          >
-            Car Rentals
-          </span>
+          <BrandLogo className="h-11 w-auto sm:h-12" />
         </Link>
         <nav
           aria-label="Primary"
@@ -267,8 +253,8 @@ export function PublicFooter({ contact }: { contact: PublicContact }) {
       <div className="h-0.5 w-full bg-[linear-gradient(90deg,transparent,var(--accent),transparent)]" />
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4 sm:px-6">
         <div>
-          <p className="font-heading text-lg">Nii Plants</p>
-          <p className="mt-1 text-xs tracking-[0.18em] text-muted-foreground uppercase">
+          <BrandLogo className="h-16 w-auto" />
+          <p className="mt-2 text-xs tracking-[0.18em] text-muted-foreground uppercase">
             {COMPANY.tagline}
           </p>
           <p className="mt-3 text-sm text-muted-foreground">

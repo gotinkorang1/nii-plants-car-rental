@@ -5,6 +5,7 @@ import { useId, useRef } from "react";
 
 import { AdminNav } from "@/components/admin/admin-nav";
 import { LogoutButton } from "@/components/admin/logout-button";
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { Button } from "@/components/ui/button";
 import { STAFF_ROLE_LABELS, type StaffRole } from "@/lib/auth/roles";
 
@@ -44,10 +45,10 @@ export function AdminShell({
 
       <div className="lg:grid lg:grid-cols-[16rem_1fr]">
         <aside className="hidden min-h-screen border-r border-sidebar-border bg-sidebar px-4 py-6 lg:block">
-          <p className="px-3 text-sm font-medium tracking-wide text-primary uppercase">
-            Nii Plants
-          </p>
-          <p className="mt-1 px-3 text-xs text-muted-foreground">Staff console</p>
+          <div className="px-3">
+            <BrandLogo className="h-12 w-auto" />
+            <p className="mt-2 text-xs text-muted-foreground">Staff console</p>
+          </div>
           <div className="mt-8">
             <AdminNav role={staff.role} />
           </div>

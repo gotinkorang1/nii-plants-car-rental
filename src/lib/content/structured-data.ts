@@ -24,6 +24,8 @@ export function autoRentalJsonLd(input?: {
     name: COMPANY.brandName,
     legalName: COMPANY.legalName,
     url,
+    logo: siteUrl("/brand/nii-plants-logo.png"),
+    image: siteUrl("/brand/nii-plants-logo.png"),
     telephone: input?.telephone || COMPANY.telephoneDisplay,
     email: input?.email || COMPANY.email,
     description:
