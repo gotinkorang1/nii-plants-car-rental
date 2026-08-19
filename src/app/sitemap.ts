@@ -25,6 +25,8 @@ const staticPaths = [
   "/help/requirements",
   "/help/faqs",
   "/contact",
+  "/privacy",
+  "/terms",
   "/book",
 ];
 

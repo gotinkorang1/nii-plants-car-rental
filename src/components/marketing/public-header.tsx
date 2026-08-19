@@ -12,6 +12,7 @@ import {
   isPublicNavCurrent,
   PUBLIC_FOOTER_BOOK_LINKS,
   PUBLIC_FOOTER_EXPLORE_LINKS,
+  PUBLIC_FOOTER_LEGAL_LINKS,
   PUBLIC_PRIMARY_LINKS,
 } from "@/lib/content/public-nav";
 import { cn } from "@/lib/utils";
@@ -348,6 +349,25 @@ export function PublicFooter({ contact }: { contact: PublicContact }) {
               ))}
             </ul>
           ) : null}
+        </div>
+      </div>
+      <div className="border-t border-border/70">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-5 gap-y-2 px-4 py-4 text-sm sm:px-6">
+          <p className="text-muted-foreground">
+            © {COMPANY.foundedYear}–{new Date().getFullYear()} {COMPANY.legalName}
+          </p>
+          <ul className="flex flex-wrap gap-x-4 gap-y-1 sm:ms-auto">
+            {PUBLIC_FOOTER_LEGAL_LINKS.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

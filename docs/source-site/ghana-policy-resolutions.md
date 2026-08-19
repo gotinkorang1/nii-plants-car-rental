@@ -126,7 +126,7 @@ Treat USD cards as **reference tourist rates from August 2026**, not as GHS:
 - Outside Accra daily = **high** end.
 - Kia Pegas / Hyundai Accent: **USD 65 / day** Accra (no range published).
 
-**Do not convert those USD figures to GHS in code or CMS.** Finance enters pesewa rates. Until then, public cards say “quote on request”.
+**Do not invent a new FX rate.** Seed/dev booking floors use the documented `USD_GHS_BOOKING_RATE` in `src/lib/money/usd.ts` (Bank of Ghana selling rate about GH¢11 per USD on 18 August 2026) times the published USD floor, stored as pesewas on the vehicle class. Public cards show that Ghana cedi class rate when it is greater than zero; USD bands stay a catalogue reference. Finance should still confirm live tariffs in `/admin/rates`. Van/coach online self-drive stays quote-on-request (`defaultDailyRate` 0).
 
 **Not on /fleet until added in admin:** Hyundai Tucson Luxury, VB Land Cruiser, Hyundai H1, pickups, cargo trucks, earth-moving.
 
@@ -180,15 +180,16 @@ Foreign visitors: passport + home licence; IDP recommended.
 
 ## 10. Still unset (do not guess)
 
-- GHS daily rates and outside-Accra GHS add-on  
-- Security-deposit pesewas by class  
-- Cancellation-fee pesewas inside 48 hours  
-- Whether +233 55 255 7324 is WhatsApp  
-- Whether hotel desks still operate  
-- Whether 2016–2018 units remain on the public grid after GTA age review  
-- Permission to show third-party client logos  
+- Live GHS tariffs if finance changes them after seed (`USD_GHS_BOOKING_RATE` floors are a documented starting point, not a locked public price list)
+- Outside-Accra GHS add-on as a separate published figure
+- Security-deposit pesewas **on public pages** (class deposits may exist in admin/seed for quotes; do not invent a public GH₵ amount)
+- Cancellation-fee pesewas inside 48 hours (copy states a fee applies; staff apply it until finance sets a figure)
+- Whether +233 55 255 7324 is WhatsApp
+- Whether hotel desks still operate
+- Whether 2016–2018 units remain on the public grid after GTA age review
+- Permission to show third-party client logos beyond files already in `public/images/clientele`
 
-Those stay unset on the website until a person at Nii Plants types them in. Public fleet cards show “quote on request” rather than GH₵0.00.
+Public fleet cards show the class Ghana cedi booking rate when `defaultDailyRate` is greater than zero; otherwise “quote on request”. Do not show GH₵0.00.
 
 ---
 

@@ -86,6 +86,20 @@ test.describe("public marketing site", () => {
     await expectNoSeriousA11yViolations(page, "contact");
   });
 
+  test("privacy and hire terms pages are public", async ({ page }) => {
+    await page.goto("/privacy");
+    await expect(page.getByRole("heading", { name: "Privacy notice" })).toBeVisible();
+    await expect(page.locator("#main-content")).toContainText("Act 843");
+    await expect(page.getByRole("contentinfo").getByRole("link", { name: "Hire terms" })).toBeVisible();
+    await expectNoSeriousA11yViolations(page);
+
+    await page.goto("/terms");
+    await expect(page.getByRole("heading", { name: "Hire terms", exact: true })).toBeVisible();
+    await expect(page.getByText(/Cancel 48 hours or more/)).toBeVisible();
+    await expect(page.getByRole("contentinfo").getByRole("link", { name: "Privacy" })).toBeVisible();
+    await expectNoSeriousA11yViolations(page);
+  });
+
   test("unpublished CMS draft is not public", async ({ page }) => {
     const response = await page.goto("/internal-policy-draft");
     expect(response?.status()).toBe(404);

@@ -4,18 +4,23 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import type { StaffRole } from "@/lib/auth/roles";
+import { canManageRates } from "@/lib/availability/permissions";
 import { canViewBookings } from "@/lib/bookings/permissions";
+import { canViewCustomers } from "@/lib/customers/permissions";
+import { canViewEnquiries } from "@/lib/enquiries/permissions";
 import {
   canViewMaintenance,
   canViewOperations,
+  canViewSecurityDeposits,
 } from "@/lib/operations/permissions";
-import { canViewEnquiries } from "@/lib/enquiries/permissions";
 import { canViewPayments } from "@/lib/payments/permissions";
+import { canManageStaff } from "@/lib/staff/permissions";
 import { cn } from "@/lib/utils";
 
 export type AdminNavItem = {
   label: string;
   href?: string;
+  exact?: boolean;
   children?: AdminNavItem[];
   visible?: (role: StaffRole) => boolean;
 };
@@ -35,15 +40,20 @@ export const adminNavigation: AdminNavItem[] = [
   { label: "Availability", href: "/admin/availability" },
   {
     label: "Rates & Extras",
+    visible: canManageRates,
     children: [
-      { label: "Rates" },
+      { label: "Rates", href: "/admin/rates", exact: true },
       { label: "Extras", href: "/admin/rates/extras" },
       { label: "Promotions", href: "/admin/rates/promotions" },
     ],
   },
-  { label: "Customers" },
+  { label: "Customers", href: "/admin/customers", visible: canViewCustomers },
   { label: "Payments", href: "/admin/payments", visible: canViewPayments },
-  { label: "Security Deposits" },
+  {
+    label: "Security deposits",
+    href: "/admin/deposits",
+    visible: canViewSecurityDeposits,
+  },
   {
     label: "Operations",
     visible: canViewOperations,
@@ -63,7 +73,7 @@ export const adminNavigation: AdminNavItem[] = [
     ],
   },
   { label: "Settings", href: "/admin/settings/site" },
-  { label: "Staff" },
+  { label: "Staff", href: "/admin/staff", visible: canManageStaff },
 ];
 
 function NavItem({
@@ -77,8 +87,8 @@ function NavItem({
 }) {
   if (item.href) {
     const current =
-      item.href === "/admin"
-        ? pathname === "/admin"
+      item.exact || item.href === "/admin"
+        ? pathname === item.href
         : pathname === item.href || pathname.startsWith(`${item.href}/`);
 
     return (

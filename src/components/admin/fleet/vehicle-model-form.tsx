@@ -780,7 +780,15 @@ export function VehicleModelForm({
         <p className="text-sm text-muted-foreground">
           GHS daily rate and refundable security deposit come from the vehicle
           class. Published USD can be set on this model when it differs from the
-          class band. A vehicle database import never changes rates.
+          class band. A vehicle database import never changes rates. Edit every
+          class and model from the{" "}
+          <Link
+            href="/admin/rates"
+            className="text-accent underline-offset-2 hover:underline"
+          >
+            rates workbook
+          </Link>
+          .
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
           <Field label="Published USD / day from" htmlFor="usdDailyRateFrom">

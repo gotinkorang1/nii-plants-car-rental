@@ -153,13 +153,14 @@ export const PAGE_SEO = {
     description: COPY.heroSubheadline,
   },
   fleet: {
-    title: "Car Hire Fleet in Accra: Saloons, SUVs, 4x4s and Coaches",
+    title: "Car Hire Fleet Accra: Saloons, SUVs, 4x4s and Coaches",
     description:
       "Browse Nii Plants car hire in Accra. Compact and mid-size saloons, SUVs, Land Cruiser Prado, Hiace vans and a 30-seater Coaster. Book a model or similar.",
   },
   services: {
-    title: "Car Hire Services in Ghana | Self-Drive, Chauffeur, Airport",
-    description: COPY.servicesIntro,
+    title: "Car Hire in Ghana | Self-Drive, Chauffeur, Airport",
+    description:
+      "Self-drive books online. Chauffeur, Kotoka, long-term, events and corporate hire are quoted in Ghana cedis by the Accra team.",
   },
   selfDrive: {
     title: "Self-Drive Car Rental in Accra and Ghana",
@@ -199,7 +200,7 @@ export const PAGE_SEO = {
   contact: {
     title: "Contact Nii Plants in Dansoman, Accra",
     description:
-      "Call +233 59 383 5941, office +233 30 244 1805, or email info@niiplantsghana.com. Plantsville, Dansoman. Monday–Saturday 09:00–17:00. Kotoka pickup by arrangement.",
+      "Call +233 59 383 5941, office +233 30 244 1805, email info@niiplantsghana.com. Plantsville, Dansoman. Monday–Saturday 09:00–17:00. Kotoka pickup by arrangement.",
   },
   help: {
     title: "Car Rental Help in Ghana",
@@ -217,7 +218,7 @@ export const PAGE_SEO = {
       "Answers on Nii Plants booking, payments, Kotoka pickup, insurance, extra drivers, and free cancellation 48 hours before pickup.",
   },
   news: {
-    title: "News | Accra Car Rental Awards, Plantsville, Hotel Desks",
+    title: "News | Accra GTA Awards, Plantsville, Hotel Desks",
     description:
       "Nii Plants news: GTA car-rental awards in 2022 and 2024, the Plantsville office in Dansoman, and pickup at Alisa North Ridge and in Takoradi.",
   },
@@ -225,6 +226,16 @@ export const PAGE_SEO = {
     title: "Photo Gallery | Car Hire in Accra and Ghana",
     description:
       "Photos of Nii Plants self-drive, chauffeur cars, Kotoka handover, and the Plantsville desk in Dansoman, Accra.",
+  },
+  privacy: {
+    title: "Privacy | Accra Car Hire",
+    description:
+      "How Nii Plants in Dansoman uses booking data under Ghana's Data Protection Act, 2012 (Act 843).",
+  },
+  terms: {
+    title: "Hire Terms | Accra Car Rental",
+    description:
+      "Nii Plants hire rules: 48-hour cancel, Ghana-only use, drivers 25+, 24-hour self-drive days, chauffeur 10-hour days.",
   },
 } as const;
 

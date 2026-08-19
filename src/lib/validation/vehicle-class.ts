@@ -12,7 +12,7 @@ export const vehicleStatusSchema = z.enum([
   "inactive",
 ]);
 
-const ghsAmountSchema = z
+export const ghsAmountSchema = z
   .string()
   .trim()
   .min(1, "Enter an amount in GHS.")

@@ -1,15 +1,15 @@
 "use client";
 
-import { useActionState } from "react";
+import Link from "next/link";
+import { useActionState, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import type { ActionState } from "@/lib/fleet/action-helpers";
-import { pesewasToGhsInput } from "@/lib/money";
 import { slugify } from "@/lib/fleet/slug";
-import { useState } from "react";
+import { pesewasToGhsInput } from "@/lib/money";
 
 const selectClassName =
   "h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50";
@@ -155,6 +155,11 @@ export function VehicleClassForm({
       <p className="text-xs text-muted-foreground">
         Shop catalogue prices are USD. Booking still uses the GHS daily rate
         (Paystack). Leave USD blank if this class has no published dollar band.
+        Finance can edit every class and model on the{" "}
+        <Link href="/admin/rates" className="text-accent underline-offset-2 hover:underline">
+          rates workbook
+        </Link>
+        .
       </p>
       <label className="flex items-center gap-2 text-sm">
         <input

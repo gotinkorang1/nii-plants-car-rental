@@ -5,7 +5,7 @@ export const COPY = {
   heroEyebrow: "Car rental in Accra since 2007",
   heroHeadline: "Rent a car in Accra — self-drive or chauffeur",
   heroSubheadline:
-    "Saloons, SUVs, 4x4s and vans from Plantsville, Dansoman. Collect in Accra or at Kotoka International Airport. Ghana Tourism Authority car-rental awards in 2022 and 2024.",
+    "Saloons, SUVs, 4x4s and vans from Plantsville, Dansoman. Collect in Accra or at Kotoka. GTA car-rental awards in 2022 and 2024.",
   tagline: "Your key to mobility",
   positioning:
     "Ghanaian-owned car hire in Accra for self-drive, chauffeur, and airport pickup — reliable cars for travel inside Ghana.",
@@ -73,11 +73,11 @@ export const COPY = {
   ],
 
   fleetLede:
-    "You book a representative model or similar, not a registration plate. Staff assign the physical car. Catalogue cards may show US dollar reference rates from the previous shop; reservation payments on this site are in Ghana cedis. Lower figures are Accra metro self-drive; higher figures are outside Accra, where a range is shown.",
+    "You book a representative model or similar, not a registration plate. Staff assign the physical car. Cards show the Ghana cedi class booking rate when it is set. US dollar bands from the previous shop are a catalogue reference only (lower Accra metro, higher outside Accra). Reservation payments on this site are in Ghana cedis.",
   vehicleHireNote:
     "Hire this class in Accra as the named model or similar. Staff assign the physical car at pickup. Use stays inside Ghana.",
   catalogueRateNote:
-    "Catalogue rate in US dollars, matching the previous shop (Accra vs outside Accra). Online reservation payments are in Ghana cedis. Staff confirm the Ghana cedi total before you pay.",
+    "The Ghana cedi figure is the class booking rate used for online quotes. US dollar bands match the previous shop (Accra vs outside Accra) and are a catalogue reference only. Staff confirm the Ghana cedi total before you pay.",
 
   cancellation:
     "Cancel 48 hours or more before scheduled pickup for a refund of the reservation payment, minus any confirmed payment-processor fee. Cancel inside 48 hours and a cancellation fee applies. If you do not arrive and do not notify us, the reservation payment is forfeited. After pickup, unused days are not automatically refunded. Staff process cancellations; this website does not auto-refund.",

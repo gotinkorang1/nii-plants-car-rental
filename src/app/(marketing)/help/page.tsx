@@ -53,6 +53,16 @@ const topics = [
     title: "Support",
     body: "Call, WhatsApp, or email the Plantsville team in Dansoman.",
   },
+  {
+    href: "/privacy",
+    title: "Privacy",
+    body: "How we use booking data under Ghana's Data Protection Act, 2012 (Act 843).",
+  },
+  {
+    href: "/terms",
+    title: "Hire terms",
+    body: "48-hour cancellation, Ghana-only use, age 25+, and how hire days are charged.",
+  },
 ] as const;
 
 export default function HelpPage() {

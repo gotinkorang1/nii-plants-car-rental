@@ -36,8 +36,16 @@ test.describe("phase 10 authenticated admin accessibility", () => {
     await axeAdminRoute(page, "/admin/bookings", "Bookings");
   });
 
+  test("customers list", async ({ page }) => {
+    await axeAdminRoute(page, "/admin/customers", "Customers");
+  });
+
   test("payments list", async ({ page }) => {
     await axeAdminRoute(page, "/admin/payments", "Payments");
+  });
+
+  test("security deposits list", async ({ page }) => {
+    await axeAdminRoute(page, "/admin/deposits", "Security deposits");
   });
 
   test("enquiries list", async ({ page }) => {
@@ -52,8 +60,16 @@ test.describe("phase 10 authenticated admin accessibility", () => {
     await axeAdminRoute(page, "/admin/availability", "Availability");
   });
 
+  test("daily rates", async ({ page }) => {
+    await axeAdminRoute(page, "/admin/rates", "Daily rates");
+  });
+
   test("maintenance list", async ({ page }) => {
     await axeAdminRoute(page, "/admin/maintenance", "Maintenance");
+  });
+
+  test("staff list", async ({ page }) => {
+    await axeAdminRoute(page, "/admin/staff", "Staff");
   });
 
   test("booking detail and operations when records exist", async ({ page }) => {
@@ -90,6 +106,28 @@ test.describe("phase 10 authenticated admin accessibility", () => {
     }
     await paymentLink.click();
     await expect(page.getByRole("heading", { name: /Payment /i })).toBeVisible();
+    await expectNoSeriousA11yViolations(page, "admin");
+  });
+
+  test("customer detail when records exist", async ({ page }) => {
+    await page.goto("/admin/customers");
+    const customerLink = page.locator('main a[href^="/admin/customers/"]').first();
+    if ((await customerLink.count()) === 0) {
+      test.skip(true, "No customers in database for customer detail axe check.");
+    }
+    await customerLink.click();
+    await expect(page.getByRole("heading", { name: "Contact" })).toBeVisible();
+    await expectNoSeriousA11yViolations(page, "admin");
+  });
+
+  test("security deposit detail when records exist", async ({ page }) => {
+    await page.goto("/admin/deposits");
+    const depositLink = page.locator('main a[href^="/admin/deposits/"]').first();
+    if ((await depositLink.count()) === 0) {
+      test.skip(true, "No security deposits in database for deposit detail axe check.");
+    }
+    await depositLink.click();
+    await expect(page.getByRole("heading", { name: "Deposit record" })).toBeVisible();
     await expectNoSeriousA11yViolations(page, "admin");
   });
 

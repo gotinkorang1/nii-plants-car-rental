@@ -25,6 +25,11 @@ export const PUBLIC_FOOTER_BOOK_LINKS = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+export const PUBLIC_FOOTER_LEGAL_LINKS = [
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Hire terms" },
+] as const;
+
 export function isPublicNavCurrent(pathname: string, href: string): boolean {
   if (href === "/") {
     return pathname === "/";

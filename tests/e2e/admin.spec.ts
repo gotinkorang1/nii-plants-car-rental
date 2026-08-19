@@ -24,6 +24,10 @@ test.describe("admin authentication", () => {
     await expect(page).toHaveURL(/\/admin\/login/);
     await page.goto("/admin/settings/site");
     await expect(page).toHaveURL(/\/admin\/login/);
+    await page.goto("/admin/customers");
+    await expect(page).toHaveURL(/\/admin\/login/);
+    await page.goto("/admin/staff");
+    await expect(page).toHaveURL(/\/admin\/login/);
   });
 
   test("authenticated admin shell has no serious WCAG AA violations", async ({
@@ -63,8 +67,20 @@ test.describe("admin authentication", () => {
     await expect(page.getByRole("heading", { name: "Availability" })).toBeVisible();
     await expectNoSeriousA11yViolations(page, "admin");
 
+    await page.getByRole("navigation", { name: "Admin" }).getByRole("link", { name: "Rates", exact: true }).click();
+    await expect(page.getByRole("heading", { name: "Daily rates" })).toBeVisible();
+    await expectNoSeriousA11yViolations(page, "admin");
+
     await page.getByRole("link", { name: "Bookings" }).click();
     await expect(page.getByRole("heading", { name: "Bookings" })).toBeVisible();
+    await expectNoSeriousA11yViolations(page, "admin");
+
+    await page.getByRole("link", { name: "Customers" }).click();
+    await expect(page.getByRole("heading", { name: "Customers" })).toBeVisible();
+    await expectNoSeriousA11yViolations(page, "admin");
+
+    await page.getByRole("navigation", { name: "Admin" }).getByRole("link", { name: "Staff" }).click();
+    await expect(page.getByRole("heading", { name: "Staff" })).toBeVisible();
     await expectNoSeriousA11yViolations(page, "admin");
   });
 });

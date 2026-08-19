@@ -21,6 +21,8 @@ describe("reserved public slugs", () => {
     expect(isReservedPublicSlug("booking")).toBe(true);
     expect(isReservedPublicSlug("news")).toBe(true);
     expect(isReservedPublicSlug("gallery")).toBe(true);
+    expect(isReservedPublicSlug("privacy")).toBe(true);
+    expect(isReservedPublicSlug("terms")).toBe(true);
     expect(isReservedPublicSlug("admin/pages")).toBe(true);
   });
 

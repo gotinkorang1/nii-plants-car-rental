@@ -3,7 +3,12 @@ export function isAdminPath(pathname: string): boolean {
 }
 
 export function isPublicAdminPath(pathname: string): boolean {
-  return pathname === "/admin/login" || pathname.startsWith("/admin/login/");
+  return (
+    pathname === "/admin/login" ||
+    pathname.startsWith("/admin/login/") ||
+    pathname === "/admin/set-password" ||
+    pathname.startsWith("/admin/set-password/")
+  );
 }
 
 export function isProtectedAdminPath(pathname: string): boolean {

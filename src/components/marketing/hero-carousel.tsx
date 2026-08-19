@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CalendarCheck, Car } from "lucide-react";
 
+import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
 import type { MarketingImage } from "@/lib/content/marketing-images";
 import { Button } from "@/components/ui/button";
@@ -138,8 +139,7 @@ export function HeroCarousel({
                 : "translate-y-4 opacity-0",
             )}
           >
-            {subheadline ||
-              "Saloons, SUVs, 4x4s and vans from Plantsville, Dansoman. Collect in Accra or at Kotoka International Airport. Ghana Tourism Authority car-rental awards in 2022 and 2024."}
+            {subheadline || COPY.heroSubheadline}
           </p>
 
           {/* CTAs */}

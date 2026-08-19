@@ -159,7 +159,14 @@ export function carJsonLd(input: {
   if (input.imageUrl) {
     data.image = input.imageUrl;
   }
-  if (input.usdDailyRateFrom) {
+  if (input.dailyRatePesewas > 0) {
+    data.offers = {
+      "@type": "Offer",
+      priceCurrency: "GHS",
+      price: (input.dailyRatePesewas / 100).toFixed(2),
+      availability: "https://schema.org/InStock",
+    };
+  } else if (input.usdDailyRateFrom) {
     const to = input.usdDailyRateTo ?? input.usdDailyRateFrom;
     data.offers =
       to > input.usdDailyRateFrom
@@ -176,13 +183,6 @@ export function carJsonLd(input: {
             price: String(input.usdDailyRateFrom),
             availability: "https://schema.org/InStock",
           };
-  } else if (input.dailyRatePesewas > 0) {
-    data.offers = {
-      "@type": "Offer",
-      priceCurrency: "GHS",
-      price: (input.dailyRatePesewas / 100).toFixed(2),
-      availability: "https://schema.org/InStock",
-    };
   }
   return data;
 }

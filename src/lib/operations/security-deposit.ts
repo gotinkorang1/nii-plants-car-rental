@@ -8,11 +8,11 @@ import {
   rentalPickupChecklists,
   securityDeposits,
 } from "@/lib/db/schema";
-import type {
-  securityDepositCollectionMethodEnum,
-  securityDepositStatusEnum,
-} from "@/lib/db/schema/enums";
 import { auditOperationsEvent } from "@/lib/operations/audit";
+import {
+  deriveDepositStatus,
+  type SecurityDepositCollectionMethod,
+} from "@/lib/operations/deposit-status";
 import { OperationsError } from "@/lib/operations/errors";
 import {
   ensurePickupChecklist,
@@ -20,8 +20,7 @@ import {
 } from "@/lib/operations/prepare-booking";
 import { lockOperationalBooking } from "@/lib/operations/allocation-transitions";
 
-type DepositStatus = (typeof securityDepositStatusEnum.enumValues)[number];
-type CollectionMethod = (typeof securityDepositCollectionMethodEnum.enumValues)[number];
+type CollectionMethod = SecurityDepositCollectionMethod;
 
 export async function savePickupChecklist(input: {
   bookingId: string;
@@ -64,19 +63,6 @@ export async function savePickupChecklist(input: {
       })
       .where(eq(rentalPickupChecklists.bookingId, booking.id));
   });
-}
-
-function deriveDepositStatus(required: number, collected: number): DepositStatus {
-  if (required <= 0) {
-    return "not_required";
-  }
-  if (collected <= 0) {
-    return "required";
-  }
-  if (collected < required) {
-    return "partially_collected";
-  }
-  return "collected";
 }
 
 export async function recordSecurityDepositCollection(input: {
