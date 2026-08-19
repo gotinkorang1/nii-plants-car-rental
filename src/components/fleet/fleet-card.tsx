@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Armchair, Cog, Droplets, Eye, Snowflake } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -50,13 +51,13 @@ export function FleetCard({ model }: { model: PublicVehicleModel }) {
           <p className="mt-1 text-sm text-muted-foreground">or similar</p>
         </div>
         <ul className="flex flex-wrap gap-2 text-xs">
-          <SpecChip>{model.seats} seats</SpecChip>
-          <SpecChip className="capitalize">{model.transmission}</SpecChip>
-          <SpecChip className="capitalize">
+          <SpecChip icon={<Armchair className="size-3.5" />}>{model.seats} seats</SpecChip>
+          <SpecChip icon={<Cog className="size-3.5" />} className="capitalize">{model.transmission}</SpecChip>
+          <SpecChip icon={<Droplets className="size-3.5" />} className="capitalize">
             {model.fuelType.replace("_", " ")}
           </SpecChip>
-          <SpecChip>
-            {model.airConditioning ? "Air conditioning" : "No A/C"}
+          <SpecChip icon={<Snowflake className="size-3.5" />}>
+            {model.airConditioning ? "A/C" : "No A/C"}
           </SpecChip>
         </ul>
         <p className="mt-auto text-sm">
@@ -70,7 +71,10 @@ export function FleetCard({ model }: { model: PublicVehicleModel }) {
         </p>
         <div className="flex gap-2">
           <Button asChild variant="outline" className="h-11 flex-1 text-sm">
-            <Link href={`/fleet/${model.slug}`}>View vehicle</Link>
+            <Link href={`/fleet/${model.slug}`}>
+              <Eye className="size-4" />
+              View
+            </Link>
           </Button>
           <Button asChild className="h-11 flex-1 text-sm">
             <Link href={`/book?vehicle=${model.slug}`}>Book a Vehicle</Link>
@@ -84,9 +88,11 @@ export function FleetCard({ model }: { model: PublicVehicleModel }) {
 function SpecChip({
   children,
   className,
+  icon,
 }: {
   children: React.ReactNode;
   className?: string;
+  icon?: React.ReactNode;
 }) {
   return (
     <li>
@@ -94,9 +100,11 @@ function SpecChip({
         variant="secondary"
         className={cn(
           "h-auto rounded-full px-2.5 py-1 font-normal text-muted-foreground",
+          icon && "flex items-center gap-1",
           className,
         )}
       >
+        {icon}
         {children}
       </Badge>
     </li>

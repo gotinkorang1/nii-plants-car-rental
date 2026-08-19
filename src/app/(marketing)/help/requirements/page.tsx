@@ -38,9 +38,9 @@ export default async function RequirementsPage() {
       ]}
       compact
     />
-    <Section className="pt-10">
+    <Section className="pt-10" reveal>
       <SectionHeading title="Bring these to pickup" />
-      <ol className="mt-4 grid gap-3 sm:grid-cols-2">
+      <ol className="reveal-stagger mt-4 grid gap-3 sm:grid-cols-2">
         {pickupChecklist.map((item, index) => (
           <li
             key={item}

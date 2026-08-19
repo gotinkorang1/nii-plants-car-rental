@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { CalendarCheck, Car } from "lucide-react";
 
 import { marketingImages } from "@/lib/content/marketing-images";
 import type { MarketingImage } from "@/lib/content/marketing-images";
@@ -155,7 +156,10 @@ export function HeroCarousel({
               size="lg"
               className="h-12 px-6 text-base shadow-lg shadow-primary/20"
             >
-              <Link href="/book">Book a Vehicle</Link>
+              <Link href="/book">
+                <CalendarCheck className="size-5" />
+                Book a Vehicle
+              </Link>
             </Button>
             <Button
               asChild
@@ -163,7 +167,10 @@ export function HeroCarousel({
               variant="outline"
               className="h-12 px-6 text-base border-white/30 bg-white/10 text-white shadow-lg shadow-black/10 backdrop-blur-sm hover:bg-white/20 hover:text-white"
             >
-              <Link href="/fleet">View the fleet</Link>
+              <Link href="/fleet">
+                <Car className="size-5" />
+                View the fleet
+              </Link>
             </Button>
           </div>
         </div>

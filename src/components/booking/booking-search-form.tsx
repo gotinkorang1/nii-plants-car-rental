@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useState, type ReactNode } from "react";
+import { LogIn, LogOut as LogOutIcon } from "lucide-react";
 
 import { searchAvailabilityAction } from "@/lib/booking/actions";
 import {
@@ -143,10 +144,18 @@ export function BookingSearchForm({
       <Button
         type="submit"
         size="lg"
-        className={cn("h-11 w-full px-5", !compact && "sm:w-auto")}
+        className={cn("h-11 w-full px-5 transition-all duration-300", !compact && "sm:w-auto")}
         disabled={pending}
       >
-        {pending ? "Checking availability..." : submitLabel}
+        {pending ? (
+          <span className="flex items-center gap-2">
+            <svg className="size-4 animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+            Checking…
+          </span>
+        ) : submitLabel}
       </Button>
     </div>
   );
@@ -154,13 +163,16 @@ export function BookingSearchForm({
   return (
     <Card
       className={cn(
-        "relative gap-0 overflow-hidden rounded-2xl py-0 text-base ring-border",
+        "relative gap-0 overflow-hidden rounded-2xl py-0 text-base ring-border transition-shadow duration-300",
         compact
           ? "shadow-[0_20px_50px_rgba(24,26,24,0.16)]"
           : "shadow-[0_12px_32px_rgba(24,26,24,0.08)]",
       )}
     >
       <span className="absolute inset-x-0 top-0 h-0.5 bg-accent" aria-hidden />
+      {pending ? (
+        <div className="absolute inset-0 z-10 flex items-center justify-center rounded-2xl bg-background/60 backdrop-blur-[2px] transition-opacity duration-300" aria-hidden />
+      ) : null}
       <CardContent className="p-4 sm:p-5">
     <form
       action={formAction}
@@ -227,7 +239,8 @@ export function BookingSearchForm({
       ) : (
         <div className="space-y-4">
           <fieldset className="grid gap-3 rounded-xl bg-muted/50 p-3 ring-1 ring-border/70 sm:grid-cols-3">
-            <legend className="px-1 text-[0.7rem] font-medium tracking-[0.16em] text-primary uppercase">
+            <legend className="flex items-center gap-1.5 px-1 text-[0.7rem] font-medium tracking-[0.16em] text-primary uppercase">
+              <LogIn className="size-3.5" />
               Collect
             </legend>
             {pickupLocation}
@@ -235,7 +248,8 @@ export function BookingSearchForm({
             {pickupTime}
           </fieldset>
           <fieldset className="grid gap-3 rounded-xl bg-muted/50 p-3 ring-1 ring-border/70 sm:grid-cols-3">
-            <legend className="px-1 text-[0.7rem] font-medium tracking-[0.16em] text-primary uppercase">
+            <legend className="flex items-center gap-1.5 px-1 text-[0.7rem] font-medium tracking-[0.16em] text-primary uppercase">
+              <LogOutIcon className="size-3.5" />
               Return
             </legend>
             {returnLocation}

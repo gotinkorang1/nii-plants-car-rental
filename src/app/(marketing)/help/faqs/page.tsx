@@ -51,7 +51,7 @@ export default async function FaqsPage() {
         ]}
         compact
       />
-      <Section className="pt-10">
+      <Section className="pt-10" reveal>
         {grouped.length > 1 ? (
           <nav aria-label="FAQ topics" className="mt-8">
             <ul className="flex flex-wrap gap-2">

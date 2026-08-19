@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Armchair, Briefcase, Cog, Snowflake } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -22,8 +23,12 @@ export function AvailabilityResults({
 
   return (
     <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-      {models.map((model) => (
-        <li key={model.modelId}>
+      {models.map((model, index) => (
+        <li
+          key={model.modelId}
+          className="animate-booking-enter"
+          style={{ animationDelay: `${index * 100}ms` }}
+        >
           <article
             className={cn(
               "group flex h-full flex-col overflow-hidden rounded-2xl bg-card ring-1 ring-border",
@@ -63,23 +68,27 @@ export function AvailabilityResults({
               </div>
               <ul className="flex flex-wrap gap-2 text-xs">
                 <li>
-                  <Badge variant="secondary" className="h-auto rounded-full px-2.5 py-1 font-normal text-muted-foreground">
+                  <Badge variant="secondary" className="flex h-auto items-center gap-1 rounded-full px-2.5 py-1 font-normal text-muted-foreground">
+                    <Armchair className="size-3.5" />
                     {model.seats} seats
                   </Badge>
                 </li>
                 <li>
-                  <Badge variant="secondary" className="h-auto rounded-full px-2.5 py-1 font-normal text-muted-foreground capitalize">
+                  <Badge variant="secondary" className="flex h-auto items-center gap-1 rounded-full px-2.5 py-1 font-normal capitalize text-muted-foreground">
+                    <Cog className="size-3.5" />
                     {model.transmission}
                   </Badge>
                 </li>
                 <li>
-                  <Badge variant="secondary" className="h-auto rounded-full px-2.5 py-1 font-normal text-muted-foreground">
+                  <Badge variant="secondary" className="flex h-auto items-center gap-1 rounded-full px-2.5 py-1 font-normal text-muted-foreground">
+                    <Briefcase className="size-3.5" />
                     {model.luggage} luggage
                   </Badge>
                 </li>
                 <li>
-                  <Badge variant="secondary" className="h-auto rounded-full px-2.5 py-1 font-normal text-muted-foreground">
-                    {model.airConditioning ? "Air conditioning" : "No A/C"}
+                  <Badge variant="secondary" className="flex h-auto items-center gap-1 rounded-full px-2.5 py-1 font-normal text-muted-foreground">
+                    <Snowflake className="size-3.5" />
+                    {model.airConditioning ? "A/C" : "No A/C"}
                   </Badge>
                 </li>
               </ul>

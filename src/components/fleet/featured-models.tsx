@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import { FleetCard } from "@/components/fleet/fleet-card";
 import { SectionHeading } from "@/components/marketing/page-intro";
@@ -21,12 +22,13 @@ export function FeaturedModels({
         id="featured-vehicles-heading"
         title={title}
         action={
-          <Link href="/fleet" className="text-sm font-medium text-primary hover:underline">
+          <Link href="/fleet" className="flex items-center gap-1 text-sm font-medium text-primary hover:underline">
             All vehicles
+            <ArrowRight className="size-3.5" />
           </Link>
         }
       />
-      <ul className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      <ul className="reveal-stagger mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {models.map((model) => (
           <li key={model.id}>
             <FleetCard model={model} />

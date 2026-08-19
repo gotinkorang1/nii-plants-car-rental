@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { CalendarCheck, Menu, X } from "lucide-react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -166,9 +166,6 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
               <a href={whatsappHref(contact.whatsapp)}>WhatsApp</a>
             </Button>
           ) : null}
-          <Button asChild size="sm">
-            <Link href="/book">Book a Vehicle</Link>
-          </Button>
           <Button
             ref={menuButtonRef}
             type="button"
@@ -245,6 +242,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                 ) : null}
                 <Button asChild size="lg" className="mt-1">
                   <Link href="/book" onClick={closeMenu}>
+                    <CalendarCheck className="size-4" />
                     Book a Vehicle
                   </Link>
                 </Button>

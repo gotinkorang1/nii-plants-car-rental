@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CalendarCheck, MessageCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -38,7 +39,10 @@ export function CtaPanel({
         </div>
         <div className="flex flex-wrap gap-2">
           <Button asChild size="lg" variant="secondary" className="h-11 px-4">
-            <Link href={primaryHref}>{primaryLabel}</Link>
+            <Link href={primaryHref}>
+              <CalendarCheck className="size-4" />
+              {primaryLabel}
+            </Link>
           </Button>
           <Button
             asChild
@@ -46,7 +50,10 @@ export function CtaPanel({
             variant="outline"
             className="h-11 px-4 border-white/35 bg-transparent text-primary-foreground hover:bg-white/10 hover:text-primary-foreground"
           >
-            <Link href={secondaryHref}>{secondaryLabel}</Link>
+            <Link href={secondaryHref}>
+              <MessageCircle className="size-4" />
+              {secondaryLabel}
+            </Link>
           </Button>
         </div>
       </div>

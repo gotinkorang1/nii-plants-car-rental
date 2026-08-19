@@ -67,7 +67,7 @@ export function ServicePage({
         )}
       </PageBanner>
       {form ? (
-        <Section className="pt-0">
+        <Section className="pt-0" reveal>
           <div className="rounded-xl border border-border/80 bg-muted/40 px-4 py-3 text-sm text-muted-foreground">
             Request a quote — our team reviews every enquiry. This is not an instant
             booking confirmation.
@@ -107,9 +107,9 @@ export function ServicePage({
         </Section>
       ) : (
         <>
-      <Section className="pt-0">
+      <Section className="pt-0" reveal>
         <SectionHeading title="What this is for" />
-        <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+        <ul className="reveal-stagger mt-6 grid gap-4 sm:grid-cols-2">
           {benefits.map((item) => (
             <li
               key={item.title}
@@ -121,9 +121,9 @@ export function ServicePage({
           ))}
         </ul>
       </Section>
-      <Section className="pt-0">
+      <Section className="pt-0" reveal>
         <SectionHeading title="How it works" />
-        <ol className="mt-6 grid gap-4 sm:grid-cols-3">
+        <ol className="reveal-stagger mt-6 grid gap-4 sm:grid-cols-3">
           {steps.map((item, index) => (
             <li key={item.title} className="overflow-hidden rounded-2xl bg-card ring-1 ring-border">
               <span className="block h-0.5 bg-accent" aria-hidden />
@@ -140,7 +140,7 @@ export function ServicePage({
       </Section>
         </>
       )}
-      <Section className="pt-0">
+      <Section className="pt-0" reveal>
         <SectionHeading title="Questions" />
         <div className="mt-6">
           <FaqList items={faqs} />

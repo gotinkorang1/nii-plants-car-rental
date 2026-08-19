@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageBanner } from "@/components/marketing/page-banner";
 import { Section, SectionHeading } from "@/components/marketing/page-intro";
-import { OsmMapEmbed } from "@/components/maps/osm-map-embed";
+import { GoogleMapEmbed } from "@/components/maps/google-map-embed";
 import { COMPANY, PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublicLocations } from "@/lib/content/queries";
@@ -53,7 +53,7 @@ export default async function ContactPage() {
           { name: "Contact" },
         ]}
       />
-      <Section className="pt-10">
+      <Section className="pt-10" reveal>
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="space-y-5">
             <ContactDesk contact={contact} />
@@ -84,7 +84,7 @@ export default async function ContactPage() {
         </div>
       </Section>
       {mappedLocations.length > 0 ? (
-        <Section className="pt-0 pb-20">
+        <Section className="pt-0 pb-20" reveal>
           <SectionHeading title="Pickup locations" />
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
             Maps use OpenStreetMap. Plantsville is shown at the Dansoman
@@ -98,7 +98,7 @@ export default async function ContactPage() {
           <ul className="mt-8 grid gap-6 lg:grid-cols-2">
             {mappedLocations.map((location) => (
               <li key={location.id}>
-                <OsmMapEmbed
+                <GoogleMapEmbed
                   name={location.name}
                   type={location.type}
                   latitude={location.latitude}

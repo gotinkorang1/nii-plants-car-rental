@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" aria-label="Nii Plants Car Rental">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Oswald:wght@700&amp;display=swap");
+      .brand {
+        font-family: Oswald, "Arial Narrow", sans-serif;
+        font-weight: 700;
+        font-size: 92px;
+        letter-spacing: 0.045em;
+        fill: #f07a28;
+      }
+      .tag {
+        font-family: "Great Vibes", cursive;
+        font-size: 78px;
+        fill: #f4f4f4;
+        stroke: #111111;
+        stroke-width: 1.8;
+        paint-order: stroke fill;
+      }
+    </style>
+    <path
+      id="shield"
+      d="M500 28
+         C560 30 690 78 800 148
+         C890 206 950 258 950 348
+         C950 448 938 580 916 700
+         C888 830 710 918 500 934
+         C290 918 112 830 84 700
+         C62 580 50 448 50 348
+         C50 258 110 206 200 148
+         C310 78 440 30 500 28Z"
+    />
+    <clipPath id="face">
+      <use href="#shield" />
+    </clipPath>
+  </defs>
+
+  <use href="#shield" fill="#111111" />
+  <g clip-path="url(#face)">
+    <rect width="1000" height="980" fill="#ffffff" />
+    <rect x="0" y="486" width="1000" height="500" fill="#211f20" />
+
+    <g fill="#111111" stroke="#111111" stroke-linecap="round" stroke-linejoin="round" transform="translate(500 300)">
+      <path
+        d="M-250 22
+           C-200 4 -145 -18 -100 -42
+           C-55 -66 -10 -78 50 -80
+           C120 -82 175 -62 228 -18
+           L258 -28 L276 -8 L248 8
+           C200 -28 145 -56 50 -58
+           C-8 -56 -52 -46 -92 -24
+           C-138 0 -190 18 -246 34
+           C-250 30 -252 26 -250 22Z"
+      />
+      <path
+        d="M-175 28
+           C-110 8 -30 -12 70 -28
+           C62 -16 52 -12 38 -8
+           C-50 8 -120 28 -170 42
+           C-176 36 -178 32 -175 28Z"
+      />
+      <path
+        d="M-155 52
+           C-85 36 5 16 110 2
+           C102 14 92 18 78 22
+           C-18 36 -90 54 -150 64
+           C-156 58 -158 54 -155 52Z"
+      />
+      <path
+        d="M-230 64
+           C-130 78 -20 80 130 68
+           C200 62 235 58 248 60
+           C250 70 246 78 234 80
+           C200 86 130 92 -20 92
+           C-130 90 -210 80 -232 72
+           C-236 70 -234 66 -230 64Z"
+      />
+      <path stroke-width="10" fill="none" d="M-262 16 L-262 58" />
+      <path stroke-width="8" fill="none" d="M200 6 L222 28" />
+      <path stroke-width="7" fill="none" d="M216 -4 L240 22" />
+      <circle cx="-148" cy="96" r="31" fill="#ffffff" stroke-width="12" />
+      <circle cx="-148" cy="96" r="7" />
+      <circle cx="152" cy="96" r="33" fill="#ffffff" stroke-width="12" />
+      <circle cx="152" cy="96" r="7.5" />
+    </g>
+  </g>
+
+  <use href="#shield" fill="none" stroke="#111111" stroke-width="12" />
+
+  <text class="brand" x="500" y="640" text-anchor="middle">NII PLANTS</text>
+  <rect x="318" y="668" width="364" height="4" rx="2" fill="#d9d9d9" />
+  <text class="tag" x="500" y="756" text-anchor="middle">Car Rental</text>
+</svg>

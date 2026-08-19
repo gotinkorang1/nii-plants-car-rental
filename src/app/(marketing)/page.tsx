@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Building2, Plane } from "lucide-react";
 
 import { BookingSearchWidget } from "@/components/marketing/booking-search-widget";
 import { CtaPanel } from "@/components/marketing/cta-panel";
@@ -126,7 +127,7 @@ export default async function HomePage() {
 
       <Section className="pt-0" reveal>
         <SectionHeading title="Car hire services in Ghana" />
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((item) => (
             <li key={item.href}>
               <ServiceCard
@@ -177,7 +178,10 @@ export default async function HomePage() {
               run until 23:00 by arrangement.
             </p>
             <Button asChild variant="outline" className="mt-4">
-              <Link href="/services/airport-transfer">Airport transfers</Link>
+              <Link href="/services/airport-transfer">
+                <Plane className="size-4" />
+                Airport transfers
+              </Link>
             </Button>
           </div>
         </div>
@@ -200,7 +204,10 @@ export default async function HomePage() {
               airport meet-and-greet.
             </p>
             <Button asChild variant="secondary" className="mt-6 h-11 w-fit px-4">
-              <Link href="/corporate">Request corporate mobility</Link>
+              <Link href="/corporate">
+                <Building2 className="size-4" />
+                Request corporate mobility
+              </Link>
             </Button>
           </div>
         </div>

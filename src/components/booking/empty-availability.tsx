@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CalendarDays, MessageCircle, Phone } from "lucide-react";
 
 import { BookingSearchForm } from "@/components/booking/booking-search-form";
 import { DeskPanel } from "@/components/marketing/desk-panel";
@@ -28,16 +29,25 @@ export function EmptyAvailability({
       <div className="mt-6 flex flex-wrap gap-2">
         {phone ? (
           <Button asChild size="lg" className="h-11 px-4">
-            <a href={telHref(phone)}>Call</a>
+            <a href={telHref(phone)}>
+              <Phone className="size-4" />
+              Call
+            </a>
           </Button>
         ) : null}
         {whatsapp ? (
           <Button asChild variant="outline" size="lg" className="h-11 px-4">
-            <a href={whatsappHref(whatsapp)}>WhatsApp</a>
+            <a href={whatsappHref(whatsapp)}>
+              <MessageCircle className="size-4" />
+              WhatsApp
+            </a>
           </Button>
         ) : null}
         <Button asChild variant="outline" size="lg" className="h-11 px-4">
-          <Link href="/book">Change dates</Link>
+          <Link href="/book">
+            <CalendarDays className="size-4" />
+            Change dates
+          </Link>
         </Button>
       </div>
       <div className="mt-8">

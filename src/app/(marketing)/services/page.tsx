@@ -75,7 +75,7 @@ export default function ServicesPage() {
         ]}
       />
       <Section className="pt-10" reveal>
-        <ul className="grid gap-4 sm:grid-cols-2">
+        <ul className="reveal-stagger grid gap-4 sm:grid-cols-2">
           {items.map((item) => (
             <li key={item.href}>
               <ServiceCard

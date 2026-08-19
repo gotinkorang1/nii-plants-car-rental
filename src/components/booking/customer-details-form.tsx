@@ -145,8 +145,16 @@ export function CustomerDetailsForm({
 
       <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
         <QuoteReview price={price} />
-        <Button type="submit" size="lg" className="h-11 w-full" disabled={pending}>
-          {pending ? "Creating booking…" : "Create booking"}
+        <Button type="submit" size="lg" className="h-11 w-full transition-all duration-300" disabled={pending}>
+          {pending ? (
+            <span className="flex items-center gap-2">
+              <svg className="size-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+              Creating booking…
+            </span>
+          ) : "Create booking"}
         </Button>
       </aside>
     </form>

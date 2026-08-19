@@ -45,7 +45,7 @@ export default async function AboutPage() {
           { name: "About" },
         ]}
       />
-      <Section className="grid gap-8 pt-0 lg:grid-cols-2">
+      <Section className="reveal-stagger grid gap-8 pt-0 lg:grid-cols-2" reveal>
         <article>
           <MarketingPhoto
             image={marketingImages.office}
@@ -191,7 +191,7 @@ export default async function AboutPage() {
           </p>
         </article>
       </Section>
-      <Section className="pt-0">
+      <Section className="pt-0" reveal>
         <h2 className="font-heading text-2xl">Pickup points</h2>
         <p className="mt-3 max-w-2xl text-muted-foreground">
           Collect in Dansoman, at Kotoka International Airport, at Alisa Hotel

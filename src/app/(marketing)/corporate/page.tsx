@@ -68,7 +68,7 @@ export default function CorporatePage() {
           <Link href="/services/self-drive">Self-drive for staff trips</Link>
         </Button>
       </PageBanner>
-      <Section className="pt-0">
+      <Section className="pt-0" reveal>
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="space-y-6">
             <MarketingPhoto
@@ -76,7 +76,7 @@ export default function CorporatePage() {
               className="aspect-[16/10] rounded-2xl"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            <ul className="reveal-stagger grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             {items.map((item) => (
               <li
                 key={item.title}
