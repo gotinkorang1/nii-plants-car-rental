@@ -8,13 +8,13 @@ type BrandLogoProps = {
 
 export function BrandLogo({ className, decorative = false }: BrandLogoProps) {
   return (
-    // SVG keeps the shield, type, and car strokes sharp at any size.
+    // Official Nii Plants shield artwork.
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src="/brand/nii-plants-logo.svg"
+      src="/brand/nii-plants-logo.png"
       alt={decorative ? "" : "Nii Plants Car Rentals"}
-      width={100}
-      height={98}
+      width={1657}
+      height={1610}
       className={cn("h-12 w-auto", className)}
       decoding="async"
     />

@@ -4,11 +4,11 @@ import { describe, expect, it } from "vitest";
 import { BrandLogo } from "@/components/brand/brand-logo";
 
 describe("BrandLogo", () => {
-  it("renders the vector mark with an accessible name", () => {
+  it("renders the official mark with an accessible name", () => {
     render(<BrandLogo />);
     expect(
       screen.getByRole("img", { name: "Nii Plants Car Rentals" }),
-    ).toHaveAttribute("src", "/brand/nii-plants-logo.svg");
+    ).toHaveAttribute("src", "/brand/nii-plants-logo.png");
   });
 
   it("can be marked decorative when nearby text names the brand", () => {
