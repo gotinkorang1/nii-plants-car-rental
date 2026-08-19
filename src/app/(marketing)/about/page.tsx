@@ -4,6 +4,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageTrail } from "@/components/marketing/page-trail";
 import { Button } from "@/components/ui/button";
 import {
   AWARDS,
@@ -35,6 +36,12 @@ export default async function AboutPage() {
         ])}
       />
       <Section className="pt-10">
+        <PageTrail
+          items={[
+            { name: "Home", href: "/" },
+            { name: "About" },
+          ]}
+        />
         <PageIntro
           eyebrow="About"
           title="Car rental in Accra since 2007"
@@ -100,15 +107,21 @@ export default async function AboutPage() {
         </article>
         <article>
           <h2 className="font-heading text-2xl">Awards</h2>
-          <ul className="mt-3 space-y-3 text-muted-foreground">
+          <ul className="mt-4 grid gap-3">
             {AWARDS.map((item) => (
-              <li key={`${item.year}-${item.name}`}>
-                <span className="font-medium text-foreground">
-                  {item.year}: {item.name}.
-                </span>{" "}
-                {item.issuer}
-                {"venue" in item && item.venue ? `, ${item.venue}` : ""}.{" "}
-                {item.dateLabel}.
+              <li
+                key={`${item.year}-${item.name}`}
+                className="rounded-2xl bg-card p-5 ring-1 ring-border"
+              >
+                <p className="text-xs font-medium tracking-[0.16em] text-primary uppercase">
+                  {item.year}
+                </p>
+                <p className="mt-2 font-medium">{item.name}</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {item.issuer}
+                  {"venue" in item && item.venue ? `, ${item.venue}` : ""}.{" "}
+                  {item.dateLabel}.
+                </p>
               </li>
             ))}
           </ul>
@@ -122,14 +135,38 @@ export default async function AboutPage() {
         </article>
         <article>
           <h2 className="font-heading text-2xl">From Sakaman to Plantsville</h2>
-          <p className="mt-3 text-muted-foreground">
-            The company first operated from Sakaman Junction on the
-            Odorkor–Mallam Highway. On 1 October 2021 it opened the Plantsville
-            office in Dansoman, covered by AmCham Ghana. The complex includes
-            five furnished one- and two-bedroom apartments for visiting hire
-            clients — booked with staff, not as part of a self-drive checkout.
-            Postal mail: {COMPANY.postalBox}.
-          </p>
+          <ol className="mt-4 space-y-4 border-l border-accent/40 pl-5">
+            <li>
+              <p className="text-xs font-medium tracking-[0.16em] text-primary uppercase">
+                2007
+              </p>
+              <p className="mt-1 text-muted-foreground">
+                Incorporated on 22 October and started hire the next day from
+                Sakaman Junction on the Odorkor–Mallam Highway.
+              </p>
+            </li>
+            <li>
+              <p className="text-xs font-medium tracking-[0.16em] text-primary uppercase">
+                2021
+              </p>
+              <p className="mt-1 text-muted-foreground">
+                Opened the Plantsville office in Dansoman on 1 October, covered
+                by AmCham Ghana. The complex includes five furnished apartments
+                for visiting hire clients — booked with staff, not as part of a
+                self-drive checkout.
+              </p>
+            </li>
+            <li>
+              <p className="text-xs font-medium tracking-[0.16em] text-primary uppercase">
+                Today
+              </p>
+              <p className="mt-1 text-muted-foreground">
+                Collect in Dansoman, at Kotoka, at Alisa Hotel North Ridge, or
+                at Best Western Plus Atlantic Hotel in Takoradi. Postal mail:{" "}
+                {COMPANY.postalBox}.
+              </p>
+            </li>
+          </ol>
         </article>
         <article>
           <h2 className="font-heading text-2xl">Nii Plants Group</h2>

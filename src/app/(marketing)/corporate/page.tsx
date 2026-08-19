@@ -5,6 +5,7 @@ import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageTrail } from "@/components/marketing/page-trail";
 import { Button } from "@/components/ui/button";
 import { PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
@@ -54,6 +55,12 @@ export default function CorporatePage() {
         ])}
       />
       <Section className="pt-10">
+        <PageTrail
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Corporate" },
+          ]}
+        />
         <PageIntro
           eyebrow="Corporate"
           title="Corporate car rental for Accra teams and visitors"
@@ -81,7 +88,10 @@ export default function CorporatePage() {
             />
             <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             {items.map((item) => (
-              <li key={item.title} className="rounded-2xl bg-card p-5 ring-1 ring-border">
+              <li
+                key={item.title}
+                className="rounded-2xl bg-card p-5 ring-1 ring-border transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(24,26,24,0.08)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              >
                 <h2 className="font-medium">{item.title}</h2>
                 <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
               </li>

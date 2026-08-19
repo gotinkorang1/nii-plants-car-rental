@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
+import { ContactDesk } from "@/components/marketing/contact-desk";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageTrail } from "@/components/marketing/page-trail";
 import { OsmMapEmbed } from "@/components/maps/osm-map-embed";
 import { COMPANY, PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
@@ -11,12 +13,7 @@ import { getPublicLocations } from "@/lib/content/queries";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
 import { getSiteSettings } from "@/lib/settings/get-site-settings";
-import {
-  mailHref,
-  telHref,
-  toPublicContact,
-  whatsappHref,
-} from "@/lib/settings/public-contact";
+import { toPublicContact } from "@/lib/settings/public-contact";
 
 export const metadata: Metadata = pageMetadata({
   title: PAGE_SEO.contact.title,
@@ -47,13 +44,19 @@ export default async function ContactPage() {
         ])}
       />
       <Section className="pt-10">
+        <PageTrail
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Contact" },
+          ]}
+        />
         <PageIntro
           eyebrow="Contact"
           title="Contact Nii Plants in Accra"
           lede={`Call, WhatsApp, or email from ${COMPANY.openingHoursDisplay}. ${COMPANY.airportHoursNote}.`}
         />
         <div className="mt-8 grid gap-8 lg:grid-cols-2">
-          <div className="space-y-3 text-sm">
+          <div className="space-y-5">
             <MarketingPhoto
               image={marketingImages.valet}
               className="aspect-[4/5] max-h-80 rounded-2xl"
@@ -61,42 +64,8 @@ export default async function ContactPage() {
               objectPosition="center 15%"
               priority
             />
-            {contact.phone ? (
-              <p>
-                <a className="text-primary hover:underline" href={telHref(contact.phone)}>
-                  Call centre {contact.phone}
-                </a>
-              </p>
-            ) : null}
-            <p>
-              <a
-                className="text-primary hover:underline"
-                href={telHref(COMPANY.officeTelephoneDisplay)}
-              >
-                Office {COMPANY.officeTelephoneDisplay}
-              </a>
-            </p>
-            {contact.whatsapp ? (
-              <p>
-                <a
-                  className="text-primary hover:underline"
-                  href={whatsappHref(contact.whatsapp)}
-                >
-                  WhatsApp
-                </a>
-              </p>
-            ) : null}
-            {contact.email ? (
-              <p>
-                <a className="text-primary hover:underline" href={mailHref(contact.email)}>
-                  {contact.email}
-                </a>
-              </p>
-            ) : null}
-            {contact.address ? (
-              <p className="text-muted-foreground">{contact.address}</p>
-            ) : null}
-            <p className="text-muted-foreground">{COMPANY.postalBox}</p>
+            <ContactDesk contact={contact} />
+            <p className="text-sm text-muted-foreground">{COMPANY.postalBox}</p>
             <p>
               <a
                 className="text-primary hover:underline"
@@ -113,7 +82,13 @@ export default async function ContactPage() {
               </p>
             ) : null}
           </div>
-          <EnquiryForm serviceType="general" submitLabel="Send message" />
+          <div>
+            <p className="mb-4 text-sm text-muted-foreground">
+              We reply during Monday–Saturday hours. This form is a message, not a
+              confirmed booking.
+            </p>
+            <EnquiryForm serviceType="general" submitLabel="Send message" />
+          </div>
         </div>
       </Section>
       {mappedLocations.length > 0 ? (
@@ -133,6 +108,7 @@ export default async function ContactPage() {
               <li key={location.id}>
                 <OsmMapEmbed
                   name={location.name}
+                  type={location.type}
                   latitude={location.latitude}
                   longitude={location.longitude}
                 />

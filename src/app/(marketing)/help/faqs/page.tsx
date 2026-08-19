@@ -4,6 +4,7 @@ import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageTrail } from "@/components/marketing/page-trail";
 import { PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublishedFaqs } from "@/lib/content/queries";
@@ -39,6 +40,13 @@ export default async function FaqsPage() {
       />
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
       <Section className="pt-10">
+        <PageTrail
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Help", href: "/help" },
+            { name: "FAQs" },
+          ]}
+        />
         <PageIntro
           eyebrow="Help"
           title="Car rental FAQs for Accra and Ghana"
@@ -50,6 +58,22 @@ export default async function FaqsPage() {
           sizes="(max-width: 768px) 100vw, 48rem"
           priority
         />
+        {grouped.length > 1 ? (
+          <nav aria-label="FAQ topics" className="mt-8">
+            <ul className="flex flex-wrap gap-2">
+              {grouped.map((group) => (
+                <li key={group.category}>
+                  <a
+                    href={`#${faqCategoryId(group.category)}`}
+                    className="inline-flex rounded-full bg-card px-3 py-1.5 text-sm text-muted-foreground ring-1 ring-border transition-colors hover:text-primary"
+                  >
+                    {group.category}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
         {grouped.length === 0 ? (
           <div className="mt-8">
             <FaqList items={[]} />
@@ -63,7 +87,7 @@ export default async function FaqsPage() {
               >
                 <h2
                   id={faqCategoryId(group.category)}
-                  className="font-heading text-2xl"
+                  className="font-heading scroll-mt-24 text-2xl"
                 >
                   {group.category}
                 </h2>

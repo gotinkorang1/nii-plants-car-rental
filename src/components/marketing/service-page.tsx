@@ -5,6 +5,7 @@ import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageTrail } from "@/components/marketing/page-trail";
 import type { MarketingImage } from "@/lib/content/marketing-images";
 import { faqPageJsonLd } from "@/lib/content/structured-data";
 
@@ -41,6 +42,13 @@ export function ServicePage({
     <main>
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
       <Section className="pt-10">
+        <PageTrail
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Services", href: "/services" },
+            { name: eyebrow },
+          ]}
+        />
         <PageIntro eyebrow={eyebrow} title={title} lede={lede} />
         {image ? (
           <MarketingPhoto
@@ -53,12 +61,12 @@ export function ServicePage({
         {form ? null : (
           <div className="mt-8 flex flex-col gap-2 sm:flex-row">
             {ctaHref && ctaLabel ? (
-              <Button asChild>
+              <Button asChild size="lg">
                 <Link href={ctaHref}>{ctaLabel}</Link>
               </Button>
             ) : null}
             {secondaryHref && secondaryLabel ? (
-              <Button asChild variant="outline">
+              <Button asChild size="lg" variant="outline">
                 <Link href={secondaryHref}>{secondaryLabel}</Link>
               </Button>
             ) : null}

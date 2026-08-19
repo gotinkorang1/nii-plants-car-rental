@@ -3,14 +3,18 @@
 import Image from "next/image";
 import { useState } from "react";
 
+import { VehicleImageFallback } from "@/components/fleet/vehicle-image-fallback";
 import type { PublicVehicleImage } from "@/lib/fleet/public-types";
+import { cn } from "@/lib/utils";
 
 export function ModelGallery({
   heading,
   images,
+  vehicleClass,
 }: {
   heading: string;
   images: PublicVehicleImage[];
+  vehicleClass?: string;
 }) {
   const visible = images.filter((image) => image.url);
   const [activeId, setActiveId] = useState(visible[0]?.id);
@@ -18,11 +22,11 @@ export function ModelGallery({
 
   if (!active?.url) {
     return (
-      <div className="flex aspect-[4/3] items-end rounded-2xl bg-muted p-6">
-        <p className="text-sm text-muted-foreground">
-          Photographs for this model have not been published yet.
-        </p>
-      </div>
+      <VehicleImageFallback
+        vehicleClass={vehicleClass}
+        className="aspect-[4/3] min-h-72 rounded-2xl"
+        label="Photographs for this model have not been published yet."
+      />
     );
   }
 
@@ -46,7 +50,11 @@ export function ModelGallery({
                 type="button"
                 onClick={() => setActiveId(image.id)}
                 aria-pressed={image.id === active.id}
-                className="relative size-16 overflow-hidden rounded-lg ring-1 ring-border focus-visible:ring-2 focus-visible:ring-ring aria-pressed:ring-2 aria-pressed:ring-primary"
+                className={cn(
+                  "relative size-16 overflow-hidden rounded-lg ring-1 ring-border transition-transform duration-200",
+                  "hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring",
+                  "aria-pressed:ring-2 aria-pressed:ring-primary motion-reduce:transition-none motion-reduce:hover:scale-100",
+                )}
               >
                 {image.url ? (
                   <Image

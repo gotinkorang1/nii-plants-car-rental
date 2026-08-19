@@ -10,6 +10,7 @@ export function MarketingPhoto({
   sizes,
   priority = false,
   objectPosition,
+  zoomOnHover = false,
 }: {
   image: MarketingImage;
   className?: string;
@@ -17,6 +18,7 @@ export function MarketingPhoto({
   sizes: string;
   priority?: boolean;
   objectPosition?: string;
+  zoomOnHover?: boolean;
 }) {
   return (
     <figure className={cn("relative overflow-hidden bg-muted", className)}>
@@ -26,7 +28,12 @@ export function MarketingPhoto({
         fill
         priority={priority}
         sizes={sizes}
-        className={cn("object-cover", imgClassName)}
+        className={cn(
+          "object-cover",
+          zoomOnHover &&
+            "transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100",
+          imgClassName,
+        )}
         style={objectPosition ? { objectPosition } : undefined}
       />
     </figure>

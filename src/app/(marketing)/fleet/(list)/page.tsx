@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { FleetCard } from "@/components/fleet/fleet-card";
 import { FleetFilters } from "@/components/fleet/fleet-filters";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { MarketingPhoto } from "@/components/marketing/marketing-photo";
+import { PageIntro } from "@/components/marketing/page-intro";
+import { PageTrail } from "@/components/marketing/page-trail";
 import { PAGE_SEO } from "@/lib/content/company";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
 import {
   breadcrumbJsonLd,
   itemListJsonLd,
 } from "@/lib/content/structured-data";
-import { parseFleetSearchParams } from "@/lib/fleet/filters";
+import {
+  hasActivePublicFleetFilters,
+  parseFleetSearchParams,
+} from "@/lib/fleet/filters";
 import {
   getPublicActiveClasses,
   getPublicModels,
@@ -53,36 +61,59 @@ export default async function FleetPage({ searchParams }: FleetPageProps) {
           )}
         />
       ) : null}
-      <header className="max-w-2xl space-y-3">
-        <p className="text-sm font-medium tracking-wide text-primary uppercase">
-          Car hire fleet, Accra
-        </p>
-        <h1 className="font-heading text-4xl tracking-tight sm:text-5xl">
-          Cars to hire in Accra: saloons, SUVs, 4x4s and coaches
-        </h1>
-        <p className="text-base text-muted-foreground">
-          You book a representative model or similar, not a registration plate.
-          Staff assign the physical car. Catalogue rates are in US dollars,
-          matching the live shop. Online reservation payments are in Ghana cedis.
-        </p>
-      </header>
+      <PageTrail
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Fleet" },
+        ]}
+      />
+      <PageIntro
+        eyebrow="Car hire fleet, Accra"
+        title="Cars to hire in Accra: saloons, SUVs, 4x4s and coaches"
+        lede="You book a representative model or similar, not a registration plate. Staff assign the physical car. Catalogue rates are in US dollars, matching the live shop. Online reservation payments are in Ghana cedis."
+      />
+      <MarketingPhoto
+        image={marketingImages.driving}
+        className="mt-8 aspect-[21/7] max-h-56 rounded-2xl sm:max-h-72"
+        sizes="(max-width: 1024px) 100vw, 72rem"
+        priority
+      />
 
       <div className="mt-8">
         <FleetFilters classes={classes} filters={filters} />
       </div>
 
       {models.length === 0 ? (
-        <p className="mt-10 rounded-2xl bg-card p-8 text-sm text-muted-foreground ring-1 ring-border">
-          No cars match these filters. Try another class or seat count.
-        </p>
+        <div className="mt-10 rounded-2xl bg-card p-8 ring-1 ring-border">
+          <h2 className="font-heading text-2xl">No cars match these filters</h2>
+          <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+            Try another class or seat count
+            {hasActivePublicFleetFilters(filters)
+              ? ", or clear the filters to see every published model."
+              : ". Published models will appear here once staff list them."}
+          </p>
+          {hasActivePublicFleetFilters(filters) ? (
+            <p className="mt-4 text-sm">
+              <Link href="/fleet" className="text-primary hover:underline">
+                Clear filters
+              </Link>
+            </p>
+          ) : null}
+        </div>
       ) : (
-        <ul className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-          {models.map((model) => (
-            <li key={model.id}>
-              <FleetCard model={model} />
-            </li>
-          ))}
-        </ul>
+        <>
+          <p className="mt-8 text-sm text-muted-foreground">
+            {models.length} {models.length === 1 ? "model" : "models"} published
+            for hire.
+          </p>
+          <ul className="mt-4 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {models.map((model) => (
+              <li key={model.id} className="reveal-on-scroll">
+                <FleetCard model={model} />
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </main>
   );

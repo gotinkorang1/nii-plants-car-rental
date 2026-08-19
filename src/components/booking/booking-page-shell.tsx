@@ -25,7 +25,9 @@ export function BookingPageShell({
     >
       <BookingProgress current={step} />
       {eyebrow ? (
-        <p className="text-xs font-medium tracking-wide text-primary uppercase">{eyebrow}</p>
+        <p className="text-xs font-medium tracking-[0.16em] text-primary uppercase">
+          {eyebrow}
+        </p>
       ) : null}
       <h1
         className={cn(
@@ -36,7 +38,9 @@ export function BookingPageShell({
         {title}
       </h1>
       {lede ? (
-        <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">{lede}</p>
+        <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
+          {lede}
+        </p>
       ) : null}
       <div className="mt-8">{children}</div>
     </main>

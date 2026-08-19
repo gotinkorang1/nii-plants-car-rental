@@ -14,7 +14,7 @@ export function PageIntro({
   return (
     <header className={cn("max-w-2xl space-y-3", className)}>
       {eyebrow ? (
-        <p className="text-sm font-medium tracking-wide text-primary uppercase">
+        <p className="text-sm font-medium tracking-[0.16em] text-primary uppercase">
           {eyebrow}
         </p>
       ) : null}
@@ -28,13 +28,22 @@ export function Section({
   id,
   children,
   className,
+  reveal = false,
 }: {
   id?: string;
   children: React.ReactNode;
   className?: string;
+  reveal?: boolean;
 }) {
   return (
-    <section id={id} className={cn("mx-auto w-full max-w-6xl px-4 py-14 sm:px-6", className)}>
+    <section
+      id={id}
+      className={cn(
+        "mx-auto w-full max-w-6xl px-4 py-14 sm:px-6",
+        reveal && "reveal-on-scroll",
+        className,
+      )}
+    >
       {children}
     </section>
   );

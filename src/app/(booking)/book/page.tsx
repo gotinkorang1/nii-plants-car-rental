@@ -36,11 +36,14 @@ export default async function BookSearchPage({ searchParams }: PageProps) {
   const params = await searchParams;
   const locations = await getPublicLocations();
   const parsed = parseBookingSearchParams(params);
+  const dates = defaultSearchDates();
   const defaults = {
-    ...defaultSearchDates(),
+    ...dates,
     ...parsed,
-    pickupDate: parsed.pickupDate || defaultSearchDates().pickupDate,
-    returnDate: parsed.returnDate || defaultSearchDates().returnDate,
+    pickupDate: parsed.pickupDate || dates.pickupDate,
+    pickupTime: parsed.pickupTime || dates.pickupTime,
+    returnDate: parsed.returnDate || dates.returnDate,
+    returnTime: parsed.returnTime || dates.returnTime,
   };
 
   return (
@@ -51,10 +54,10 @@ export default async function BookSearchPage({ searchParams }: PageProps) {
       lede="Availability is checked against physical vehicles. Chauffeur, airport transfer, and other services remain enquiry-based."
     >
       <MarketingPhoto
-        image={marketingImages.valet}
+        image={marketingImages.selfDrive}
         className="mb-8 aspect-[16/7] rounded-2xl"
         sizes="(max-width: 768px) 100vw, 48rem"
-        objectPosition="center 20%"
+        objectPosition="center 35%"
       />
       <BookingSearchForm locations={locations} defaults={defaults} />
     </BookingPageShell>

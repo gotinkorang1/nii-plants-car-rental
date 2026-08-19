@@ -13,6 +13,7 @@ import type { PromotionRecord } from "@/lib/pricing/apply-promotion";
 import { calculateBookingPrice } from "@/lib/pricing/calculate-booking-price";
 import type { ExtraCatalogItem } from "@/lib/pricing/calculate-extras";
 import type { AvailabilitySearchInput } from "@/lib/validation/availability";
+import { cn } from "@/lib/utils";
 
 export function ExtrasAndQuoteForm({
   search,
@@ -123,7 +124,7 @@ export function ExtrasAndQuoteForm({
 
       <div className="space-y-6">
         <header>
-          <p className="text-xs font-medium tracking-wide text-primary uppercase">
+          <p className="text-xs font-medium tracking-[0.16em] text-primary uppercase">
             {className}
           </p>
           <h1 className="font-heading text-4xl tracking-tight">{modelName}</h1>
@@ -146,7 +147,10 @@ export function ExtrasAndQuoteForm({
               return (
                 <label
                   key={extra.id}
-                  className="flex flex-col gap-2 rounded-xl bg-card p-4 ring-1 ring-border sm:flex-row sm:items-center sm:justify-between"
+                  className={cn(
+                    "flex flex-col gap-2 rounded-xl bg-card p-4 ring-1 ring-border transition-[box-shadow,ring-color,background-color] duration-200 hover:ring-primary/40 sm:flex-row sm:items-center sm:justify-between",
+                    checked && "bg-primary/5 ring-primary/30",
+                  )}
                 >
                   <span className="flex items-start gap-3">
                     <input
@@ -231,12 +235,12 @@ export function ExtrasAndQuoteForm({
         </div>
       </div>
 
-      <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">
+      <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
         {preview ? <QuoteReview price={preview} live /> : null}
         <p className="text-xs text-muted-foreground">
           Preview only. The server recalculates the final quote before it is secured.
         </p>
-        <Button type="submit" className="w-full" disabled={pending}>
+        <Button type="submit" className="w-full" size="lg" disabled={pending}>
           {pending ? "Securing current price..." : "Secure this quote"}
         </Button>
       </aside>

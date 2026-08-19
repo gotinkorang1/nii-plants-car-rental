@@ -5,12 +5,20 @@ import { Button } from "@/components/ui/button";
 import { CatalogueDailyRate } from "@/components/fleet/catalogue-daily-rate";
 import { VehicleImageFallback } from "@/components/fleet/vehicle-image-fallback";
 import type { PublicVehicleModel } from "@/lib/fleet/public-types";
+import { cn } from "@/lib/utils";
 
 export function FleetCard({ model }: { model: PublicVehicleModel }) {
   const image = model.primaryImage;
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-[0_1px_2px_rgba(24,26,24,0.06)] ring-1 ring-border transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(24,26,24,0.08)] focus-within:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+    <article
+      className={cn(
+        "group flex h-full flex-col overflow-hidden rounded-2xl bg-card ring-1 ring-border",
+        "shadow-[0_1px_2px_rgba(24,26,24,0.06)] transition-[transform,box-shadow] duration-300",
+        "hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(24,26,24,0.08)]",
+        "focus-within:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0",
+      )}
+    >
       <div className="relative aspect-[4/3] overflow-hidden bg-muted">
         {image?.url ? (
           <Image
@@ -18,40 +26,34 @@ export function FleetCard({ model }: { model: PublicVehicleModel }) {
             alt={image.altText}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
         ) : (
           <VehicleImageFallback vehicleClass={model.className} />
         )}
+        {image?.url ? (
+          <p className="absolute top-3 left-3 rounded-full bg-background/90 px-2.5 py-1 text-[0.7rem] font-medium tracking-[0.14em] text-primary uppercase backdrop-blur-sm">
+            {model.className}
+          </p>
+        ) : null}
       </div>
       <div className="flex flex-1 flex-col gap-4 p-5">
         <div>
-          <p className="text-xs font-medium tracking-wide text-primary uppercase">
-            {model.className}
-          </p>
-          <h2 className="mt-1 font-heading text-2xl leading-tight">
+          <h2 className="font-heading text-2xl leading-tight">
             {model.make} {model.modelName}
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">or similar</p>
         </div>
-        <dl className="grid grid-cols-2 gap-2 text-sm">
-          <div>
-            <dt className="text-muted-foreground">Seats</dt>
-            <dd>{model.seats}</dd>
-          </div>
-          <div>
-            <dt className="text-muted-foreground">Transmission</dt>
-            <dd className="capitalize">{model.transmission}</dd>
-          </div>
-          <div>
-            <dt className="text-muted-foreground">Fuel</dt>
-            <dd className="capitalize">{model.fuelType.replace("_", " ")}</dd>
-          </div>
-          <div>
-            <dt className="text-muted-foreground">Air conditioning</dt>
-            <dd>{model.airConditioning ? "Yes" : "No"}</dd>
-          </div>
-        </dl>
+        <ul className="flex flex-wrap gap-2 text-xs">
+          <SpecChip>{model.seats} seats</SpecChip>
+          <SpecChip className="capitalize">{model.transmission}</SpecChip>
+          <SpecChip className="capitalize">
+            {model.fuelType.replace("_", " ")}
+          </SpecChip>
+          <SpecChip>
+            {model.airConditioning ? "Air conditioning" : "No A/C"}
+          </SpecChip>
+        </ul>
         <p className="mt-auto text-sm">
           From{" "}
           <CatalogueDailyRate
@@ -71,5 +73,24 @@ export function FleetCard({ model }: { model: PublicVehicleModel }) {
         </div>
       </div>
     </article>
+  );
+}
+
+function SpecChip({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <li
+      className={cn(
+        "rounded-full bg-muted px-2.5 py-1 text-muted-foreground",
+        className,
+      )}
+    >
+      {children}
+    </li>
   );
 }

@@ -24,12 +24,15 @@ export function BookingProgress({ current }: { current: BookingStep }) {
               className={cn(
                 "flex min-w-0 flex-1 items-center gap-2 text-xs font-medium sm:text-sm",
                 index < STEPS.length - 1 &&
-                  "sm:after:mx-2 sm:after:h-px sm:after:flex-1 sm:after:bg-border sm:after:content-['']",
+                  cn(
+                    "sm:after:mx-2 sm:after:h-px sm:after:flex-1 sm:after:content-['']",
+                    done ? "sm:after:bg-primary" : "sm:after:bg-border",
+                  ),
               )}
             >
               <span
                 className={cn(
-                  "flex size-7 shrink-0 items-center justify-center rounded-full border text-xs",
+                  "flex size-7 shrink-0 items-center justify-center rounded-full border text-xs transition-colors duration-300",
                   done && "border-primary bg-primary text-primary-foreground",
                   active && "border-primary bg-background text-primary ring-2 ring-primary/20",
                   !done && !active && "border-border bg-background text-muted-foreground",

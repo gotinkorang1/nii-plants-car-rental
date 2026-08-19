@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageTrail } from "@/components/marketing/page-trail";
 import { PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
@@ -14,11 +15,25 @@ export const metadata: Metadata = pageMetadata({
   path: "/help/requirements",
 });
 
+const pickupChecklist = [
+  "Full driving licence for every named driver",
+  "Ghana Card or passport matching the licence",
+  "Driver aged 25 or older",
+  "Travel inside Ghana only",
+] as const;
+
 export default async function RequirementsPage() {
   const settings = await getSiteSettings();
 
   return (
     <Section className="pt-10">
+      <PageTrail
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Help", href: "/help" },
+          { name: "Requirements" },
+        ]}
+      />
       <PageIntro
         eyebrow="Help"
         title="What you need to rent a car in Ghana"
@@ -31,6 +46,20 @@ export default async function RequirementsPage() {
         objectPosition="center 20%"
         priority
       />
+      <h2 className="mt-10 font-heading text-2xl">Bring these to pickup</h2>
+      <ol className="mt-4 grid gap-3 sm:grid-cols-2">
+        {pickupChecklist.map((item, index) => (
+          <li
+            key={item}
+            className="flex items-start gap-3 rounded-2xl bg-card p-4 ring-1 ring-border"
+          >
+            <span className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">
+              {index + 1}
+            </span>
+            <span className="text-sm font-medium">{item}</span>
+          </li>
+        ))}
+      </ol>
       <dl className="mt-8 grid gap-4 sm:grid-cols-2">
         <div className="rounded-2xl bg-card p-5 ring-1 ring-border">
           <dt className="text-sm text-muted-foreground">Minimum age</dt>

@@ -12,6 +12,9 @@ import { enquiryServiceLabel } from "@/lib/enquiries/status";
 
 type VehicleClassOption = { id: string; name: string };
 
+const fieldControlClassName =
+  "h-11 w-full rounded-lg border border-input bg-background/80 px-2.5 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50";
+
 type EnquiryFormProps = {
   serviceType: EnquiryServiceType;
   vehicleClasses?: VehicleClassOption[];
@@ -138,7 +141,7 @@ export function EnquiryForm({
             id="preferredContactMethod"
             name="preferredContactMethod"
             defaultValue="email"
-            className="h-9 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+            className={fieldControlClassName}
           >
             <option value="email">Email</option>
             <option value="phone">Phone</option>
@@ -163,7 +166,7 @@ export function EnquiryForm({
         />
       </div>
 
-      <Button type="submit" disabled={pending} className="w-full sm:w-auto">
+      <Button type="submit" size="lg" disabled={pending} className="w-full sm:w-auto">
         {pending ? "Sending request..." : label}
       </Button>
     </form>
@@ -198,7 +201,7 @@ function ServiceFields({
               name="transferDirection"
               required
               defaultValue="airport_to_destination"
-              className="h-9 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+              className={fieldControlClassName}
             >
               <option value="airport_to_destination">Airport to destination</option>
               <option value="destination_to_airport">Destination to airport</option>
@@ -231,7 +234,7 @@ function ServiceFields({
               id="serviceRequirement"
               name="serviceRequirement"
               required
-              className="h-9 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+              className={fieldControlClassName}
             >
               <option value="corporate_transport">Corporate transport</option>
               <option value="airport_movement">Airport movement</option>
@@ -254,7 +257,7 @@ function ServiceFields({
               id="eventType"
               name="eventType"
               required
-              className="h-9 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+              className={fieldControlClassName}
             >
               <option value="wedding">Wedding</option>
               <option value="corporate_event">Corporate event</option>
@@ -333,7 +336,7 @@ function VehicleClassSelect({
         id="vehicleClassId"
         name="vehicleClassId"
         required={required}
-        className="h-9 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+        className={fieldControlClassName}
         defaultValue=""
       >
         {!required ? <option value="">No preference</option> : null}
@@ -380,6 +383,7 @@ function Field({
         max={max}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        className="h-11"
       />
     </div>
   );

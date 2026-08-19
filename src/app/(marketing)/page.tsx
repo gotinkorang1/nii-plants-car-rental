@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BookingSearchWidget } from "@/components/marketing/booking-search-widget";
+import { CtaPanel } from "@/components/marketing/cta-panel";
 import { FaqList } from "@/components/marketing/faq-list";
+import { HowHireWorks } from "@/components/marketing/how-hire-works";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { Section } from "@/components/marketing/page-intro";
 import { ServiceCard } from "@/components/marketing/service-card";
+import { TrustMarks } from "@/components/marketing/trust-marks";
 import { Button } from "@/components/ui/button";
 import { FeaturedModels } from "@/components/fleet/featured-models";
 import { PAGE_SEO } from "@/lib/content/company";
@@ -92,68 +95,52 @@ export default async function HomePage() {
         })}
       />
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
-      <section className="border-b border-border bg-[linear-gradient(180deg,#f7f3eb_0%,#efe8d9_100%)]">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:py-16">
-          <div className="space-y-5">
-            <p className="text-sm font-medium tracking-wide text-primary uppercase">
+      <section className="relative isolate -mt-16 overflow-hidden">
+        <MarketingPhoto
+          image={marketingImages.keys}
+          className="absolute inset-0 h-full min-h-[32rem]"
+          sizes="100vw"
+          objectPosition="center 20%"
+          priority
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,26,24,0.55)_0%,rgba(24,26,24,0.72)_45%,rgba(24,26,24,0.88)_100%)]" />
+        <div className="relative mx-auto max-w-6xl px-4 pt-20 pb-12 sm:px-6 sm:pt-24 sm:pb-16">
+          <div className="max-w-2xl space-y-5">
+            <p className="text-sm font-medium tracking-[0.16em] text-accent uppercase">
               Car rental in Accra since 2007
             </p>
-            <h1 className="font-heading text-4xl tracking-tight sm:text-6xl">
+            <h1 className="font-heading text-4xl tracking-tight text-white sm:text-6xl">
               {contact.homepageHeadline ||
                 "Rent a car in Accra — self-drive or chauffeur"}
             </h1>
-            <p className="max-w-xl text-base text-muted-foreground sm:text-lg">
+            <p className="max-w-xl text-base text-white/85 sm:text-lg">
               {contact.homepageSubheadline || PAGE_SEO.home.description}
             </p>
             <div className="flex flex-col gap-2 sm:flex-row">
-              <Button asChild>
+              <Button asChild size="lg">
                 <Link href="/book">Book a Vehicle</Link>
               </Button>
-              <Button asChild variant="outline">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white"
+              >
                 <Link href="/fleet">View the fleet</Link>
               </Button>
             </div>
           </div>
-          <div className="relative min-h-72 overflow-hidden rounded-2xl">
-            <MarketingPhoto
-              image={marketingImages.keys}
-              className="absolute inset-0 h-full min-h-72"
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              objectPosition="center 20%"
-              priority
-            />
+          <div className="mt-10">
+            <BookingSearchWidget locations={locations} />
           </div>
-        </div>
-        <div className="mx-auto max-w-6xl px-4 pb-12 sm:px-6">
-          <BookingSearchWidget locations={locations} />
         </div>
       </section>
 
-      <Section className="py-10">
-        <ul className="grid gap-4 sm:grid-cols-3">
-          {[
-            {
-              title: "Hire since 2007",
-              body: "Ghanaian-owned Nii Plants Car Rentals Co. Ltd has hired cars from Accra for travel across Ghana.",
-            },
-            {
-              title: "GTA awards, 2022 and 2024",
-              body: "National Best Car Rental Service Provider in 2022, then Greater Accra car-rental honours at the 2024 GTA awards.",
-            },
-            {
-              title: "Kotoka pickup",
-              body: "Airport collections by arrangement until 23:00. The Dansoman office is open Monday to Saturday, 09:00 to 17:00.",
-            },
-          ].map((item) => (
-            <li key={item.title} className="border-t-2 border-accent pt-4">
-              <h2 className="font-medium">{item.title}</h2>
-              <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
-            </li>
-          ))}
-        </ul>
+      <Section className="py-10" reveal>
+        <TrustMarks />
       </Section>
 
-      <Section className="pt-0">
+      <Section className="pt-0" reveal>
         {featured.length > 0 ? (
           <FeaturedModels models={featured} title="Cars to hire in Accra" />
         ) : (
@@ -169,7 +156,11 @@ export default async function HomePage() {
         )}
       </Section>
 
-      <Section className="pt-0">
+      <Section className="pt-0" reveal>
+        <HowHireWorks />
+      </Section>
+
+      <Section className="pt-0" reveal>
         <h2 className="font-heading text-2xl">Car hire services in Ghana</h2>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((item) => (
@@ -186,7 +177,7 @@ export default async function HomePage() {
         </ul>
       </Section>
 
-      <Section className="pt-0">
+      <Section className="pt-0" reveal>
         <div className="grid gap-8 lg:grid-cols-2">
           <div>
             <MarketingPhoto
@@ -222,7 +213,7 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      <Section className="pt-0">
+      <Section className="pt-0" reveal>
         <div className="relative overflow-hidden rounded-2xl">
           <MarketingPhoto
             image={marketingImages.executiveBanner}
@@ -244,7 +235,7 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      <Section className="pt-0">
+      <Section className="pt-0" reveal>
         <MarketingPhoto
           image={marketingImages.friends}
           className="mb-6 aspect-[21/9] rounded-2xl"
@@ -258,7 +249,7 @@ export default async function HomePage() {
         </p>
       </Section>
 
-      <Section className="pt-0">
+      <Section className="pt-0" reveal>
         <div className="flex items-end justify-between gap-4">
           <h2 className="font-heading text-2xl">Car rental questions</h2>
           <Link href="/help/faqs" className="text-sm text-primary hover:underline">
@@ -270,23 +261,11 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      <Section className="pt-0 pb-20">
-        <div className="flex flex-col items-start justify-between gap-4 rounded-2xl bg-card p-6 ring-1 ring-border sm:flex-row sm:items-center">
-          <div>
-            <h2 className="font-heading text-2xl">Ready to hire a car?</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Check Accra availability or browse published models.
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <Button asChild>
-              <Link href="/book">Book a Vehicle</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/contact">Contact</Link>
-            </Button>
-          </div>
-        </div>
+      <Section className="pt-0 pb-20" reveal>
+        <CtaPanel
+          title="Ready to hire a car?"
+          body="Check Accra availability or browse published models."
+        />
       </Section>
     </main>
   );

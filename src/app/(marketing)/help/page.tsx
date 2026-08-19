@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageTrail } from "@/components/marketing/page-trail";
 import { PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
+import { breadcrumbJsonLd } from "@/lib/content/structured-data";
 
 export const metadata: Metadata = pageMetadata({
   title: PAGE_SEO.help.title,
@@ -54,7 +57,19 @@ const topics = [
 export default function HelpPage() {
   return (
     <main>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Help", path: "/help" },
+        ])}
+      />
       <Section className="pt-10">
+        <PageTrail
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Help" },
+          ]}
+        />
         <PageIntro
           eyebrow="Help"
           title="Car rental help for Ghana hire"
@@ -71,10 +86,16 @@ export default function HelpPage() {
             <li key={item.title}>
               <Link
                 href={item.href}
-                className="block h-full rounded-2xl bg-card p-5 ring-1 ring-border hover:text-primary focus-visible:ring-2 focus-visible:ring-ring"
+                className="group block h-full rounded-2xl bg-card p-5 ring-1 ring-border transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:text-primary hover:shadow-[0_12px_30px_rgba(24,26,24,0.08)] focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 <h2 className="font-medium">{item.title}</h2>
                 <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
+                <p className="mt-4 text-sm font-medium text-primary">
+                  Open
+                  <span aria-hidden className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </p>
               </Link>
             </li>
           ))}

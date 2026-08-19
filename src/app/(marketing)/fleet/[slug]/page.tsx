@@ -6,6 +6,7 @@ import { CatalogueDailyRate } from "@/components/fleet/catalogue-daily-rate";
 import { FleetCard } from "@/components/fleet/fleet-card";
 import { ModelGallery } from "@/components/fleet/model-gallery";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { PageTrail } from "@/components/marketing/page-trail";
 import { Button } from "@/components/ui/button";
 import {
   vehicleSeoDescription,
@@ -94,15 +95,29 @@ export default async function VehicleDetailPage({
           usdDailyRateTo: model.usdDailyRateTo,
         })}
       />
+      <PageTrail
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Fleet", href: "/fleet" },
+          { name: heading },
+        ]}
+      />
       <p className="text-sm">
-        <Link href="/fleet" className="text-primary hover:underline">
-          Back to fleet
+        <Link
+          href="/fleet"
+          className="text-muted-foreground transition-colors hover:text-primary"
+        >
+          ← Back to fleet
         </Link>
       </p>
       <div className="mt-6 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-        <ModelGallery heading={heading} images={model.images} />
-        <div className="space-y-6">
-          <p className="text-sm font-medium tracking-wide text-primary uppercase">
+        <ModelGallery
+          heading={heading}
+          images={model.images}
+          vehicleClass={model.className}
+        />
+        <div className="space-y-6 lg:sticky lg:top-24">
+          <p className="text-sm font-medium tracking-[0.16em] text-primary uppercase">
             {model.className}
           </p>
           <h1 className="font-heading text-4xl tracking-tight">{heading}</h1>
@@ -126,10 +141,10 @@ export default async function VehicleDetailPage({
             </p>
           ) : null}
           <div className="flex flex-col gap-2 sm:flex-row">
-            <Button asChild>
+            <Button asChild size="lg">
               <Link href={`/book?vehicle=${model.slug}`}>Book vehicle</Link>
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild size="lg" variant="outline">
               <Link href="/help/requirements">Rental requirements</Link>
             </Button>
           </div>

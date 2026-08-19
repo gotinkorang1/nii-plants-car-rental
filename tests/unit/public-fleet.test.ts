@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  hasActivePublicFleetFilters,
   matchesPublicFleetFilters,
   parseFleetSearchParams,
 } from "@/lib/fleet/filters";
@@ -78,6 +79,12 @@ describe("public fleet filtering", () => {
       maxDailyRatePesewas: 25000,
       maxPriceGhs: "250.00",
     });
+  });
+
+  it("detects when a shopper has narrowed the fleet", () => {
+    expect(hasActivePublicFleetFilters({})).toBe(false);
+    expect(hasActivePublicFleetFilters({ classSlug: "suv" })).toBe(true);
+    expect(hasActivePublicFleetFilters({ minSeats: 7 })).toBe(true);
   });
 });
 

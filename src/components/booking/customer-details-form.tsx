@@ -133,7 +133,7 @@ export function CustomerDetailsForm({
         </div>
       </section>
 
-      <Button type="submit" className="w-full sm:w-auto" disabled={pending}>
+      <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={pending}>
         {pending ? "Creating booking…" : "Create booking"}
       </Button>
     </form>
@@ -170,7 +170,7 @@ function Field({
         autoComplete={autoComplete}
         min={min}
         max={max}
-        className="mt-1.5"
+        className="mt-1.5 h-11"
       />
     </div>
   );
