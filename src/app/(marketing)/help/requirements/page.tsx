@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, PageMasthead, Section, SectionHeading } from "@/components/marketing/page-intro";
-import { PageTrail } from "@/components/marketing/page-trail";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section, SectionHeading } from "@/components/marketing/page-intro";
 import { PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
@@ -26,35 +25,21 @@ export default async function RequirementsPage() {
   const settings = await getSiteSettings();
 
   return (
+    <>
+    <PageBanner
+      image={marketingImages.keys}
+      eyebrow="Help"
+      title="What you need to rent a car in Ghana"
+      lede="Self-drive renters and extra drivers must be 25 or older, hold a full licence, and use the car inside Ghana only."
+      breadcrumbs={[
+        { name: "Home", href: "/" },
+        { name: "Help", href: "/help" },
+        { name: "Requirements" },
+      ]}
+      compact
+    />
     <Section className="pt-10">
-      <PageMasthead
-        trail={
-          <PageTrail
-            items={[
-              { name: "Home", href: "/" },
-              { name: "Help", href: "/help" },
-              { name: "Requirements" },
-            ]}
-          />
-        }
-        intro={
-          <PageIntro
-            eyebrow="Help"
-            title="What you need to rent a car in Ghana"
-            lede="Self-drive renters and extra drivers must be 25 or older, hold a full licence, and use the car inside Ghana only."
-          />
-        }
-        media={
-          <MarketingPhoto
-            image={marketingImages.keys}
-            className="aspect-[16/10] rounded-2xl lg:aspect-[4/3]"
-            sizes="(max-width: 1024px) 100vw, 28rem"
-            objectPosition="center 20%"
-            priority
-          />
-        }
-      />
-      <SectionHeading className="mt-10" title="Bring these to pickup" />
+      <SectionHeading title="Bring these to pickup" />
       <ol className="mt-4 grid gap-3 sm:grid-cols-2">
         {pickupChecklist.map((item, index) => (
           <li
@@ -112,5 +97,6 @@ export default async function RequirementsPage() {
         </Link>
       </p>
     </Section>
+    </>
   );
 }

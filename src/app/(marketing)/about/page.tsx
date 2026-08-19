@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, PageMasthead, Section } from "@/components/marketing/page-intro";
-import { PageTrail } from "@/components/marketing/page-trail";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section } from "@/components/marketing/page-intro";
 import { Button } from "@/components/ui/button";
 import {
   AWARDS,
@@ -35,33 +35,16 @@ export default async function AboutPage() {
           { name: "About", path: "/about" },
         ])}
       />
-      <Section className="pt-10">
-        <PageMasthead
-          trail={
-            <PageTrail
-              items={[
-                { name: "Home", href: "/" },
-                { name: "About" },
-              ]}
-            />
-          }
-          intro={
-            <PageIntro
-              eyebrow="About"
-              title="Car rental in Accra since 2007"
-              lede={`${settings.businessName} is a Ghanaian-owned hire company based at Plantsville, Dansoman. ${COMPANY.tagline}.`}
-            />
-          }
-          media={
-            <MarketingPhoto
-              image={marketingImages.executiveBanner}
-              className="aspect-[16/10] rounded-2xl lg:aspect-[4/5] lg:max-h-[28rem]"
-              sizes="(max-width: 1024px) 100vw, 28rem"
-              priority
-            />
-          }
-        />
-      </Section>
+      <PageBanner
+        image={marketingImages.executiveBanner}
+        eyebrow="About"
+        title="Car rental in Accra since 2007"
+        lede={`${settings.businessName} is a Ghanaian-owned hire company based at Plantsville, Dansoman. ${COMPANY.tagline}.`}
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "About" },
+        ]}
+      />
       <Section className="grid gap-8 pt-0 lg:grid-cols-2">
         <article>
           <MarketingPhoto

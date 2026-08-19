@@ -3,9 +3,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, PageMasthead, Section, SectionHeading } from "@/components/marketing/page-intro";
-import { PageTrail } from "@/components/marketing/page-trail";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section, SectionHeading } from "@/components/marketing/page-intro";
 import type { MarketingImage } from "@/lib/content/marketing-images";
 import { faqPageJsonLd } from "@/lib/content/structured-data";
 
@@ -41,48 +40,32 @@ export function ServicePage({
   return (
     <main>
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
-      <Section className="pt-10">
-        <PageMasthead
-          trail={
-            <PageTrail
-              items={[
-                { name: "Home", href: "/" },
-                { name: "Services", href: "/services" },
-                { name: eyebrow },
-              ]}
-            />
-          }
-          intro={
-            <>
-              <PageIntro eyebrow={eyebrow} title={title} lede={lede} />
-              {form ? null : (
-                <div className="mt-8 flex flex-col gap-2 sm:flex-row">
-                  {ctaHref && ctaLabel ? (
-                    <Button asChild size="lg" className="h-11 px-4">
-                      <Link href={ctaHref}>{ctaLabel}</Link>
-                    </Button>
-                  ) : null}
-                  {secondaryHref && secondaryLabel ? (
-                    <Button asChild size="lg" variant="outline" className="h-11 px-4">
-                      <Link href={secondaryHref}>{secondaryLabel}</Link>
-                    </Button>
-                  ) : null}
-                </div>
-              )}
-            </>
-          }
-          media={
-            image ? (
-              <MarketingPhoto
-                image={image}
-                className="aspect-[16/10] rounded-2xl lg:aspect-[4/3]"
-                sizes="(max-width: 1024px) 100vw, 28rem"
-                priority
-              />
-            ) : undefined
-          }
-        />
-      </Section>
+      <PageBanner
+        image={image ?? { src: "/images/self-drive.webp", alt: "Nii Plants car hire", width: 1600, height: 1065 }}
+        eyebrow={eyebrow}
+        title={title}
+        lede={lede}
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Services", href: "/services" },
+          { name: eyebrow },
+        ]}
+      >
+        {form ? null : (
+          <div className="flex flex-col gap-2 sm:flex-row">
+            {ctaHref && ctaLabel ? (
+              <Button asChild size="lg" className="h-11 px-4">
+                <Link href={ctaHref}>{ctaLabel}</Link>
+              </Button>
+            ) : null}
+            {secondaryHref && secondaryLabel ? (
+              <Button asChild size="lg" variant="outline" className="h-11 border-white/40 bg-white/10 px-4 text-white hover:bg-white/20 hover:text-white">
+                <Link href={secondaryHref}>{secondaryLabel}</Link>
+              </Button>
+            ) : null}
+          </div>
+        )}
+      </PageBanner>
       {form ? (
         <Section className="pt-0">
           <div className="rounded-xl border border-border/80 bg-muted/40 px-4 py-3 text-sm text-muted-foreground">

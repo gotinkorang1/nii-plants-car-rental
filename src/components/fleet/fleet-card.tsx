@@ -68,11 +68,11 @@ export function FleetCard({ model }: { model: PublicVehicleModel }) {
             emphasize
           />
         </p>
-        <div className="flex flex-col gap-2 sm:flex-row">
-          <Button asChild variant="outline" className="h-11 flex-1">
+        <div className="flex gap-2">
+          <Button asChild variant="outline" className="h-11 flex-1 text-sm">
             <Link href={`/fleet/${model.slug}`}>View vehicle</Link>
           </Button>
-          <Button asChild className="h-11 flex-1">
+          <Button asChild className="h-11 flex-1 text-sm">
             <Link href={`/book?vehicle=${model.slug}`}>Book a Vehicle</Link>
           </Button>
         </div>

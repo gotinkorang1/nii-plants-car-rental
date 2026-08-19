@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, PageMasthead, Section } from "@/components/marketing/page-intro";
-import { PageTrail } from "@/components/marketing/page-trail";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section } from "@/components/marketing/page-intro";
 import { Badge } from "@/components/ui/badge";
 import { PAGE_SEO } from "@/lib/content/company";
 import { FAQ_CATEGORIES, faqCategoryId } from "@/lib/content/faq-categories";
@@ -40,33 +39,19 @@ export default async function FaqsPage() {
         ])}
       />
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
+      <PageBanner
+        image={marketingImages.portrait}
+        eyebrow="Help"
+        title="Car rental FAQs for Accra and Ghana"
+        lede="Booking, payments, Kotoka pickup, insurance, extra drivers, and free cancellation 48 hours before pickup."
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Help", href: "/help" },
+          { name: "FAQs" },
+        ]}
+        compact
+      />
       <Section className="pt-10">
-        <PageMasthead
-          trail={
-            <PageTrail
-              items={[
-                { name: "Home", href: "/" },
-                { name: "Help", href: "/help" },
-                { name: "FAQs" },
-              ]}
-            />
-          }
-          intro={
-            <PageIntro
-              eyebrow="Help"
-              title="Car rental FAQs for Accra and Ghana"
-              lede="Booking, payments, Kotoka pickup, insurance, extra drivers, and free cancellation 48 hours before pickup."
-            />
-          }
-          media={
-            <MarketingPhoto
-              image={marketingImages.portrait}
-              className="aspect-[16/10] rounded-2xl lg:aspect-[4/3]"
-              sizes="(max-width: 1024px) 100vw, 28rem"
-              priority
-            />
-          }
-        />
         {grouped.length > 1 ? (
           <nav aria-label="FAQ topics" className="mt-8">
             <ul className="flex flex-wrap gap-2">

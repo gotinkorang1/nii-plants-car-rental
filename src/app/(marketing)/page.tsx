@@ -6,10 +6,10 @@ import { CtaPanel } from "@/components/marketing/cta-panel";
 import { FaqList } from "@/components/marketing/faq-list";
 import { HowHireWorks } from "@/components/marketing/how-hire-works";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { HeroCarousel } from "@/components/marketing/hero-carousel";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { Section, SectionHeading } from "@/components/marketing/page-intro";
 import { ServiceCard } from "@/components/marketing/service-card";
-import { TrustMarks } from "@/components/marketing/trust-marks";
 import { Button } from "@/components/ui/button";
 import { FeaturedModels } from "@/components/fleet/featured-models";
 import { PAGE_SEO } from "@/lib/content/company";
@@ -95,51 +95,13 @@ export default async function HomePage() {
         })}
       />
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
-      <section className="relative isolate -mt-16 overflow-hidden">
-        <MarketingPhoto
-          image={marketingImages.keys}
-          className="absolute inset-0 h-full min-h-[32rem]"
-          sizes="100vw"
-          objectPosition="center 20%"
-          priority
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(24,26,24,0.78)_0%,rgba(24,26,24,0.48)_48%,rgba(24,26,24,0.22)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#181a18]/70 to-transparent" />
-        <div className="relative mx-auto max-w-6xl px-4 pt-20 pb-12 sm:px-6 sm:pt-24 sm:pb-16">
-          <div className="max-w-2xl space-y-5">
-            <p className="flex items-center gap-2.5 text-sm font-medium tracking-[0.16em] text-accent uppercase">
-              <span className="h-px w-6 bg-accent" aria-hidden />
-              Car rental in Accra since 2007
-            </p>
-            <h1 className="font-heading text-4xl tracking-tight text-white sm:text-6xl">
-              {contact.homepageHeadline ||
-                "Rent a car in Accra — self-drive or chauffeur"}
-            </h1>
-            <p className="max-w-xl text-base text-white/85 sm:text-lg">
-              {contact.homepageSubheadline || PAGE_SEO.home.description}
-            </p>
-            <div className="flex flex-col gap-2 sm:flex-row">
-              <Button asChild size="lg" className="h-11 px-5">
-                <Link href="/book">Book a Vehicle</Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="h-11 px-5 border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white"
-              >
-                <Link href="/fleet">View the fleet</Link>
-              </Button>
-            </div>
-          </div>
-          <div className="mt-10">
-            <BookingSearchWidget locations={locations} />
-          </div>
-        </div>
-      </section>
+      <HeroCarousel
+        headline={contact.homepageHeadline || undefined}
+        subheadline={contact.homepageSubheadline || undefined}
+      />
 
       <Section className="py-10" reveal>
-        <TrustMarks />
+        <BookingSearchWidget locations={locations} />
       </Section>
 
       <Section className="pt-0" reveal>

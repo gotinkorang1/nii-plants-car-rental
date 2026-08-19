@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/marketing/json-ld";
-import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, PageMasthead, Section } from "@/components/marketing/page-intro";
-import { PageTrail } from "@/components/marketing/page-trail";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section } from "@/components/marketing/page-intro";
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
@@ -64,33 +63,19 @@ export default function HelpPage() {
           { name: "Help", path: "/help" },
         ])}
       />
+      <PageBanner
+        image={marketingImages.phone}
+        eyebrow="Help"
+        title="Car rental help for Ghana hire"
+        lede="Licence rules, payments, Kotoka pickup, and cancellation for self-drive and chauffeur hire with Nii Plants."
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Help" },
+        ]}
+        compact
+      />
       <Section className="pt-10">
-        <PageMasthead
-          trail={
-            <PageTrail
-              items={[
-                { name: "Home", href: "/" },
-                { name: "Help" },
-              ]}
-            />
-          }
-          intro={
-            <PageIntro
-              eyebrow="Help"
-              title="Car rental help for Ghana hire"
-              lede="Licence rules, payments, Kotoka pickup, and cancellation for self-drive and chauffeur hire with Nii Plants."
-            />
-          }
-          media={
-            <MarketingPhoto
-              image={marketingImages.phone}
-              className="aspect-[16/10] rounded-2xl lg:aspect-[4/3]"
-              sizes="(max-width: 1024px) 100vw, 28rem"
-              priority
-            />
-          }
-        />
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2">
           {topics.map((item) => (
             <li key={item.title}>
               <Link href={item.href} className="group block h-full focus-visible:outline-none">

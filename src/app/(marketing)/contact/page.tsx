@@ -4,8 +4,8 @@ import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { ContactDesk } from "@/components/marketing/contact-desk";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, PageMasthead, Section, SectionHeading } from "@/components/marketing/page-intro";
-import { PageTrail } from "@/components/marketing/page-trail";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section, SectionHeading } from "@/components/marketing/page-intro";
 import { OsmMapEmbed } from "@/components/maps/osm-map-embed";
 import { COMPANY, PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
@@ -43,34 +43,18 @@ export default async function ContactPage() {
           { name: "Contact", path: "/contact" },
         ])}
       />
+      <PageBanner
+        image={marketingImages.valet}
+        eyebrow="Contact"
+        title="Contact Nii Plants in Accra"
+        lede={`Call, WhatsApp, or email from ${COMPANY.openingHoursDisplay}. ${COMPANY.airportHoursNote}.`}
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Contact" },
+        ]}
+      />
       <Section className="pt-10">
-        <PageMasthead
-          trail={
-            <PageTrail
-              items={[
-                { name: "Home", href: "/" },
-                { name: "Contact" },
-              ]}
-            />
-          }
-          intro={
-            <PageIntro
-              eyebrow="Contact"
-              title="Contact Nii Plants in Accra"
-              lede={`Call, WhatsApp, or email from ${COMPANY.openingHoursDisplay}. ${COMPANY.airportHoursNote}.`}
-            />
-          }
-          media={
-            <MarketingPhoto
-              image={marketingImages.valet}
-              className="aspect-[16/10] rounded-2xl lg:aspect-[4/3]"
-              sizes="(max-width: 1024px) 100vw, 28rem"
-              objectPosition="center 15%"
-              priority
-            />
-          }
-        />
-        <div className="mt-10 grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-2">
           <div className="space-y-5">
             <ContactDesk contact={contact} />
             <p className="text-sm text-muted-foreground">{COMPANY.postalBox}</p>

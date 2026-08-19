@@ -4,8 +4,8 @@ import Link from "next/link";
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, PageMasthead, Section } from "@/components/marketing/page-intro";
-import { PageTrail } from "@/components/marketing/page-trail";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section } from "@/components/marketing/page-intro";
 import { Button } from "@/components/ui/button";
 import { PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
@@ -54,38 +54,20 @@ export default function CorporatePage() {
           { name: "Corporate", path: "/corporate" },
         ])}
       />
-      <Section className="pt-10">
-        <PageMasthead
-          trail={
-            <PageTrail
-              items={[
-                { name: "Home", href: "/" },
-                { name: "Corporate" },
-              ]}
-            />
-          }
-          intro={
-            <PageIntro
-              eyebrow="Corporate"
-              title="Corporate car rental for Accra teams and visitors"
-              lede="Nii Plants has hired cars to organisations in Ghana since 2007. GTA award-winning Accra hire, Kotoka meet-and-greet, and hotel desks at Alisa North Ridge and in Takoradi. Quoted by the operations team."
-            />
-          }
-          media={
-            <MarketingPhoto
-              image={marketingImages.executiveSuv}
-              className="aspect-[16/10] rounded-2xl lg:aspect-[4/3]"
-              sizes="(max-width: 1024px) 100vw, 28rem"
-              priority
-            />
-          }
-        />
-        <div className="mt-8">
-          <Button asChild variant="outline" className="h-11 px-4">
-            <Link href="/services/self-drive">Self-drive for staff trips</Link>
-          </Button>
-        </div>
-      </Section>
+      <PageBanner
+        image={marketingImages.executiveSuv}
+        eyebrow="Corporate"
+        title="Corporate car rental for Accra teams and visitors"
+        lede="Nii Plants has hired cars to organisations in Ghana since 2007. GTA award-winning Accra hire, Kotoka meet-and-greet, and hotel desks at Alisa North Ridge and in Takoradi. Quoted by the operations team."
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Corporate" },
+        ]}
+      >
+        <Button asChild variant="outline" className="h-11 border-white/40 bg-white/10 px-4 text-white hover:bg-white/20 hover:text-white">
+          <Link href="/services/self-drive">Self-drive for staff trips</Link>
+        </Button>
+      </PageBanner>
       <Section className="pt-0">
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="space-y-6">

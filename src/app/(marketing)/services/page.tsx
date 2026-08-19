@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { PageIntro, Section } from "@/components/marketing/page-intro";
-import { PageTrail } from "@/components/marketing/page-trail";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section } from "@/components/marketing/page-intro";
 import { ServiceCard } from "@/components/marketing/service-card";
 import { PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
@@ -64,19 +64,18 @@ export default function ServicesPage() {
           { name: "Services", path: "/services" },
         ])}
       />
+      <PageBanner
+        image={marketingImages.chauffeur}
+        eyebrow="Services"
+        title="Car hire services in Ghana"
+        lede="Self-drive bookings start online. Chauffeur, airport, long-term, wedding, and corporate trips are arranged with the Accra operations team."
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Services" },
+        ]}
+      />
       <Section className="pt-10" reveal>
-        <PageTrail
-          items={[
-            { name: "Home", href: "/" },
-            { name: "Services" },
-          ]}
-        />
-        <PageIntro
-          eyebrow="Services"
-          title="Car hire services in Ghana"
-          lede="Self-drive bookings start online. Chauffeur, airport, long-term, wedding, and corporate trips are arranged with the Accra operations team."
-        />
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2">
           {items.map((item) => (
             <li key={item.href}>
               <ServiceCard
