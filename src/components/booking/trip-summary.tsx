@@ -29,7 +29,7 @@ export function TripSummary({
   const windowLabel = `${formatAccraDateLabel(pickupDate)} ${pickupTime} – ${formatAccraDateLabel(returnDate)} ${returnTime}`;
 
   return (
-    <p className="rounded-2xl bg-primary/5 px-4 py-3 text-sm ring-1 ring-primary/15">
+    <p className="rounded-2xl border-l-2 border-accent bg-primary/5 px-4 py-3 text-sm ring-1 ring-primary/15">
       <span className="font-medium">{route}</span>
       <span className="text-muted-foreground">
         {" · "}

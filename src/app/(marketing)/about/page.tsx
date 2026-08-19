@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageIntro, PageMasthead, Section } from "@/components/marketing/page-intro";
 import { PageTrail } from "@/components/marketing/page-trail";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,22 +36,30 @@ export default async function AboutPage() {
         ])}
       />
       <Section className="pt-10">
-        <PageTrail
-          items={[
-            { name: "Home", href: "/" },
-            { name: "About" },
-          ]}
-        />
-        <PageIntro
-          eyebrow="About"
-          title="Car rental in Accra since 2007"
-          lede={`${settings.businessName} is a Ghanaian-owned hire company based at Plantsville, Dansoman. ${COMPANY.tagline}.`}
-        />
-        <MarketingPhoto
-          image={marketingImages.executiveBanner}
-          className="mt-8 aspect-[21/8] rounded-2xl"
-          sizes="(max-width: 1024px) 100vw, 72rem"
-          priority
+        <PageMasthead
+          trail={
+            <PageTrail
+              items={[
+                { name: "Home", href: "/" },
+                { name: "About" },
+              ]}
+            />
+          }
+          intro={
+            <PageIntro
+              eyebrow="About"
+              title="Car rental in Accra since 2007"
+              lede={`${settings.businessName} is a Ghanaian-owned hire company based at Plantsville, Dansoman. ${COMPANY.tagline}.`}
+            />
+          }
+          media={
+            <MarketingPhoto
+              image={marketingImages.executiveBanner}
+              className="aspect-[16/10] rounded-2xl lg:aspect-[4/5] lg:max-h-[28rem]"
+              sizes="(max-width: 1024px) 100vw, 28rem"
+              priority
+            />
+          }
         />
       </Section>
       <Section className="grid gap-8 pt-0 lg:grid-cols-2">

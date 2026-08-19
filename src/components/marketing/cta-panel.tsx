@@ -23,21 +23,32 @@ export function CtaPanel({
   return (
     <div
       className={cn(
-        "flex flex-col items-start justify-between gap-5 rounded-2xl bg-card p-6 ring-1 ring-border sm:flex-row sm:items-center",
+        "relative overflow-hidden rounded-2xl bg-primary px-6 py-8 text-primary-foreground sm:px-8",
         className,
       )}
     >
-      <div>
-        <h2 className="font-heading text-2xl">{title}</h2>
-        <p className="mt-1 text-sm text-muted-foreground">{body}</p>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        <Button asChild size="lg">
-          <Link href={primaryHref}>{primaryLabel}</Link>
-        </Button>
-        <Button asChild size="lg" variant="outline">
-          <Link href={secondaryHref}>{secondaryLabel}</Link>
-        </Button>
+      <span
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-0.5 bg-accent"
+      />
+      <div className="flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
+        <div className="max-w-xl">
+          <h2 className="font-heading text-2xl sm:text-3xl">{title}</h2>
+          <p className="mt-2 text-sm text-primary-foreground/80">{body}</p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <Button asChild size="lg" variant="secondary" className="h-11 px-4">
+            <Link href={primaryHref}>{primaryLabel}</Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="h-11 px-4 border-white/35 bg-transparent text-primary-foreground hover:bg-white/10 hover:text-primary-foreground"
+          >
+            <Link href={secondaryHref}>{secondaryLabel}</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );

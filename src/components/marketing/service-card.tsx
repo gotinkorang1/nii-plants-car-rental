@@ -34,6 +34,7 @@ export function ServiceCard({
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         zoomOnHover
       />
+      <span className="block h-0.5 bg-accent" aria-hidden />
       <div className="p-5">
         <Heading className="font-heading text-2xl transition-colors group-hover:text-primary">
           {title}

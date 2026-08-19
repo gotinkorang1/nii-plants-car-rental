@@ -4,7 +4,7 @@ import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { ContactDesk } from "@/components/marketing/contact-desk";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageIntro, PageMasthead, Section, SectionHeading } from "@/components/marketing/page-intro";
 import { PageTrail } from "@/components/marketing/page-trail";
 import { OsmMapEmbed } from "@/components/maps/osm-map-embed";
 import { COMPANY, PAGE_SEO } from "@/lib/content/company";
@@ -44,26 +44,34 @@ export default async function ContactPage() {
         ])}
       />
       <Section className="pt-10">
-        <PageTrail
-          items={[
-            { name: "Home", href: "/" },
-            { name: "Contact" },
-          ]}
-        />
-        <PageIntro
-          eyebrow="Contact"
-          title="Contact Nii Plants in Accra"
-          lede={`Call, WhatsApp, or email from ${COMPANY.openingHoursDisplay}. ${COMPANY.airportHoursNote}.`}
-        />
-        <div className="mt-8 grid gap-8 lg:grid-cols-2">
-          <div className="space-y-5">
+        <PageMasthead
+          trail={
+            <PageTrail
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Contact" },
+              ]}
+            />
+          }
+          intro={
+            <PageIntro
+              eyebrow="Contact"
+              title="Contact Nii Plants in Accra"
+              lede={`Call, WhatsApp, or email from ${COMPANY.openingHoursDisplay}. ${COMPANY.airportHoursNote}.`}
+            />
+          }
+          media={
             <MarketingPhoto
               image={marketingImages.valet}
-              className="aspect-[4/5] max-h-80 rounded-2xl"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="aspect-[16/10] rounded-2xl lg:aspect-[4/3]"
+              sizes="(max-width: 1024px) 100vw, 28rem"
               objectPosition="center 15%"
               priority
             />
+          }
+        />
+        <div className="mt-10 grid gap-8 lg:grid-cols-2">
+          <div className="space-y-5">
             <ContactDesk contact={contact} />
             <p className="text-sm text-muted-foreground">{COMPANY.postalBox}</p>
             <p>
@@ -93,7 +101,7 @@ export default async function ContactPage() {
       </Section>
       {mappedLocations.length > 0 ? (
         <Section className="pt-0 pb-20">
-          <h2 className="font-heading text-2xl">Pickup locations</h2>
+          <SectionHeading title="Pickup locations" />
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
             Maps use OpenStreetMap. Plantsville is shown at the Dansoman
             neighbourhood pin; the exact street is not in the public map data.

@@ -34,7 +34,8 @@ export function BookingProgress({ current }: { current: BookingStep }) {
                 className={cn(
                   "flex size-7 shrink-0 items-center justify-center rounded-full border text-xs transition-colors duration-300",
                   done && "border-primary bg-primary text-primary-foreground",
-                  active && "border-primary bg-background text-primary ring-2 ring-primary/20",
+                  active &&
+                    "border-accent bg-background text-primary ring-2 ring-accent/35",
                   !done && !active && "border-border bg-background text-muted-foreground",
                 )}
                 aria-hidden

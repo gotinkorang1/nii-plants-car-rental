@@ -29,7 +29,7 @@ export function BookingPaymentButton({
           {state.error}
         </p>
       ) : null}
-      <Button type="submit" disabled={pending} className="w-full sm:w-auto">
+      <Button type="submit" disabled={pending} size="lg" className="h-11 w-full px-4 sm:w-auto">
         {pending ? "Opening secure payment..." : label}
       </Button>
     </form>

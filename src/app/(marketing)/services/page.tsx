@@ -88,7 +88,7 @@ export default function ServicesPage() {
             </li>
           ))}
         </ul>
-        <div className="mt-12 rounded-2xl bg-card p-6 ring-1 ring-border">
+        <div className="mt-12">
           <h2 className="font-heading text-2xl">Multi-city or custom transport</h2>
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
             Describe routes across Ghana or a bespoke itinerary. Staff review every

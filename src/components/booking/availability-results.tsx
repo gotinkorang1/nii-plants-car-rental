@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { VehicleImageFallback } from "@/components/fleet/vehicle-image-fallback";
 import { MoneyDisplay } from "@/components/money/money-display";
 import type { AvailableModelResult } from "@/lib/availability/get-available-models";
@@ -44,11 +45,15 @@ export function AvailabilityResults({
                 <VehicleImageFallback vehicleClass={model.className} />
               )}
               {model.image?.url ? (
-                <p className="absolute top-3 left-3 rounded-full bg-background/90 px-2.5 py-1 text-[0.7rem] font-medium tracking-[0.14em] text-primary uppercase backdrop-blur-sm">
+                <Badge
+                  variant="secondary"
+                  className="absolute top-3 left-3 h-auto rounded-full bg-background/90 px-2.5 py-1 text-[0.7rem] font-medium tracking-[0.14em] text-primary uppercase backdrop-blur-sm"
+                >
                   {model.className}
-                </p>
+                </Badge>
               ) : null}
             </div>
+            <span className="block h-0.5 shrink-0 bg-accent" aria-hidden />
             <div className="flex flex-1 flex-col gap-4 p-5">
               <div>
                 <h2 className="font-heading text-2xl leading-tight">
@@ -57,17 +62,25 @@ export function AvailabilityResults({
                 <p className="mt-1 text-sm text-muted-foreground">or similar</p>
               </div>
               <ul className="flex flex-wrap gap-2 text-xs">
-                <li className="rounded-full bg-muted px-2.5 py-1 text-muted-foreground">
-                  {model.seats} seats
+                <li>
+                  <Badge variant="secondary" className="h-auto rounded-full px-2.5 py-1 font-normal text-muted-foreground">
+                    {model.seats} seats
+                  </Badge>
                 </li>
-                <li className="rounded-full bg-muted px-2.5 py-1 text-muted-foreground capitalize">
-                  {model.transmission}
+                <li>
+                  <Badge variant="secondary" className="h-auto rounded-full px-2.5 py-1 font-normal text-muted-foreground capitalize">
+                    {model.transmission}
+                  </Badge>
                 </li>
-                <li className="rounded-full bg-muted px-2.5 py-1 text-muted-foreground">
-                  {model.luggage} luggage
+                <li>
+                  <Badge variant="secondary" className="h-auto rounded-full px-2.5 py-1 font-normal text-muted-foreground">
+                    {model.luggage} luggage
+                  </Badge>
                 </li>
-                <li className="rounded-full bg-muted px-2.5 py-1 text-muted-foreground">
-                  {model.airConditioning ? "Air conditioning" : "No A/C"}
+                <li>
+                  <Badge variant="secondary" className="h-auto rounded-full px-2.5 py-1 font-normal text-muted-foreground">
+                    {model.airConditioning ? "Air conditioning" : "No A/C"}
+                  </Badge>
                 </li>
               </ul>
               <p className="text-sm">
@@ -84,7 +97,7 @@ export function AvailabilityResults({
                   {formatGhs(model.estimatedTotal)}
                 </span>
               </p>
-              <Button asChild className="mt-auto" size="lg">
+              <Button asChild className="mt-auto h-11" size="lg">
                 <Link href={`/book/vehicle/${model.slug}?${query}`}>
                   Select vehicle
                 </Link>

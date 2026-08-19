@@ -4,7 +4,7 @@ import Link from "next/link";
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageIntro, PageMasthead, Section } from "@/components/marketing/page-intro";
 import { PageTrail } from "@/components/marketing/page-trail";
 import { Button } from "@/components/ui/button";
 import { PAGE_SEO } from "@/lib/content/company";
@@ -55,25 +55,33 @@ export default function CorporatePage() {
         ])}
       />
       <Section className="pt-10">
-        <PageTrail
-          items={[
-            { name: "Home", href: "/" },
-            { name: "Corporate" },
-          ]}
-        />
-        <PageIntro
-          eyebrow="Corporate"
-          title="Corporate car rental for Accra teams and visitors"
-          lede="Nii Plants has hired cars to organisations in Ghana since 2007. GTA award-winning Accra hire, Kotoka meet-and-greet, and hotel desks at Alisa North Ridge and in Takoradi. Quoted by the operations team."
-        />
-        <MarketingPhoto
-          image={marketingImages.executiveSuv}
-          className="mt-8 aspect-[16/8] rounded-2xl"
-          sizes="(max-width: 1024px) 100vw, 72rem"
-          priority
+        <PageMasthead
+          trail={
+            <PageTrail
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Corporate" },
+              ]}
+            />
+          }
+          intro={
+            <PageIntro
+              eyebrow="Corporate"
+              title="Corporate car rental for Accra teams and visitors"
+              lede="Nii Plants has hired cars to organisations in Ghana since 2007. GTA award-winning Accra hire, Kotoka meet-and-greet, and hotel desks at Alisa North Ridge and in Takoradi. Quoted by the operations team."
+            />
+          }
+          media={
+            <MarketingPhoto
+              image={marketingImages.executiveSuv}
+              className="aspect-[16/10] rounded-2xl lg:aspect-[4/3]"
+              sizes="(max-width: 1024px) 100vw, 28rem"
+              priority
+            />
+          }
         />
         <div className="mt-8">
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" className="h-11 px-4">
             <Link href="/services/self-drive">Self-drive for staff trips</Link>
           </Button>
         </div>

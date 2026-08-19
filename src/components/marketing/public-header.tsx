@@ -277,7 +277,10 @@ export function PublicFooter({ contact }: { contact: PublicContact }) {
           </p>
         </div>
         <div>
-          <p className="text-sm font-medium">Explore</p>
+          <p className="flex items-center gap-2 text-sm font-medium">
+            <span className="h-px w-5 bg-accent" aria-hidden />
+            Explore
+          </p>
           <ul className="mt-3 space-y-2 text-sm">
             {PUBLIC_FOOTER_EXPLORE_LINKS.map((item) => (
               <li key={item.href}>
@@ -292,7 +295,10 @@ export function PublicFooter({ contact }: { contact: PublicContact }) {
           </ul>
         </div>
         <div>
-          <p className="text-sm font-medium">Book</p>
+          <p className="flex items-center gap-2 text-sm font-medium">
+            <span className="h-px w-5 bg-accent" aria-hidden />
+            Book
+          </p>
           <ul className="mt-3 space-y-2 text-sm">
             {PUBLIC_FOOTER_BOOK_LINKS.map((item) => (
               <li key={item.href}>

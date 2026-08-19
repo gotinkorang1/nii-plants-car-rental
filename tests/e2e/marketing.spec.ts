@@ -57,16 +57,22 @@ test.describe("public marketing site", () => {
 
   test("FAQ accordion works when published questions exist", async ({ page }) => {
     await page.goto("/help/faqs");
-    const summary = page.locator("details summary").first();
+    const trigger = page.getByRole("button", { name: /how do i start a self-drive booking/i });
 
-    if ((await summary.count()) === 0) {
-      await expect(page.getByText("No published FAQs yet")).toBeVisible();
+    if ((await trigger.count()) === 0) {
+      const firstTrigger = page.locator("[data-slot='accordion-trigger']").first();
+      if ((await firstTrigger.count()) === 0) {
+        await expect(page.getByText("No published FAQs yet")).toBeVisible();
+      } else {
+        await firstTrigger.click();
+        await expect(firstTrigger).toHaveAttribute("aria-expanded", "true");
+      }
     } else {
-      await summary.click();
-      await expect(page.locator("details").first()).toHaveAttribute("open", "");
-      await expect(page.getByText("Internal draft: weekend surcharge")).toHaveCount(0);
+      await trigger.click();
+      await expect(trigger).toHaveAttribute("aria-expanded", "true");
     }
 
+    await expect(page.getByText("Internal draft: weekend surcharge")).toHaveCount(0);
     await expectNoSeriousA11yViolations(page, "faqs");
   });
 

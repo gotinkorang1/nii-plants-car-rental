@@ -74,17 +74,17 @@ export function PaymentCallbackStatus({ reference }: { reference: string }) {
         {message}
       </p>
       {status === "succeeded" && bookingReference ? (
-        <Button asChild>
+        <Button asChild size="lg" className="h-11 px-4">
           <Link href={`/booking/${bookingReference}`}>View booking</Link>
         </Button>
       ) : null}
       {status === "review" && bookingReference ? (
-        <Button asChild variant="outline">
+        <Button asChild variant="outline" size="lg" className="h-11 px-4">
           <Link href={`/booking/${bookingReference}`}>View booking status</Link>
         </Button>
       ) : null}
       {!bookingReference ? (
-        <Button asChild variant="outline">
+        <Button asChild variant="outline" size="lg" className="h-11 px-4">
           <Link href="/booking">Access your booking</Link>
         </Button>
       ) : null}

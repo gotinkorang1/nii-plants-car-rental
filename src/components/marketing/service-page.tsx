@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageIntro, PageMasthead, Section, SectionHeading } from "@/components/marketing/page-intro";
 import { PageTrail } from "@/components/marketing/page-trail";
 import type { MarketingImage } from "@/lib/content/marketing-images";
 import { faqPageJsonLd } from "@/lib/content/structured-data";
@@ -42,36 +42,46 @@ export function ServicePage({
     <main>
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
       <Section className="pt-10">
-        <PageTrail
-          items={[
-            { name: "Home", href: "/" },
-            { name: "Services", href: "/services" },
-            { name: eyebrow },
-          ]}
+        <PageMasthead
+          trail={
+            <PageTrail
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Services", href: "/services" },
+                { name: eyebrow },
+              ]}
+            />
+          }
+          intro={
+            <>
+              <PageIntro eyebrow={eyebrow} title={title} lede={lede} />
+              {form ? null : (
+                <div className="mt-8 flex flex-col gap-2 sm:flex-row">
+                  {ctaHref && ctaLabel ? (
+                    <Button asChild size="lg" className="h-11 px-4">
+                      <Link href={ctaHref}>{ctaLabel}</Link>
+                    </Button>
+                  ) : null}
+                  {secondaryHref && secondaryLabel ? (
+                    <Button asChild size="lg" variant="outline" className="h-11 px-4">
+                      <Link href={secondaryHref}>{secondaryLabel}</Link>
+                    </Button>
+                  ) : null}
+                </div>
+              )}
+            </>
+          }
+          media={
+            image ? (
+              <MarketingPhoto
+                image={image}
+                className="aspect-[16/10] rounded-2xl lg:aspect-[4/3]"
+                sizes="(max-width: 1024px) 100vw, 28rem"
+                priority
+              />
+            ) : undefined
+          }
         />
-        <PageIntro eyebrow={eyebrow} title={title} lede={lede} />
-        {image ? (
-          <MarketingPhoto
-            image={image}
-            className="mt-8 aspect-[16/9] max-w-4xl rounded-2xl"
-            sizes="(max-width: 1024px) 100vw, 896px"
-            priority
-          />
-        ) : null}
-        {form ? null : (
-          <div className="mt-8 flex flex-col gap-2 sm:flex-row">
-            {ctaHref && ctaLabel ? (
-              <Button asChild size="lg">
-                <Link href={ctaHref}>{ctaLabel}</Link>
-              </Button>
-            ) : null}
-            {secondaryHref && secondaryLabel ? (
-              <Button asChild size="lg" variant="outline">
-                <Link href={secondaryHref}>{secondaryLabel}</Link>
-              </Button>
-            ) : null}
-          </div>
-        )}
       </Section>
       {form ? (
         <Section className="pt-0">
@@ -81,27 +91,30 @@ export function ServicePage({
           </div>
           <div className="mt-6 grid gap-8 lg:grid-cols-2">
             <div>
-              <h2 className="font-heading text-2xl">What this is for</h2>
+              <SectionHeading title="What this is for" />
               <ul className="mt-6 grid gap-4">
                 {benefits.map((item) => (
                   <li
                     key={item.title}
-                    className="border-l-2 border-primary bg-card p-5 ring-1 ring-border"
+                    className="overflow-hidden border-l-2 border-accent bg-card p-5 ring-1 ring-border"
                   >
                     <h3 className="font-medium">{item.title}</h3>
                     <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
                   </li>
                 ))}
               </ul>
-              <h2 className="mt-8 font-heading text-2xl">How it works</h2>
+              <SectionHeading className="mt-8" title="How it works" />
               <ol className="mt-6 grid gap-4">
                 {steps.map((item, index) => (
-                  <li key={item.title} className="rounded-2xl bg-card p-5 ring-1 ring-border">
-                    <p className="text-xs font-medium tracking-wide text-primary uppercase">
-                      Step {index + 1}
-                    </p>
-                    <h3 className="mt-2 font-medium">{item.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
+                  <li key={item.title} className="overflow-hidden rounded-2xl bg-card ring-1 ring-border">
+                    <span className="block h-0.5 bg-accent" aria-hidden />
+                    <div className="p-5">
+                      <p className="text-xs font-medium tracking-wide text-primary uppercase">
+                        Step {index + 1}
+                      </p>
+                      <h3 className="mt-2 font-medium">{item.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
+                    </div>
                   </li>
                 ))}
               </ol>
@@ -112,12 +125,12 @@ export function ServicePage({
       ) : (
         <>
       <Section className="pt-0">
-        <h2 className="font-heading text-2xl">What this is for</h2>
+        <SectionHeading title="What this is for" />
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
           {benefits.map((item) => (
             <li
               key={item.title}
-              className="border-l-2 border-primary bg-card p-5 ring-1 ring-border"
+              className="overflow-hidden border-l-2 border-accent bg-card p-5 ring-1 ring-border"
             >
               <h3 className="font-medium">{item.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
@@ -126,15 +139,18 @@ export function ServicePage({
         </ul>
       </Section>
       <Section className="pt-0">
-        <h2 className="font-heading text-2xl">How it works</h2>
+        <SectionHeading title="How it works" />
         <ol className="mt-6 grid gap-4 sm:grid-cols-3">
           {steps.map((item, index) => (
-            <li key={item.title} className="rounded-2xl bg-card p-5 ring-1 ring-border">
-              <p className="text-xs font-medium tracking-wide text-primary uppercase">
-                Step {index + 1}
-              </p>
-              <h3 className="mt-2 font-medium">{item.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
+            <li key={item.title} className="overflow-hidden rounded-2xl bg-card ring-1 ring-border">
+              <span className="block h-0.5 bg-accent" aria-hidden />
+              <div className="p-5">
+                <p className="text-xs font-medium tracking-wide text-primary uppercase">
+                  Step {index + 1}
+                </p>
+                <h3 className="mt-2 font-medium">{item.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
+              </div>
             </li>
           ))}
         </ol>
@@ -142,7 +158,7 @@ export function ServicePage({
         </>
       )}
       <Section className="pt-0">
-        <h2 className="font-heading text-2xl">Questions</h2>
+        <SectionHeading title="Questions" />
         <div className="mt-6">
           <FaqList items={faqs} />
         </div>

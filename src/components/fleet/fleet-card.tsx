@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { CatalogueDailyRate } from "@/components/fleet/catalogue-daily-rate";
 import { VehicleImageFallback } from "@/components/fleet/vehicle-image-fallback";
 import type { PublicVehicleModel } from "@/lib/fleet/public-types";
@@ -32,11 +33,15 @@ export function FleetCard({ model }: { model: PublicVehicleModel }) {
           <VehicleImageFallback vehicleClass={model.className} />
         )}
         {image?.url ? (
-          <p className="absolute top-3 left-3 rounded-full bg-background/90 px-2.5 py-1 text-[0.7rem] font-medium tracking-[0.14em] text-primary uppercase backdrop-blur-sm">
+          <Badge
+            variant="secondary"
+            className="absolute top-3 left-3 h-auto rounded-full bg-background/90 px-2.5 py-1 text-[0.7rem] font-medium tracking-[0.14em] text-primary uppercase backdrop-blur-sm"
+          >
             {model.className}
-          </p>
+          </Badge>
         ) : null}
       </div>
+      <span className="block h-0.5 shrink-0 bg-accent" aria-hidden />
       <div className="flex flex-1 flex-col gap-4 p-5">
         <div>
           <h2 className="font-heading text-2xl leading-tight">
@@ -64,10 +69,10 @@ export function FleetCard({ model }: { model: PublicVehicleModel }) {
           />
         </p>
         <div className="flex flex-col gap-2 sm:flex-row">
-          <Button asChild variant="outline" className="flex-1">
+          <Button asChild variant="outline" className="h-11 flex-1">
             <Link href={`/fleet/${model.slug}`}>View vehicle</Link>
           </Button>
-          <Button asChild className="flex-1">
+          <Button asChild className="h-11 flex-1">
             <Link href={`/book?vehicle=${model.slug}`}>Book a Vehicle</Link>
           </Button>
         </div>
@@ -84,13 +89,16 @@ function SpecChip({
   className?: string;
 }) {
   return (
-    <li
-      className={cn(
-        "rounded-full bg-muted px-2.5 py-1 text-muted-foreground",
-        className,
-      )}
-    >
-      {children}
+    <li>
+      <Badge
+        variant="secondary"
+        className={cn(
+          "h-auto rounded-full px-2.5 py-1 font-normal text-muted-foreground",
+          className,
+        )}
+      >
+        {children}
+      </Badge>
     </li>
   );
 }

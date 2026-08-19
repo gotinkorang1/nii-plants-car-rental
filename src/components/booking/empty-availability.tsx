@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { BookingSearchForm } from "@/components/booking/booking-search-form";
+import { DeskPanel } from "@/components/marketing/desk-panel";
 import { Button } from "@/components/ui/button";
 import type { PublicSearchLocation } from "@/lib/content/location-type";
 import type { AvailabilitySearchInput } from "@/lib/validation/availability";
@@ -18,7 +19,7 @@ export function EmptyAvailability({
   whatsapp?: string;
 }) {
   return (
-    <div className="rounded-2xl bg-card p-6 ring-1 ring-border sm:p-8">
+    <DeskPanel bodyClassName="p-6 sm:p-8">
       <h2 className="font-heading text-2xl">No vehicles are available for these dates.</h2>
       <p className="mt-2 max-w-xl text-muted-foreground">
         Try a different pickup day, a shorter hire, or another location. Staff can
@@ -26,22 +27,22 @@ export function EmptyAvailability({
       </p>
       <div className="mt-6 flex flex-wrap gap-2">
         {phone ? (
-          <Button asChild>
+          <Button asChild size="lg" className="h-11 px-4">
             <a href={telHref(phone)}>Call</a>
           </Button>
         ) : null}
         {whatsapp ? (
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" size="lg" className="h-11 px-4">
             <a href={whatsappHref(whatsapp)}>WhatsApp</a>
           </Button>
         ) : null}
-        <Button asChild variant="outline">
+        <Button asChild variant="outline" size="lg" className="h-11 px-4">
           <Link href="/book">Change dates</Link>
         </Button>
       </div>
       <div className="mt-8">
         <BookingSearchForm locations={locations} defaults={search} submitLabel="Search again" />
       </div>
-    </div>
+    </DeskPanel>
   );
 }

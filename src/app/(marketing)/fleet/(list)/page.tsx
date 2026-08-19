@@ -5,7 +5,7 @@ import { FleetCard } from "@/components/fleet/fleet-card";
 import { FleetFilters } from "@/components/fleet/fleet-filters";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro } from "@/components/marketing/page-intro";
+import { PageIntro, PageMasthead } from "@/components/marketing/page-intro";
 import { PageTrail } from "@/components/marketing/page-trail";
 import { PAGE_SEO } from "@/lib/content/company";
 import { marketingImages } from "@/lib/content/marketing-images";
@@ -61,22 +61,30 @@ export default async function FleetPage({ searchParams }: FleetPageProps) {
           )}
         />
       ) : null}
-      <PageTrail
-        items={[
-          { name: "Home", href: "/" },
-          { name: "Fleet" },
-        ]}
-      />
-      <PageIntro
-        eyebrow="Car hire fleet, Accra"
-        title="Cars to hire in Accra: saloons, SUVs, 4x4s and coaches"
-        lede="You book a representative model or similar, not a registration plate. Staff assign the physical car. Catalogue rates are in US dollars, matching the live shop. Online reservation payments are in Ghana cedis."
-      />
-      <MarketingPhoto
-        image={marketingImages.driving}
-        className="mt-8 aspect-[21/7] max-h-56 rounded-2xl sm:max-h-72"
-        sizes="(max-width: 1024px) 100vw, 72rem"
-        priority
+      <PageMasthead
+        trail={
+          <PageTrail
+            items={[
+              { name: "Home", href: "/" },
+              { name: "Fleet" },
+            ]}
+          />
+        }
+        intro={
+          <PageIntro
+            eyebrow="Car hire fleet, Accra"
+            title="Cars to hire in Accra: saloons, SUVs, 4x4s and coaches"
+            lede="You book a representative model or similar, not a registration plate. Staff assign the physical car. Catalogue rates are in US dollars, matching the live shop. Online reservation payments are in Ghana cedis."
+          />
+        }
+        media={
+          <MarketingPhoto
+            image={marketingImages.driving}
+            className="aspect-[16/10] rounded-2xl lg:aspect-[4/3]"
+            sizes="(max-width: 1024px) 100vw, 28rem"
+            priority
+          />
+        }
       />
 
       <div className="mt-8">

@@ -3,12 +3,13 @@ import type { Metadata } from "next";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageIntro, PageMasthead, Section } from "@/components/marketing/page-intro";
 import { PageTrail } from "@/components/marketing/page-trail";
+import { Badge } from "@/components/ui/badge";
 import { PAGE_SEO } from "@/lib/content/company";
+import { FAQ_CATEGORIES, faqCategoryId } from "@/lib/content/faq-categories";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublishedFaqs } from "@/lib/content/queries";
-import { FAQ_CATEGORIES, faqCategoryId } from "@/lib/content/faq-categories";
 import { pageMetadata } from "@/lib/content/seo";
 import {
   breadcrumbJsonLd,
@@ -40,35 +41,46 @@ export default async function FaqsPage() {
       />
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
       <Section className="pt-10">
-        <PageTrail
-          items={[
-            { name: "Home", href: "/" },
-            { name: "Help", href: "/help" },
-            { name: "FAQs" },
-          ]}
-        />
-        <PageIntro
-          eyebrow="Help"
-          title="Car rental FAQs for Accra and Ghana"
-          lede="Booking, payments, Kotoka pickup, insurance, extra drivers, and free cancellation 48 hours before pickup."
-        />
-        <MarketingPhoto
-          image={marketingImages.portrait}
-          className="mt-8 aspect-[16/8] max-w-3xl rounded-2xl"
-          sizes="(max-width: 768px) 100vw, 48rem"
-          priority
+        <PageMasthead
+          trail={
+            <PageTrail
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Help", href: "/help" },
+                { name: "FAQs" },
+              ]}
+            />
+          }
+          intro={
+            <PageIntro
+              eyebrow="Help"
+              title="Car rental FAQs for Accra and Ghana"
+              lede="Booking, payments, Kotoka pickup, insurance, extra drivers, and free cancellation 48 hours before pickup."
+            />
+          }
+          media={
+            <MarketingPhoto
+              image={marketingImages.portrait}
+              className="aspect-[16/10] rounded-2xl lg:aspect-[4/3]"
+              sizes="(max-width: 1024px) 100vw, 28rem"
+              priority
+            />
+          }
         />
         {grouped.length > 1 ? (
           <nav aria-label="FAQ topics" className="mt-8">
             <ul className="flex flex-wrap gap-2">
               {grouped.map((group) => (
                 <li key={group.category}>
-                  <a
-                    href={`#${faqCategoryId(group.category)}`}
-                    className="inline-flex rounded-full bg-card px-3 py-1.5 text-sm text-muted-foreground ring-1 ring-border transition-colors hover:text-primary"
-                  >
-                    {group.category}
-                  </a>
+                    <Badge
+                      asChild
+                      variant="secondary"
+                      className="h-auto rounded-full px-3 py-1.5 text-sm font-normal text-muted-foreground hover:text-primary"
+                    >
+                      <a href={`#${faqCategoryId(group.category)}`}>
+                        {group.category}
+                      </a>
+                    </Badge>
                 </li>
               ))}
             </ul>

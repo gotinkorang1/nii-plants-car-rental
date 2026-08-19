@@ -7,7 +7,7 @@ import { FaqList } from "@/components/marketing/faq-list";
 import { HowHireWorks } from "@/components/marketing/how-hire-works";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { Section } from "@/components/marketing/page-intro";
+import { Section, SectionHeading } from "@/components/marketing/page-intro";
 import { ServiceCard } from "@/components/marketing/service-card";
 import { TrustMarks } from "@/components/marketing/trust-marks";
 import { Button } from "@/components/ui/button";
@@ -103,10 +103,12 @@ export default async function HomePage() {
           objectPosition="center 20%"
           priority
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,26,24,0.55)_0%,rgba(24,26,24,0.72)_45%,rgba(24,26,24,0.88)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(24,26,24,0.78)_0%,rgba(24,26,24,0.48)_48%,rgba(24,26,24,0.22)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#181a18]/70 to-transparent" />
         <div className="relative mx-auto max-w-6xl px-4 pt-20 pb-12 sm:px-6 sm:pt-24 sm:pb-16">
           <div className="max-w-2xl space-y-5">
-            <p className="text-sm font-medium tracking-[0.16em] text-accent uppercase">
+            <p className="flex items-center gap-2.5 text-sm font-medium tracking-[0.16em] text-accent uppercase">
+              <span className="h-px w-6 bg-accent" aria-hidden />
               Car rental in Accra since 2007
             </p>
             <h1 className="font-heading text-4xl tracking-tight text-white sm:text-6xl">
@@ -117,14 +119,14 @@ export default async function HomePage() {
               {contact.homepageSubheadline || PAGE_SEO.home.description}
             </p>
             <div className="flex flex-col gap-2 sm:flex-row">
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="h-11 px-5">
                 <Link href="/book">Book a Vehicle</Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white"
+                className="h-11 px-5 border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white"
               >
                 <Link href="/fleet">View the fleet</Link>
               </Button>
@@ -161,8 +163,8 @@ export default async function HomePage() {
       </Section>
 
       <Section className="pt-0" reveal>
-        <h2 className="font-heading text-2xl">Car hire services in Ghana</h2>
-        <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <SectionHeading title="Car hire services in Ghana" />
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((item) => (
             <li key={item.href}>
               <ServiceCard
@@ -185,7 +187,10 @@ export default async function HomePage() {
               className="mb-5 aspect-[16/10] rounded-2xl"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <h2 className="font-heading text-2xl">Why hire from Nii Plants</h2>
+            <h2 className="font-heading text-2xl">
+              <span className="mb-3 block h-0.5 w-8 bg-accent" aria-hidden />
+              Why hire from Nii Plants
+            </h2>
             <p className="mt-3 text-muted-foreground">
               You book a model or similar, not a registration plate. Staff assign
               a roadworthy car, confirm the Ghana cedi rate before you pay, and
@@ -200,7 +205,10 @@ export default async function HomePage() {
               className="mb-5 aspect-[16/10] rounded-2xl"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <h2 className="font-heading text-2xl">Airport arrivals at Kotoka</h2>
+            <h2 className="font-heading text-2xl">
+              <span className="mb-3 block h-0.5 w-8 bg-accent" aria-hidden />
+              Airport arrivals at Kotoka
+            </h2>
             <p className="mt-3 text-muted-foreground">
               Share your flight details when you book. We can meet you after
               landing, or you can collect a self-drive car. Evening collections
@@ -220,7 +228,8 @@ export default async function HomePage() {
             className="aspect-[21/8] min-h-64"
             sizes="(max-width: 1024px) 100vw, 72rem"
           />
-          <div className="absolute inset-0 bg-primary/75" />
+          <div className="absolute inset-0 bg-primary/72" />
+          <div className="absolute inset-x-0 top-0 z-10 h-0.5 bg-accent" />
           <div className="absolute inset-0 flex flex-col justify-end px-6 py-10 text-primary-foreground sm:px-10">
             <h2 className="font-heading text-3xl">Corporate car rental in Accra</h2>
             <p className="mt-3 max-w-2xl text-primary-foreground/85">
@@ -228,7 +237,7 @@ export default async function HomePage() {
               the Plantsville operations team — including chauffeur cars and
               airport meet-and-greet.
             </p>
-            <Button asChild variant="secondary" className="mt-6 w-fit">
+            <Button asChild variant="secondary" className="mt-6 h-11 w-fit px-4">
               <Link href="/corporate">Request corporate mobility</Link>
             </Button>
           </div>
@@ -241,7 +250,10 @@ export default async function HomePage() {
           className="mb-6 aspect-[21/9] rounded-2xl"
           sizes="(max-width: 1024px) 100vw, 72rem"
         />
-        <h2 className="font-heading text-2xl">Travel around Ghana</h2>
+        <h2 className="font-heading text-2xl">
+          <span className="mb-3 block h-0.5 w-8 bg-accent" aria-hidden />
+          Travel around Ghana
+        </h2>
         <p className="mt-3 max-w-2xl text-muted-foreground">
           Use the fleet for Accra days, Cape Coast or Kumasi road trips, and
           Takoradi pickup. Hire stays inside Ghana. Land-border crossing is not
@@ -250,12 +262,14 @@ export default async function HomePage() {
       </Section>
 
       <Section className="pt-0" reveal>
-        <div className="flex items-end justify-between gap-4">
-          <h2 className="font-heading text-2xl">Car rental questions</h2>
-          <Link href="/help/faqs" className="text-sm text-primary hover:underline">
-            All FAQs
-          </Link>
-        </div>
+        <SectionHeading
+          title="Car rental questions"
+          action={
+            <Link href="/help/faqs" className="text-sm text-primary hover:underline">
+              All FAQs
+            </Link>
+          }
+        />
         <div className="mt-6">
           <FaqList items={previewFaqs} />
         </div>
