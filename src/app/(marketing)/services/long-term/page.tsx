@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { ServicePage } from "@/components/marketing/service-page";
 import { PAGE_SEO } from "@/lib/content/company";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublishedFaqs } from "@/lib/content/queries";
 import { pageMetadata } from "@/lib/content/seo";
 import { listActiveVehicleClassOptions } from "@/lib/enquiries/queries";
@@ -23,6 +24,7 @@ export default async function LongTermPage() {
     <ServicePage
       eyebrow="Long-term"
       title="Long-term car rental in Ghana"
+      image={marketingImages.longTerm}
       lede="Keep a Nii Plants car for a week, a month, or a longer assignment in Accra and across Ghana. Staff quote weekly and monthly packages. There is no automated monthly price list on this site."
       benefits={[
         {

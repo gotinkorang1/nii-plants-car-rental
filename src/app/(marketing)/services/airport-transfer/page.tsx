@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { ServicePage } from "@/components/marketing/service-page";
 import { PAGE_SEO } from "@/lib/content/company";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublishedFaqs, getPublicLocations } from "@/lib/content/queries";
 import { pageMetadata } from "@/lib/content/seo";
 import { listActiveVehicleClassOptions } from "@/lib/enquiries/queries";
@@ -25,6 +26,7 @@ export default async function AirportTransferPage() {
     <ServicePage
       eyebrow="Airport transfer"
       title="Kotoka airport car hire and transfers"
+      image={marketingImages.airport}
       lede={
         airports.length > 0
           ? `Pickup and drop-off at ${airports

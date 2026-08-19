@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/marketing/json-ld";
+import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +12,7 @@ import {
   MEMBERSHIPS,
   PAGE_SEO,
 } from "@/lib/content/company";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
 import { getSiteSettings } from "@/lib/settings/get-site-settings";
@@ -38,9 +40,21 @@ export default async function AboutPage() {
           title="Car rental in Accra since 2007"
           lede={`${settings.businessName} is a Ghanaian-owned hire company based at Plantsville, Dansoman. ${COMPANY.tagline}.`}
         />
+        <MarketingPhoto
+          image={marketingImages.executiveBanner}
+          className="mt-8 aspect-[21/8] rounded-2xl"
+          sizes="(max-width: 1024px) 100vw, 72rem"
+          priority
+        />
       </Section>
       <Section className="grid gap-8 pt-0 lg:grid-cols-2">
         <article>
+          <MarketingPhoto
+            image={marketingImages.office}
+            className="mb-4 aspect-[4/5] max-h-80 rounded-2xl"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            objectPosition="center 20%"
+          />
           <h2 className="font-heading text-2xl">Who we are</h2>
           <p className="mt-3 text-muted-foreground">
             {COMPANY.legalName} was incorporated on 22 October 2007 under the
@@ -51,6 +65,11 @@ export default async function AboutPage() {
           </p>
         </article>
         <article>
+          <MarketingPhoto
+            image={marketingImages.driving}
+            className="mb-4 aspect-[16/10] rounded-2xl"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
           <h2 className="font-heading text-2xl">Leadership</h2>
           <p className="mt-3 text-muted-foreground">
             {MANAGEMENT.managingDirector.name} is{" "}
@@ -65,6 +84,11 @@ export default async function AboutPage() {
           </p>
         </article>
         <article>
+          <MarketingPhoto
+            image={marketingImages.workshop}
+            className="mb-4 aspect-[16/10] rounded-2xl"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
           <h2 className="font-heading text-2xl">How we hire cars</h2>
           <p className="mt-3 text-muted-foreground">
             You book a model or similar. Staff assign a physical car. Self-drive
@@ -125,6 +149,11 @@ export default async function AboutPage() {
           </p>
         </article>
         <article>
+          <MarketingPhoto
+            image={marketingImages.cabin}
+            className="mb-4 aspect-[16/10] rounded-2xl"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
           <h2 className="font-heading text-2xl">Accra and Takoradi desks</h2>
           <p className="mt-3 text-muted-foreground">
             Besides Plantsville and Kotoka, Modern Ghana reported desks at Alisa

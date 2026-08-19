@@ -1,6 +1,8 @@
 import { BookingPageShell } from "@/components/booking/booking-page-shell";
 import { BookingSearchForm } from "@/components/booking/booking-search-form";
+import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { getPublicLocations } from "@/lib/content/queries";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { parseBookingSearchParams } from "@/lib/booking/search-params";
 import { utcToAccraDateInput } from "@/lib/booking/timezone";
 
@@ -48,6 +50,12 @@ export default async function BookSearchPage({ searchParams }: PageProps) {
       title="Choose your dates"
       lede="Availability is checked against physical vehicles. Chauffeur, airport transfer, and other services remain enquiry-based."
     >
+      <MarketingPhoto
+        image={marketingImages.valet}
+        className="mb-8 aspect-[16/7] rounded-2xl"
+        sizes="(max-width: 768px) 100vw, 48rem"
+        objectPosition="center 20%"
+      />
       <BookingSearchForm locations={locations} defaults={defaults} />
     </BookingPageShell>
   );

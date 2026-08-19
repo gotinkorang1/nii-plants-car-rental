@@ -36,7 +36,7 @@ export function cmsSeoDescription(page: {
   return truncateMetaDescription(page.excerpt);
 }
 
-export const DEFAULT_OG_IMAGE = "/og-default.svg";
+export const DEFAULT_OG_IMAGE = "/images/og-default.jpg";
 
 export function pageMetadata(input: {
   title: string;

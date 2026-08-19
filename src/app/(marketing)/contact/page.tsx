@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
 import { OsmMapEmbed } from "@/components/maps/osm-map-embed";
 import { COMPANY, PAGE_SEO } from "@/lib/content/company";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublicLocations } from "@/lib/content/queries";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
@@ -52,6 +54,13 @@ export default async function ContactPage() {
         />
         <div className="mt-8 grid gap-8 lg:grid-cols-2">
           <div className="space-y-3 text-sm">
+            <MarketingPhoto
+              image={marketingImages.valet}
+              className="aspect-[4/5] max-h-80 rounded-2xl"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              objectPosition="center 15%"
+              priority
+            />
             {contact.phone ? (
               <p>
                 <a className="text-primary hover:underline" href={telHref(contact.phone)}>
@@ -114,6 +123,11 @@ export default async function ContactPage() {
             Maps use OpenStreetMap. Plantsville is shown at the Dansoman
             neighbourhood pin; the exact street is not in the public map data.
           </p>
+          <MarketingPhoto
+            image={marketingImages.arrival}
+            className="mt-8 aspect-[16/8] rounded-2xl"
+            sizes="(max-width: 1024px) 100vw, 72rem"
+          />
           <ul className="mt-8 grid gap-6 lg:grid-cols-2">
             {mappedLocations.map((location) => (
               <li key={location.id}>

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
 import { PAGE_SEO } from "@/lib/content/company";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -57,6 +59,12 @@ export default function HelpPage() {
           eyebrow="Help"
           title="Car rental help for Ghana hire"
           lede="Licence rules, payments, Kotoka pickup, and cancellation for self-drive and chauffeur hire with Nii Plants."
+        />
+        <MarketingPhoto
+          image={marketingImages.phone}
+          className="mt-8 aspect-[16/8] max-w-3xl rounded-2xl"
+          sizes="(max-width: 768px) 100vw, 48rem"
+          priority
         />
         <ul className="mt-10 grid gap-4 sm:grid-cols-2">
           {topics.map((item) => (

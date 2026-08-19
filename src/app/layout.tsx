@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     locale: "en_GH",
     title: PAGE_SEO.home.title,
     description: PAGE_SEO.home.description,
-    images: ["/og-default.svg"],
+    images: ["/images/og-default.jpg"],
   },
   twitter: {
     card: "summary_large_image",

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
 import { PAGE_SEO } from "@/lib/content/company";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
 import { getSiteSettings } from "@/lib/settings/get-site-settings";
 
@@ -21,6 +23,13 @@ export default async function RequirementsPage() {
         eyebrow="Help"
         title="What you need to rent a car in Ghana"
         lede="Self-drive renters and extra drivers must be 25 or older, hold a full licence, and use the car inside Ghana only."
+      />
+      <MarketingPhoto
+        image={marketingImages.keys}
+        className="mt-8 aspect-[16/9] max-w-xl rounded-2xl"
+        sizes="(max-width: 640px) 100vw, 36rem"
+        objectPosition="center 20%"
+        priority
       />
       <dl className="mt-8 grid gap-4 sm:grid-cols-2">
         <div className="rounded-2xl bg-card p-5 ring-1 ring-border">

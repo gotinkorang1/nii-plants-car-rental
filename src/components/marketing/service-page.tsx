@@ -3,13 +3,16 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
+import type { MarketingImage } from "@/lib/content/marketing-images";
 import { faqPageJsonLd } from "@/lib/content/structured-data";
 
 export function ServicePage({
   eyebrow,
   title,
   lede,
+  image,
   benefits,
   steps,
   faqs,
@@ -22,6 +25,7 @@ export function ServicePage({
   eyebrow: string;
   title: string;
   lede: string;
+  image?: MarketingImage;
   benefits: { title: string; body: string }[];
   steps: { title: string; body: string }[];
   faqs: { id: string; question: string; answer: string }[];
@@ -38,6 +42,14 @@ export function ServicePage({
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
       <Section className="pt-10">
         <PageIntro eyebrow={eyebrow} title={title} lede={lede} />
+        {image ? (
+          <MarketingPhoto
+            image={image}
+            className="mt-8 aspect-[16/9] max-w-4xl rounded-2xl"
+            sizes="(max-width: 1024px) 100vw, 896px"
+            priority
+          />
+        ) : null}
         {form ? null : (
           <div className="mt-8 flex flex-col gap-2 sm:flex-row">
             {ctaHref && ctaLabel ? (

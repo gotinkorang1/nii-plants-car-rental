@@ -2,11 +2,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { JsonLd } from "@/components/marketing/json-ld";
+import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PageIntro, Section } from "@/components/marketing/page-intro";
 import { Button } from "@/components/ui/button";
 import { getEnquiryByReference } from "@/lib/enquiries/queries";
 import { enquiryServiceLabel } from "@/lib/enquiries/status";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { getSiteSettings } from "@/lib/settings/get-site-settings";
 import {
   mailHref,
@@ -41,6 +43,12 @@ export default async function EnquiryCompletePage({ params }: PageProps) {
           eyebrow="Request received"
           title="We've received your request"
           lede="Our team will review your enquiry and contact you. This is not a confirmed booking."
+        />
+        <MarketingPhoto
+          image={marketingImages.keys}
+          className="mt-8 aspect-[16/10] max-w-xl rounded-2xl"
+          sizes="(max-width: 640px) 100vw, 36rem"
+          objectPosition="center 18%"
         />
         <div className="mt-8 max-w-xl space-y-4 rounded-2xl bg-card p-6 ring-1 ring-border">
           <p className="text-sm">
