@@ -13,7 +13,9 @@ export const COMPANY = {
   brandName: "Nii Plants Car Rentals",
   tagline: "Your key to mobility",
   foundedDate: "2007-10-22",
+  commencedDate: "2007-10-23",
   foundedYear: 2007,
+  incorporationStatute: "Companies Code, 1963 (Act 179)",
   streetAddress: "Plantsville, Poultry Farm Avenue, Akokor Foto",
   addressLocality: "Dansoman",
   addressRegion: "Greater Accra",
@@ -114,6 +116,8 @@ export const MANAGEMENT = {
       "M.Sc. Coastal Engineering (University of Kiel), B.Sc. Geodetic Engineering (KNUST), certificate in project management",
     industryRole:
       "Vice President, Car Rentals Association of Ghana (CRAG), inducted 17 August 2023",
+    establishedNote:
+      "He pioneered the company with his own capital and remains Managing Director and Chief Executive.",
     amchamNote:
       "AmCham Ghana’s February 2021 company profile names him Managing Director and Chief Executive, and records that he established Nii Plants.",
   },
@@ -122,6 +126,8 @@ export const MANAGEMENT = {
     role: "Deputy Managing Director and co-owner",
     credentials:
       "Member, Chartered Institute of Bankers (Ghana); B.A. Humanities (University of Ghana); MBA Finance (Paris Graduate School)",
+    roleNote:
+      "She provides financing counsel and operational input as Deputy Managing Director and equal co-owner.",
   },
   team: [
     {

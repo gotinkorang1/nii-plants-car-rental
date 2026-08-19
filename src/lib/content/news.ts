@@ -8,6 +8,7 @@ export type NewsArticle = {
   dateLabel: string;
   image: MarketingImage;
   paragraphs: string[];
+  bodyImages?: MarketingImage[];
 };
 
 export const NEWS_ARTICLES: NewsArticle[] = [
@@ -18,7 +19,12 @@ export const NEWS_ARTICLES: NewsArticle[] = [
       "National recognition in 2022, then Greater Accra and national car-rental titles in 2024 at Osu Castle Gardens.",
     date: "2024-10-25",
     dateLabel: "25 October 2024",
-    image: marketingImages.executiveBanner,
+    image: marketingImages.gtaAwardsHandshake,
+    bodyImages: [
+      marketingImages.gtaAwardsTrophy,
+      marketingImages.gtaAwardsGroup,
+      marketingImages.gtaAwardsCertificate,
+    ],
     paragraphs: [
       "Nii Plants Car Rentals is a Ghanaian-owned hire company in Accra. The Ghana Tourism Authority has twice named the company in its car-rental awards. Those titles belong to the ceremonies. We do not use “best in Ghana” as a standing slogan.",
       "On 3 November 2022 the Ghana National Tourism Awards named Nii Plants Best Car Rental Service Provider of the Year. JoyOnline and Daily Guide reported the citation: a fleet for travel in and outside Accra, and professional drivers.",
@@ -33,7 +39,13 @@ export const NEWS_ARTICLES: NewsArticle[] = [
       "Besides Plantsville and Kotoka, collect at Alisa Hotel, North Ridge, in Accra, or at Best Western Plus Atlantic Hotel in Takoradi.",
     date: "2023-01-01",
     dateLabel: "2023",
-    image: marketingImages.valet,
+    image: marketingImages.alisaHotelNorthRidge,
+    bodyImages: [
+      marketingImages.alisaHotelNorthRidge,
+      marketingImages.hotelDeskNight,
+      marketingImages.hotelBuffet,
+      marketingImages.hotelPool,
+    ],
     paragraphs: [
       "Nii Plants still runs hire from Plantsville, Poultry Farm Avenue, Akokor Foto, Dansoman. That is the staffed office: Monday to Saturday, 09:00 to 17:00; Sunday closed.",
       "Guests and corporates in Accra can also collect at Alisa Hotel, North Ridge. For the Western and Western North regions, pickup can be arranged at Best Western Plus Atlantic Hotel, Takoradi.",
@@ -48,7 +60,12 @@ export const NEWS_ARTICLES: NewsArticle[] = [
       "On 1 October 2021 Nii Plants moved the hire desk to Plantsville: offices, a front counter, and furnished apartments for visiting clients.",
     date: "2021-10-01",
     dateLabel: "1 October 2021",
-    image: marketingImages.office,
+    image: marketingImages.plantsvilleLounge,
+    bodyImages: [
+      marketingImages.plantsvilleLounge,
+      marketingImages.plantsvilleCrescentLounge,
+      marketingImages.plantsvilleWaitingRoom,
+    ],
     paragraphs: [
       "Nii Plants Car Rentals Co. Ltd was incorporated on 22 October 2007 and commenced business the next day. Hire first ran from Sakaman Junction on the Odorkor–Mallam Highway.",
       "On 1 October 2021 the company opened Plantsville in Dansoman. AmCham Ghana covered the opening. The complex holds the car-rental office, workspace, and five furnished one- and two-bed apartments for visiting hire clients.",

@@ -10,6 +10,7 @@ import { PageBanner } from "@/components/marketing/page-banner";
 import { Section, SectionHeading } from "@/components/marketing/page-intro";
 import { Button } from "@/components/ui/button";
 import { PAGE_SEO } from "@/lib/content/company";
+import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
@@ -60,7 +61,7 @@ export default function CorporatePage() {
         image={marketingImages.executiveSuv}
         eyebrow="Corporate"
         title="Corporate car rental for Accra teams and visitors"
-        lede="Nii Plants has hired cars to organisations in Ghana since 2007. GTA award-winning Accra hire, Kotoka meet-and-greet, and hotel desks at Alisa North Ridge and in Takoradi. Quoted by the operations team in Ghana cedis."
+        lede="Nii Plants has hired cars to organisations in Ghana since 2007 — visiting staff, client cars, and Kotoka meet-and-greet. GTA award-winning Accra hire and hotel desks at Alisa North Ridge and in Takoradi. Quoted by the operations team in Ghana cedis."
         compact
         breadcrumbs={[
           { name: "Home", href: "/" },
@@ -76,6 +77,25 @@ export default function CorporatePage() {
         </Button>
       </PageBanner>
       <Section className="pt-10" reveal>
+        <SectionHeading title="How we serve corporate travel" />
+        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+          {COPY.concierge}
+        </p>
+        <ul className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2">
+          {COPY.corporateDifference.map((item) => (
+            <li
+              key={item.title}
+              className="rounded-2xl bg-card p-5 ring-1 ring-border"
+            >
+              <h2 className="font-heading text-xl">{item.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {item.body}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+      <Section className="pt-0" reveal>
         <SectionHeading title="What we quote" />
         <ul className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (

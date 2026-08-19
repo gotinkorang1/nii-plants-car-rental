@@ -73,6 +73,39 @@ function coverImage(
   };
 }
 
+function escapeHtml(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function figureHtml(image: MarketingImage): string {
+  return `<figure><img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" width="${image.width}" height="${image.height}" /><figcaption>${escapeHtml(image.alt)}</figcaption></figure>`;
+}
+
+function staticArticleBodyHtml(
+  article: (typeof NEWS_ARTICLES)[number],
+): string {
+  const parts: string[] = [];
+  const bodyImages = article.bodyImages ?? [];
+
+  article.paragraphs.forEach((paragraph, index) => {
+    parts.push(`<p>${paragraph}</p>`);
+    const image = bodyImages[index];
+    if (image) {
+      parts.push(figureHtml(image));
+    }
+  });
+
+  for (const image of bodyImages.slice(article.paragraphs.length)) {
+    parts.push(figureHtml(image));
+  }
+
+  return parts.join("");
+}
+
 function fromStaticArticle(
   article: (typeof NEWS_ARTICLES)[number],
 ): PublicStory {
@@ -81,7 +114,7 @@ function fromStaticArticle(
     slug: article.slug,
     title: article.title,
     excerpt: article.excerpt,
-    bodyHtml: article.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join(""),
+    bodyHtml: staticArticleBodyHtml(article),
     date: article.date,
     dateLabel: article.dateLabel,
     image: article.image,

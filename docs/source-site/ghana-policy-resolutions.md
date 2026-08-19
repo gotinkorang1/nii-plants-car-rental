@@ -210,6 +210,8 @@ Compared 18 August 2026 against AmCham Ghana (4 Feb 2021 company profile), Graph
 | Chauffeur | **3-hour minimum**, **10-hour duty day** (AmCham packages) | 10-hour day on **self-drive** |
 | Long-term | Daily / weekly / monthly / multi-year **quoted by staff**; option-to-buy only as an enquiry | Automated monthly GHS grid |
 | Phones | Lead with **030 244 1805** and **059 383 5941** | 024 345 2283 (logistics), 027 533 4888, 030 703 3458 as headline numbers |
+| Company papers (internal background) | Vision, mission, God factor / professionalism / keys to success; hire windows (daily 1–6, weekly 1–3, monthly 1–11, 1–5 years + option to buy); chauffeur 3h / 10h; roadside by phone; Theo founded with own capital; Mary finance counsel; extra client names Latex Foam and PMI in **copy only** | Act **169** (Companies Code is Act **179**); Sakaman / 030 703 3458 / 024 345 2283 / 027 533 4888 / theo@ / hotmail as current contact; Abigail Otsiman and Jacob Akoto Brown as **current** team; earth-moving or trucks on this car-rental site; airline ticketing as a shop SKU; “24-hour office” |
+| Concierge | Kotoka meet-and-greet, visiting staff/client cars, quoted executive support | Publish airline ticketing or temporary office space as bookable products |
 
 Public titles should name **Accra**, **Ghana**, **self-drive**, **chauffeur**, or **Kotoka** where that is the page intent. Do not keyword-stuff, invent GHS rates, or list Sakaman as the current office.
 )

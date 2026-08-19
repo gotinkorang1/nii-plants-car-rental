@@ -47,7 +47,7 @@ const items = [
     href: "/services/events",
     title: "Weddings and groups",
     body: COPY.services.events,
-    image: marketingImages.friends,
+    image: marketingImages.events,
   },
   {
     href: "/corporate",

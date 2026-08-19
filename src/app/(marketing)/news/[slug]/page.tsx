@@ -92,7 +92,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
         ) : null}
         {article.bodyHtml.trim() ? (
           <article
-            className="prose-nii mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-muted-foreground [&_a]:text-accent [&_a]:underline [&_h2]:font-heading [&_h2]:text-2xl [&_h3]:font-heading [&_h3]:text-xl [&_ul]:list-disc [&_ul]:pl-5"
+            className="prose-nii mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-muted-foreground [&_a]:text-accent [&_a]:underline [&_h2]:font-heading [&_h2]:text-2xl [&_h3]:font-heading [&_h3]:text-xl [&_ul]:list-disc [&_ul]:pl-5 [&_figure]:overflow-hidden [&_figure]:rounded-2xl [&_figure]:bg-muted [&_figure]:ring-1 [&_figure]:ring-border [&_img]:h-auto [&_img]:w-full [&_figcaption]:px-4 [&_figcaption]:py-3 [&_figcaption]:text-sm"
             dangerouslySetInnerHTML={{ __html: article.bodyHtml }}
           />
         ) : null}

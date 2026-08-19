@@ -32,6 +32,7 @@ const aboutNav = [
   { href: "#affiliations", label: "Affiliations" },
   { href: "#leadership", label: "Team" },
   { href: "#hire", label: "How we hire" },
+  { href: "#packages", label: "Packages" },
   { href: "#awards", label: "Awards" },
   { href: "#history", label: "History" },
   { href: "#group", label: "Group" },
@@ -136,6 +137,9 @@ export default function AboutPage() {
             <p className="mt-5 max-w-prose text-base leading-relaxed text-muted-foreground">
               {COPY.aboutStory}
             </p>
+            <p className="mt-4 max-w-prose text-base leading-relaxed text-muted-foreground">
+              {COPY.objects}
+            </p>
             <p className="mt-4 text-sm text-muted-foreground">
               <Link href="/fleet" className="text-accent hover:underline">
                 Browse the fleet
@@ -214,6 +218,9 @@ export default function AboutPage() {
               {MANAGEMENT.managingDirector.industryRole}.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {MANAGEMENT.managingDirector.establishedNote}
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               {MANAGEMENT.managingDirector.amchamNote}
             </p>
           </li>
@@ -226,6 +233,9 @@ export default function AboutPage() {
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               {MANAGEMENT.deputyManagingDirector.credentials}.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {MANAGEMENT.deputyManagingDirector.roleNote}
             </p>
           </li>
         </ul>
@@ -263,6 +273,7 @@ export default function AboutPage() {
             </li>
           ))}
         </ul>
+        <h3 className="mt-10 font-heading text-xl">Core values</h3>
         <ul className="mt-4 grid gap-4 sm:grid-cols-3">
           {COPY.values.map((item) => (
             <li
@@ -271,6 +282,28 @@ export default function AboutPage() {
             >
               <h3 className="font-medium">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {item.body}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section id="packages" className="scroll-mt-32 pt-0" reveal>
+        <SectionHeading title="Hire packages" />
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          Durations from the company papers, aligned with how this site books:
+          self-drive online in 24-hour days; chauffeur, airport, and long-term
+          quoted by staff in Ghana cedis.
+        </p>
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+          {COPY.hirePackages.map((item) => (
+            <li
+              key={item.title}
+              className="rounded-2xl bg-card p-5 ring-1 ring-border"
+            >
+              <h3 className="font-heading text-xl">{item.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {item.body}
               </p>
             </li>
@@ -395,7 +428,10 @@ export default function AboutPage() {
                 <dt className="text-xs font-medium tracking-[0.14em] text-primary uppercase">
                   Legal name
                 </dt>
-                <dd className="mt-1">{COMPANY.legalName}</dd>
+                <dd className="mt-1">
+                  {COMPANY.legalName}. Incorporated {COMPANY.incorporationStatute}
+                  ; commenced {COMPANY.commencedDate}.
+                </dd>
               </div>
               <div>
                 <dt className="text-xs font-medium tracking-[0.14em] text-primary uppercase">

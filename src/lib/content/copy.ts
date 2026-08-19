@@ -11,23 +11,27 @@ export const COPY = {
     "Ghanaian-owned car hire in Accra for self-drive, chauffeur, and airport pickup — reliable cars for travel inside Ghana.",
 
   mission:
-    "To exceed what you expect from a hire car in Ghana: a roadworthy vehicle, a clear Ghana cedi quote, and a friendly Accra team that treats every trip as a transport solution, not a plate number.",
+    "To exceed customers’ expectations in total transport solutions, delivering the best value in an efficient, effective, and friendly way — a roadworthy car, a clear Ghana cedi quote, and an Accra team that treats the trip as a solution, not a plate number.",
   vision:
-    "To be the Accra car-rental company people trust for efficient, reliable self-drive and chauffeur hire across Ghana.",
+    "To provide reliable, efficient transport and to be recognised as a leading car-rental service in Ghana. Award titles stay with the Ghana Tourism Authority ceremonies; we do not use “best in Ghana” as a standing slogan.",
   values: [
     {
-      title: "Faith and direction",
-      body: "The company was founded with a clear sense of purpose. That shows up as honesty in quotes, care for people, and a long view of the work.",
+      title: "God factor",
+      body: "The company’s stated foundation is faith. That is meant to show up as honesty in quotes, care for customers and staff, and a long view of the work.",
     },
     {
       title: "Professionalism",
-      body: "We hire cars to a standard: licensed vehicles, named drivers on the agreement, and staff who can explain the rules before you collect keys.",
+      body: "As a vehicle-leasing firm we observe a hire standard: licensed cars, named drivers on the agreement, and staff who explain the rules before you collect keys. Customers are treated well; employees are given room to grow.",
     },
     {
-      title: "Practical service",
-      body: "Use the fleet well, keep costs clear, and leave you with a car that matches the class you booked — or a similar model if that unit is already out.",
+      title: "Keys to success",
+      body: "Use the fleet well, keep customers satisfied, and keep costs clear. You receive the class you booked — or a similar model if that unit is already out.",
     },
   ],
+  objects:
+    "The company was incorporated to rent vehicles and earth-moving equipment. Today this website is car hire only. Trucks, cargo, and earth-moving are booked with NiiPlants Logistics, the 2020 haulage outfit.",
+  concierge:
+    "Corporate concierge is quoted by the Accra team: Kotoka meet-and-greet for you or a visiting client, chauffeur or self-drive cars for staff, and other executive travel support. Airline ticketing and temporary office space are not products on this site — ask staff if you need that arranged.",
 
   whyHire:
     "You book a published model or similar, not a registration plate. Staff in Dansoman assign a roadworthy car, confirm the Ghana cedi rate before you pay, and include mileage for ordinary use inside Ghana. The Ghana Tourism Authority named Nii Plants in its car-rental awards in 2022 and 2024.",
@@ -36,9 +40,9 @@ export const COPY = {
   ghanaTravel:
     "Use the car for Accra days, Cape Coast or Kumasi road trips, and Takoradi pickup. Hire stays inside Ghana. Crossing a land border is not permitted.",
   corporateHome:
-    "Company travel, visiting staff, and longer assignments are quoted by the Plantsville operations team — including chauffeur cars and Kotoka meet-and-greet. There is no automated corporate price list on this site.",
+    "Company travel, visiting staff, client cars, and Kotoka meet-and-greet are quoted by the Plantsville team. There is no automated corporate price list on this site.",
   clientele:
-    "Organisations that have hired cars from Nii Plants in Ghana, as listed on the previous Management page: ABB, Zenith, Vitol, USAID, University of Ghana, Saladin Ghana, Promasidor, Oloam, MTN, FAO, DEME, and Bosch.",
+    "Organisations that have hired cars from Nii Plants in Ghana, as listed on the previous Management page and company papers: ABB, Zenith, Vitol, USAID, University of Ghana, Saladin Ghana, Promasidor, Oloam, MTN, FAO, DEME (Dredging International), Bosch, Latex Foam, and Project Management International. Logos shown here are only those already published on the old site.",
 
   servicesIntro:
     "Self-drive bookings start online. Chauffeur, Kotoka airport transfer, long-term, wedding, and corporate trips are arranged with the Accra operations team. You always receive a Ghana cedi quote before you pay.",
@@ -52,7 +56,7 @@ export const COPY = {
     corporate:
       "Staff travel, visiting employees, and client cars, quoted by the Accra team for the days and class you need.",
     longTerm:
-      "Weekly, monthly, and longer assignments in Accra or across Ghana. Staff quote the period. There is no automated monthly grid.",
+      "Daily (1–6 days), weekly (1–3 weeks), monthly (1–11 months), and longer assignments, including multi-year hire with an option to buy — all quoted by staff. There is no automated monthly grid.",
     events:
       "Hiace vans and a 30-seater Coaster for weddings, conferences, church programmes, and group travel — with a driver.",
   },
@@ -99,17 +103,35 @@ export const COPY = {
     "The Plantsville office in Dansoman is open Monday to Saturday, 09:00 to 17:00, and closed on Sunday. Kotoka pickup and drop-off can run until 23:00 by arrangement. After-hours roadside support is by phone, not a 24-hour walk-in desk.",
 
   aboutIntro:
-    "Nii Plants Car Rentals is a Ghanaian-owned hire company based at Plantsville, Dansoman, Accra. We hire saloons, SUVs, 4x4s, vans, and coaches for travel inside Ghana — self-drive online, or chauffeur and group trips with staff.",
+    "Nii Plants Car Rentals is a Ghanaian-owned private limited company at Plantsville, Dansoman. Since 2007 we have hired saloons, SUVs, 4x4s, vans, and coaches for travel inside Ghana — self-drive online, or chauffeur and group trips with staff.",
   aboutStory:
-    "Nii Plants Car Rentals Co. Ltd was incorporated on 22 October 2007 under the Companies Code, 1963 (Act 179). Certificate to commence business was issued the next day, 23 October 2007. Theophilus Ayitey-Adjin and Mary Ayitey-Adjin own it equally. Hire began at Sakaman Junction on the Odorkor–Mallam Highway. On 1 October 2021 the Plantsville office opened in Dansoman: offices, a front desk, and furnished apartments for visiting clients (booked with staff, not as part of a self-drive checkout).",
+    "Nii Plants Car Rentals Co. Ltd is a private limited liability company incorporated on 22 October 2007 under the Companies Code, 1963 (Act 179) — not Act 169, which appears in some older profiles. Certificate to commence business was issued the next day, 23 October 2007. Theophilus Ayitey-Adjin and Mary Ayitey-Adjin own it equally. Hire began at Sakaman Junction on the Odorkor–Mallam Highway; that is history, not the current desk. On 1 October 2021 the Plantsville office opened in Dansoman: offices, a front desk, and furnished apartments for visiting clients (booked with staff, not as part of a self-drive checkout).",
   howWeHire:
-    "You book a model or similar. Staff assign a physical car. Self-drive days are 24 hours. Chauffeur hire uses a 10-hour duty day, with a three-hour minimum for short jobs. Airport, long-term, and group trips are arranged with staff. Mileage for ordinary use inside Ghana is included. Quotes and online reservation payments are in Ghana cedis.",
+    "You book a model or similar. Staff assign a physical car. Self-drive days are 24 hours. Chauffeur hire uses a 10-hour duty day, with a three-hour minimum for short jobs. Airport pickup and drop-off, long-term, and group trips are arranged with staff. Mileage for ordinary use inside Ghana is included. Full maintenance and a replacement car sit on quoted packages. Quotes and online reservation payments are in Ghana cedis. Roadside support is by phone around the clock; that is not a 24-hour walk-in office.",
+  hirePackages: [
+    {
+      title: "Short-term",
+      body: "Daily hire for 1–6 days, weekly for 1–3 weeks, or monthly for 1–11 months. Self-drive days are 24 hours.",
+    },
+    {
+      title: "Long-term",
+      body: "From one to five years, with an option to buy discussed with staff — not a standard online checkout.",
+    },
+    {
+      title: "Chauffeur and airport",
+      body: "Per-hour chauffeur from a three-hour minimum, or a 10-hour duty day. Kotoka pickup and drop-off by arrangement.",
+    },
+    {
+      title: "Included on a standard hire",
+      body: "Mileage inside Ghana, online reservation for self-drive, and 24-hour roadside by phone. Maintenance and replacement cars are confirmed on the quote.",
+    },
+  ],
   group:
     "The Nii Plants Group covers car hire, haulage, a restaurant, and the Dansoman campus. Only car rental is booked on this website.",
   chambers:
     "The Ghana Netherlands Business & Culture Council lists Nii Plants Group as a member. AmCham Ghana published a company profile in 2021 and covered the Plantsville opening. In May 2022 the Canada Ghana Chamber of Commerce featured Nii Plants at an in-house presentation. Theophilus Ayitey-Adjin is Vice President of the Car Rentals Association of Ghana (CRAG), inducted 17 August 2023.",
   managementTeam:
-    "Portraits and titles as published on the previous Management page. Theophilus Ayitey-Adjin and Mary Ayitey-Adjin own the company equally.",
+    "Portraits and titles as published on the previous Management page. Theophilus Ayitey-Adjin and Mary Ayitey-Adjin own the company equally. Older company papers named a 2021 marketing manager and accounts officer; those names are not treated as the current public team.",
   awardsNote:
     "JoyOnline and Daily Guide reported the 2022 citation: a fleet for travel in and outside Accra, and professional drivers. We do not use “best in Ghana” as a standing slogan — those titles belong to the award ceremonies.",
   desks:
@@ -141,6 +163,24 @@ export const COPY = {
     "Open a location in Google Maps for directions. Plantsville is at Poultry Farm Avenue, Akokor Foto, Dansoman. The pin is the neighbourhood; staff will confirm the exact handover point.",
   customTransport:
     "Need several cities, a mixed self-drive and chauffeur itinerary, or a group that does not fit a standard class? Describe the route. Staff review every custom request by hand.",
+  corporateDifference: [
+    {
+      title: "Visiting employees",
+      body: "Cars for staff travelling into Accra or moving around the city. Self-drive where they hold a full licence and are 25 or older; chauffeur when they should not drive in Ghana.",
+    },
+    {
+      title: "Visiting clients",
+      body: "A published saloon, SUV or 4x4 — self-drive or chauffeur — so a guest is met and moved without using a personal car.",
+    },
+    {
+      title: "Local business travel",
+      body: "Day cover around Accra so employees are not putting mileage on private cars. Quoted in Ghana cedis for the class and days you need.",
+    },
+    {
+      title: "Kotoka meet-and-greet",
+      body: "Someone to meet you or a client after landing. Evening collections until 23:00 by arrangement.",
+    },
+  ],
 
   helpIntro:
     "Licence rules, payments, Kotoka pickup, and cancellation for self-drive and chauffeur hire with Nii Plants in Accra.",
