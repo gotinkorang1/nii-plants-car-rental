@@ -169,6 +169,9 @@ export default async function HomePage() {
             <p className="mt-3 text-muted-foreground">
               {COPY.whyHire}
             </p>
+            <p className="mt-3 text-muted-foreground">
+              {COPY.ghanaTravel}
+            </p>
           </div>
           <div>
             <MarketingPhoto
@@ -197,14 +200,14 @@ export default async function HomePage() {
         <div className="relative overflow-hidden rounded-2xl">
           <MarketingPhoto
             image={marketingImages.executiveBanner}
-            className="aspect-[21/8] min-h-64"
+            className="min-h-72 aspect-[16/9] sm:aspect-[21/8] sm:min-h-64"
             sizes="(max-width: 1024px) 100vw, 72rem"
           />
           <div className="absolute inset-0 bg-primary/72" />
           <div className="absolute inset-x-0 top-0 z-10 h-0.5 bg-accent" />
-          <div className="absolute inset-0 flex flex-col justify-end px-6 py-10 text-primary-foreground sm:px-10">
-            <h2 className="font-heading text-3xl">Corporate car rental in Accra</h2>
-            <p className="mt-3 max-w-2xl text-primary-foreground/85">
+          <div className="absolute inset-0 flex flex-col justify-end px-5 py-8 text-primary-foreground sm:px-10 sm:py-10">
+            <h2 className="font-heading text-2xl sm:text-3xl">Corporate car rental in Accra</h2>
+            <p className="mt-3 max-w-2xl text-sm text-primary-foreground/85 sm:text-base">
               {COPY.corporateHome}
             </p>
             <Button asChild variant="secondary" className="mt-6 h-11 w-fit px-4">
@@ -217,21 +220,7 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      <Section className="pt-0" reveal>
-        <MarketingPhoto
-          image={marketingImages.friends}
-          className="mb-6 aspect-[21/9] rounded-2xl"
-          sizes="(max-width: 1024px) 100vw, 72rem"
-        />
-        <h2 className="font-heading text-2xl">
-          <span className="mb-3 block h-0.5 w-8 bg-accent" aria-hidden />
-          Travel around Ghana
-        </h2>
-        <p className="mt-3 max-w-2xl text-muted-foreground">
-          {COPY.ghanaTravel}
-        </p>
-      </Section>
-
+      {previewStories.length > 0 ? (
       <Section className="pt-0" reveal>
         <SectionHeading
           title="News from Accra"
@@ -267,6 +256,7 @@ export default async function HomePage() {
           ))}
         </ul>
       </Section>
+      ) : null}
 
       <Section className="pt-0" reveal>
         <SectionHeading

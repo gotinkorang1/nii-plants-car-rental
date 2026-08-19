@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { CtaPanel } from "@/components/marketing/cta-panel";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { PageBanner } from "@/components/marketing/page-banner";
@@ -53,7 +54,7 @@ export default async function FaqsPage() {
       />
       <Section className="pt-10" reveal>
         {grouped.length > 1 ? (
-          <nav aria-label="FAQ topics" className="mt-8">
+          <nav aria-label="FAQ topics" className="mb-10">
             <ul className="flex flex-wrap gap-2">
               {grouped.map((group) => (
                 <li key={group.category}>
@@ -84,7 +85,7 @@ export default async function FaqsPage() {
               >
                 <h2
                   id={faqCategoryId(group.category)}
-                  className="font-heading scroll-mt-24 text-2xl"
+                  className="font-heading scroll-mt-32 text-2xl"
                 >
                   {group.category}
                 </h2>
@@ -95,6 +96,12 @@ export default async function FaqsPage() {
             ))}
           </div>
         )}
+      </Section>
+      <Section className="pt-0 pb-20" reveal>
+        <CtaPanel
+          title="Talk to the Plantsville desk"
+          body="Call, WhatsApp, or email during Monday–Saturday office hours for booking, Kotoka, and document questions."
+        />
       </Section>
     </main>
   );

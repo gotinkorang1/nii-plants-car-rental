@@ -101,17 +101,39 @@ export const COPY = {
   aboutIntro:
     "Nii Plants Car Rentals is a Ghanaian-owned hire company based at Plantsville, Dansoman, Accra. We hire saloons, SUVs, 4x4s, vans, and coaches for travel inside Ghana — self-drive online, or chauffeur and group trips with staff.",
   aboutStory:
-    "The company was incorporated on 22 October 2007 under the Companies Code, 1963 (Act 179), and commenced business the next day. Theophilus Ayitey-Adjin and Mary Ayitey-Adjin own it equally. Hire began at Sakaman Junction on the Odorkor–Mallam Highway. On 1 October 2021 the Plantsville office opened in Dansoman: offices, a front desk, and furnished apartments for visiting clients (booked with staff, not as part of a self-drive checkout).",
+    "Nii Plants Car Rentals Co. Ltd was incorporated on 22 October 2007 under the Companies Code, 1963 (Act 179). Certificate to commence business was issued the next day, 23 October 2007. Theophilus Ayitey-Adjin and Mary Ayitey-Adjin own it equally. Hire began at Sakaman Junction on the Odorkor–Mallam Highway. On 1 October 2021 the Plantsville office opened in Dansoman: offices, a front desk, and furnished apartments for visiting clients (booked with staff, not as part of a self-drive checkout).",
   howWeHire:
-    "You book a model or similar. Staff assign a physical car. Self-drive days are 24 hours. Chauffeur hire uses a 10-hour duty day, with a three-hour minimum for short jobs. Airport, long-term, and group trips are arranged with staff. Mileage for ordinary use inside Ghana is included.",
+    "You book a model or similar. Staff assign a physical car. Self-drive days are 24 hours. Chauffeur hire uses a 10-hour duty day, with a three-hour minimum for short jobs. Airport, long-term, and group trips are arranged with staff. Mileage for ordinary use inside Ghana is included. Quotes and online reservation payments are in Ghana cedis.",
   group:
-    "The Nii Plants Group also includes NiiPlants Logistics (haulage from 2020), Puffs Ghana Limited, and Plantsville Residences in Dansoman. Trucks, cargo, and earth-moving sit with logistics, not this car-rental site.",
+    "The Nii Plants Group covers car hire, haulage, a restaurant, and the Dansoman campus. Only car rental is booked on this website.",
   chambers:
     "The Ghana Netherlands Business & Culture Council lists Nii Plants Group as a member. AmCham Ghana published a company profile in 2021 and covered the Plantsville opening. In May 2022 the Canada Ghana Chamber of Commerce featured Nii Plants at an in-house presentation. Theophilus Ayitey-Adjin is Vice President of the Car Rentals Association of Ghana (CRAG), inducted 17 August 2023.",
+  managementTeam:
+    "Portraits and titles as published on the previous Management page. Theophilus Ayitey-Adjin and Mary Ayitey-Adjin own the company equally.",
   awardsNote:
     "JoyOnline and Daily Guide reported the 2022 citation: a fleet for travel in and outside Accra, and professional drivers. We do not use “best in Ghana” as a standing slogan — those titles belong to the award ceremonies.",
   desks:
     "Besides Plantsville and Kotoka, pickup can be arranged at Alisa Hotel, North Ridge, for Accra hotel guests and corporates, and at Best Western Plus Atlantic Hotel in Takoradi for the Western and Western North regions. Hotel desks are pickup points, not 24-hour walk-in offices.",
+  plantsvilleOpeningThanks:
+    "Hyundai Motors and Investment, Tata Africa Holdings, CFAP Motors, Honda Motors, Toyota Ghana, and ABSA Bank were thanked at the Plantsville opening.",
+  aboutFacts: [
+    {
+      title: "Age 25+",
+      body: "Self-drive renters and every extra driver must be 25 or older and hold a full driving licence, not a learner permit.",
+    },
+    {
+      title: "Ghana only",
+      body: "Use the car for Accra days and road trips inside Ghana. Crossing a land border is not permitted.",
+    },
+    {
+      title: "Ghana cedis",
+      body: "Staff confirm a Ghana cedi total before you pay. Old-shop US dollar cards are a catalogue reference, not an online price.",
+    },
+    {
+      title: "48-hour cancel",
+      body: "Cancel 48 hours or more before pickup for a refund of the reservation payment, minus any confirmed payment-processor fee.",
+    },
+  ],
 
   contactLede:
     "Call, WhatsApp, or email during Monday–Saturday office hours. Kotoka collections by arrangement until 23:00. This contact form is a message, not a confirmed booking.",

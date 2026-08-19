@@ -126,6 +126,30 @@ export const marketingImages = {
     width: 1600,
     height: 1067,
   },
+  theo: {
+    src: "/images/team/theo.webp",
+    alt: "Theophilus Ayitey-Adjin, Managing Director and Chief Executive of Nii Plants Car Rentals",
+    width: 800,
+    height: 1160,
+  },
+  emma: {
+    src: "/images/team/emma.webp",
+    alt: "Emmanuel Nelson, Operations Manager at Nii Plants Car Rentals",
+    width: 800,
+    height: 1160,
+  },
+  daniel: {
+    src: "/images/team/daniel.webp",
+    alt: "Daniel Awotwe-Pratt, Finance Manager at Nii Plants Car Rentals",
+    width: 800,
+    height: 1200,
+  },
+  kingdom: {
+    src: "/images/team/kingdom.webp",
+    alt: "Kingdom Kededor Avisseh, Executive Assistant at Nii Plants Car Rentals",
+    width: 800,
+    height: 1160,
+  },
 } as const satisfies Record<string, MarketingImage>;
 
 export type MarketingImageId = keyof typeof marketingImages;

@@ -99,7 +99,7 @@ export function PageBanner({
           </h1>
 
           {lede ? (
-            <p className="max-w-xl text-base text-white/80 sm:text-lg">
+            <p className="max-w-2xl text-base text-white/80 sm:text-lg">
               {lede}
             </p>
           ) : null}

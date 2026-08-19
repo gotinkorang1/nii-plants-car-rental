@@ -54,8 +54,13 @@ export default async function GalleryPage() {
         ]}
         compact
       />
-      {albums.map((album) => (
-        <Section key={album.id} id={album.id} className="pt-0" reveal>
+      {albums.map((album, index) => (
+        <Section
+          key={album.id}
+          id={album.id}
+          className={index === 0 ? "pt-10" : "pt-0"}
+          reveal
+        >
           <SectionHeading title={album.title} />
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{album.body}</p>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

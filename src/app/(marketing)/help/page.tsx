@@ -75,8 +75,8 @@ export default function HelpPage() {
         ]}
         compact
       />
-      <Section className="pt-10" reveal>
-        <ul className="reveal-stagger grid gap-4 sm:grid-cols-2">
+      <Section className="pt-10 pb-20" reveal>
+        <ul className="reveal-stagger grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {topics.map((item) => (
             <li key={item.title}>
               <Link href={item.href} className="group block h-full focus-visible:outline-none">

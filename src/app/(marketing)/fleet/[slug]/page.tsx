@@ -218,7 +218,7 @@ export default async function VehicleDetailPage({
       </div>
 
       {related.length > 0 ? (
-        <section className="mt-16">
+        <section className="mt-16 pb-10">
           <SectionHeading title={`Other ${model.className} models`} />
           <ul className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {related.map((item) => (

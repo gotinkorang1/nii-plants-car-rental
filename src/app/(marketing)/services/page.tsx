@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
+import { CtaPanel } from "@/components/marketing/cta-panel";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { PageBanner } from "@/components/marketing/page-banner";
-import { Section } from "@/components/marketing/page-intro";
+import { Section, SectionHeading } from "@/components/marketing/page-intro";
 import { ServiceCard } from "@/components/marketing/service-card";
 import { PAGE_SEO } from "@/lib/content/company";
 import { COPY } from "@/lib/content/copy";
@@ -70,13 +71,15 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Car hire services in Ghana"
         lede={COPY.servicesIntro}
+        compact
         breadcrumbs={[
           { name: "Home", href: "/" },
           { name: "Services" },
         ]}
       />
       <Section className="pt-10" reveal>
-        <ul className="reveal-stagger grid gap-4 sm:grid-cols-2">
+        <SectionHeading title="Choose a hire type" />
+        <ul className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <li key={item.href}>
               <ServiceCard
@@ -88,15 +91,27 @@ export default function ServicesPage() {
             </li>
           ))}
         </ul>
-        <div className="mt-12">
-          <h2 className="font-heading text-2xl">Multi-city or custom transport</h2>
-          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            Describe routes across Ghana or a bespoke itinerary. {COPY.customTransport}
-          </p>
-          <div className="mt-6">
-            <EnquiryForm serviceType="multi_city" submitLabel="Request custom transport" />
+      </Section>
+      <Section className="pt-0" reveal>
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <div>
+            <SectionHeading title="Multi-city or custom transport" />
+            <p className="mt-4 max-w-prose text-sm leading-relaxed text-muted-foreground">
+              {COPY.customTransport}
+            </p>
           </div>
+          <EnquiryForm serviceType="multi_city" submitLabel="Request custom transport" />
         </div>
+      </Section>
+      <Section className="pt-0 pb-20" reveal>
+        <CtaPanel
+          title="Or book self-drive online"
+          body="Published models are available to check now. Chauffeur and airport days stay on enquiry."
+          primaryHref="/book"
+          primaryLabel="Book a Vehicle"
+          secondaryHref="/fleet"
+          secondaryLabel="Browse fleet"
+        />
       </Section>
     </main>
   );

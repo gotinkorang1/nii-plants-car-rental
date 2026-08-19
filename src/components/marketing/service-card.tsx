@@ -37,7 +37,7 @@ export function ServiceCard({
       />
       <span className="block h-0.5 bg-accent" aria-hidden />
       <div className="p-5">
-        <Heading className="font-heading text-2xl transition-colors group-hover:text-accent">
+        <Heading className="font-heading text-xl tracking-tight transition-colors group-hover:text-accent">
           {title}
         </Heading>
         <p className="mt-2 text-sm text-muted-foreground">{body}</p>

@@ -61,7 +61,7 @@ export default async function CmsPage({ params }: PageProps) {
           { name: page.title, path: `/${page.slug}` },
         ])}
       />
-      <Section className="pt-10">
+      <Section className="pt-10 pb-20">
         <PageTrail
           items={[
             { name: "Home", href: "/" },

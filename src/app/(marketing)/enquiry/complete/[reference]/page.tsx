@@ -41,7 +41,7 @@ export default async function EnquiryCompletePage({ params }: PageProps) {
           { name: "Request received", path: `/enquiry/complete/${enquiry.reference}` },
         ])}
       />
-      <Section className="pt-10">
+      <Section className="pt-10 pb-20">
         <PageMasthead
           trail={
             <PageTrail

@@ -74,6 +74,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
         eyebrow={article.kind === "video" ? "Video" : article.kind === "blog" ? "Blog" : "News"}
         title={article.title}
         lede={article.excerpt}
+        compact
         breadcrumbs={[
           { name: "Home", href: "/" },
           { name: "News", href: "/news" },
@@ -107,7 +108,10 @@ export default async function NewsArticlePage({ params }: PageProps) {
       </Section>
       {related.length > 0 ? (
         <Section className="pt-0" reveal>
-          <h2 className="font-heading text-2xl">More stories</h2>
+          <h2 className="font-heading text-2xl">
+            <span className="mb-3 block h-0.5 w-8 bg-accent" aria-hidden />
+            More stories
+          </h2>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {related.map((item) => (
               <li key={item.slug}>

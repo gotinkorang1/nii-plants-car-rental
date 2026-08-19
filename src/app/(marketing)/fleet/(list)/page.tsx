@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { CtaPanel } from "@/components/marketing/cta-panel";
 import { FleetCard } from "@/components/fleet/fleet-card";
 import { FleetFilters } from "@/components/fleet/fleet-filters";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { PageBanner } from "@/components/marketing/page-banner";
+import { Section } from "@/components/marketing/page-intro";
 import { PAGE_SEO } from "@/lib/content/company";
 import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
@@ -72,7 +74,7 @@ export default async function FleetPage({ searchParams }: FleetPageProps) {
         compact
       />
 
-      <div className="mx-auto w-full max-w-6xl px-4 pb-10 pt-8 sm:px-6">
+      <div className="mx-auto w-full max-w-6xl px-4 pb-6 pt-8 sm:px-6">
         <FleetFilters classes={classes} filters={filters} />
 
         {models.length === 0 ? (
@@ -86,7 +88,7 @@ export default async function FleetPage({ searchParams }: FleetPageProps) {
             </p>
             {hasActivePublicFleetFilters(filters) ? (
               <p className="mt-4 text-sm">
-                <Link href="/fleet" className="text-primary hover:underline">
+                <Link href="/fleet" className="text-accent hover:underline">
                   Clear filters
                 </Link>
               </p>
@@ -96,7 +98,7 @@ export default async function FleetPage({ searchParams }: FleetPageProps) {
           <>
             <p className="mt-8 text-sm text-muted-foreground">
               {models.length} {models.length === 1 ? "model" : "models"} published
-              for hire.
+              for hire. You book a model or similar, not a plate.
             </p>
             <ul className="mt-4 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {models.map((model) => (
@@ -108,6 +110,16 @@ export default async function FleetPage({ searchParams }: FleetPageProps) {
           </>
         )}
       </div>
+      <Section className="pt-4 pb-20" reveal>
+        <CtaPanel
+          title="Need a driven car instead?"
+          body="Chauffeur, Kotoka pickup, and group vans are quoted by the Accra team. Self-drive still needs age 25+ and a full licence."
+          primaryHref="/book"
+          primaryLabel="Book a Vehicle"
+          secondaryHref="/help/requirements"
+          secondaryLabel="Hire rules"
+        />
+      </Section>
     </main>
   );
 }

@@ -64,12 +64,45 @@ export const MEMBERSHIPS = [
   {
     name: "Ghana Netherlands Business & Culture Council",
     short: "GNBCC",
-    status: "member",
+    status: "Member",
+    detail: "Nii Plants Group is listed as a member.",
   },
   {
     name: "American Chamber of Commerce Ghana",
     short: "AmCham Ghana",
-    status: "profiled",
+    status: "Profiled",
+    detail:
+      "Published a company profile on 4 February 2021 and covered the Plantsville opening on 1 October 2021.",
+  },
+  {
+    name: "Canada Ghana Chamber of Commerce",
+    short: "Canada Ghana Chamber",
+    status: "Featured",
+    detail:
+      "Featured Nii Plants at an in-house presentation in May 2022. That is a speaking appearance, not a membership claim.",
+  },
+] as const;
+
+export const GROUP_OUTFITS = [
+  {
+    name: "Nii Plants Car Rentals",
+    detail:
+      "This site. Self-drive and chauffeur car hire in Ghana since 2007.",
+  },
+  {
+    name: "NiiPlants Logistics",
+    detail:
+      "Haulage from 2020. Trucks, cargo, and earth-moving are booked there, not here.",
+    href: "https://niiplantslogistics.com/",
+  },
+  {
+    name: "Puffs Ghana Limited",
+    detail: "Restaurant established in 2020; puffs (bofrot) and sit-down dining.",
+  },
+  {
+    name: "Plantsville Residences",
+    detail:
+      "Five furnished apartments at the Dansoman campus for visiting hire clients. Booked with staff, not as part of a self-drive checkout.",
   },
 ] as const;
 
@@ -81,6 +114,8 @@ export const MANAGEMENT = {
       "M.Sc. Coastal Engineering (University of Kiel), B.Sc. Geodetic Engineering (KNUST), certificate in project management",
     industryRole:
       "Vice President, Car Rentals Association of Ghana (CRAG), inducted 17 August 2023",
+    amchamNote:
+      "AmCham Ghana’s February 2021 company profile names him Managing Director and Chief Executive, and records that he established Nii Plants.",
   },
   deputyManagingDirector: {
     name: "Mary Ayitey-Adjin",
@@ -88,6 +123,28 @@ export const MANAGEMENT = {
     credentials:
       "Member, Chartered Institute of Bankers (Ghana); B.A. Humanities (University of Ghana); MBA Finance (Paris Graduate School)",
   },
+  team: [
+    {
+      name: "Theo Ayitey-Adjin",
+      role: "Chief Executive Officer",
+      photo: "theo",
+    },
+    {
+      name: "Emmanuel Nelson",
+      role: "Operations Manager",
+      photo: "emma",
+    },
+    {
+      name: "Daniel Awotwe-Pratt",
+      role: "Finance Manager",
+      photo: "daniel",
+    },
+    {
+      name: "Kingdom Kededor Avisseh",
+      role: "Executive Assistant",
+      photo: "kingdom",
+    },
+  ],
 } as const;
 
 export const PAGE_SEO = {
