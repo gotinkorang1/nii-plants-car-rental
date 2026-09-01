@@ -80,7 +80,7 @@ test.describe("admin authentication", () => {
     await expectNoSeriousA11yViolations(page, "admin");
 
     await page.getByRole("navigation", { name: "Admin" }).getByRole("link", { name: "Staff" }).click();
-    await expect(page.getByRole("heading", { name: "Staff" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Staff", exact: true })).toBeVisible();
     await expectNoSeriousA11yViolations(page, "admin");
   });
 });

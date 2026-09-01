@@ -62,18 +62,18 @@
   --secondary: #f0f0f0;
   --secondary-foreground: #1a1a1a;
   --muted: #f0f0f0;
-  --muted-foreground: #6b6b6b;
-  --accent: #E8751A;
+  --muted-foreground: #505050;
+  --accent: #984000;
   --accent-foreground: #ffffff;
   --destructive: #b83e3e;
   --border: #e5e5e5;
   --input: #e5e5e5;
-  --ring: #E8751A;
+  --ring: #984000;
   --success: #2f7d50;
   --warning: #b87524;
   --error: #b83e3e;
   --chart-1: #3C3C3C;
-  --chart-2: #E8751A;
+  --chart-2: #984000;
   --chart-3: #2f7d50;
   --chart-4: #b87524;
   --chart-5: #6b6b6b;
@@ -85,7 +85,7 @@
   --sidebar-accent: #f0f0f0;
   --sidebar-accent-foreground: #1a1a1a;
   --sidebar-border: #e5e5e5;
-  --sidebar-ring: #E8751A;
+  --sidebar-ring: #984000;
 }
 
 .dark {
@@ -155,6 +155,11 @@
 }
 
 @layer utilities {
+  a.text-accent {
+    text-decoration-line: underline;
+    text-underline-offset: 0.125rem;
+  }
+
   .prose-measure {
     max-width: 65ch;
   }
@@ -352,5 +357,14 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .marketing-page-enter,
+  .reveal-on-scroll,
+  .reveal-slide-left,
+  .reveal-slide-right,
+  .reveal-scale,
+  .reveal-stagger > * {
+    animation: none !important;
   }
 }

@@ -190,7 +190,9 @@ test.describe("self-drive booking", () => {
   test("invalid date range shows accessible validation", async ({ page }) => {
     await page.goto("/book");
     await page.getByRole("button", { name: "Check availability" }).click();
-    await expect(page.getByRole("alert")).toBeVisible();
+    await expect(
+      page.getByRole("form", { name: "Check availability" }).getByRole("alert"),
+    ).toBeVisible();
     await expectNoSeriousA11yViolations(page, "booking-flow");
 
     if ((await locationCount(page)) < 2) {
