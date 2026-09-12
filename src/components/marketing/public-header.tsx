@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { CalendarCheck, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { BrandLogo } from "@/components/brand/brand-logo";
@@ -12,6 +13,7 @@ import {
   isPublicNavCurrent,
   PUBLIC_FOOTER_BOOK_LINKS,
   PUBLIC_FOOTER_EXPLORE_LINKS,
+  PUBLIC_FOOTER_LEGAL_LINKS,
   PUBLIC_PRIMARY_LINKS,
 } from "@/lib/content/public-nav";
 import { cn } from "@/lib/utils";
@@ -224,8 +226,9 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                   <a
                     href={telHref(contact.phone)}
                     onClick={closeMenu}
-                    className="rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    className="flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                   >
+                    <Phone className="size-4" />
                     Call {contact.phone}
                   </a>
                 ) : null}
@@ -233,8 +236,9 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                   <a
                     href={whatsappHref(contact.whatsapp)}
                     onClick={closeMenu}
-                    className="rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    className="flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                   >
+                    <MessageCircle className="size-4" />
                     WhatsApp
                   </a>
                 ) : null}
@@ -249,6 +253,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                 ) : null}
                 <Button asChild size="lg" className="mt-1">
                   <Link href="/book" onClick={closeMenu}>
+                    <CalendarCheck className="size-4" />
                     Book a Vehicle
                   </Link>
                 </Button>
@@ -281,7 +286,10 @@ export function PublicFooter({ contact }: { contact: PublicContact }) {
           </p>
         </div>
         <div>
-          <p className="text-sm font-medium">Explore</p>
+          <p className="flex items-center gap-2 text-sm font-medium">
+            <span className="h-px w-5 bg-accent" aria-hidden />
+            Explore
+          </p>
           <ul className="mt-3 space-y-2 text-sm">
             {PUBLIC_FOOTER_EXPLORE_LINKS.map((item) => (
               <li key={item.href}>
@@ -296,7 +304,10 @@ export function PublicFooter({ contact }: { contact: PublicContact }) {
           </ul>
         </div>
         <div>
-          <p className="text-sm font-medium">Book</p>
+          <p className="flex items-center gap-2 text-sm font-medium">
+            <span className="h-px w-5 bg-accent" aria-hidden />
+            Book
+          </p>
           <ul className="mt-3 space-y-2 text-sm">
             {PUBLIC_FOOTER_BOOK_LINKS.map((item) => (
               <li key={item.href}>
@@ -341,6 +352,25 @@ export function PublicFooter({ contact }: { contact: PublicContact }) {
               ))}
             </ul>
           ) : null}
+        </div>
+      </div>
+      <div className="border-t border-border/70">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-5 gap-y-2 px-4 py-4 text-sm sm:px-6">
+          <p className="text-muted-foreground">
+            © {COMPANY.foundedYear}–{new Date().getFullYear()} {COMPANY.legalName}
+          </p>
+          <ul className="flex flex-wrap gap-x-4 gap-y-1 sm:ms-auto">
+            {PUBLIC_FOOTER_LEGAL_LINKS.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

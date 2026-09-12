@@ -1,3 +1,13 @@
+"use client";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Card, CardContent } from "@/components/ui/card";
+
 export function FaqList({
   items,
 }: {
@@ -5,32 +15,31 @@ export function FaqList({
 }) {
   if (items.length === 0) {
     return (
-      <p className="rounded-2xl bg-card p-6 text-sm text-muted-foreground ring-1 ring-border">
-        No published FAQs yet. Staff can add them in the website CMS.
-      </p>
+      <Card className="rounded-2xl py-0 text-base shadow-none ring-border">
+        <CardContent className="p-6 text-sm text-muted-foreground">
+          No published FAQs yet. Staff can add them in the website CMS.
+        </CardContent>
+      </Card>
     );
   }
 
   return (
-    <div className="divide-y divide-border overflow-hidden rounded-2xl bg-card ring-1 ring-border">
-      {items.map((item) => (
-        <details key={item.id} className="group px-5 py-4">
-          <summary className="cursor-pointer list-none font-medium transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
-            <span className="flex items-start justify-between gap-4">
+    <Card className="relative gap-0 overflow-hidden rounded-2xl py-0 text-base shadow-none ring-border">
+      <span className="absolute inset-x-0 top-0 z-10 h-0.5 bg-accent" aria-hidden />
+      <Accordion type="single" collapsible className="px-2 pt-1 pb-1">
+        {items.map((item) => (
+          <AccordionItem key={item.id} value={item.id} className="px-3">
+            <AccordionTrigger
+              className="py-4 text-base font-medium hover:text-primary hover:no-underline"
+            >
               {item.question}
-              <span
-                aria-hidden
-                className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full border border-border text-sm text-muted-foreground transition-transform duration-300 group-open:rotate-45"
-              >
-                +
-              </span>
-            </span>
-          </summary>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            {item.answer}
-          </p>
-        </details>
-      ))}
-    </div>
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+              <p>{item.answer}</p>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </Card>
   );
 }

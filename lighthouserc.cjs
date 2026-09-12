@@ -1,7 +1,13 @@
 const fs = require("node:fs");
-const path = require("node:path");
+const os = require("node:os");
 
-const lighthouseTmp = path.join(__dirname, ".lighthouseci", "tmp");
+const { getLighthouseTempDir } = require("./scripts/lighthouse-temp-dir.cjs");
+
+const lighthouseTmp = getLighthouseTempDir({
+  platform: process.platform,
+  projectDirectory: __dirname,
+  systemTempDirectory: os.tmpdir(),
+});
 fs.mkdirSync(lighthouseTmp, { recursive: true });
 process.env.TEMP = lighthouseTmp;
 process.env.TMP = lighthouseTmp;

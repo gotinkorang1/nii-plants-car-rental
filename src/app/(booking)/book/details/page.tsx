@@ -31,7 +31,7 @@ export default async function BookingDetailsPage({ searchParams }: PageProps) {
         <p role="alert" className="text-muted-foreground">
           {HOLD_EXPIRED_MESSAGE}
         </p>
-        <Button asChild className="mt-6">
+        <Button asChild className="mt-6 h-11 px-4" size="lg">
           <Link href="/book">Check availability</Link>
         </Button>
       </BookingPageShell>

@@ -1,6 +1,6 @@
 # Ghana policy resolutions — live-site conflicts
 
-Decided 18 August 2026 for the rebuild. These close the contradictions on niiplantsghana.com using Ghana law, Ghana Tourism Authority (GTA) car-rental rules, DVLA/NIC practice, and the master spec. They do **not** invent GHS prices, deposit amounts, or unconfirmed phone numbers.
+Decided 18 August 2026 for the rebuild. These close the contradictions on the old site (now at email.niiplantsghana.com) using Ghana law, Ghana Tourism Authority (GTA) car-rental rules, DVLA/NIC practice, and the master spec. They do **not** invent GHS prices, deposit amounts, or unconfirmed phone numbers.
 
 **Status:** approved for public copy and product rules, except items marked *unset until finance/ops enter a figure*.
 
@@ -126,7 +126,7 @@ Treat USD cards as **reference tourist rates from August 2026**, not as GHS:
 - Outside Accra daily = **high** end.
 - Kia Pegas / Hyundai Accent: **USD 65 / day** Accra (no range published).
 
-**Do not convert those USD figures to GHS in code or CMS.** Finance enters pesewa rates. Until then, public cards say “quote on request”.
+**Do not invent a new FX rate.** Seed/dev booking floors use the documented `USD_GHS_BOOKING_RATE` in `src/lib/money/usd.ts` (Bank of Ghana selling rate about GH¢11 per USD on 18 August 2026) times the published USD floor, stored as pesewas on the vehicle class. Public cards show that Ghana cedi class rate when it is greater than zero; USD bands stay a catalogue reference. Finance should still confirm live tariffs in `/admin/rates`. Van/coach online self-drive stays quote-on-request (`defaultDailyRate` 0).
 
 **Not on /fleet until added in admin:** Hyundai Tucson Luxury, VB Land Cruiser, Hyundai H1, pickups, cargo trucks, earth-moving.
 
@@ -180,15 +180,16 @@ Foreign visitors: passport + home licence; IDP recommended.
 
 ## 10. Still unset (do not guess)
 
-- GHS daily rates and outside-Accra GHS add-on  
-- Security-deposit pesewas by class  
-- Cancellation-fee pesewas inside 48 hours  
-- Whether +233 55 255 7324 is WhatsApp  
-- Whether hotel desks still operate  
-- Whether 2016–2018 units remain on the public grid after GTA age review  
-- Permission to show third-party client logos  
+- Live GHS tariffs if finance changes them after seed (`USD_GHS_BOOKING_RATE` floors are a documented starting point, not a locked public price list)
+- Outside-Accra GHS add-on as a separate published figure
+- Security-deposit pesewas **on public pages** (class deposits may exist in admin/seed for quotes; do not invent a public GH₵ amount)
+- Cancellation-fee pesewas inside 48 hours (copy states a fee applies; staff apply it until finance sets a figure)
+- Whether +233 55 255 7324 is WhatsApp
+- Whether hotel desks still operate
+- Whether 2016–2018 units remain on the public grid after GTA age review
+- Permission to show third-party client logos beyond files already in `public/images/clientele`
 
-Those stay unset on the website until a person at Nii Plants types them in. Public fleet cards show “quote on request” rather than GH₵0.00.
+Public fleet cards show the class Ghana cedi booking rate when `defaultDailyRate` is greater than zero; otherwise “quote on request”. Do not show GH₵0.00.
 
 ---
 
@@ -209,6 +210,8 @@ Compared 18 August 2026 against AmCham Ghana (4 Feb 2021 company profile), Graph
 | Chauffeur | **3-hour minimum**, **10-hour duty day** (AmCham packages) | 10-hour day on **self-drive** |
 | Long-term | Daily / weekly / monthly / multi-year **quoted by staff**; option-to-buy only as an enquiry | Automated monthly GHS grid |
 | Phones | Lead with **030 244 1805** and **059 383 5941** | 024 345 2283 (logistics), 027 533 4888, 030 703 3458 as headline numbers |
+| Company papers (internal background) | Vision, mission, God factor / professionalism / keys to success; hire windows (daily 1–6, weekly 1–3, monthly 1–11, 1–5 years + option to buy); chauffeur 3h / 10h; roadside by phone; Theo founded with own capital; Mary finance counsel; extra client names Latex Foam and PMI in **copy only** | Act **169** (Companies Code is Act **179**); Sakaman / 030 703 3458 / 024 345 2283 / 027 533 4888 / theo@ / hotmail as current contact; Abigail Otsiman and Jacob Akoto Brown as **current** team; earth-moving or trucks on this car-rental site; airline ticketing as a shop SKU; “24-hour office” |
+| Concierge | Kotoka meet-and-greet, visiting staff/client cars, quoted executive support | Publish airline ticketing or temporary office space as bookable products |
 
 Public titles should name **Accra**, **Ghana**, **self-drive**, **chauffeur**, or **Kotoka** where that is the page intent. Do not keyword-stuff, invent GHS rates, or list Sakaman as the current office.
 )

@@ -36,8 +36,8 @@ export default async function LongTermPage() {
           body: "Temporary cars for project teams, secondments, and visiting employees.",
         },
         {
-          title: "Extended stays",
-          body: "Visitor or relocation transport, quoted in Ghana cedis, with maintenance included in the hire.",
+          title: "Maintenance and replacement",
+          body: "Quoted long-term cover can include a full maintenance programme and a replacement car if the unit is off the road.",
         },
         {
           title: "Longer assignments",

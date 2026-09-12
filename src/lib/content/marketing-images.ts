@@ -56,9 +56,33 @@ export const marketingImages = {
   },
   events: {
     src: "/images/events.webp",
-    alt: "Friends travelling together in a group hire car",
-    width: 1600,
-    height: 1065,
+    alt: "Wedding guest with white roses beside a Nii Plants hire car in Accra",
+    width: 1000,
+    height: 665,
+  },
+  gtaAwardsHandshake: {
+    src: "/images/gta-awards-handshake.webp",
+    alt: "Handshake on stage at a Ghana Tourism Authority ceremony, with a National Tourism Awards 2021 digital backdrop",
+    width: 1024,
+    height: 682,
+  },
+  gtaAwardsTrophy: {
+    src: "/images/gta-awards-trophy.webp",
+    alt: "Three people holding a trophy and a rolled certificate in front of a National Tourism Awards 2021 backdrop",
+    width: 678,
+    height: 452,
+  },
+  gtaAwardsGroup: {
+    src: "/images/gta-awards-group.webp",
+    alt: "Three people standing together, a woman holding an award, with National Tourism Awards logos behind them",
+    width: 452,
+    height: 678,
+  },
+  gtaAwardsCertificate: {
+    src: "/images/gta-awards-certificate.webp",
+    alt: "Three men holding a Greater Accra Regional Tourism Awards certificate naming Nii Plants",
+    width: 640,
+    height: 480,
   },
   friends: {
     src: "/images/friends.webp",
@@ -77,6 +101,48 @@ export const marketingImages = {
     alt: "Staff at work arranging car hire from the Accra office",
     width: 1600,
     height: 2400,
+  },
+  plantsvilleLounge: {
+    src: "/images/plantsville-lounge.webp",
+    alt: "Lounge at Plantsville in Dansoman, Accra, with a grey sofa, orange cushions, a wall-mounted television, and an abstract mural",
+    width: 1024,
+    height: 682,
+  },
+  plantsvilleCrescentLounge: {
+    src: "/images/plantsville-crescent-lounge.webp",
+    alt: "Aerial view of Crescent Lounge terrace at Plantsville in Dansoman, Accra, with tiled seating, planters, and the lounge name on the wall",
+    width: 1024,
+    height: 682,
+  },
+  plantsvilleWaitingRoom: {
+    src: "/images/plantsville-waiting-room.webp",
+    alt: "Waiting lounge at Plantsville in Dansoman, Accra, with a grey sofa, orange cushions, a potted plant, and a mural wall",
+    width: 1024,
+    height: 682,
+  },
+  alisaHotelNorthRidge: {
+    src: "/images/alisa-hotel-north-ridge.webp",
+    alt: "Daytime exterior of Alisa Hotel North Ridge in Accra, a Nii Plants car-hire pickup desk",
+    width: 1000,
+    height: 512,
+  },
+  hotelDeskNight: {
+    src: "/images/hotel-desk-night.webp",
+    alt: "Night exterior and parking at a partner hotel used for Nii Plants car-hire pickup",
+    width: 1024,
+    height: 576,
+  },
+  hotelBuffet: {
+    src: "/images/hotel-buffet.webp",
+    alt: "Buffet at a partner hotel used for Nii Plants pickup, with goat light soup, okra, and turkey groundnut soup",
+    width: 863,
+    height: 575,
+  },
+  hotelPool: {
+    src: "/images/hotel-pool.webp",
+    alt: "Courtyard swimming pool at a partner hotel used for Nii Plants car-hire pickup",
+    width: 1024,
+    height: 682,
   },
   executiveSuv: {
     src: "/images/executive-suv.webp",
@@ -125,6 +191,30 @@ export const marketingImages = {
     alt: "A customer calling Nii Plants from a hire car",
     width: 1600,
     height: 1067,
+  },
+  theo: {
+    src: "/images/team/theo.webp",
+    alt: "Theophilus Ayitey-Adjin, Managing Director and Chief Executive of Nii Plants Car Rentals",
+    width: 800,
+    height: 1160,
+  },
+  emma: {
+    src: "/images/team/emma.webp",
+    alt: "Emmanuel Nelson, Operations Manager at Nii Plants Car Rentals",
+    width: 800,
+    height: 1160,
+  },
+  daniel: {
+    src: "/images/team/daniel.webp",
+    alt: "Daniel Awotwe-Pratt, Finance Manager at Nii Plants Car Rentals",
+    width: 800,
+    height: 1200,
+  },
+  kingdom: {
+    src: "/images/team/kingdom.webp",
+    alt: "Kingdom Kededor Avisseh, Executive Assistant at Nii Plants Car Rentals",
+    width: 800,
+    height: 1160,
   },
 } as const satisfies Record<string, MarketingImage>;
 

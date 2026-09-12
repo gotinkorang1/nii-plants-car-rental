@@ -7,9 +7,11 @@ import {
 } from "@/lib/auth/paths";
 
 describe("admin path guards", () => {
-  it("treats the login page as public", () => {
+  it("treats the login and set-password pages as public", () => {
     expect(isPublicAdminPath("/admin/login")).toBe(true);
     expect(isProtectedAdminPath("/admin/login")).toBe(false);
+    expect(isPublicAdminPath("/admin/set-password")).toBe(true);
+    expect(isProtectedAdminPath("/admin/set-password")).toBe(false);
   });
 
   it("protects the dashboard and future admin modules", () => {
@@ -20,6 +22,7 @@ describe("admin path guards", () => {
   it("keeps post-login redirects inside the admin area", () => {
     expect(getSafeAdminRedirect("/admin")).toBe("/admin");
     expect(getSafeAdminRedirect("/admin/login")).toBe("/admin");
+    expect(getSafeAdminRedirect("/admin/set-password")).toBe("/admin");
     expect(getSafeAdminRedirect("https://example.com")).toBe("/admin");
     expect(getSafeAdminRedirect("//evil.example")).toBe("/admin");
     expect(getSafeAdminRedirect("/book")).toBe("/admin");

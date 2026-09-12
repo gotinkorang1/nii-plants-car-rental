@@ -14,6 +14,9 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   use: {
     baseURL: e2eBaseUrl,
+    contextOptions: {
+      reducedMotion: "reduce",
+    },
     trace: "on-first-retry",
   },
   webServer: {

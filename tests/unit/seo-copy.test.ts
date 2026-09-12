@@ -23,7 +23,9 @@ describe("public SEO copy", () => {
   });
 
   it("writes Accra-focused vehicle titles without inventing prices", () => {
-    expect(vehicleSeoTitle("Honda", "Accord")).toBe("Honda Accord Rental Accra");
+    expect(vehicleSeoTitle("Honda", "Accord")).toBe(
+      "Honda Accord Hire Accra | Car Rental Ghana",
+    );
     const description = vehicleSeoDescription({
       make: "Honda",
       modelName: "Accord",

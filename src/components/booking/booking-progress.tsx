@@ -11,9 +11,16 @@ const STEPS: { id: BookingStep; label: string }[] = [
 
 export function BookingProgress({ current }: { current: BookingStep }) {
   const currentIndex = STEPS.findIndex((step) => step.id === current);
+  const progressPercent = (currentIndex / (STEPS.length - 1)) * 100;
 
   return (
     <nav aria-label="Booking progress" className="mb-8">
+      <div className="relative mb-3 h-1 overflow-hidden rounded-full bg-border">
+        <div
+          className="absolute inset-y-0 left-0 rounded-full bg-accent transition-[width] duration-700 ease-out"
+          style={{ width: `${progressPercent}%` }}
+        />
+      </div>
       <ol className="flex flex-wrap gap-2 sm:gap-0">
         {STEPS.map((step, index) => {
           const done = index < currentIndex;
@@ -23,27 +30,31 @@ export function BookingProgress({ current }: { current: BookingStep }) {
               key={step.id}
               className={cn(
                 "flex min-w-0 flex-1 items-center gap-2 text-xs font-medium sm:text-sm",
-                index < STEPS.length - 1 &&
-                  cn(
-                    "sm:after:mx-2 sm:after:h-px sm:after:flex-1 sm:after:content-['']",
-                    done ? "sm:after:bg-primary" : "sm:after:bg-border",
-                  ),
+                "transition-colors duration-300",
               )}
             >
               <span
                 className={cn(
-                  "flex size-7 shrink-0 items-center justify-center rounded-full border text-xs transition-colors duration-300",
-                  done && "border-primary bg-primary text-primary-foreground",
-                  active && "border-primary bg-background text-primary ring-2 ring-primary/20",
-                  !done && !active && "border-border bg-background text-muted-foreground",
+                  "flex size-7 shrink-0 items-center justify-center rounded-full border text-xs",
+                  "transition-all duration-500",
+                  done && "border-accent bg-accent text-accent-foreground scale-100",
+                  active &&
+                    "border-accent bg-background text-primary ring-2 ring-accent/35 scale-110",
+                  !done && !active && "border-border bg-background text-muted-foreground scale-100",
                 )}
                 aria-hidden
               >
-                {done ? "✓" : index + 1}
+                {done ? (
+                  <svg className="size-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2 7.5L5.5 11L12 3" />
+                  </svg>
+                ) : (
+                  index + 1
+                )}
               </span>
               <span
                 className={cn(
-                  "truncate",
+                  "truncate transition-colors duration-300",
                   active ? "text-foreground" : "text-muted-foreground",
                 )}
                 aria-current={active ? "step" : undefined}

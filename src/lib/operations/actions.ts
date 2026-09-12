@@ -64,6 +64,8 @@ function revalidateBookingPaths(bookingId: string) {
   revalidatePath(`/admin/bookings/${bookingId}/pickup`);
   revalidatePath(`/admin/bookings/${bookingId}/return`);
   revalidatePath("/admin/operations/rentals");
+  revalidatePath("/admin/deposits");
+  revalidatePath("/admin/deposits", "layout");
 }
 
 function revalidateMaintenancePaths(maintenanceId?: string) {

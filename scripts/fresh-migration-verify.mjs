@@ -113,6 +113,7 @@ async function verifySchema(databaseUrl) {
   };
 
   try {
+    const journal = JSON.parse(readFileSync(journalPath, "utf8"));
     const migrationTables = await sql`
       SELECT table_schema, table_name
       FROM information_schema.tables
@@ -124,11 +125,10 @@ async function verifySchema(databaseUrl) {
         `SELECT id, hash, created_at FROM "${schema}"."__drizzle_migrations" ORDER BY created_at`,
       );
       report.migrationHistory.count = rows.length;
-      report.migrationHistory.ok = rows.length === 10;
+      report.migrationHistory.ok = rows.length === journal.entries.length;
     } else {
-      const journal = JSON.parse(readFileSync(journalPath, "utf8"));
       report.migrationHistory.count = journal.entries.length;
-      report.migrationHistory.ok = journal.entries.length === 10;
+      report.migrationHistory.ok = true;
       report.migrationHistory.method = "journal-only (manual apply)";
     }
 

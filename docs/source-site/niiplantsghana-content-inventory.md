@@ -1,6 +1,6 @@
 # Nii Plants Ghana — live site content inventory
 
-Crawled from [niiplantsghana.com](https://niiplantsghana.com/) on 18 August 2026 for the rebuild. Source of published public copy only. Confirm with the business before treating prices, hours, or fleet as current.
+Crawled from [niiplantsghana.com](https://email.niiplantsghana.com/) on 18 August 2026 for the rebuild. The old site is now staged at `email.niiplantsghana.com`. Source of published public copy only. Confirm with the business before treating prices, hours, or fleet as current.
 
 Raw WooCommerce product JSON: `docs/source-site/wc-products.json`.
 
@@ -81,10 +81,10 @@ No long bios are published — names, titles, and photos only.
 
 | Name | Role | Photo |
 | --- | --- | --- |
-| Theo (Theophilus) Ayitey-Adjin | Chief Executive Officer | https://niiplantsghana.com/wp-content/uploads/2023/02/ceo-theo.jpg |
-| Emmanuel Nelson | Operations Manager | https://niiplantsghana.com/wp-content/uploads/2023/02/emma.jpg |
-| Daniel Awotwe-Pratt | Finance Manager | https://niiplantsghana.com/wp-content/uploads/2023/02/Daniel-scaled-1.jpg |
-| Kingdom Kededor Avisseh | Executive Assistant | https://niiplantsghana.com/wp-content/uploads/2023/02/kingdom-Nipplants.jpg |
+| Theo (Theophilus) Ayitey-Adjin | Chief Executive Officer | https://email.niiplantsghana.com/wp-content/uploads/2023/02/ceo-theo.jpg |
+| Emmanuel Nelson | Operations Manager | https://email.niiplantsghana.com/wp-content/uploads/2023/02/emma.jpg |
+| Daniel Awotwe-Pratt | Finance Manager | https://email.niiplantsghana.com/wp-content/uploads/2023/02/Daniel-scaled-1.jpg |
+| Kingdom Kededor Avisseh | Executive Assistant | https://email.niiplantsghana.com/wp-content/uploads/2023/02/kingdom-Nipplants.jpg |
 
 Owners (legal, not listed as a “team card”): Theophilus Ayitey-Adjin and Mary Ayitey-Adjin.
 
@@ -287,7 +287,7 @@ T&Cs extras: authorised drivers only; no illegal use, off-road, racing, or towin
 
 ABB, Zenith, Vitol, USAID, University of Ghana, Saladin Ghana, Promasidor, Oloam, MTN, FAO, DEME, Bosch.
 
-Files under `https://niiplantsghana.com/wp-content/uploads/2023/08/` e.g. `ABB.jpg`, `ZENITH.jpg`, `Vitol.jpg`, `USAID.jpg`, `UNIVERSITY-OF-GHANA.jpg`, `SALADIN-GHANA.jpg`, `PROMASIDOR.jpg`, `OLOAM.jpg`, `MTN.jpg`, `FAO.jpg`, `DEME.jpg`, `BOSCH.jpg`.
+Files under `https://email.niiplantsghana.com/wp-content/uploads/2023/08/` e.g. `ABB.jpg`, `ZENITH.jpg`, `Vitol.jpg`, `USAID.jpg`, `UNIVERSITY-OF-GHANA.jpg`, `SALADIN-GHANA.jpg`, `PROMASIDOR.jpg`, `OLOAM.jpg`, `MTN.jpg`, `FAO.jpg`, `DEME.jpg`, `BOSCH.jpg`.
 
 Confirm permission before using third-party logos.
 
@@ -297,9 +297,9 @@ Confirm permission before using third-party logos.
 
 | Asset | URL |
 | --- | --- |
-| Logo | https://niiplantsghana.com/wp-content/uploads/2023/07/NIIPLANTS-LOGO.png |
-| Logo (small) | https://niiplantsghana.com/wp-content/uploads/2023/08/NIIPLANTS-LOGO-small.png |
-| Cropped logo | https://niiplantsghana.com/wp-content/uploads/2023/07/cropped-cropped-NIIPLANTS-LOGO-1.png |
+| Logo | https://email.niiplantsghana.com/wp-content/uploads/2023/07/NIIPLANTS-LOGO.png |
+| Logo (small) | https://email.niiplantsghana.com/wp-content/uploads/2023/08/NIIPLANTS-LOGO-small.png |
+| Cropped logo | https://email.niiplantsghana.com/wp-content/uploads/2023/07/cropped-cropped-NIIPLANTS-LOGO-1.png |
 | Homepage hero-style | /wp-content/uploads/2023/02/h3-img-2.jpg, h3-img-4.jpg, h3-img-5.jpg, h3-img-8.jpg |
 | Homepage extra | /wp-content/uploads/2023/03/h3-img-11.png through h3-img-15.jpg |
 | Transparent logo lockup | /wp-content/uploads/2024/04/Full-size-transparent.png |

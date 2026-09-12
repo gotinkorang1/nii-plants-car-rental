@@ -2,8 +2,8 @@ import "server-only";
 
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 
-import { requirePublicEnv } from "@/lib/env";
-import { requireServerEnv } from "@/lib/env.server";
+import { publicEnv, requirePublicEnv } from "@/lib/env";
+import { requireServerEnv, serverEnv } from "@/lib/env.server";
 
 export function createAdminClient() {
   return createSupabaseClient(
@@ -16,4 +16,12 @@ export function createAdminClient() {
       },
     },
   );
+}
+
+export function tryCreateAdminClient() {
+  if (!publicEnv.NEXT_PUBLIC_SUPABASE_URL || !serverEnv.SUPABASE_SERVICE_ROLE_KEY) {
+    return null;
+  }
+
+  return createAdminClient();
 }

@@ -3,6 +3,7 @@ export const PUBLIC_PRIMARY_LINKS = [
   { href: "/services", label: "Services" },
   { href: "/corporate", label: "Corporate" },
   { href: "/about", label: "About" },
+  { href: "/news", label: "News" },
   { href: "/help", label: "Help" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -12,6 +13,8 @@ export const PUBLIC_FOOTER_EXPLORE_LINKS = [
   { href: "/services", label: "Services" },
   { href: "/corporate", label: "Corporate" },
   { href: "/about", label: "About" },
+  { href: "/news", label: "News" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/help", label: "Help" },
 ] as const;
 
@@ -20,6 +23,11 @@ export const PUBLIC_FOOTER_BOOK_LINKS = [
   { href: "/help/requirements", label: "Rental requirements" },
   { href: "/help/faqs", label: "FAQs" },
   { href: "/contact", label: "Contact" },
+] as const;
+
+export const PUBLIC_FOOTER_LEGAL_LINKS = [
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Hire terms" },
 ] as const;
 
 export function isPublicNavCurrent(pathname: string, href: string): boolean {

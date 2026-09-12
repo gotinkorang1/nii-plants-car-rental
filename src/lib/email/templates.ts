@@ -13,7 +13,8 @@ export type EmailTemplateName =
   | "rental-completed"
   | "enquiry-received"
   | "enquiry-staff-notification"
-  | "enquiry-quote";
+  | "enquiry-quote"
+  | "staff-invite";
 
 export type BookingEmailCopy = {
   firstName: string;
@@ -538,6 +539,38 @@ export function paymentAvailabilityReviewEmail(input: {
        <p><strong>Booking reference:</strong> ${escapeHtml(input.reference)}<br/>
        <strong>Amount:</strong> ${escapeHtml(formatGhs(input.amount))}<br/>
        <strong>Payment reference:</strong> ${escapeHtml(input.providerReference)}</p>`,
+    ),
+  };
+}
+
+export function staffInviteEmail(input: {
+  displayName: string;
+  roleLabel: string;
+  inviteUrl: string;
+}): RenderedEmail {
+  const subject = "Nii Plants staff access";
+  const text = [
+    `Hello ${input.displayName},`,
+    "",
+    `You have been invited to the Nii Plants staff dashboard as ${input.roleLabel}.`,
+    "Open the link below to choose a password, then sign in.",
+    "",
+    input.inviteUrl,
+    "",
+    "If you were not expecting this message, ignore it.",
+  ].join("\n");
+
+  return {
+    template: "staff-invite",
+    subject,
+    text,
+    html: wrapHtml(
+      "Staff access",
+      `<p>Hello ${escapeHtml(input.displayName)},</p>
+       <p>You have been invited to the Nii Plants staff dashboard as ${escapeHtml(input.roleLabel)}.</p>
+       <p>Open the link below to choose a password, then sign in.</p>
+       <p><a href="${escapeHtml(input.inviteUrl)}">Choose a password</a></p>
+       <p>If you were not expecting this message, ignore it.</p>`,
     ),
   };
 }

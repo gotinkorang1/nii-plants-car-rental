@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run --project unit",
+    "test:integration": "vitest run --project unit tests/integration",
     "test:watch": "vitest --project unit",
     "test:e2e": "playwright test",
     "format": "prettier --write .",
@@ -24,6 +25,13 @@
     "verify:fresh-migration": "node scripts/fresh-migration-verify.mjs",
     "db:studio": "drizzle-kit studio",
     "test:storybook": "vitest run --project storybook",
+    "verify": "npm run lint && npm run typecheck && npm run test && npm run build",
+    "verify:release": "npm run verify && npm audit --omit=dev --audit-level=moderate",
+    "toolchain:doctor": "node scripts/toolchain-doctor.mjs",
+    "toolchain:doctor:production": "node scripts/toolchain-doctor.mjs --production",
+    "supabase:start": "supabase start",
+    "supabase:status": "supabase status",
+    "supabase:stop": "supabase stop",
     "analyze": "next experimental-analyze --output",
     "analyze:ui": "next experimental-analyze",
     "lhci": "lhci autorun --config=lighthouserc.cjs",
@@ -91,5 +99,8 @@
     "esbuild@0.25.12": true,
     "esbuild@0.28.2": true,
     "unrs-resolver@1.12.2": true
+  },
+  "overrides": {
+    "valibot": "1.4.2"
   }
 }
