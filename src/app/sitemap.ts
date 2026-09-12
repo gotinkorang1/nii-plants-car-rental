@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { listPublishedStories } from "@/lib/content/published-stories";
 import { getPublishedContentPages } from "@/lib/content/queries";
 import { publicEnv } from "@/lib/env";
 import { getPublicModels } from "@/lib/fleet/get-public-models";
@@ -18,10 +19,14 @@ const staticPaths = [
   "/services/events",
   "/corporate",
   "/about",
+  "/news",
+  "/gallery",
   "/help",
   "/help/requirements",
   "/help/faqs",
   "/contact",
+  "/privacy",
+  "/terms",
   "/book",
 ];
 
@@ -29,11 +34,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = publicEnv.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ?? "";
   let models: Awaited<ReturnType<typeof getPublicModels>> = [];
   let pages: Awaited<ReturnType<typeof getPublishedContentPages>> = [];
+  let stories: Awaited<ReturnType<typeof listPublishedStories>> = [];
 
   try {
-    [models, pages] = await Promise.all([
+    [models, pages, stories] = await Promise.all([
       getPublicModels(),
       getPublishedContentPages(),
+      listPublishedStories(),
     ]);
   } catch (error) {
     log("error", "Failed to load sitemap catalogue entries.", {
@@ -52,6 +59,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${base}/fleet/${model.slug}`,
       changeFrequency: "weekly",
       priority: 0.6,
+    });
+  }
+
+  for (const article of stories) {
+    entries.push({
+      url: `${base}/news/${article.slug}`,
+      changeFrequency: "monthly",
+      priority: 0.55,
     });
   }
 

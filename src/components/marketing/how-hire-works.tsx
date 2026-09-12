@@ -1,35 +1,53 @@
+import { CalendarDays, Car, KeyRound } from "lucide-react";
+
+import { SectionHeading } from "@/components/marketing/page-intro";
+import { Card, CardContent } from "@/components/ui/card";
+
+import { COPY } from "@/lib/content/copy";
+
 const steps = [
   {
-    title: "Choose dates and pickup",
-    body: "Select an Accra location and a 24-hour self-drive window. Staff still assign the physical car.",
+    title: COPY.howHireWorks[0].title,
+    body: COPY.howHireWorks[0].body,
+    icon: CalendarDays,
   },
   {
-    title: "Pick a model or similar",
-    body: "Browse published saloons, SUVs, 4x4s and coaches. You hire a class of car, not a plate.",
+    title: COPY.howHireWorks[1].title,
+    body: COPY.howHireWorks[1].body,
+    icon: Car,
   },
   {
-    title: "Collect in Accra",
-    body: "Handover at Plantsville, Kotoka, or a listed hotel desk, with documents checked before keys.",
+    title: COPY.howHireWorks[2].title,
+    body: COPY.howHireWorks[2].body,
+    icon: KeyRound,
   },
 ] as const;
 
 export function HowHireWorks() {
   return (
     <section aria-labelledby="how-hire-works-heading">
-      <h2 id="how-hire-works-heading" className="font-heading text-2xl">
-        How self-drive hire works
-      </h2>
-      <ol className="mt-6 grid gap-4 sm:grid-cols-3">
+      <SectionHeading id="how-hire-works-heading" title="How self-drive hire works" />
+      <ol className="reveal-stagger relative mt-8 grid gap-4 sm:grid-cols-3">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute top-6 right-[16%] left-[16%] z-0 hidden h-px bg-accent/40 sm:block"
+        />
         {steps.map((step, index) => (
-          <li
-            key={step.title}
-            className="rounded-2xl bg-card p-5 ring-1 ring-border"
-          >
-            <p className="text-xs font-medium tracking-[0.16em] text-accent uppercase">
-              Step {index + 1}
-            </p>
-            <h3 className="mt-3 font-heading text-xl">{step.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{step.body}</p>
+          <li key={step.title} className="relative z-10">
+            <Card className="h-full gap-0 overflow-hidden rounded-2xl py-0 text-base shadow-none ring-border">
+              <span className="block h-0.5 bg-accent" aria-hidden />
+              <CardContent className="p-5">
+                <div className="flex items-center gap-3">
+                  <p className="flex size-8 items-center justify-center rounded-full bg-accent text-xs font-medium text-accent-foreground">
+                    <span className="sr-only">Step </span>
+                    {index + 1}
+                  </p>
+                  <step.icon className="size-5 text-accent" aria-hidden />
+                </div>
+                <h3 className="mt-4 font-heading text-xl">{step.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{step.body}</p>
+              </CardContent>
+            </Card>
           </li>
         ))}
       </ol>

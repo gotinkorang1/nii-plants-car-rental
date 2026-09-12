@@ -6,12 +6,14 @@ import { CatalogueDailyRate } from "@/components/fleet/catalogue-daily-rate";
 import { FleetCard } from "@/components/fleet/fleet-card";
 import { ModelGallery } from "@/components/fleet/model-gallery";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { PageEyebrow, SectionHeading } from "@/components/marketing/page-intro";
 import { PageTrail } from "@/components/marketing/page-trail";
 import { Button } from "@/components/ui/button";
 import {
   vehicleSeoDescription,
   vehicleSeoTitle,
 } from "@/lib/content/company";
+import { COPY } from "@/lib/content/copy";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd, carJsonLd } from "@/lib/content/structured-data";
 import { getPublicModel } from "@/lib/fleet/get-public-model";
@@ -117,13 +119,10 @@ export default async function VehicleDetailPage({
           vehicleClass={model.className}
         />
         <div className="space-y-6 lg:sticky lg:top-24">
-          <p className="text-sm font-medium tracking-[0.16em] text-primary uppercase">
-            {model.className}
-          </p>
-          <h1 className="font-heading text-4xl tracking-tight">{heading}</h1>
+          <PageEyebrow>{model.className}</PageEyebrow>
+          <h1 className="mt-2 font-heading text-4xl tracking-tight">{heading}</h1>
           <p className="text-muted-foreground">
-            Hire this {model.className.toLowerCase()} in Accra as this model or
-            similar. Staff assign the physical car at pickup.
+            {COPY.vehicleHireNote}
           </p>
           <p className="text-lg">
             From{" "}
@@ -136,15 +135,14 @@ export default async function VehicleDetailPage({
           </p>
           {model.usdDailyRateFrom ? (
             <p className="text-sm text-muted-foreground">
-              Catalogue rate in US dollars, matching the live shop. Online
-              reservation payments are in Ghana cedis.
+              {COPY.catalogueRateNote}
             </p>
           ) : null}
           <div className="flex flex-col gap-2 sm:flex-row">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="h-11 px-4">
               <Link href={`/book?vehicle=${model.slug}`}>Book vehicle</Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" variant="outline" className="h-11 px-4">
               <Link href="/help/requirements">Rental requirements</Link>
             </Button>
           </div>
@@ -220,8 +218,8 @@ export default async function VehicleDetailPage({
       </div>
 
       {related.length > 0 ? (
-        <section className="mt-16">
-          <h2 className="font-heading text-2xl">Other {model.className} models</h2>
+        <section className="mt-16 pb-10">
+          <SectionHeading title={`Other ${model.className} models`} />
           <ul className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {related.map((item) => (
               <li key={item.id}>

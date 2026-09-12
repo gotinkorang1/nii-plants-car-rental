@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { ContactDesk } from "@/components/marketing/contact-desk";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, Section } from "@/components/marketing/page-intro";
-import { PageTrail } from "@/components/marketing/page-trail";
-import { OsmMapEmbed } from "@/components/maps/osm-map-embed";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section, SectionHeading } from "@/components/marketing/page-intro";
+import { GoogleMapEmbed } from "@/components/maps/google-map-embed";
 import { COMPANY, PAGE_SEO } from "@/lib/content/company";
+import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublicLocations } from "@/lib/content/queries";
 import { pageMetadata } from "@/lib/content/seo";
@@ -43,70 +43,61 @@ export default async function ContactPage() {
           { name: "Contact", path: "/contact" },
         ])}
       />
-      <Section className="pt-10">
-        <PageTrail
-          items={[
-            { name: "Home", href: "/" },
-            { name: "Contact" },
-          ]}
-        />
-        <PageIntro
-          eyebrow="Contact"
-          title="Contact Nii Plants in Accra"
-          lede={`Call, WhatsApp, or email from ${COMPANY.openingHoursDisplay}. ${COMPANY.airportHoursNote}.`}
-        />
-        <div className="mt-8 grid gap-8 lg:grid-cols-2">
-          <div className="space-y-5">
-            <MarketingPhoto
-              image={marketingImages.valet}
-              className="aspect-[4/5] max-h-80 rounded-2xl"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              objectPosition="center 15%"
-              priority
-            />
-            <ContactDesk contact={contact} />
-            <p className="text-sm text-muted-foreground">{COMPANY.postalBox}</p>
-            <p>
-              <a
-                className="text-primary hover:underline"
-                href={COMPANY.mapsUrl}
-                rel="noreferrer"
-                target="_blank"
-              >
-                Open Plantsville on OpenStreetMap
-              </a>
-            </p>
-            {!hasDirect && !contact.address ? (
-              <p className="rounded-2xl bg-card p-5 text-muted-foreground ring-1 ring-border">
-                No public contact details are configured yet.
+      <PageBanner
+        image={marketingImages.valet}
+        eyebrow="Contact"
+        title="Contact Nii Plants in Accra"
+        lede={COPY.contactLede}
+        compact
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Contact" },
+        ]}
+      />
+      <Section className={mappedLocations.length > 0 ? "pt-10" : "pt-10 pb-20"} reveal>
+        <div className="grid items-start gap-10 lg:grid-cols-2">
+          <div>
+            <SectionHeading title="Plantsville desk" />
+            <div className="mt-6 space-y-5">
+              <ContactDesk contact={contact} />
+              <p className="text-sm text-muted-foreground">{COMPANY.postalBox}</p>
+              <p className="text-sm">
+                <a
+                  className="text-accent hover:underline"
+                  href={COMPANY.mapsUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Open Plantsville on Google Maps
+                </a>
               </p>
-            ) : null}
+              {!hasDirect && !contact.address ? (
+                <p className="rounded-2xl bg-card p-5 text-muted-foreground ring-1 ring-border">
+                  No public contact details are configured yet.
+                </p>
+              ) : null}
+            </div>
           </div>
           <div>
-            <p className="mb-4 text-sm text-muted-foreground">
-              We reply during Monday–Saturday hours. This form is a message, not a
-              confirmed booking.
+            <SectionHeading title="Send a message" />
+            <p className="mt-4 mb-6 text-sm leading-relaxed text-muted-foreground">
+              We reply during Monday–Saturday office hours. This form is a
+              message, not a confirmed booking.
             </p>
             <EnquiryForm serviceType="general" submitLabel="Send message" />
           </div>
         </div>
       </Section>
       {mappedLocations.length > 0 ? (
-        <Section className="pt-0 pb-20">
-          <h2 className="font-heading text-2xl">Pickup locations</h2>
-          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            Maps use OpenStreetMap. Plantsville is shown at the Dansoman
-            neighbourhood pin; the exact street is not in the public map data.
+        <Section className="pt-0 pb-20" reveal>
+          <SectionHeading title="Pickup locations" />
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Maps use Google Maps. {COPY.mapsNote}
           </p>
-          <MarketingPhoto
-            image={marketingImages.arrival}
-            className="mt-8 aspect-[16/8] rounded-2xl"
-            sizes="(max-width: 1024px) 100vw, 72rem"
-          />
           <ul className="mt-8 grid gap-6 lg:grid-cols-2">
             {mappedLocations.map((location) => (
               <li key={location.id}>
-                <OsmMapEmbed
+                <GoogleMapEmbed
                   name={location.name}
                   type={location.type}
                   latitude={location.latitude}

@@ -48,12 +48,26 @@ describe("phase 3 CMS RLS and storage SQL", () => {
   });
 });
 
+describe("CMS stories migration", () => {
+  it("keeps gallery attachments off anonymous SELECT", () => {
+    const sql = readSource("drizzle/0012_cms_stories_gallery.sql");
+    expect(sql).toContain("content_kind");
+    expect(sql).toContain("content_page_media");
+    expect(sql).toMatch(
+      /REVOKE ALL ON TABLE public\.content_page_media FROM PUBLIC, anon, authenticated/,
+    );
+    expect(sql).not.toMatch(/GRANT SELECT ON TABLE public\.content_page_media TO anon/);
+    expect(sql).toContain("is_active_staff()");
+  });
+});
+
 describe("sitemap exclusions", () => {
   it("includes static public pages and published content only", () => {
     const source = readSource("src/app/sitemap.ts");
 
     expect(source).toContain('"/fleet"');
     expect(source).toContain("getPublishedContentPages");
+    expect(source).toContain("listPublishedStories");
     expect(source).toContain("getPublicModels");
     expect(source).not.toContain("/admin");
     expect(source).not.toContain("/api");

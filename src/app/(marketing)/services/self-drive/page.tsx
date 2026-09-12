@@ -24,7 +24,7 @@ export default async function SelfDrivePage() {
       eyebrow="Self-drive"
       title="Self-drive car rental in Accra and Ghana"
       image={marketingImages.selfDrive}
-      lede="Hire a published model or similar and drive yourself. Days are 24 hours. Staff confirm the Ghana cedi rate before you pay. Cars stay inside Ghana."
+      lede="Hire a published model or similar and drive yourself. Days are 24 hours. Staff confirm the Ghana cedi rate before you pay. Mileage for ordinary Ghana use is included. Cars stay inside Ghana."
       benefits={[
         {
           title: "Accra and beyond",

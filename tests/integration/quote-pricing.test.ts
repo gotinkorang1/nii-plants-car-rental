@@ -86,7 +86,7 @@ describe("database-backed quote pricing", () => {
     expect(model).toBeTruthy();
     expect(location).toBeTruthy();
     expect(promotion).toBeTruthy();
-    expect(vehicleClass.default_daily_rate).toBe(35000);
+    expect(vehicleClass.default_daily_rate).toBe(71500);
     expect(vehicleClass.default_security_deposit).toBe(100000);
 
     const pickupAt = new Date("2031-03-10T10:00:00Z");
@@ -137,13 +137,13 @@ describe("database-backed quote pricing", () => {
     });
 
     expect(price.chargeableDays).toBe(2);
-    expect(price.dailyRate).toBe(35000);
-    expect(price.baseRental).toBe(70000);
+    expect(price.dailyRate).toBe(71500);
+    expect(price.baseRental).toBe(143000);
     expect(price.extrasTotal).toBe(25000);
-    expect(price.discountTotal).toBe(9500);
-    expect(price.rentalTotal).toBe(85500);
-    expect(price.reservationPayment).toBe(21375);
-    expect(price.remainingBalance).toBe(64125);
+    expect(price.discountTotal).toBe(16800);
+    expect(price.rentalTotal).toBe(151200);
+    expect(price.reservationPayment).toBe(37800);
+    expect(price.remainingBalance).toBe(113400);
     expect(price.securityDepositRequired).toBe(100000);
     expect(
       price.rentalTotal + price.securityDepositRequired,
@@ -184,17 +184,17 @@ describe("database-backed quote pricing", () => {
       FROM quotes WHERE id = ${quoteId}
     `;
 
-    expect(stored?.daily_rate).toBe(35000);
-    expect(stored?.rental_total).toBe(85500);
-    expect(stored?.reservation_payment).toBe(21375);
-    expect(stored?.remaining_balance).toBe(64125);
+    expect(stored?.daily_rate).toBe(71500);
+    expect(stored?.rental_total).toBe(151200);
+    expect(stored?.reservation_payment).toBe(37800);
+    expect(stored?.remaining_balance).toBe(113400);
     expect(stored?.security_deposit_required).toBe(100000);
     expect(stored?.extras_total).toBe(25000);
-    expect(stored?.discount_total).toBe(9500);
-    expect(stored?.pricing_snapshot.dailyRate).toBe(35000);
-    expect(stored?.pricing_snapshot.rentalTotal).toBe(85500);
+    expect(stored?.discount_total).toBe(16800);
+    expect(stored?.pricing_snapshot.dailyRate).toBe(71500);
+    expect(stored?.pricing_snapshot.rentalTotal).toBe(151200);
 
-    await sql`UPDATE vehicle_classes SET default_daily_rate = 35000 WHERE id = ${vehicleClass.id}`;
+    await sql`UPDATE vehicle_classes SET default_daily_rate = 71500 WHERE id = ${vehicleClass.id}`;
     await sql`DELETE FROM quotes WHERE id = ${quoteId}`;
   });
 });

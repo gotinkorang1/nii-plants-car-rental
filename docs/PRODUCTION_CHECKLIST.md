@@ -69,7 +69,7 @@ Production LIVE switch (**after** all gates above + production checklist):
 ### Content & fleet
 
 - [ ] Confirm published USD shop rates after `db:upsert-production-catalog`
-- [ ] Register real physical vehicles (no `INTERNAL-UNSET-*` units live)
+- [ ] Register real physical vehicles in `/admin/fleet/vehicles` (plates, class, location). Local `db:seed` uses `INTERNAL-UNSET-*` placeholders only. Source-site inventory and seed JSON do **not** list real Ghana plates — do not invent registrations. Production bootstrap/upsert must **not** create those placeholder units.
 - [ ] Publish approved fleet images and models
 - [ ] Verify site settings: phone, WhatsApp, email, address, payment percent, hold duration
 - [ ] Enable `bookingEnabled` and `onlinePaymentEnabled` in admin when ready

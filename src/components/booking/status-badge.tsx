@@ -1,4 +1,5 @@
 import type { BookingStatus } from "@/lib/bookings/status";
+import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 const STATUS_TONE: Partial<
@@ -33,13 +34,14 @@ export function BookingStatusBadge({
   const tone = STATUS_TONE[status] ?? "default";
 
   return (
-    <span
+    <Badge
+      variant="secondary"
       className={cn(
-        "inline-flex items-center rounded-md px-2.5 py-1 text-sm font-medium",
+        "h-auto rounded-md border-transparent px-2.5 py-1 text-sm font-medium",
         TONE_CLASS[tone],
       )}
     >
       {label}
-    </span>
+    </Badge>
   );
 }

@@ -10,13 +10,17 @@ export function TrustMarks({ className }: { className?: string }) {
   return (
     <ul
       className={cn(
-        "grid gap-px overflow-hidden rounded-2xl bg-border sm:grid-cols-3",
+        "relative grid overflow-hidden rounded-2xl bg-card ring-1 ring-border sm:grid-cols-3",
         className,
       )}
     >
+      <span className="absolute inset-x-0 top-0 h-0.5 bg-accent" aria-hidden />
       {marks.map((item) => (
-        <li key={item.title} className="bg-card px-5 py-4">
-          <p className="text-sm font-medium">{item.title}</p>
+        <li
+          key={item.title}
+          className="border-border px-5 py-5 sm:border-l sm:first-of-type:border-l-0"
+        >
+          <p className="text-sm font-medium text-primary">{item.title}</p>
           <p className="mt-1 text-sm text-muted-foreground">{item.body}</p>
         </li>
       ))}

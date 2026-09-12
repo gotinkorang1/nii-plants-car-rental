@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import type { MarketingImage } from "@/lib/content/marketing-images";
@@ -34,16 +35,15 @@ export function ServiceCard({
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         zoomOnHover
       />
+      <span className="block h-0.5 bg-accent" aria-hidden />
       <div className="p-5">
-        <Heading className="font-heading text-2xl transition-colors group-hover:text-primary">
+        <Heading className="font-heading text-xl tracking-tight transition-colors group-hover:text-accent">
           {title}
         </Heading>
         <p className="mt-2 text-sm text-muted-foreground">{body}</p>
-        <p className="mt-4 text-sm font-medium text-primary">
+        <p className="mt-4 flex items-center gap-1.5 text-sm font-medium text-accent">
           Learn more
-          <span aria-hidden className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-0.5">
-            →
-          </span>
+          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
         </p>
       </div>
     </Link>

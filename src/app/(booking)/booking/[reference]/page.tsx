@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 
 import { BookingLogoutButton } from "@/components/booking/booking-logout-button";
 import { BookingStatusPanel } from "@/components/booking/booking-status-panel";
+import { PageEyebrow } from "@/components/marketing/page-intro";
 import { readBookingGuestSession } from "@/lib/bookings/guest-session";
 import {
   getPublicBookingByReference,
@@ -38,9 +39,7 @@ export default async function GuestBookingPage({ params }: PageProps) {
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <p className="text-xs font-medium tracking-wide text-primary uppercase">
-            Your booking
-          </p>
+          <PageEyebrow>Your booking</PageEyebrow>
           <h1 className="mt-2 font-heading text-4xl tracking-tight">{booking.reference}</h1>
         </div>
         <BookingLogoutButton />

@@ -51,78 +51,78 @@
 }
 
 :root {
-  --background: #f7f3eb;
-  --foreground: #181a18;
+  --background: #fafafa;
+  --foreground: #1a1a1a;
   --card: #ffffff;
-  --card-foreground: #181a18;
+  --card-foreground: #1a1a1a;
   --popover: #ffffff;
-  --popover-foreground: #181a18;
-  --primary: #245844;
+  --popover-foreground: #1a1a1a;
+  --primary: #3C3C3C;
   --primary-foreground: #ffffff;
-  --secondary: #ece8df;
-  --secondary-foreground: #181a18;
-  --muted: #ece8df;
-  --muted-foreground: #66645f;
-  --accent: #c86d38;
+  --secondary: #f0f0f0;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f0f0f0;
+  --muted-foreground: #505050;
+  --accent: #984000;
   --accent-foreground: #ffffff;
   --destructive: #b83e3e;
-  --border: #ded9cf;
-  --input: #ded9cf;
-  --ring: #245844;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #984000;
   --success: #2f7d50;
   --warning: #b87524;
   --error: #b83e3e;
-  --chart-1: #245844;
-  --chart-2: #c86d38;
+  --chart-1: #3C3C3C;
+  --chart-2: #984000;
   --chart-3: #2f7d50;
   --chart-4: #b87524;
-  --chart-5: #66645f;
+  --chart-5: #6b6b6b;
   --radius: 0.5rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #181a18;
-  --sidebar-primary: #245844;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #3C3C3C;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #ece8df;
-  --sidebar-accent-foreground: #181a18;
-  --sidebar-border: #ded9cf;
-  --sidebar-ring: #245844;
+  --sidebar-accent: #f0f0f0;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #984000;
 }
 
 .dark {
-  --background: #181a18;
-  --foreground: #f7f3eb;
-  --card: #222422;
-  --card-foreground: #f7f3eb;
-  --popover: #222422;
-  --popover-foreground: #f7f3eb;
-  --primary: #3d7a62;
-  --primary-foreground: #ffffff;
-  --secondary: #2a2d2a;
-  --secondary-foreground: #f7f3eb;
-  --muted: #2a2d2a;
-  --muted-foreground: #b4b0a6;
-  --accent: #c86d38;
+  --background: #141414;
+  --foreground: #f5f5f5;
+  --card: #1e1e1e;
+  --card-foreground: #f5f5f5;
+  --popover: #1e1e1e;
+  --popover-foreground: #f5f5f5;
+  --primary: #e5e5e5;
+  --primary-foreground: #1a1a1a;
+  --secondary: #262626;
+  --secondary-foreground: #f5f5f5;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #F0882E;
   --accent-foreground: #ffffff;
   --destructive: #d15a5a;
-  --border: #3a3d3a;
-  --input: #3a3d3a;
-  --ring: #3d7a62;
+  --border: #333333;
+  --input: #333333;
+  --ring: #F0882E;
   --success: #4a9a6a;
   --warning: #d49a45;
   --error: #d15a5a;
-  --chart-1: #3d7a62;
-  --chart-2: #c86d38;
+  --chart-1: #e5e5e5;
+  --chart-2: #F0882E;
   --chart-3: #4a9a6a;
   --chart-4: #d49a45;
-  --chart-5: #b4b0a6;
-  --sidebar: #222422;
-  --sidebar-foreground: #f7f3eb;
-  --sidebar-primary: #3d7a62;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #2a2d2a;
-  --sidebar-accent-foreground: #f7f3eb;
-  --sidebar-border: #3a3d3a;
-  --sidebar-ring: #3d7a62;
+  --chart-5: #a3a3a3;
+  --sidebar: #1e1e1e;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-primary: #e5e5e5;
+  --sidebar-primary-foreground: #1a1a1a;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: #333333;
+  --sidebar-ring: #F0882E;
 }
 
 @layer base {
@@ -155,6 +155,11 @@
 }
 
 @layer utilities {
+  a.text-accent {
+    text-decoration-line: underline;
+    text-underline-offset: 0.125rem;
+  }
+
   .prose-measure {
     max-width: 65ch;
   }
@@ -180,6 +185,36 @@
     animation-timeline: view();
     animation-range: entry 0% cover 18%;
   }
+
+  .reveal-slide-left {
+    animation: marketing-reveal-left 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 20%;
+  }
+
+  .reveal-slide-right {
+    animation: marketing-reveal-right 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 20%;
+  }
+
+  .reveal-scale {
+    animation: marketing-reveal-scale 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 20%;
+  }
+
+  .reveal-stagger > * {
+    animation: marketing-reveal 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+  }
+
+  .reveal-stagger > *:nth-child(2) { animation-range: entry 3% cover 28%; }
+  .reveal-stagger > *:nth-child(3) { animation-range: entry 6% cover 31%; }
+  .reveal-stagger > *:nth-child(4) { animation-range: entry 9% cover 34%; }
+  .reveal-stagger > *:nth-child(5) { animation-range: entry 12% cover 37%; }
+  .reveal-stagger > *:nth-child(6) { animation-range: entry 15% cover 40%; }
 }
 
 @keyframes marketing-page-enter {
@@ -206,8 +241,45 @@
   }
 }
 
+@keyframes marketing-reveal-left {
+  from {
+    opacity: 0.001;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes marketing-reveal-right {
+  from {
+    opacity: 0.001;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes marketing-reveal-scale {
+  from {
+    opacity: 0.001;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @supports not (animation-timeline: view()) {
-  .reveal-on-scroll {
+  .reveal-on-scroll,
+  .reveal-slide-left,
+  .reveal-slide-right,
+  .reveal-scale,
+  .reveal-stagger > * {
     animation: none;
   }
 }
@@ -236,6 +308,47 @@
   }
 }
 
+@keyframes hero-ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-hero-ken-burns {
+  animation: hero-ken-burns 7s ease-out forwards;
+}
+
+@keyframes hero-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-hero-progress {
+  animation: hero-progress linear forwards;
+}
+
+@keyframes booking-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-booking-enter {
+  animation: booking-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -244,5 +357,14 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .marketing-page-enter,
+  .reveal-on-scroll,
+  .reveal-slide-left,
+  .reveal-slide-right,
+  .reveal-scale,
+  .reveal-stagger > * {
+    animation: none !important;
   }
 }

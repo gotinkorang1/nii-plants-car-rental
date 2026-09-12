@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/marketing/json-ld";
-import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { PageIntro, Section } from "@/components/marketing/page-intro";
-import { PageTrail } from "@/components/marketing/page-trail";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section } from "@/components/marketing/page-intro";
+import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { PAGE_SEO } from "@/lib/content/company";
+import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
@@ -52,6 +53,16 @@ const topics = [
     title: "Support",
     body: "Call, WhatsApp, or email the Plantsville team in Dansoman.",
   },
+  {
+    href: "/privacy",
+    title: "Privacy",
+    body: "How we use booking data under Ghana's Data Protection Act, 2012 (Act 843).",
+  },
+  {
+    href: "/terms",
+    title: "Hire terms",
+    body: "48-hour cancellation, Ghana-only use, age 25+, and how hire days are charged.",
+  },
 ] as const;
 
 export default function HelpPage() {
@@ -63,39 +74,37 @@ export default function HelpPage() {
           { name: "Help", path: "/help" },
         ])}
       />
-      <Section className="pt-10">
-        <PageTrail
-          items={[
-            { name: "Home", href: "/" },
-            { name: "Help" },
-          ]}
-        />
-        <PageIntro
-          eyebrow="Help"
-          title="Car rental help for Ghana hire"
-          lede="Licence rules, payments, Kotoka pickup, and cancellation for self-drive and chauffeur hire with Nii Plants."
-        />
-        <MarketingPhoto
-          image={marketingImages.phone}
-          className="mt-8 aspect-[16/8] max-w-3xl rounded-2xl"
-          sizes="(max-width: 768px) 100vw, 48rem"
-          priority
-        />
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+      <PageBanner
+        image={marketingImages.phone}
+        eyebrow="Help"
+        title="Car rental help for Ghana hire"
+        lede={COPY.helpIntro}
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Help" },
+        ]}
+        compact
+      />
+      <Section className="pt-10 pb-20" reveal>
+        <ul className="reveal-stagger grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {topics.map((item) => (
             <li key={item.title}>
-              <Link
-                href={item.href}
-                className="group block h-full rounded-2xl bg-card p-5 ring-1 ring-border transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:text-primary hover:shadow-[0_12px_30px_rgba(24,26,24,0.08)] focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-              >
-                <h2 className="font-medium">{item.title}</h2>
-                <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
-                <p className="mt-4 text-sm font-medium text-primary">
-                  Open
-                  <span aria-hidden className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-0.5">
-                    →
-                  </span>
-                </p>
+              <Link href={item.href} className="group block h-full focus-visible:outline-none">
+                <Card className="h-full gap-0 overflow-hidden rounded-2xl py-0 text-base shadow-none ring-border transition-[transform,box-shadow] duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_12px_30px_rgba(24,26,24,0.08)] group-focus-visible:ring-2 group-focus-visible:ring-ring motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
+                  <span className="block h-0.5 bg-accent" aria-hidden />
+                  <CardHeader className="p-5 pb-0">
+                    <h2 className="font-heading text-base leading-snug font-medium group-hover:text-primary">
+                      {item.title}
+                    </h2>
+                    <CardDescription className="text-sm">{item.body}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-5 pt-4 text-sm font-medium text-primary">
+                    Open
+                    <span aria-hidden className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-0.5">
+                      →
+                    </span>
+                  </CardContent>
+                </Card>
               </Link>
             </li>
           ))}
