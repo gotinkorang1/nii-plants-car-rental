@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { CalendarCheck, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { Button } from "@/components/ui/button";
 import { COMPANY } from "@/lib/content/company";
 import {
@@ -85,104 +86,111 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
   const homeTop = pathname === "/" && !scrolled;
 
   return (
-    <header
-      className={cn(
-        "site-header sticky top-0 z-40 border-b transition-[background-color,box-shadow,border-color,color] duration-300",
-        homeTop
-          ? "border-transparent bg-transparent"
-          : "backdrop-blur-md",
-        !homeTop && scrolled
-          ? "border-border/80 bg-background/90 shadow-[0_8px_24px_rgba(24,26,24,0.06)]"
-          : !homeTop
-            ? "border-transparent bg-background/70"
-            : null,
-      )}
-    >
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
-        <Link
-          href="/"
-          className="group flex shrink-0 items-center focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-        >
-          <Image
-            src="/brand/logo.png"
-            alt="Nii Plants Car Rentals"
-            width={48}
-            height={48}
-            className="size-10 object-contain sm:size-12"
-            priority
-          />
-        </Link>
-        <nav
-          aria-label="Primary"
-          className="ml-6 hidden items-center gap-0.5 lg:flex"
-        >
-          {PUBLIC_PRIMARY_LINKS.map((item) => {
-            const current = isPublicNavCurrent(pathname, item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={current ? "page" : undefined}
+    <>
+      <header
+        className={cn(
+          "site-header relative z-50 flex-none sticky top-0 border-b transition-[background-color,box-shadow,border-color,color] duration-300",
+          homeTop ? "border-transparent bg-transparent" : "backdrop-blur-md",
+          !homeTop && scrolled
+            ? "border-border/80 bg-background/90 shadow-[0_8px_24px_rgba(24,26,24,0.06)]"
+            : !homeTop
+              ? "border-transparent bg-background/70"
+              : null,
+        )}
+      >
+        <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
+          <Link
+            href="/"
+            className="group flex min-w-0 items-center focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          >
+            <BrandLogo className="h-11 w-auto sm:h-12" />
+          </Link>
+          <nav
+            aria-label="Primary"
+            className="ml-6 hidden items-center gap-0.5 lg:flex"
+          >
+            {PUBLIC_PRIMARY_LINKS.map((item) => {
+              const current = isPublicNavCurrent(pathname, item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={current ? "page" : undefined}
+                  className={cn(
+                    "relative rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors",
+                    "focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+                    "after:absolute after:inset-x-2 after:-bottom-0.5 after:block after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 after:content-['']",
+                    "hover:after:scale-x-100",
+                    homeTop
+                      ? "text-white/85 hover:text-white"
+                      : "text-foreground/80 hover:text-primary",
+                    current &&
+                      (homeTop
+                        ? "text-white after:scale-x-100"
+                        : "text-primary after:scale-x-100"),
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+          <div className="ml-auto flex items-center gap-2">
+            {contact.phone ? (
+              <Button
+                asChild
+                variant="ghost"
+                size="sm"
                 className={cn(
-                  "relative rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors",
-                  "focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
-                  "after:absolute after:inset-x-2 after:-bottom-0.5 after:block after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 after:content-['']",
-                  "hover:after:scale-x-100",
-                  homeTop
-                    ? "text-white/85 hover:text-white"
-                    : "text-foreground/80 hover:text-primary",
-                  current && (homeTop ? "text-white after:scale-x-100" : "text-primary after:scale-x-100"),
+                  "hidden sm:inline-flex",
+                  homeTop && "text-white hover:bg-white/10 hover:text-white",
                 )}
               >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="ml-auto flex items-center gap-2">
-          {contact.phone ? (
-            <Button
-              asChild
-              variant="ghost"
-              size="sm"
-              className={cn("hidden sm:inline-flex", homeTop && "text-white hover:bg-white/10 hover:text-white")}
-            >
-              <a href={telHref(contact.phone)}>
-                <Phone className="size-4" />
-                Call
-              </a>
+                <a href={telHref(contact.phone)}>Call</a>
+              </Button>
+            ) : null}
+            {contact.whatsapp ? (
+              <Button
+                asChild
+                variant="ghost"
+                size="sm"
+                className={cn(
+                  "hidden md:inline-flex",
+                  homeTop && "text-white hover:bg-white/10 hover:text-white",
+                )}
+              >
+                <a href={whatsappHref(contact.whatsapp)}>WhatsApp</a>
+              </Button>
+            ) : null}
+            <Button asChild size="sm">
+              <Link href="/book">Book a Vehicle</Link>
             </Button>
-          ) : null}
-          {contact.whatsapp ? (
             <Button
-              asChild
-              variant="ghost"
+              ref={menuButtonRef}
+              type="button"
+              variant="outline"
               size="sm"
-              className={cn("hidden md:inline-flex", homeTop && "text-white hover:bg-white/10 hover:text-white")}
+              className={cn(
+                "lg:hidden",
+                homeTop &&
+                  "border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white",
+              )}
+              aria-expanded={open}
+              aria-controls={menuId}
+              onClick={() => setOpen((value) => !value)}
             >
-              <a href={whatsappHref(contact.whatsapp)}>
-                <MessageCircle className="size-4" />
-                WhatsApp
-              </a>
+              {open ? (
+                <X aria-hidden className="size-3.5" />
+              ) : (
+                <Menu aria-hidden className="size-3.5" />
+              )}
+              {open ? "Close" : "Menu"}
             </Button>
-          ) : null}
-          <Button
-            ref={menuButtonRef}
-            type="button"
-            variant="outline"
-            size="sm"
-            className={cn("lg:hidden", homeTop && "border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white")}
-            aria-expanded={open}
-            aria-controls={menuId}
-            onClick={() => setOpen((value) => !value)}
-          >
-            {open ? <X aria-hidden className="size-3.5" /> : <Menu aria-hidden className="size-3.5" />}
-            {open ? "Close" : "Menu"}
-          </Button>
+          </div>
         </div>
-      </div>
+      </header>
       {open ? (
-        <div className="fixed inset-x-0 top-16 bottom-0 z-40 lg:hidden">
+        <div className="fixed inset-x-0 top-16 bottom-0 z-[60] lg:hidden">
           <button
             type="button"
             aria-label="Close menu"
@@ -191,6 +199,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
           />
           <div
             id={menuId}
+            data-testid="mobile-menu-panel"
             className="marketing-page-enter relative ml-auto flex h-full w-full max-w-sm flex-col overflow-y-auto border-l border-border bg-background px-4 py-5 shadow-2xl"
           >
             <nav aria-label="Mobile" className="grid gap-1">
@@ -253,7 +262,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
           </div>
         </div>
       ) : null}
-    </header>
+    </>
   );
 }
 
@@ -267,14 +276,8 @@ export function PublicFooter({ contact }: { contact: PublicContact }) {
       <div className="h-0.5 w-full bg-[linear-gradient(90deg,transparent,var(--accent),transparent)]" />
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4 sm:px-6">
         <div>
-          <Image
-            src="/brand/logo.png"
-            alt="Nii Plants Car Rentals"
-            width={56}
-            height={56}
-            className="size-14 object-contain"
-          />
-          <p className="mt-1 text-xs tracking-[0.18em] text-muted-foreground uppercase">
+          <BrandLogo className="h-16 w-auto" />
+          <p className="mt-2 text-xs tracking-[0.18em] text-muted-foreground uppercase">
             {COMPANY.tagline}
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
