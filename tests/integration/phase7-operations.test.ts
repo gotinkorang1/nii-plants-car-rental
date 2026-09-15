@@ -210,6 +210,12 @@ describe("phase 7 operations", () => {
         ${`REG-P7-${vehicleId.slice(0, 8)}`}, 'White', 1000, 'available', ${locationId}
       )
     `;
+    await sql`
+      INSERT INTO vehicle_inventory_slots (vehicle_model_id, pickup_location_id, slot_number)
+      SELECT ${modelId}, ${locationId}, slot_number
+      FROM generate_series(1, 10) AS slots(slot_number)
+      ON CONFLICT DO NOTHING
+    `;
     const pickup = "2031-09-10T10:00:00Z";
     await sql`
       INSERT INTO quotes (
@@ -227,7 +233,7 @@ describe("phase 7 operations", () => {
     `;
     await sql`
       SELECT allocation_id FROM create_vehicle_hold(
-        ${classId}::uuid, ${modelId}::uuid,
+        ${modelId}::uuid, ${locationId}::uuid,
         ${pickup}::timestamptz,
         '2031-09-12T10:00:00Z'::timestamptz,
         ${quoteId}::uuid,

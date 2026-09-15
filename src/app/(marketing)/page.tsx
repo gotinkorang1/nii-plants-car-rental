@@ -18,7 +18,7 @@ import { FeaturedModels } from "@/components/fleet/featured-models";
 import { PAGE_SEO } from "@/lib/content/company";
 import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
-import { getPublishedFaqs, getPublicLocations } from "@/lib/content/queries";
+import { getPublishedFaqs, getPublicOfficePickupLocations } from "@/lib/content/queries";
 import { listPublishedStories } from "@/lib/content/published-stories";
 import { pageMetadata } from "@/lib/content/seo";
 import {
@@ -33,7 +33,7 @@ const getCachedHomeData = unstable_cache(
   async () =>
     Promise.all([
       getSiteSettings(),
-      getPublicLocations(),
+      getPublicOfficePickupLocations(),
       getFeaturedModels(3).catch(() => []),
       getPublishedFaqs(),
       listPublishedStories(),

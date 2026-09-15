@@ -189,6 +189,53 @@ export async function getOperationalBookingContext(bookingId: string) {
   };
 }
 
+export async function listAssignableVehicles(bookingId: string) {
+  const db = tryGetDb();
+  if (!db) {
+    return [];
+  }
+
+  const [booking] = await db
+      .select({
+        vehicleModelId: bookings.vehicleModelId,
+        pickupLocationId: bookings.pickupLocationId,
+        pickupAt: bookings.pickupAt,
+        returnAt: bookings.returnAt,
+    })
+    .from(bookings)
+    .where(eq(bookings.id, bookingId))
+    .limit(1);
+
+  if (!booking) {
+    return [];
+  }
+
+  return db
+    .select({
+      id: vehicles.id,
+      internalCode: vehicles.internalCode,
+      registrationNumber: vehicles.registrationNumber,
+      colour: vehicles.colour,
+    })
+    .from(vehicles)
+    .where(
+      and(
+        eq(vehicles.vehicleModelId, booking.vehicleModelId),
+        eq(vehicles.branchLocationId, booking.pickupLocationId),
+        eq(vehicles.status, "available"),
+        sql`NOT EXISTS (
+          SELECT 1
+          FROM vehicle_allocations occupied
+          WHERE occupied.vehicle_id = ${vehicles.id}
+            AND occupied.start_at < ${booking.returnAt.toISOString()}::timestamptz
+            AND occupied.end_at > ${booking.pickupAt.toISOString()}::timestamptz
+            AND occupied.status IN ('hold', 'confirmed', 'ready', 'checked_out')
+        )`,
+      ),
+    )
+    .orderBy(vehicles.internalCode);
+}
+
 export async function listInspectionPhotos(inspectionId: string) {
   const db = tryGetDb();
   if (!db) {

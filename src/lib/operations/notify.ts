@@ -21,6 +21,7 @@ export async function notifyVehicleReady(bookingId: string) {
       firstName: context.firstName,
       reference: context.reference,
       vehicleLabel: context.vehicleLabel,
+      assignedVehicleLabel: context.assignedVehicleLabel,
       pickupLabel: context.pickupLabel,
       accessUrl: context.accessUrl,
     }),

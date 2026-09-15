@@ -4,6 +4,12 @@ export type PublicSearchLocation = {
   type?: string | null;
 };
 
+export const SUPPORTED_OFFICE_PICKUP_LOCATION_SLUGS = [
+  "alisa-hotel-ridge",
+  "alisa-hotel-tema",
+  "head-office-dansoman",
+] as const;
+
 const LOCATION_TYPE_LABELS: Record<string, string> = {
   branch: "Office",
   airport: "Airport",

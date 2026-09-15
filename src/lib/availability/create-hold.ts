@@ -14,8 +14,8 @@ type HoldClient = {
 };
 
 export type CreateVehicleHoldInput = {
-  vehicleClassId: string;
-  vehicleModelId: string | null;
+  vehicleModelId: string;
+  pickupLocationId: string;
   pickupAt: Date;
   returnAt: Date;
   quoteId: string;
@@ -25,7 +25,8 @@ export type CreateVehicleHoldInput = {
 
 export type VehicleHoldResult = {
   allocationId: string;
-  vehicleId: string;
+  inventorySlotId: string;
+  vehicleId: string | null;
 };
 
 function readHoldRows(result: unknown): VehicleHoldResult[] {
@@ -44,11 +45,20 @@ function readHoldRows(result: unknown): VehicleHoldResult[] {
     }
     const record = row as Record<string, unknown>;
     const allocationId = record.allocation_id ?? record.allocationId;
-    const vehicleId = record.vehicle_id ?? record.vehicleId;
-    if (typeof allocationId !== "string" || typeof vehicleId !== "string") {
+    const inventorySlotId = record.inventory_slot_id ?? record.inventorySlotId;
+    const vehicleId = record.vehicle_id ?? record.vehicleId ?? null;
+    if (
+      typeof allocationId !== "string" ||
+      typeof inventorySlotId !== "string" ||
+      (vehicleId !== null && typeof vehicleId !== "string")
+    ) {
       return [];
     }
-    return [{ allocationId, vehicleId }];
+    return [{
+      allocationId,
+      inventorySlotId,
+      vehicleId: vehicleId as string | null,
+    }];
   });
 }
 
@@ -57,8 +67,8 @@ export async function createVehicleHold(
   input: CreateVehicleHoldInput,
 ): Promise<VehicleHoldResult> {
   log("info", "hold_attempt", {
-    vehicleClassId: input.vehicleClassId,
     vehicleModelId: input.vehicleModelId,
+    pickupLocationId: input.pickupLocationId,
     quoteId: input.quoteId,
     pickupAt: input.pickupAt.toISOString(),
     returnAt: input.returnAt.toISOString(),
@@ -66,10 +76,10 @@ export async function createVehicleHold(
 
   try {
     const result = await client.execute(sql`
-      SELECT allocation_id, vehicle_id
+      SELECT allocation_id, inventory_slot_id, vehicle_id
       FROM public.create_vehicle_hold(
-        ${input.vehicleClassId}::uuid,
         ${input.vehicleModelId}::uuid,
+        ${input.pickupLocationId}::uuid,
         ${input.pickupAt.toISOString()}::timestamptz,
         ${input.returnAt.toISOString()}::timestamptz,
         ${input.quoteId}::uuid,
@@ -95,7 +105,7 @@ export async function createVehicleHold(
   } catch (error) {
     log("warn", "hold_failed", {
       quoteId: input.quoteId,
-      vehicleClassId: input.vehicleClassId,
+      vehicleModelId: input.vehicleModelId,
       unavailable: isVehicleUnavailableError(error),
     });
     throw mapHoldError(error);

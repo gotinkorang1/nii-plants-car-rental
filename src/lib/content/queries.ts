@@ -14,6 +14,7 @@ import {
 import { log } from "@/lib/logger";
 import type { ContentPostKind } from "@/lib/validation/content";
 import { CONTENT_STORY_KINDS } from "@/lib/validation/content";
+import { SUPPORTED_OFFICE_PICKUP_LOCATION_SLUGS } from "@/lib/content/location-type";
 
 export async function getPublishedFaqs(category?: string) {
   const fallback = PUBLIC_FAQS.filter((item) =>
@@ -130,6 +131,39 @@ export async function getPublicLocations() {
       .orderBy(asc(locations.name));
   } catch (error) {
     log("error", "Failed to load public locations.", {
+      error: error instanceof Error ? error.message : "unknown",
+    });
+    return [];
+  }
+}
+
+export async function getPublicOfficePickupLocations() {
+  const db = tryGetDb();
+  if (!db) {
+    return [];
+  }
+
+  try {
+    return await db
+      .select({
+        id: locations.id,
+        name: locations.name,
+        slug: locations.slug,
+        type: locations.type,
+        address: locations.address,
+        latitude: locations.latitude,
+        longitude: locations.longitude,
+      })
+      .from(locations)
+      .where(
+        and(
+          eq(locations.active, true),
+          inArray(locations.slug, [...SUPPORTED_OFFICE_PICKUP_LOCATION_SLUGS]),
+        ),
+      )
+      .orderBy(asc(locations.name));
+  } catch (error) {
+    log("error", "Failed to load office pickup locations.", {
       error: error instanceof Error ? error.message : "unknown",
     });
     return [];

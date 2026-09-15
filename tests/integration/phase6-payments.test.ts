@@ -138,6 +138,12 @@ describe("phase 6 payments", () => {
       )
     `;
     await sql`
+      INSERT INTO vehicle_inventory_slots (vehicle_model_id, pickup_location_id, slot_number)
+      SELECT ${modelId}, ${locationId}, slot_number
+      FROM generate_series(1, 10) AS slots(slot_number)
+      ON CONFLICT DO NOTHING
+    `;
+    await sql`
       INSERT INTO quotes (
         id, vehicle_model_id, vehicle_class_id, pickup_location_id, return_location_id,
         pickup_at, return_at, chargeable_days, daily_rate, base_rental, extras_total,
@@ -153,7 +159,7 @@ describe("phase 6 payments", () => {
     `;
     await sql`
       SELECT allocation_id FROM create_vehicle_hold(
-        ${classId}::uuid, ${modelId}::uuid,
+        ${modelId}::uuid, ${locationId}::uuid,
         ${pickup}::timestamptz,
         '2031-08-22T10:00:00Z'::timestamptz,
         ${quoteId}::uuid,
