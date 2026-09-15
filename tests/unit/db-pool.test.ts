@@ -13,6 +13,12 @@ describe("postgres client pool options", () => {
       max: 5,
       prepare: true,
       idle_timeout: 20,
+      connect_timeout: 8,
+      max_lifetime: 300,
+      connection: {
+        statement_timeout: 8_000,
+        lock_timeout: 3_000,
+      },
     });
   });
 
@@ -26,6 +32,12 @@ describe("postgres client pool options", () => {
       max: 5,
       prepare: false,
       idle_timeout: 20,
+      connect_timeout: 8,
+      max_lifetime: 300,
+      connection: {
+        statement_timeout: 8_000,
+        lock_timeout: 3_000,
+      },
     });
   });
 

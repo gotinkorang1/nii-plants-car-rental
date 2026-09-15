@@ -4,6 +4,12 @@ export type PostgresClientOptions = {
   max: number;
   prepare: boolean;
   idle_timeout: number;
+  connect_timeout: number;
+  max_lifetime: number;
+  connection: {
+    statement_timeout: number;
+    lock_timeout: number;
+  };
 };
 
 const TRANSACTION_POOLER_PORT = "6543";
@@ -50,5 +56,17 @@ export function resolvePostgresClientOptions(
     max,
     prepare: !transactionPooler,
     idle_timeout: 20,
+    // Fail fast enough for Vercel to return the app's database fallback before
+    // the serverless function reaches its invocation limit.
+    connect_timeout: 8,
+    // Recycle serverless connections before a stale pooled connection can
+    // survive across invocations and keep public reads waiting indefinitely.
+    max_lifetime: 300,
+    // Bound database work as well as connection setup. These are startup
+    // parameters, so they apply consistently to every query and transaction.
+    connection: {
+      statement_timeout: 8_000,
+      lock_timeout: 3_000,
+    },
   };
 }
