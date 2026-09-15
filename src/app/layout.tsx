@@ -22,9 +22,9 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  metadataBase: publicEnv.NEXT_PUBLIC_APP_URL
-    ? new URL(publicEnv.NEXT_PUBLIC_APP_URL)
-    : undefined,
+  metadataBase: new URL(
+    publicEnv.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
+  ),
   title: {
     default: PAGE_SEO.home.title,
     template: "%s | Nii Plants Car Rentals",
