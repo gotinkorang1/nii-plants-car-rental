@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { unstable_cache } from "next/cache";
 
 import { CtaPanel } from "@/components/marketing/cta-panel";
 import { FleetCard } from "@/components/fleet/fleet-card";
@@ -19,6 +20,7 @@ import {
   hasActivePublicFleetFilters,
   parseFleetSearchParams,
 } from "@/lib/fleet/filters";
+import type { PublicFleetFilters } from "@/lib/fleet/filters";
 import {
   getPublicActiveClasses,
   getPublicModels,
@@ -27,6 +29,13 @@ import {
 type FleetPageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
+
+const getCachedFleetData = unstable_cache(
+  async (filters: PublicFleetFilters) =>
+    Promise.all([getPublicModels(filters), getPublicActiveClasses()]),
+  ["public-fleet"],
+  { revalidate: 300, tags: ["public-fleet"] },
+);
 
 export const metadata: Metadata = pageMetadata({
   title: PAGE_SEO.fleet.title,
@@ -37,10 +46,7 @@ export const metadata: Metadata = pageMetadata({
 export default async function FleetPage({ searchParams }: FleetPageProps) {
   const params = await searchParams;
   const filters = parseFleetSearchParams(params);
-  const [models, classes] = await Promise.all([
-    getPublicModels(filters),
-    getPublicActiveClasses(),
-  ]);
+  const [models, classes] = await getCachedFleetData(filters);
 
   return (
     <main>
