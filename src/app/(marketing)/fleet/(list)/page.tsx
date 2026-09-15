@@ -24,8 +24,6 @@ import {
   getPublicModels,
 } from "@/lib/fleet/get-public-models";
 
-export const dynamic = "force-dynamic";
-
 type FleetPageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };

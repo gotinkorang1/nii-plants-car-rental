@@ -16,8 +16,6 @@ import {
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
 
-export const dynamic = "force-dynamic";
-
 type PageProps = {
   params: Promise<{ slug: string }>;
 };

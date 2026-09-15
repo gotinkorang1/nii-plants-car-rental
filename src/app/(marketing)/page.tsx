@@ -28,8 +28,6 @@ import { getFeaturedModels } from "@/lib/fleet/get-featured-models";
 import { getSiteSettings } from "@/lib/settings/get-site-settings";
 import { toPublicContact } from "@/lib/settings/public-contact";
 
-export const dynamic = "force-dynamic";
-
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({
     title: PAGE_SEO.home.title,

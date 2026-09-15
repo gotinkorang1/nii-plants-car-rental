@@ -15,6 +15,7 @@ import { log } from "@/lib/logger";
 
 export async function getPublicModels(
   filters: PublicFleetFilters = {},
+  options: { featuredOnly?: boolean; limit?: number } = {},
 ): Promise<PublicVehicleModel[]> {
   const db = tryGetDb();
   if (!db) {
@@ -26,6 +27,10 @@ export async function getPublicModels(
       eq(vehicleModels.published, true),
       eq(vehicleClasses.active, true),
     ];
+
+    if (options.featuredOnly) {
+      conditions.push(eq(vehicleModels.featured, true));
+    }
 
     if (filters.classSlug) {
       conditions.push(eq(vehicleClasses.slug, filters.classSlug));
@@ -42,7 +47,7 @@ export async function getPublicModels(
       );
     }
 
-    const rows = await db
+    let rowsQuery = db
       .select({
         model: vehicleModels,
         vehicleClass: vehicleClasses,
@@ -57,7 +62,14 @@ export async function getPublicModels(
         desc(vehicleModels.featured),
         vehicleModels.make,
         vehicleModels.model,
-      );
+      )
+      .$dynamic();
+
+    if (typeof options.limit === "number" && options.limit > 0) {
+      rowsQuery = rowsQuery.limit(Math.min(Math.trunc(options.limit), 50));
+    }
+
+    const rows = await rowsQuery;
 
     const modelIds = rows.map((row) => row.model.id);
     const images =

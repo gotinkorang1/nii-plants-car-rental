@@ -12,8 +12,6 @@ import { listPublishedGalleryAlbums } from "@/lib/content/published-stories";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = pageMetadata({
   title: PAGE_SEO.gallery.title,
   description: PAGE_SEO.gallery.description,

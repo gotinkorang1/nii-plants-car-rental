@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 
 import { MarketingChrome } from "@/components/marketing/marketing-chrome";
 
-export const dynamic = "force-dynamic";
+// Public content is updated through the staff console, not per request.
+// Refresh it every five minutes to avoid repeated database work for visitors.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   robots: {
