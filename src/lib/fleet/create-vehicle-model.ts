@@ -13,6 +13,7 @@ import {
   formString,
   uniqueMessage,
 } from "@/lib/fleet/action-helpers";
+import { importProviderImages } from "@/lib/fleet/import-provider-images";
 import {
   FLEET_CONTENT_ROLES,
   FLEET_MANAGE_ROLES,
@@ -40,7 +41,77 @@ function parseModelForm(formData: FormData) {
     airConditioning: formCheckbox(formData, "airConditioning"),
     featured: formCheckbox(formData, "featured"),
     published: formCheckbox(formData, "published"),
+    usdDailyRateFrom: formString(formData, "usdDailyRateFrom"),
+    usdDailyRateTo: formString(formData, "usdDailyRateTo"),
+    generation: formString(formData, "generation"),
+    trimLevel: formString(formData, "trimLevel"),
+    bodyType: formString(formData, "bodyType"),
+    engineName: formString(formData, "engineName"),
+    engineDisplacementL: formString(formData, "engineDisplacementL"),
+    cylinders: formString(formData, "cylinders"),
+    powerKw: formString(formData, "powerKw"),
+    torqueNm: formString(formData, "torqueNm"),
+    driveType: formString(formData, "driveType"),
+    lengthMm: formString(formData, "lengthMm"),
+    widthMm: formString(formData, "widthMm"),
+    heightMm: formString(formData, "heightMm"),
+    wheelbaseMm: formString(formData, "wheelbaseMm"),
+    fuelEconomyLPer100Km: formString(formData, "fuelEconomyLPer100Km"),
+    batteryCapacityKwh: formString(formData, "batteryCapacityKwh"),
+    usableBatteryKwh: formString(formData, "usableBatteryKwh"),
+    evRangeKm: formString(formData, "evRangeKm"),
+    acChargingKw: formString(formData, "acChargingKw"),
+    dcChargingKw: formString(formData, "dcChargingKw"),
+    customFields: formString(formData, "customFields"),
+    externalProvider: formString(formData, "externalProvider"),
+    externalVehicleId: formString(formData, "externalVehicleId"),
   });
+}
+
+function parseImageIds(raw: string): string[] {
+  if (!raw) {
+    return [];
+  }
+
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    return Array.isArray(parsed)
+      ? parsed.filter((id): id is string => typeof id === "string")
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+type ImportProvenance = {
+  externalProvider: string | null;
+  externalVehicleId: string | null;
+  externalImportedAt: Date | null;
+};
+
+/**
+ * Stamps when provider data was last pulled in. The timestamp only moves when
+ * the model is newly linked to a provider record, so re-saving an imported
+ * model does not pretend a fresh import happened.
+ */
+function withImportTimestamp<T extends { externalProvider: string | null; externalVehicleId: string | null }>(
+  values: T,
+  existing?: ImportProvenance,
+): T & { externalImportedAt: Date | null } {
+  if (!values.externalProvider || !values.externalVehicleId) {
+    return { ...values, externalImportedAt: null };
+  }
+
+  const alreadyLinked =
+    existing?.externalProvider === values.externalProvider &&
+    existing?.externalVehicleId === values.externalVehicleId;
+
+  return {
+    ...values,
+    externalImportedAt: alreadyLinked
+      ? (existing?.externalImportedAt ?? new Date())
+      : new Date(),
+  };
 }
 
 export async function createVehicleModel(
@@ -58,20 +129,36 @@ export async function createVehicleModel(
     return { error: parsed.error.issues[0]?.message ?? "Check the model details." };
   }
 
+  let createdId: string | undefined;
+
   try {
     const [created] = await db
       .insert(vehicleModels)
-      .values(parsed.data)
+      .values(withImportTimestamp(parsed.data))
       .returning({ id: vehicleModels.id });
+
+    createdId = created?.id;
 
     await writeAuditLog({
       actorType: "staff",
       action: "fleet.model.create",
       entityType: "vehicle_model",
-      entityId: created?.id,
+      entityId: createdId,
     });
   } catch (error) {
     return { error: uniqueMessage(error, "The vehicle model could not be saved.") };
+  }
+
+  // Images are copied after the model exists. A failure here is logged and
+  // skipped: the saved model must not be lost because of an image.
+  if (createdId && parsed.data.externalVehicleId) {
+    await importProviderImages({
+      modelId: createdId,
+      providerId: parsed.data.externalVehicleId,
+      imageIds: parseImageIds(formString(formData, "importImageIds")),
+      primaryImageId: formString(formData, "primaryImportImageId") || null,
+      altTextBase: `${parsed.data.make} ${parsed.data.model}`,
+    });
   }
 
   redirect("/admin/fleet/models");
@@ -107,9 +194,10 @@ export async function updateVehicleModel(
       };
     }
 
+    const stamped = withImportTimestamp(parsed.data, existing);
     const values = existing.published
-      ? { ...parsed.data, slug: existing.slug }
-      : parsed.data;
+      ? { ...stamped, slug: existing.slug }
+      : stamped;
 
     try {
       await db.update(vehicleModels).set(values).where(eq(vehicleModels.id, id));

@@ -20,7 +20,21 @@ type ImageItem = {
   altText: string;
   sortOrder: number;
   isPrimary: boolean;
+  sourceProvider?: string | null;
 };
+
+const SOURCE_LABELS: Record<string, string> = {
+  cardatabase: "CarDatabase",
+};
+
+/** Admin-only provenance badge. Not shown on public pages. */
+function sourceLabel(sourceProvider: string | null | undefined): string {
+  if (!sourceProvider) {
+    return "Nii Plants upload";
+  }
+
+  return SOURCE_LABELS[sourceProvider] ?? sourceProvider;
+}
 
 export function VehicleImageManager({
   modelId,
@@ -101,6 +115,9 @@ function ImageRow({ image, canEdit }: { image: ImageItem; canEdit: boolean }) {
           <Image src={url} alt={image.altText} fill sizes="300px" className="object-cover" />
         ) : null}
       </div>
+      <p className="text-xs text-muted-foreground">
+        Source: {sourceLabel(image.sourceProvider)}
+      </p>
       {canEdit ? (
         <form action={formAction} className="space-y-2">
           {state?.error ? (

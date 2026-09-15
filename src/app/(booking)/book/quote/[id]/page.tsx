@@ -47,8 +47,8 @@ export default async function QuotePage({ params }: PageProps) {
           This quote is no longer holding a vehicle. Search again to check current availability.
         </p>
       ) : (
-        <p className="text-sm text-muted-foreground">
-          This price is held until {row.quote.expiresAt.toISOString().slice(11, 16)} UTC.
+        <p className="rounded-xl border-l-2 border-accent bg-primary/5 px-4 py-3 text-sm ring-1 ring-primary/15">
+          This price is held until {utcToAccraTimeInput(row.quote.expiresAt)} Accra time.
           Continue to enter your details. Payment is required later to confirm the reservation.
         </p>
       )}
@@ -57,14 +57,14 @@ export default async function QuotePage({ params }: PageProps) {
       </div>
       <div className="mt-6 flex flex-wrap gap-2">
         {quoteExpired || !holdActive ? null : (
-          <Button asChild>
+          <Button asChild size="lg" className="h-11 px-4">
             <Link href={`/book/details?quoteId=${row.quote.id}`}>Continue to details</Link>
           </Button>
         )}
-        <Button asChild variant="outline">
+        <Button asChild variant="outline" size="lg" className="h-11 px-4">
           <Link href="/book">Change dates</Link>
         </Button>
-        <Button asChild variant="outline">
+        <Button asChild variant="outline" size="lg" className="h-11 px-4">
           <Link href="/fleet">Back to fleet</Link>
         </Button>
       </div>

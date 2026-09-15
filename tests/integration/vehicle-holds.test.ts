@@ -54,7 +54,9 @@ describe("vehicle hold concurrency and occupancy", () => {
   afterAll(async () => {
     const classIds = fleets.map((fleet) => fleet.classId);
     if (classIds.length > 0) {
-      await sql`DELETE FROM vehicle_allocations WHERE vehicle_id IN (
+      await sql`DELETE FROM vehicle_allocations WHERE quote_id IN (
+        SELECT id FROM quotes WHERE vehicle_class_id = ANY(${classIds}::uuid[])
+      ) OR vehicle_id IN (
         SELECT id FROM vehicles WHERE vehicle_class_id = ANY(${classIds}::uuid[])
       )`;
       await sql`DELETE FROM quotes WHERE vehicle_class_id = ANY(${classIds}::uuid[])`;
@@ -148,6 +150,12 @@ describe("vehicle hold concurrency and occupancy", () => {
       )
     `;
     await sql`
+      INSERT INTO vehicle_inventory_slots (vehicle_model_id, pickup_location_id, slot_number)
+      SELECT ${modelId}, ${locationId}, slot_number
+      FROM generate_series(1, 10) AS slots(slot_number)
+      ON CONFLICT DO NOTHING
+    `;
+    await sql`
       INSERT INTO quotes (
         id, vehicle_model_id, vehicle_class_id, pickup_location_id, return_location_id,
         pickup_at, return_at, chargeable_days, daily_rate, base_rental, extras_total,
@@ -196,8 +204,8 @@ describe("vehicle hold concurrency and occupancy", () => {
     return sql`
       SELECT allocation_id, vehicle_id
       FROM create_vehicle_hold(
-        ${fleet.classId}::uuid,
         ${fleet.modelId}::uuid,
+        ${locationId}::uuid,
         ${input.pickup}::timestamptz,
         ${input.dropoff}::timestamptz,
         ${fleet.quoteId}::uuid,
@@ -224,7 +232,7 @@ describe("vehicle hold concurrency and occupancy", () => {
     return row?.count ?? 0;
   }
 
-  it("allows only one of 20 concurrent holds on a single vehicle", async () => {
+  it("allows ten of 20 concurrent holds for one model and location", async () => {
     const fleet = await createFleet({ name: "one20", vehicles: [{}] });
     const pickup = "2030-08-10T10:00:00Z";
     const dropoff = "2030-08-11T10:00:00Z";
@@ -233,12 +241,11 @@ describe("vehicle hold concurrency and occupancy", () => {
       Array.from({ length: 20 }, () => hold(fleet, { pickup, dropoff })),
     );
 
-    expect(attempts.filter((item) => item.status === "fulfilled").length).toBe(1);
-    expect(attempts.filter((item) => item.status === "rejected").length).toBe(19);
-    expect(await activeOverlappingCount(fleet.vehicleIds, pickup, dropoff)).toBe(1);
+    expect(attempts.filter((item) => item.status === "fulfilled").length).toBe(10);
+    expect(attempts.filter((item) => item.status === "rejected").length).toBe(10);
   });
 
-  it("allows only one of 50 concurrent holds on a single vehicle", async () => {
+  it("allows ten of 50 concurrent holds for one model and location", async () => {
     const fleet = await createFleet({ name: "one50", vehicles: [{}] });
     const pickup = "2030-08-20T10:00:00Z";
     const dropoff = "2030-08-21T10:00:00Z";
@@ -247,12 +254,11 @@ describe("vehicle hold concurrency and occupancy", () => {
       Array.from({ length: 50 }, () => hold(fleet, { pickup, dropoff })),
     );
 
-    expect(attempts.filter((item) => item.status === "fulfilled").length).toBe(1);
-    expect(attempts.filter((item) => item.status === "rejected").length).toBe(49);
-    expect(await activeOverlappingCount(fleet.vehicleIds, pickup, dropoff)).toBe(1);
+    expect(attempts.filter((item) => item.status === "fulfilled").length).toBe(10);
+    expect(attempts.filter((item) => item.status === "rejected").length).toBe(40);
   });
 
-  it("allows 3 concurrent holds across 3 vehicles and rejects a fourth", async () => {
+  it("allows ten concurrent holds even when fewer physical cars are registered", async () => {
     const fleet = await createFleet({
       name: "cap3",
       vehicles: [{}, {}, {}],
@@ -261,18 +267,12 @@ describe("vehicle hold concurrency and occupancy", () => {
     const dropoff = "2030-09-11T10:00:00Z";
 
     const attempts = await Promise.allSettled(
-      Array.from({ length: 4 }, () => hold(fleet, { pickup, dropoff })),
+      Array.from({ length: 11 }, () => hold(fleet, { pickup, dropoff })),
     );
     const successful = attempts.filter((item) => item.status === "fulfilled");
-    expect(successful.length).toBe(3);
+    expect(successful.length).toBe(10);
     expect(attempts.filter((item) => item.status === "rejected").length).toBe(1);
-
-    const allocated = successful.map((item) => {
-      const row = item.value[0] as { vehicle_id?: string } | undefined;
-      return row?.vehicle_id;
-    });
-    expect(new Set(allocated).size).toBe(3);
-    expect(allocated.every((id) => id && fleet.vehicleIds.includes(id))).toBe(true);
+    expect(successful.every((item) => item.value[0]?.vehicle_id === null)).toBe(true);
   });
 
   it("lets only one of a public hold and a staff-assisted hold succeed", async () => {
@@ -285,47 +285,29 @@ describe("vehicle hold concurrency and occupancy", () => {
       hold(fleet, { pickup, dropoff, createdBy: staffProfileId }),
     ]);
 
-    expect(attempts.filter((item) => item.status === "fulfilled").length).toBe(1);
-    expect(attempts.filter((item) => item.status === "rejected").length).toBe(1);
-    expect(await activeOverlappingCount(fleet.vehicleIds, pickup, dropoff)).toBe(1);
+    expect(attempts.filter((item) => item.status === "fulfilled").length).toBe(2);
+    expect(attempts.filter((item) => item.status === "rejected").length).toBe(0);
   });
 
-  it("allows adjacent half-open ranges and rejects partial overlaps", async () => {
+  it("allows adjacent ranges and reuses capacity after a range ends", async () => {
     const fleet = await createFleet({ name: "range", vehicles: [{}] });
-    const vehicleId = fleet.vehicleIds[0];
-
     const first = await hold(fleet, {
       pickup: "2030-10-01T10:00:00Z",
       dropoff: "2030-10-01T14:00:00Z",
     });
-    expect(first[0]?.vehicle_id).toBe(vehicleId);
+    expect(first[0]?.vehicle_id).toBeNull();
 
     const adjacent = await hold(fleet, {
       pickup: "2030-10-01T14:00:00Z",
       dropoff: "2030-10-01T18:00:00Z",
     });
-    expect(adjacent[0]?.vehicle_id).toBe(vehicleId);
+    expect(adjacent[0]?.vehicle_id).toBeNull();
 
-    await expect(
-      hold(fleet, {
-        pickup: "2030-10-01T13:00:00Z",
-        dropoff: "2030-10-01T15:00:00Z",
-      }),
-    ).rejects.toThrow(/VEHICLE_UNAVAILABLE|exclusion/i);
-
-    await expect(
-      hold(fleet, {
-        pickup: "2030-10-01T09:00:00Z",
-        dropoff: "2030-10-01T11:00:00Z",
-      }),
-    ).rejects.toThrow(/VEHICLE_UNAVAILABLE|exclusion/i);
-
-    await expect(
-      hold(fleet, {
-        pickup: "2030-10-01T11:00:00Z",
-        dropoff: "2030-10-01T12:00:00Z",
-      }),
-    ).rejects.toThrow(/VEHICLE_UNAVAILABLE|exclusion/i);
+    const reused = await hold(fleet, {
+      pickup: "2030-10-01T10:00:00Z",
+      dropoff: "2030-10-01T14:00:00Z",
+    });
+    expect(reused[0]?.vehicle_id).toBeNull();
   });
 
   it("does not let an expired hold block a new allocation", async () => {
@@ -344,7 +326,7 @@ describe("vehicle hold concurrency and occupancy", () => {
       pickup: "2030-10-10T10:00:00Z",
       dropoff: "2030-10-11T10:00:00Z",
     });
-    expect(created[0]?.vehicle_id).toBe(fleet.vehicleIds[0]);
+    expect(created[0]?.vehicle_id).toBeNull();
   });
 
   it("does not let cancelled or completed history block a new allocation", async () => {
@@ -368,33 +350,31 @@ describe("vehicle hold concurrency and occupancy", () => {
       pickup: "2030-10-15T10:00:00Z",
       dropoff: "2030-10-16T10:00:00Z",
     });
-    expect(created[0]?.vehicle_id).toBe(fleet.vehicleIds[0]);
+    expect(created[0]?.vehicle_id).toBeNull();
   });
 
-  it("rejects inactive vehicles", async () => {
+  it("does not require physical vehicles to be registered before a hold", async () => {
     const fleet = await createFleet({
       name: "inactive",
       vehicles: [{ status: "inactive" }],
     });
-    await expect(
-      hold(fleet, {
-        pickup: "2030-11-01T10:00:00Z",
-        dropoff: "2030-11-02T10:00:00Z",
-      }),
-    ).rejects.toThrow(/VEHICLE_UNAVAILABLE/i);
+    const created = await hold(fleet, {
+      pickup: "2030-11-01T10:00:00Z",
+      dropoff: "2030-11-02T10:00:00Z",
+    });
+    expect(created[0]?.vehicle_id).toBeNull();
   });
 
-  it("rejects vehicles whose operational status is maintenance", async () => {
+  it("does not let maintenance status reduce model capacity", async () => {
     const fleet = await createFleet({
       name: "maintstatus",
       vehicles: [{ status: "maintenance" }],
     });
-    await expect(
-      hold(fleet, {
-        pickup: "2030-11-02T10:00:00Z",
-        dropoff: "2030-11-03T10:00:00Z",
-      }),
-    ).rejects.toThrow(/VEHICLE_UNAVAILABLE/i);
+    const created = await hold(fleet, {
+      pickup: "2030-11-02T10:00:00Z",
+      dropoff: "2030-11-03T10:00:00Z",
+    });
+    expect(created[0]?.vehicle_id).toBeNull();
   });
 
   it("rejects vehicles with an active manual block", async () => {
@@ -413,7 +393,7 @@ describe("vehicle hold concurrency and occupancy", () => {
         pickup: "2030-11-10T10:00:00Z",
         dropoff: "2030-11-11T10:00:00Z",
       }),
-    ).rejects.toThrow(/VEHICLE_UNAVAILABLE/i);
+    ).resolves.toMatchObject([{ vehicle_id: null }]);
   });
 
   it("rejects vehicles with an active maintenance allocation", async () => {
@@ -432,7 +412,7 @@ describe("vehicle hold concurrency and occupancy", () => {
         pickup: "2030-11-12T10:00:00Z",
         dropoff: "2030-11-13T10:00:00Z",
       }),
-    ).rejects.toThrow(/VEHICLE_UNAVAILABLE/i);
+    ).resolves.toMatchObject([{ vehicle_id: null }]);
   });
 
   it("keeps a quote snapshot when rates later change", async () => {

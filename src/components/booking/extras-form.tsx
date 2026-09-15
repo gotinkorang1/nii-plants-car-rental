@@ -3,6 +3,9 @@
 import { useActionState, useMemo, useState } from "react";
 
 import { QuoteReview } from "@/components/booking/quote-review";
+import { DeskPanel } from "@/components/marketing/desk-panel";
+import { PageEyebrow } from "@/components/marketing/page-intro";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,6 +16,7 @@ import type { PromotionRecord } from "@/lib/pricing/apply-promotion";
 import { calculateBookingPrice } from "@/lib/pricing/calculate-booking-price";
 import type { ExtraCatalogItem } from "@/lib/pricing/calculate-extras";
 import type { AvailabilitySearchInput } from "@/lib/validation/availability";
+import { cn } from "@/lib/utils";
 
 export function ExtrasAndQuoteForm({
   search,
@@ -123,21 +127,22 @@ export function ExtrasAndQuoteForm({
 
       <div className="space-y-6">
         <header>
-          <p className="text-xs font-medium tracking-wide text-primary uppercase">
-            {className}
-          </p>
-          <h1 className="font-heading text-4xl tracking-tight">{modelName}</h1>
+          <PageEyebrow>{className}</PageEyebrow>
+          <h1 className="mt-2 font-heading text-4xl tracking-tight">{modelName}</h1>
           <p className="mt-2 text-muted-foreground">or similar</p>
         </header>
 
         {message ? (
-          <p role="alert" className="rounded-lg border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive">
-            {message}
-          </p>
+          <Alert variant="destructive" className="border-destructive/30 bg-destructive/10">
+            <AlertDescription>{message}</AlertDescription>
+          </Alert>
         ) : null}
 
         <fieldset className="space-y-3">
-          <legend className="font-heading text-xl">Extras</legend>
+          <legend className="font-heading text-xl">
+            <span className="mb-3 block h-0.5 w-8 bg-accent" aria-hidden />
+            Extras
+          </legend>
           {extras.length === 0 ? (
             <p className="text-sm text-muted-foreground">No extras are configured.</p>
           ) : (
@@ -146,7 +151,10 @@ export function ExtrasAndQuoteForm({
               return (
                 <label
                   key={extra.id}
-                  className="flex flex-col gap-2 rounded-xl bg-card p-4 ring-1 ring-border sm:flex-row sm:items-center sm:justify-between"
+                  className={cn(
+                    "flex flex-col gap-2 rounded-xl bg-card p-4 ring-1 ring-border transition-[box-shadow,ring-color,background-color] duration-200 hover:ring-primary/40 sm:flex-row sm:items-center sm:justify-between",
+                    checked && "bg-primary/5 ring-primary/30",
+                  )}
                 >
                   <span className="flex items-start gap-3">
                     <input
@@ -190,6 +198,7 @@ export function ExtrasAndQuoteForm({
                         min={1}
                         max={10}
                         value={selected[extra.id] ?? 1}
+                        className="h-11"
                         onChange={(event) => {
                           const quantity = Number(event.target.value);
                           setSelected((current) => ({
@@ -206,7 +215,7 @@ export function ExtrasAndQuoteForm({
           )}
         </fieldset>
 
-        <div className="rounded-xl bg-card p-4 ring-1 ring-border">
+        <DeskPanel>
           <Label htmlFor="promoCode">Promo code</Label>
           <div className="mt-2 flex flex-col gap-2 sm:flex-row">
             <Input
@@ -215,8 +224,9 @@ export function ExtrasAndQuoteForm({
               value={promoCode}
               onChange={(event) => setPromoCode(event.target.value)}
               autoComplete="off"
+              className="h-11"
             />
-            <Button type="button" variant="outline" onClick={onApplyPromo}>
+            <Button type="button" variant="outline" className="h-11 px-4" onClick={onApplyPromo}>
               Apply
             </Button>
           </div>
@@ -228,16 +238,24 @@ export function ExtrasAndQuoteForm({
               {promoMessage}
             </p>
           ) : null}
-        </div>
+        </DeskPanel>
       </div>
 
-      <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">
+      <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
         {preview ? <QuoteReview price={preview} live /> : null}
         <p className="text-xs text-muted-foreground">
           Preview only. The server recalculates the final quote before it is secured.
         </p>
-        <Button type="submit" className="w-full" disabled={pending}>
-          {pending ? "Securing current price..." : "Secure this quote"}
+        <Button type="submit" className="h-11 w-full transition-all duration-300" size="lg" disabled={pending}>
+          {pending ? (
+            <span className="flex items-center gap-2">
+              <svg className="size-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+              Securing quote…
+            </span>
+          ) : "Secure this quote"}
         </Button>
       </aside>
     </form>

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  hasActivePublicFleetFilters,
   matchesPublicFleetFilters,
   parseFleetSearchParams,
 } from "@/lib/fleet/filters";
@@ -79,6 +80,12 @@ describe("public fleet filtering", () => {
       maxPriceGhs: "250.00",
     });
   });
+
+  it("detects when a shopper has narrowed the fleet", () => {
+    expect(hasActivePublicFleetFilters({})).toBe(false);
+    expect(hasActivePublicFleetFilters({ classSlug: "suv" })).toBe(true);
+    expect(hasActivePublicFleetFilters({ minSeats: 7 })).toBe(true);
+  });
 });
 
 describe("public fleet payload safety", () => {
@@ -108,11 +115,43 @@ describe("public fleet payload safety", () => {
       className: "Compact sedan",
       classSlug: "compact-sedan",
       dailyRatePesewas: 0,
+      usdDailyRateFrom: 65,
+      usdDailyRateTo: 65,
       primaryImage: null,
       images: [],
+      bodyType: "Sedan",
+      trimLevel: null,
+      engineName: null,
+      engineDisplacementL: null,
+      powerKw: null,
+      driveType: null,
+      fuelEconomyLPer100Km: null,
+      batteryCapacityKwh: null,
+      evRangeKm: null,
+      acChargingKw: null,
+      dcChargingKw: null,
+      customSpecs: [{ label: "Ground clearance", value: "170 mm" }],
     };
 
     expect(() => assertNoInternalVehicleFields(publicModel)).not.toThrow();
+  });
+
+  it("rejects the raw custom_fields column and private custom specs", () => {
+    expect(() =>
+      assertNoInternalVehicleFields({
+        slug: "hyundai-accent",
+        customFields: [{ label: "Internal code", value: "NP-1", showPublicly: false }],
+      }),
+    ).toThrow(/internal vehicle fields/i);
+
+    expect(() =>
+      assertNoInternalVehicleFields({
+        slug: "hyundai-accent",
+        customSpecs: [
+          { label: "Internal code", value: "NP-1", showPublicly: false },
+        ],
+      }),
+    ).toThrow(/showPublicly/i);
   });
 });
 

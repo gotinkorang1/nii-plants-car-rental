@@ -15,7 +15,7 @@ import {
 import { requireStaff } from "@/lib/auth/require-staff";
 import { listVehicleClasses } from "@/lib/fleet/admin-queries";
 import { canManageFleet } from "@/lib/fleet/permissions";
-import { formatGhs } from "@/lib/money";
+import { formatGhs, formatUsdDailyRate } from "@/lib/money";
 
 type PageProps = {
   searchParams: Promise<{ q?: string }>;
@@ -70,9 +70,14 @@ export default async function VehicleClassesPage({ searchParams }: PageProps) {
                 <TableCell>{item.seats}</TableCell>
                 <TableCell className="capitalize">{item.transmission}</TableCell>
                 <TableCell>
-                  {item.defaultDailyRate > 0
-                    ? formatGhs(item.defaultDailyRate)
-                    : "Unset"}
+                  {item.usdDailyRateFrom
+                    ? formatUsdDailyRate(
+                        item.usdDailyRateFrom,
+                        item.usdDailyRateTo,
+                      )
+                    : item.defaultDailyRate > 0
+                      ? formatGhs(item.defaultDailyRate)
+                      : "Unset"}
                 </TableCell>
                 <TableCell>{item.modelCount}</TableCell>
                 <TableCell>

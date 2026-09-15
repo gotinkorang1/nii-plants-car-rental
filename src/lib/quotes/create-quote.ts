@@ -162,8 +162,8 @@ export async function createQuoteAndHold(input: {
     }
 
     const hold = await createVehicleHold(tx, {
-      vehicleClassId: model.vehicleClass.id,
       vehicleModelId: model.model.id,
+      pickupLocationId: locations.pickup.id,
       pickupAt: input.search.pickupAt,
       returnAt: input.search.returnAt,
       quoteId: quote.id,

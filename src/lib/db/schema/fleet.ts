@@ -2,14 +2,18 @@ import { sql } from "drizzle-orm";
 import {
   boolean,
   check,
+  doublePrecision,
   index,
   integer,
+  jsonb,
   pgTable,
   text,
   timestamp,
   uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
+
+import type { VehicleCustomField } from "@/lib/validation/vehicle-custom-fields";
 
 import { timestamps } from "./common";
 import { fuelTypeEnum, transmissionTypeEnum, vehicleStatusEnum } from "./enums";
@@ -27,6 +31,8 @@ export const vehicleClasses = pgTable(
     transmission: transmissionTypeEnum("transmission").notNull(),
     defaultDailyRate: integer("default_daily_rate").notNull(),
     defaultSecurityDeposit: integer("default_security_deposit").notNull(),
+    usdDailyRateFrom: integer("usd_daily_rate_from"),
+    usdDailyRateTo: integer("usd_daily_rate_to"),
     active: boolean("active").default(true).notNull(),
     ...timestamps,
   },
@@ -52,6 +58,10 @@ export const vehicleClasses = pgTable(
       "vehicle_classes_default_security_deposit_nonnegative",
       sql`${table.defaultSecurityDeposit} >= 0`,
     ),
+    check(
+      "vehicle_classes_usd_daily_rate_range",
+      sql`(${table.usdDailyRateFrom} IS NULL AND ${table.usdDailyRateTo} IS NULL) OR (${table.usdDailyRateFrom} IS NOT NULL AND ${table.usdDailyRateTo} IS NOT NULL AND ${table.usdDailyRateFrom} > 0 AND ${table.usdDailyRateTo} >= ${table.usdDailyRateFrom})`,
+    ),
   ],
 ).enableRLS();
 
@@ -76,6 +86,42 @@ export const vehicleModels = pgTable(
     airConditioning: boolean("air_conditioning").default(true).notNull(),
     featured: boolean("featured").default(false).notNull(),
     published: boolean("published").default(false).notNull(),
+    usdDailyRateFrom: integer("usd_daily_rate_from"),
+    usdDailyRateTo: integer("usd_daily_rate_to"),
+
+    // Import provenance. The local row stays authoritative: nothing refreshes
+    // these values from the provider automatically.
+    externalProvider: text("external_provider"),
+    externalVehicleId: text("external_vehicle_id"),
+    externalImportedAt: timestamp("external_imported_at", {
+      withTimezone: true,
+      mode: "date",
+    }),
+    customFields: jsonb("custom_fields")
+      .$type<VehicleCustomField[]>()
+      .default([])
+      .notNull(),
+
+    // Imported specifications. Units are fixed by the column name.
+    generation: text("generation"),
+    trimLevel: text("trim_level"),
+    bodyType: text("body_type"),
+    engineName: text("engine_name"),
+    engineDisplacementL: doublePrecision("engine_displacement_l"),
+    cylinders: integer("cylinders"),
+    powerKw: doublePrecision("power_kw"),
+    torqueNm: integer("torque_nm"),
+    driveType: text("drive_type"),
+    lengthMm: integer("length_mm"),
+    widthMm: integer("width_mm"),
+    heightMm: integer("height_mm"),
+    wheelbaseMm: integer("wheelbase_mm"),
+    fuelEconomyLPer100Km: doublePrecision("fuel_economy_l_100km"),
+    batteryCapacityKwh: doublePrecision("battery_capacity_kwh"),
+    usableBatteryKwh: doublePrecision("usable_battery_kwh"),
+    evRangeKm: integer("ev_range_km"),
+    acChargingKw: doublePrecision("ac_charging_kw"),
+    dcChargingKw: doublePrecision("dc_charging_kw"),
     ...timestamps,
   },
   (table) => [
@@ -83,6 +129,10 @@ export const vehicleModels = pgTable(
     index("vehicle_models_class_idx").on(table.vehicleClassId),
     index("vehicle_models_published_idx").on(table.published),
     index("vehicle_models_featured_idx").on(table.featured),
+    index("vehicle_models_external_idx").on(
+      table.externalProvider,
+      table.externalVehicleId,
+    ),
     check("vehicle_models_make_not_blank", sql`char_length(btrim(${table.make})) > 0`),
     check(
       "vehicle_models_model_not_blank",
@@ -95,6 +145,18 @@ export const vehicleModels = pgTable(
     check(
       "vehicle_models_year_range",
       sql`${table.yearFrom} IS NULL OR ${table.yearTo} IS NULL OR ${table.yearTo} >= ${table.yearFrom}`,
+    ),
+    check(
+      "vehicle_models_custom_fields_is_array",
+      sql`jsonb_typeof(${table.customFields}) = 'array'`,
+    ),
+    check(
+      "vehicle_models_external_reference_complete",
+      sql`(${table.externalProvider} IS NULL AND ${table.externalVehicleId} IS NULL) OR (${table.externalProvider} IS NOT NULL AND ${table.externalVehicleId} IS NOT NULL)`,
+    ),
+    check(
+      "vehicle_models_usd_daily_rate_range",
+      sql`(${table.usdDailyRateFrom} IS NULL AND ${table.usdDailyRateTo} IS NULL) OR (${table.usdDailyRateFrom} IS NOT NULL AND ${table.usdDailyRateTo} IS NOT NULL AND ${table.usdDailyRateFrom} > 0 AND ${table.usdDailyRateTo} >= ${table.usdDailyRateFrom})`,
     ),
   ],
 ).enableRLS();
@@ -154,6 +216,10 @@ export const vehicleImages = pgTable(
     altText: text("alt_text").notNull(),
     sortOrder: integer("sort_order").default(0).notNull(),
     isPrimary: boolean("is_primary").default(false).notNull(),
+    // Null for Nii Plants uploads. Set when the object was copied from an
+    // external catalogue; public pages always serve the stored copy.
+    sourceProvider: text("source_provider"),
+    sourceUrl: text("source_url"),
     createdAt: timestamp("created_at", { withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
@@ -170,5 +236,9 @@ export const vehicleImages = pgTable(
       sql`char_length(btrim(${table.altText})) > 0`,
     ),
     check("vehicle_images_sort_order_nonnegative", sql`${table.sortOrder} >= 0`),
+    check(
+      "vehicle_images_source_reference_complete",
+      sql`${table.sourceUrl} IS NULL OR ${table.sourceProvider} IS NOT NULL`,
+    ),
   ],
 ).enableRLS();

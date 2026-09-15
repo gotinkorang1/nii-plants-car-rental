@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import { JsonLd } from "@/components/marketing/json-ld";
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
-import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { CtaPanel } from "@/components/marketing/cta-panel";
+import { JsonLd } from "@/components/marketing/json-ld";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section, SectionHeading } from "@/components/marketing/page-intro";
+import { ServiceCard } from "@/components/marketing/service-card";
 import { PAGE_SEO } from "@/lib/content/company";
+import { COPY } from "@/lib/content/copy";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
 
@@ -18,32 +22,38 @@ const items = [
   {
     href: "/services/self-drive",
     title: "Self-drive car rental",
-    body: "Drive yourself in Accra and across Ghana. 24-hour days, model or similar.",
+    body: COPY.services.selfDrive,
+    image: marketingImages.selfDrive,
   },
   {
     href: "/services/chauffeur",
     title: "Chauffeur service",
-    body: "A driven sedan, SUV or 4x4. Daily hire is a 10-hour duty day.",
+    body: COPY.services.chauffeur,
+    image: marketingImages.chauffeur,
   },
   {
     href: "/services/airport-transfer",
     title: "Kotoka airport transfer",
-    body: "Pickup and drop-off at Kotoka International Airport, including evenings.",
+    body: COPY.services.airport,
+    image: marketingImages.airport,
   },
   {
     href: "/services/long-term",
     title: "Long-term car rental",
-    body: "Weekly, monthly, and multi-month hire, quoted by staff in Ghana cedis.",
+    body: COPY.services.longTerm,
+    image: marketingImages.longTerm,
   },
   {
     href: "/services/events",
     title: "Weddings and groups",
-    body: "Hiace vans and a 30-seater Coaster for weddings, conferences, and tours.",
+    body: COPY.services.events,
+    image: marketingImages.events,
   },
   {
     href: "/corporate",
     title: "Corporate mobility",
-    body: "Staff travel, visiting employees, and client cars from Dansoman, Accra.",
+    body: COPY.services.corporate,
+    image: marketingImages.corporate,
   },
 ] as const;
 
@@ -56,35 +66,52 @@ export default function ServicesPage() {
           { name: "Services", path: "/services" },
         ])}
       />
-      <Section className="pt-10">
-        <PageIntro
-          eyebrow="Services"
-          title="Car hire services in Ghana"
-          lede="Self-drive bookings start online. Chauffeur, airport, long-term, wedding, and corporate trips are arranged with the Accra operations team."
-        />
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+      <PageBanner
+        image={marketingImages.chauffeur}
+        eyebrow="Services"
+        title="Car hire services in Ghana"
+        lede={COPY.servicesIntro}
+        compact
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Services" },
+        ]}
+      />
+      <Section className="pt-10" reveal>
+        <SectionHeading title="Choose a hire type" />
+        <ul className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <li key={item.href}>
-              <Link
+              <ServiceCard
                 href={item.href}
-                className="block h-full rounded-2xl bg-card p-6 ring-1 ring-border hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <h2 className="font-heading text-2xl">{item.title}</h2>
-                <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
-              </Link>
+                title={item.title}
+                body={item.body}
+                image={item.image}
+              />
             </li>
           ))}
         </ul>
-        <div className="mt-12 rounded-2xl bg-card p-6 ring-1 ring-border">
-          <h2 className="font-heading text-2xl">Multi-city or custom transport</h2>
-          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            Describe routes across Ghana or a bespoke itinerary. Staff review every
-            custom request manually.
-          </p>
-          <div className="mt-6">
-            <EnquiryForm serviceType="multi_city" submitLabel="Request custom transport" />
+      </Section>
+      <Section className="pt-0" reveal>
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <div>
+            <SectionHeading title="Multi-city or custom transport" />
+            <p className="mt-4 max-w-prose text-sm leading-relaxed text-muted-foreground">
+              {COPY.customTransport}
+            </p>
           </div>
+          <EnquiryForm serviceType="multi_city" submitLabel="Request custom transport" />
         </div>
+      </Section>
+      <Section className="pt-0 pb-20" reveal>
+        <CtaPanel
+          title="Or book self-drive online"
+          body="Published models are available to check now. Chauffeur and airport days stay on enquiry."
+          primaryHref="/book"
+          primaryLabel="Book a Vehicle"
+          secondaryHref="/fleet"
+          secondaryLabel="Browse fleet"
+        />
       </Section>
     </main>
   );

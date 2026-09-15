@@ -1,4 +1,8 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 import { FleetCard } from "@/components/fleet/fleet-card";
+import { SectionHeading } from "@/components/marketing/page-intro";
 import type { PublicVehicleModel } from "@/lib/fleet/public-types";
 
 export function FeaturedModels({
@@ -14,13 +18,17 @@ export function FeaturedModels({
 
   return (
     <section aria-labelledby="featured-vehicles-heading">
-      <h2
+      <SectionHeading
         id="featured-vehicles-heading"
-        className="font-heading text-2xl tracking-tight"
-      >
-        {title}
-      </h2>
-      <ul className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        title={title}
+        action={
+          <Link href="/fleet" className="flex items-center gap-1 text-sm font-medium text-accent hover:underline">
+            All vehicles
+            <ArrowRight className="size-3.5" />
+          </Link>
+        }
+      />
+      <ul className="reveal-stagger mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {models.map((model) => (
           <li key={model.id}>
             <FleetCard model={model} />

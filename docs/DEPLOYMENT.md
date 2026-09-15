@@ -98,7 +98,10 @@ npm run dev
 
    ```bash
    APP_ENV=production DATABASE_URL=<production> npm run db:bootstrap-production
+   APP_ENV=production DATABASE_URL=<production> npm run db:upsert-production-catalog
    ```
+
+   The catalogue upsert writes locations (with OpenStreetMap coordinates), vehicle classes, and the 13 published shop models. It does **not** create physical vehicles or `INTERNAL-UNSET` plates.
 
 6. Deploy application build that matches schema version.
 

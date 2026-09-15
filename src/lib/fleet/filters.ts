@@ -50,6 +50,15 @@ export function matchesPublicFleetFilters(
   return true;
 }
 
+export function hasActivePublicFleetFilters(filters: PublicFleetFilters): boolean {
+  return Boolean(
+    filters.classSlug ||
+      filters.minSeats ||
+      filters.transmission ||
+      filters.maxPriceGhs,
+  );
+}
+
 export function parseFleetSearchParams(
   searchParams: Record<string, string | string[] | undefined>,
 ): PublicFleetFilters {

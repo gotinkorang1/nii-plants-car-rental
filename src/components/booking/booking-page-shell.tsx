@@ -1,4 +1,5 @@
 import { BookingProgress, type BookingStep } from "@/components/booking/booking-progress";
+import { PageEyebrow } from "@/components/marketing/page-intro";
 import { cn } from "@/lib/utils";
 
 export function BookingPageShell({
@@ -24,21 +25,23 @@ export function BookingPageShell({
       )}
     >
       <BookingProgress current={step} />
-      {eyebrow ? (
-        <p className="text-xs font-medium tracking-wide text-primary uppercase">{eyebrow}</p>
-      ) : null}
-      <h1
-        className={cn(
-          "font-heading text-3xl tracking-tight sm:text-4xl",
-          eyebrow ? "mt-2" : undefined,
-        )}
-      >
-        {title}
-      </h1>
-      {lede ? (
-        <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">{lede}</p>
-      ) : null}
-      <div className="mt-8">{children}</div>
+      <div className="animate-booking-enter">
+        {eyebrow ? <PageEyebrow>{eyebrow}</PageEyebrow> : null}
+        <h1
+          className={cn(
+            "font-heading text-3xl tracking-tight sm:text-4xl",
+            eyebrow ? "mt-2" : undefined,
+          )}
+        >
+          {title}
+        </h1>
+        {lede ? (
+          <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
+            {lede}
+          </p>
+        ) : null}
+        <div className="mt-8">{children}</div>
+      </div>
     </main>
   );
 }

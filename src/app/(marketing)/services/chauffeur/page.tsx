@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { ServicePage } from "@/components/marketing/service-page";
 import { PAGE_SEO } from "@/lib/content/company";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublishedFaqs } from "@/lib/content/queries";
 import { pageMetadata } from "@/lib/content/seo";
 import { listActiveVehicleClassOptions } from "@/lib/enquiries/queries";
@@ -23,6 +24,7 @@ export default async function ChauffeurPage() {
     <ServicePage
       eyebrow="Chauffeur"
       title="Chauffeur service in Accra — a driven car for your day"
+      image={marketingImages.chauffeurWelcome}
       lede="Book a professional driver with a Nii Plants sedan, SUV or 4x4. Daily chauffeur hire is a 10-hour duty day. Short jobs start at three hours. Staff quote overtime and intercity trips."
       benefits={[
         { title: "Business days", body: "Meetings and client calls without parking or Accra traffic stress." },

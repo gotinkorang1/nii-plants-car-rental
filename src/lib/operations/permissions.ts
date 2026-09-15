@@ -26,6 +26,12 @@ export function canMutateOperations(role: StaffRole): boolean {
   return hasRequiredRole(role, OPERATIONS_MUTATE_ROLES);
 }
 
+export const SECURITY_DEPOSIT_VIEW_ROLES = OPERATIONS_VIEW_ROLES;
+
+export function canViewSecurityDeposits(role: StaffRole): boolean {
+  return hasRequiredRole(role, SECURITY_DEPOSIT_VIEW_ROLES);
+}
+
 export function canMutateSecurityDeposit(role: StaffRole): boolean {
   return hasRequiredRole(role, SECURITY_DEPOSIT_MUTATE_ROLES);
 }

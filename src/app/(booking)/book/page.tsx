@@ -1,6 +1,8 @@
 import { BookingPageShell } from "@/components/booking/booking-page-shell";
 import { BookingSearchForm } from "@/components/booking/booking-search-form";
-import { getPublicLocations } from "@/lib/content/queries";
+import { MarketingPhoto } from "@/components/marketing/marketing-photo";
+import { getPublicOfficePickupLocations } from "@/lib/content/queries";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { parseBookingSearchParams } from "@/lib/booking/search-params";
 import { utcToAccraDateInput } from "@/lib/booking/timezone";
 
@@ -32,13 +34,16 @@ function defaultSearchDates() {
 
 export default async function BookSearchPage({ searchParams }: PageProps) {
   const params = await searchParams;
-  const locations = await getPublicLocations();
+  const locations = await getPublicOfficePickupLocations();
   const parsed = parseBookingSearchParams(params);
+  const dates = defaultSearchDates();
   const defaults = {
-    ...defaultSearchDates(),
+    ...dates,
     ...parsed,
-    pickupDate: parsed.pickupDate || defaultSearchDates().pickupDate,
-    returnDate: parsed.returnDate || defaultSearchDates().returnDate,
+    pickupDate: parsed.pickupDate || dates.pickupDate,
+    pickupTime: parsed.pickupTime || dates.pickupTime,
+    returnDate: parsed.returnDate || dates.returnDate,
+    returnTime: parsed.returnTime || dates.returnTime,
   };
 
   return (
@@ -46,8 +51,14 @@ export default async function BookSearchPage({ searchParams }: PageProps) {
       step="trip"
       eyebrow="Self-drive booking"
       title="Choose your dates"
-      lede="Availability is checked against physical vehicles. Chauffeur, airport transfer, and other services remain enquiry-based."
+      lede="Choose from the available capacity for each model at our office pickup locations. Chauffeur, airport transfer, and other services remain enquiry-based."
     >
+      <MarketingPhoto
+        image={marketingImages.selfDrive}
+        className="mb-8 aspect-[16/7] rounded-2xl"
+        sizes="(max-width: 768px) 100vw, 48rem"
+        objectPosition="center 35%"
+      />
       <BookingSearchForm locations={locations} defaults={defaults} />
     </BookingPageShell>
   );

@@ -9,6 +9,7 @@ import {
   vehicleImages,
   vehicleModels,
 } from "@/lib/db/schema";
+import { publicCustomFields } from "@/lib/validation/vehicle-custom-fields";
 
 type ModelRow = typeof vehicleModels.$inferSelect;
 type ClassRow = typeof vehicleClasses.$inferSelect;
@@ -57,8 +58,29 @@ export function toPublicVehicleModel(
     className: vehicleClass.name,
     classSlug: vehicleClass.slug,
     dailyRatePesewas: vehicleClass.defaultDailyRate,
+    usdDailyRateFrom: model.usdDailyRateFrom ?? vehicleClass.usdDailyRateFrom,
+    usdDailyRateTo: model.usdDailyRateTo ?? vehicleClass.usdDailyRateTo,
     primaryImage,
     images: mappedImages,
+
+    bodyType: model.bodyType,
+    trimLevel: model.trimLevel,
+    engineName: model.engineName,
+    engineDisplacementL: model.engineDisplacementL,
+    powerKw: model.powerKw,
+    driveType: model.driveType,
+    fuelEconomyLPer100Km: model.fuelEconomyLPer100Km,
+    batteryCapacityKwh: model.usableBatteryKwh ?? model.batteryCapacityKwh,
+    evRangeKm: model.evRangeKm,
+    acChargingKw: model.acChargingKw,
+    dcChargingKw: model.dcChargingKw,
+
+    // Drops internal rows and the flag itself, so nothing downstream can
+    // accidentally render a private specification.
+    customSpecs: publicCustomFields(model.customFields).map((field) => ({
+      label: field.label,
+      value: field.value,
+    })),
   };
 
   assertNoInternalVehicleFields(publicModel);

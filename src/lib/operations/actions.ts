@@ -21,6 +21,7 @@ import {
 } from "@/lib/maintenance/records";
 import { checkoutVehicle } from "@/lib/operations/checkout-vehicle";
 import { completeRental } from "@/lib/operations/complete-rental";
+import { assignBookingVehicle } from "@/lib/operations/assign-booking-vehicle";
 import { publicOperationsMessage } from "@/lib/operations/errors";
 import {
   completeInspection,
@@ -45,6 +46,7 @@ import {
 import { ghsInputToPesewas } from "@/lib/money";
 import {
   bookingIdSchema,
+  bookingVehicleAssignmentSchema,
   inspectionCompleteSchema,
   inspectionDraftSchema,
   inspectionPhotoSchema,
@@ -64,6 +66,8 @@ function revalidateBookingPaths(bookingId: string) {
   revalidatePath(`/admin/bookings/${bookingId}/pickup`);
   revalidatePath(`/admin/bookings/${bookingId}/return`);
   revalidatePath("/admin/operations/rentals");
+  revalidatePath("/admin/deposits");
+  revalidatePath("/admin/deposits", "layout");
 }
 
 function revalidateMaintenancePaths(maintenanceId?: string) {
@@ -97,6 +101,29 @@ export async function markBookingReadyAction(
 
   revalidateBookingPaths(parsed.data.bookingId);
   return { success: "Vehicle marked ready for pickup." };
+}
+
+export async function assignBookingVehicleAction(
+  _previous: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const staff = await requireRoleAction(OPERATIONS_MUTATE_ROLES);
+  const parsed = bookingVehicleAssignmentSchema.safeParse({
+    bookingId: formString(formData, "bookingId"),
+    vehicleId: formString(formData, "vehicleId"),
+  });
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0]?.message ?? "Choose a physical vehicle." };
+  }
+
+  try {
+    await assignBookingVehicle({ ...parsed.data, staffId: staff.id });
+  } catch (error) {
+    return { error: publicOperationsMessage(error) };
+  }
+
+  revalidateBookingPaths(parsed.data.bookingId);
+  return { success: "Physical vehicle assigned to this booking." };
 }
 
 export async function savePickupChecklistAction(

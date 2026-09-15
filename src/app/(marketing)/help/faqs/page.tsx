@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 
+import { CtaPanel } from "@/components/marketing/cta-panel";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { PageIntro, Section } from "@/components/marketing/page-intro";
+import { PageBanner } from "@/components/marketing/page-banner";
+import { Section } from "@/components/marketing/page-intro";
+import { Badge } from "@/components/ui/badge";
 import { PAGE_SEO } from "@/lib/content/company";
-import { getPublishedFaqs } from "@/lib/content/queries";
 import { FAQ_CATEGORIES, faqCategoryId } from "@/lib/content/faq-categories";
+import { marketingImages } from "@/lib/content/marketing-images";
+import { getPublishedFaqs } from "@/lib/content/queries";
 import { pageMetadata } from "@/lib/content/seo";
 import {
   breadcrumbJsonLd,
@@ -36,12 +40,38 @@ export default async function FaqsPage() {
         ])}
       />
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
-      <Section className="pt-10">
-        <PageIntro
-          eyebrow="Help"
-          title="Car rental FAQs for Accra and Ghana"
-          lede="Booking, payments, Kotoka pickup, insurance, extra drivers, and free cancellation 48 hours before pickup."
-        />
+      <PageBanner
+        image={marketingImages.portrait}
+        eyebrow="Help"
+        title="Car rental FAQs for Accra and Ghana"
+        lede="Booking, payments, Kotoka pickup, insurance, extra drivers, and free cancellation 48 hours before pickup."
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Help", href: "/help" },
+          { name: "FAQs" },
+        ]}
+        compact
+      />
+      <Section className="pt-10" reveal>
+        {grouped.length > 1 ? (
+          <nav aria-label="FAQ topics" className="mb-10">
+            <ul className="flex flex-wrap gap-2">
+              {grouped.map((group) => (
+                <li key={group.category}>
+                    <Badge
+                      asChild
+                      variant="secondary"
+                      className="h-auto rounded-full px-3 py-1.5 text-sm font-normal text-muted-foreground hover:text-primary"
+                    >
+                      <a href={`#${faqCategoryId(group.category)}`}>
+                        {group.category}
+                      </a>
+                    </Badge>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
         {grouped.length === 0 ? (
           <div className="mt-8">
             <FaqList items={[]} />
@@ -55,7 +85,7 @@ export default async function FaqsPage() {
               >
                 <h2
                   id={faqCategoryId(group.category)}
-                  className="font-heading text-2xl"
+                  className="font-heading scroll-mt-32 text-2xl"
                 >
                   {group.category}
                 </h2>
@@ -66,6 +96,12 @@ export default async function FaqsPage() {
             ))}
           </div>
         )}
+      </Section>
+      <Section className="pt-0 pb-20" reveal>
+        <CtaPanel
+          title="Talk to the Plantsville desk"
+          body="Call, WhatsApp, or email during Monday–Saturday office hours for booking, Kotoka, and document questions."
+        />
       </Section>
     </main>
   );

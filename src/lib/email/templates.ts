@@ -13,13 +13,15 @@ export type EmailTemplateName =
   | "rental-completed"
   | "enquiry-received"
   | "enquiry-staff-notification"
-  | "enquiry-quote";
+  | "enquiry-quote"
+  | "staff-invite";
 
 export type BookingEmailCopy = {
   firstName: string;
   email: string;
   reference: string;
   vehicleLabel: string;
+  assignedVehicleLabel?: string | null;
   pickupLabel: string;
   returnLabel: string;
   rentalTotal: number;
@@ -273,6 +275,7 @@ export function vehicleReadyEmail(input: {
   firstName: string;
   reference: string;
   vehicleLabel: string;
+  assignedVehicleLabel?: string | null;
   pickupLabel: string;
   accessUrl: string;
 }): RenderedEmail {
@@ -284,6 +287,7 @@ export function vehicleReadyEmail(input: {
     "",
     `Reference: ${input.reference}`,
     `Vehicle: ${input.vehicleLabel}`,
+    ...(input.assignedVehicleLabel ? [`Assigned vehicle: ${input.assignedVehicleLabel}`] : []),
     `Pickup: ${input.pickupLabel}`,
     "",
     `View your booking: ${input.accessUrl}`,
@@ -298,7 +302,7 @@ export function vehicleReadyEmail(input: {
       `<p>Hello ${escapeHtml(input.firstName)},</p>
        <p>Your vehicle has been prepared and is ready for pickup.</p>
        <p><strong>Reference:</strong> ${escapeHtml(input.reference)}<br/>
-       <strong>Vehicle:</strong> ${escapeHtml(input.vehicleLabel)}<br/>
+       <strong>Vehicle:</strong> ${escapeHtml(input.vehicleLabel)}${input.assignedVehicleLabel ? `<br/><strong>Assigned vehicle:</strong> ${escapeHtml(input.assignedVehicleLabel)}` : ""}<br/>
        <strong>Pickup:</strong> ${escapeHtml(input.pickupLabel)}</p>
        <p>View your booking at <a href="${escapeHtml(input.accessUrl)}">${escapeHtml(input.accessUrl)}</a>.</p>`,
     ),
@@ -538,6 +542,38 @@ export function paymentAvailabilityReviewEmail(input: {
        <p><strong>Booking reference:</strong> ${escapeHtml(input.reference)}<br/>
        <strong>Amount:</strong> ${escapeHtml(formatGhs(input.amount))}<br/>
        <strong>Payment reference:</strong> ${escapeHtml(input.providerReference)}</p>`,
+    ),
+  };
+}
+
+export function staffInviteEmail(input: {
+  displayName: string;
+  roleLabel: string;
+  inviteUrl: string;
+}): RenderedEmail {
+  const subject = "Nii Plants staff access";
+  const text = [
+    `Hello ${input.displayName},`,
+    "",
+    `You have been invited to the Nii Plants staff dashboard as ${input.roleLabel}.`,
+    "Open the link below to choose a password, then sign in.",
+    "",
+    input.inviteUrl,
+    "",
+    "If you were not expecting this message, ignore it.",
+  ].join("\n");
+
+  return {
+    template: "staff-invite",
+    subject,
+    text,
+    html: wrapHtml(
+      "Staff access",
+      `<p>Hello ${escapeHtml(input.displayName)},</p>
+       <p>You have been invited to the Nii Plants staff dashboard as ${escapeHtml(input.roleLabel)}.</p>
+       <p>Open the link below to choose a password, then sign in.</p>
+       <p><a href="${escapeHtml(input.inviteUrl)}">Choose a password</a></p>
+       <p>If you were not expecting this message, ignore it.</p>`,
     ),
   };
 }

@@ -121,6 +121,13 @@ export default async function AdminBookingDetailPage({ params }: PageProps) {
           <Item label="Name" value={`${row.customer.firstName} ${row.customer.lastName}`} />
           <Item label="Email" value={row.customer.email} />
           <Item label="Phone" value={row.customer.phone} />
+        </dl>
+        <div className="mt-4">
+          <Button asChild size="sm" variant="outline">
+            <Link href={`/admin/customers/${row.customer.id}`}>Open customer record</Link>
+          </Button>
+        </div>
+        <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
           <Item label="Driver age" value={String(row.booking.driverAge)} />
           <Item label="Licence country" value={row.booking.licenceCountry} />
           <Item label="Licence number" value={row.booking.licenceNumber ?? "Not provided"} />

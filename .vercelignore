@@ -1,0 +1,5 @@
+.lighthouseci
+.tmp-prod-migrations
+.email-outbox.json
+backups
+.fresh-supabase-verify

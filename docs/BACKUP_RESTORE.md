@@ -54,7 +54,7 @@ Store dumps encrypted off-site. Add `*.dump` to local gitignore (already ignored
 
 Production app connections should use Supabase pooler appropriately:
 
-- Transaction pooler (port **6543**): prepared statements disabled, small pool (default 1).
+- Transaction pooler (port **6543**): prepared statements disabled, `DATABASE_POOL_MAX` default 5 (max 10). A pool of 1 hangs concurrent `Promise.all` queries.
 - Session/direct (port **5432**): configurable `DATABASE_POOL_MAX` (default 5, max 10).
 
 Document final production values in Vercel env after load testing.

@@ -140,6 +140,9 @@ export async function listStaffOccupancy(input: {
 
   const byVehicle = new Map<string, typeof overlapping>();
   for (const row of overlapping) {
+    if (!row.vehicleId) {
+      continue;
+    }
     const list = byVehicle.get(row.vehicleId) ?? [];
     list.push(row);
     byVehicle.set(row.vehicleId, list);

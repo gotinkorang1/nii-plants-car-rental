@@ -6,6 +6,7 @@ import { config } from "dotenv";
 import postgres from "postgres";
 
 import { assertDevelopmentSeedAllowed } from "./lib/runtime-environment.mjs";
+import { upsertLocationsClassesAndModels } from "./lib/upsert-catalog.mjs";
 
 config({ path: ".env.local" });
 config();
@@ -87,113 +88,7 @@ async function seed() {
     `;
   }
 
-  for (const location of catalog.locations) {
-    await sql`
-      INSERT INTO locations (name, slug, type, address, active)
-      VALUES (
-        ${location.name},
-        ${location.slug},
-        ${location.type},
-        ${location.address},
-        ${location.active}
-      )
-      ON CONFLICT (slug) DO UPDATE SET
-        name = excluded.name,
-        type = excluded.type,
-        address = excluded.address,
-        active = excluded.active
-    `;
-  }
-
-  for (const vehicleClass of catalog.vehicleClasses) {
-    await sql`
-      INSERT INTO vehicle_classes (
-        name,
-        slug,
-        description,
-        seats,
-        luggage,
-        transmission,
-        default_daily_rate,
-        default_security_deposit,
-        active
-      )
-      VALUES (
-        ${vehicleClass.name},
-        ${vehicleClass.slug},
-        ${vehicleClass.description},
-        ${vehicleClass.seats},
-        ${vehicleClass.luggage},
-        ${vehicleClass.transmission},
-        ${vehicleClass.defaultDailyRate},
-        ${vehicleClass.defaultSecurityDeposit},
-        ${vehicleClass.active}
-      )
-      ON CONFLICT (slug) DO UPDATE SET
-        name = excluded.name,
-        description = excluded.description,
-        seats = excluded.seats,
-        luggage = excluded.luggage,
-        transmission = excluded.transmission,
-        default_daily_rate = excluded.default_daily_rate,
-        default_security_deposit = excluded.default_security_deposit,
-        active = excluded.active
-    `;
-  }
-
-  for (const model of catalog.vehicleModels) {
-    await sql`
-      INSERT INTO vehicle_models (
-        vehicle_class_id,
-        make,
-        model,
-        slug,
-        year_from,
-        year_to,
-        description,
-        seats,
-        doors,
-        transmission,
-        fuel_type,
-        luggage,
-        air_conditioning,
-        featured,
-        published
-      )
-      SELECT
-        vehicle_classes.id,
-        ${model.make},
-        ${model.model},
-        ${model.slug},
-        ${model.yearFrom ?? null},
-        ${model.yearTo ?? null},
-        ${model.description},
-        ${model.seats},
-        ${model.doors},
-        ${model.transmission},
-        ${model.fuelType},
-        ${model.luggage},
-        ${model.airConditioning},
-        ${model.featured},
-        ${model.published}
-      FROM vehicle_classes
-      WHERE vehicle_classes.slug = ${model.classSlug}
-      ON CONFLICT (slug) DO UPDATE SET
-        make = excluded.make,
-        model = excluded.model,
-        year_from = excluded.year_from,
-        year_to = excluded.year_to,
-        description = excluded.description,
-        seats = excluded.seats,
-        doors = excluded.doors,
-        transmission = excluded.transmission,
-        fuel_type = excluded.fuel_type,
-        luggage = excluded.luggage,
-        air_conditioning = excluded.air_conditioning,
-        featured = excluded.featured,
-        published = excluded.published
-    `;
-  }
+  await upsertLocationsClassesAndModels(sql, catalog);
 
   for (const faq of catalog.faqs) {
     await sql`
@@ -342,7 +237,7 @@ async function seed() {
   await sql.end();
 
   console.log(
-    "Seed complete. Self-drive class rates are development placeholders in pesewas, not live tariffs.",
+    "Seed complete. Catalogue USD rates match the live shop; GHS booking floors use GH¢11 per USD.",
   );
   console.log(
     "Physical vehicles use INTERNAL-UNSET registrations, not live plates.",

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
 import { InspectionForm } from "@/components/admin/operations/inspection-form";
+import { BookingVehicleAssignmentForm } from "@/components/admin/operations/booking-vehicle-assignment-form";
 import { InspectionPhotoManager } from "@/components/admin/operations/inspection-photo-manager";
 import {
   HandoverForm,
@@ -21,6 +22,7 @@ import {
 } from "@/lib/operations/permissions";
 import {
   getOperationalBookingContext,
+  listAssignableVehicles,
   listInspectionPhotos,
 } from "@/lib/operations/queries";
 
@@ -42,6 +44,9 @@ export default async function AdminPickupPage({ params }: PageProps) {
   const photos = pickupInspection
     ? await listInspectionPhotos(pickupInspection.id)
     : [];
+  const assignableVehicles = booking.vehicleId
+    ? []
+    : await listAssignableVehicles(booking.id);
 
   const pickupAllowed = ["confirmed", "ready"].includes(booking.status);
   const canHandOver = booking.status === "ready" && Boolean(pickupInspection?.completedAt);
@@ -84,6 +89,21 @@ export default async function AdminPickupPage({ params }: PageProps) {
               </div>
             </dl>
           </section>
+
+          {!booking.vehicleId && canOperate ? (
+            <section className="rounded-2xl border border-warning/30 bg-warning/10 p-5">
+              <h2 className="font-heading text-xl">Assign physical vehicle</h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Select the actual car number that will be handed over at this pickup location.
+              </p>
+              <div className="mt-4">
+                <BookingVehicleAssignmentForm
+                  bookingId={booking.id}
+                  vehicles={assignableVehicles}
+                />
+              </div>
+            </section>
+          ) : null}
 
           {booking.status === "confirmed" && canOperate ? (
             <section className="rounded-2xl bg-card p-5 ring-1 ring-border">

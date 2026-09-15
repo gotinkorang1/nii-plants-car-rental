@@ -38,6 +38,8 @@ Default local/testing flags in `.env.example`:
 
 - `PAYSTACK_MOCK=1` — local hosted checkout mock
 - `EMAIL_DEV_OUTBOX=1` — capture emails in `.email-outbox.json`
+- `CARDATABASE_MOCK=1` — fixture vehicles for the admin catalogue lookup instead
+  of live CarDatabase calls (see [docs/VEHICLE_DATA_IMPORT.md](docs/VEHICLE_DATA_IMPORT.md))
 
 Never commit `.env.local` or real secrets.
 
@@ -67,6 +69,7 @@ Production guards (fail fast): `src/lib/env/guards.ts` via `src/lib/env.server.t
 | `npm run db:migrate` | Apply Drizzle migrations |
 | `npm run db:seed` | **Development only** catalogue seed |
 | `npm run db:bootstrap-production` | Production-safe site settings bootstrap |
+| `npm run db:upsert-production-catalog` | Production locations, classes, and models (no demo plates) |
 | `npm run ci:ensure-staff` | Create CI/local test staff user |
 
 ## Staff access

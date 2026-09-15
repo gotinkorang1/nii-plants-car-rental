@@ -4,6 +4,7 @@ import { tryGetDb } from "@/lib/db";
 import {
   bookings,
   customers,
+  vehicles,
   vehicleModels,
 } from "@/lib/db/schema";
 import { utcToAccraDateInput, utcToAccraTimeInput } from "@/lib/booking/timezone";
@@ -44,6 +45,8 @@ export async function getBookingEmailCopy(
       email: customers.email,
       make: vehicleModels.make,
       model: vehicleModels.model,
+      internalCode: vehicles.internalCode,
+      registrationNumber: vehicles.registrationNumber,
       pickupAt: bookings.pickupAt,
       returnAt: bookings.returnAt,
       rentalTotal: bookings.rentalTotal,
@@ -54,6 +57,7 @@ export async function getBookingEmailCopy(
     .from(bookings)
     .innerJoin(customers, eq(bookings.customerId, customers.id))
     .innerJoin(vehicleModels, eq(bookings.vehicleModelId, vehicleModels.id))
+    .leftJoin(vehicles, eq(bookings.vehicleId, vehicles.id))
     .where(eq(bookings.id, bookingId))
     .limit(1);
 
@@ -66,6 +70,10 @@ export async function getBookingEmailCopy(
     email: row.email,
     reference: row.reference,
     vehicleLabel: `${row.make} ${row.model} or similar`,
+    assignedVehicleLabel:
+      row.internalCode || row.registrationNumber
+        ? [row.internalCode, row.registrationNumber].filter(Boolean).join(" · ")
+        : null,
     pickupLabel: tripLabel(row.pickupAt),
     returnLabel: tripLabel(row.returnAt),
     rentalTotal: row.rentalTotal,

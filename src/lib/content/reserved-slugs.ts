@@ -7,6 +7,8 @@ export const RESERVED_PUBLIC_SLUGS = [
   "services",
   "corporate",
   "about",
+  "news",
+  "gallery",
   "help",
   "contact",
   "privacy",

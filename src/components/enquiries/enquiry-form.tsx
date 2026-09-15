@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,6 +13,9 @@ import type { EnquiryServiceType } from "@/lib/enquiries/status";
 import { enquiryServiceLabel } from "@/lib/enquiries/status";
 
 type VehicleClassOption = { id: string; name: string };
+
+const fieldControlClassName =
+  "h-11 w-full rounded-lg border border-input bg-background/80 px-2.5 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50";
 
 type EnquiryFormProps = {
   serviceType: EnquiryServiceType;
@@ -108,7 +113,10 @@ export function EnquiryForm({
   const label = submitLabel ?? `Request ${enquiryServiceLabel(serviceType)}`;
 
   return (
-    <form onSubmit={onSubmit} className="space-y-6 rounded-2xl bg-card p-5 ring-1 ring-border">
+    <Card className="gap-0 rounded-2xl py-0 text-base shadow-none ring-border">
+      <span className="block h-0.5 bg-accent" aria-hidden />
+      <CardContent className="p-5">
+    <form onSubmit={onSubmit} className="space-y-6">
       <input
         type="text"
         name="companyWebsite"
@@ -119,9 +127,9 @@ export function EnquiryForm({
       />
 
       {error ? (
-        <p role="alert" className="rounded-lg border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm">
-          {error}
-        </p>
+        <Alert variant="destructive" className="border-destructive/30 bg-destructive/10">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       ) : null}
 
       <fieldset className="space-y-4">
@@ -138,7 +146,7 @@ export function EnquiryForm({
             id="preferredContactMethod"
             name="preferredContactMethod"
             defaultValue="email"
-            className="h-9 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+            className={fieldControlClassName}
           >
             <option value="email">Email</option>
             <option value="phone">Phone</option>
@@ -163,10 +171,12 @@ export function EnquiryForm({
         />
       </div>
 
-      <Button type="submit" disabled={pending} className="w-full sm:w-auto">
+      <Button type="submit" size="lg" disabled={pending} className="h-11 w-full px-4 sm:w-auto">
         {pending ? "Sending request..." : label}
       </Button>
     </form>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -198,7 +208,7 @@ function ServiceFields({
               name="transferDirection"
               required
               defaultValue="airport_to_destination"
-              className="h-9 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+              className={fieldControlClassName}
             >
               <option value="airport_to_destination">Airport to destination</option>
               <option value="destination_to_airport">Destination to airport</option>
@@ -231,7 +241,7 @@ function ServiceFields({
               id="serviceRequirement"
               name="serviceRequirement"
               required
-              className="h-9 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+              className={fieldControlClassName}
             >
               <option value="corporate_transport">Corporate transport</option>
               <option value="airport_movement">Airport movement</option>
@@ -254,7 +264,7 @@ function ServiceFields({
               id="eventType"
               name="eventType"
               required
-              className="h-9 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+              className={fieldControlClassName}
             >
               <option value="wedding">Wedding</option>
               <option value="corporate_event">Corporate event</option>
@@ -333,7 +343,7 @@ function VehicleClassSelect({
         id="vehicleClassId"
         name="vehicleClassId"
         required={required}
-        className="h-9 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+        className={fieldControlClassName}
         defaultValue=""
       >
         {!required ? <option value="">No preference</option> : null}
@@ -380,6 +390,7 @@ function Field({
         max={max}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        className="h-11"
       />
     </div>
   );

@@ -36,7 +36,7 @@ export function cmsSeoDescription(page: {
   return truncateMetaDescription(page.excerpt);
 }
 
-export const DEFAULT_OG_IMAGE = "/og-default.svg";
+export const DEFAULT_OG_IMAGE = "/images/og-default.jpg";
 
 export function pageMetadata(input: {
   title: string;
@@ -44,6 +44,7 @@ export function pageMetadata(input: {
   path: string;
   absolute?: boolean;
   images?: string[];
+  keywords?: string[];
 }): Metadata {
   const description = truncateMetaDescription(input.description) ?? input.description;
   const canonicalPath = input.path.startsWith("/") ? input.path : `/${input.path}`;
@@ -55,12 +56,15 @@ export function pageMetadata(input: {
   return {
     title: input.absolute ? { absolute: input.title } : input.title,
     description,
+    keywords: input.keywords,
     alternates: { canonical: canonicalPath },
     openGraph: {
       title: input.title,
       description,
       url,
       images,
+      locale: "en_GH",
+      type: "website",
     },
     twitter: {
       card: "summary_large_image",

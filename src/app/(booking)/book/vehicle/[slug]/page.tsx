@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { BookingProgress } from "@/components/booking/booking-progress";
 import { ExtrasAndQuoteForm } from "@/components/booking/extras-form";
 import { parseBookingSearchParams } from "@/lib/booking/search-params";
 import { getAvailableModels } from "@/lib/availability/get-available-models";
@@ -58,6 +59,7 @@ export default async function BookVehicleExtrasPage({
 
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-12">
+      <BookingProgress current="vehicle" />
       <ExtrasAndQuoteForm
         search={{
           pickupLocation: parsed.data.pickupLocation,

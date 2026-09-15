@@ -24,6 +24,8 @@ export function autoRentalJsonLd(input?: {
     name: COMPANY.brandName,
     legalName: COMPANY.legalName,
     url,
+    logo: siteUrl("/brand/nii-plants-logo.png"),
+    image: siteUrl("/brand/nii-plants-logo.png"),
     telephone: input?.telephone || COMPANY.telephoneDisplay,
     email: input?.email || COMPANY.email,
     description:
@@ -44,6 +46,11 @@ export function autoRentalJsonLd(input?: {
       },
     ],
     areaServed: { "@type": "Country", name: COMPANY.areaServed },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: COMPANY.latitude,
+      longitude: COMPANY.longitude,
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: COMPANY.streetAddress,
@@ -137,6 +144,8 @@ export function carJsonLd(input: {
   slug: string;
   imageUrl?: string;
   dailyRatePesewas: number;
+  usdDailyRateFrom?: number | null;
+  usdDailyRateTo?: number | null;
 }): Record<string, unknown> {
   const data: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -159,6 +168,23 @@ export function carJsonLd(input: {
       price: (input.dailyRatePesewas / 100).toFixed(2),
       availability: "https://schema.org/InStock",
     };
+  } else if (input.usdDailyRateFrom) {
+    const to = input.usdDailyRateTo ?? input.usdDailyRateFrom;
+    data.offers =
+      to > input.usdDailyRateFrom
+        ? {
+            "@type": "AggregateOffer",
+            priceCurrency: "USD",
+            lowPrice: input.usdDailyRateFrom,
+            highPrice: to,
+            availability: "https://schema.org/InStock",
+          }
+        : {
+            "@type": "Offer",
+            priceCurrency: "USD",
+            price: String(input.usdDailyRateFrom),
+            availability: "https://schema.org/InStock",
+          };
   }
   return data;
 }

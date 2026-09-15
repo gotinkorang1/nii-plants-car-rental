@@ -4,6 +4,7 @@ import { requireRole } from "@/lib/auth/require-role";
 import { listClassOptions } from "@/lib/fleet/admin-queries";
 import { createVehicleModel } from "@/lib/fleet/create-vehicle-model";
 import { FLEET_MANAGE_ROLES } from "@/lib/fleet/permissions";
+import { isVehicleDataConfigured } from "@/lib/vehicle-data/provider";
 
 export default async function NewVehicleModelPage() {
   await requireRole(FLEET_MANAGE_ROLES);
@@ -19,6 +20,7 @@ export default async function NewVehicleModelPage() {
         action={createVehicleModel}
         classes={classes}
         submitLabel="Create model"
+        lookupEnabled={isVehicleDataConfigured()}
       />
     </div>
   );

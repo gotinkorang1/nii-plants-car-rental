@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { EnquiryForm } from "@/components/enquiries/enquiry-form";
 import { ServicePage } from "@/components/marketing/service-page";
 import { PAGE_SEO } from "@/lib/content/company";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublishedFaqs } from "@/lib/content/queries";
 import { pageMetadata } from "@/lib/content/seo";
 import { listActiveVehicleClassOptions } from "@/lib/enquiries/queries";
@@ -23,6 +24,7 @@ export default async function EventsPage() {
     <ServicePage
       eyebrow="Events"
       title="Wedding and group car hire in Accra"
+      image={marketingImages.events}
       lede="Cars, Hiace vans and a 30-seater Coaster for weddings, conferences, church programmes, and tours. Event transport is chauffeur-led and quoted by staff."
       benefits={[
         {

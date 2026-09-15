@@ -14,6 +14,9 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   use: {
     baseURL: e2eBaseUrl,
+    contextOptions: {
+      reducedMotion: "reduce",
+    },
     trace: "on-first-retry",
   },
   webServer: {
@@ -25,6 +28,10 @@ export default defineConfig({
       ...process.env,
       PAYSTACK_MOCK: "1",
       EMAIL_DEV_OUTBOX: "1",
+      // Fixture vehicles instead of live CarDatabase calls, so CI never spends
+      // provider quota. Image copying is exercised against those fixtures.
+      CARDATABASE_MOCK: "1",
+      CARDATABASE_IMAGE_IMPORT_ENABLED: "1",
     },
   },
   projects: [

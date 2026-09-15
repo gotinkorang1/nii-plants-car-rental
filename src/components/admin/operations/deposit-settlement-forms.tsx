@@ -45,11 +45,20 @@ export function DepositSettlementForms({
   }
 
   if (disabled) {
-    return null;
+    return (
+      <p className="text-sm text-muted-foreground">
+        Viewing only. Reservations, finance, and administrators record collection, release,
+        and retain.
+      </p>
+    );
   }
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
+      <p className="text-sm text-muted-foreground lg:col-span-2">
+        Release and retain update this staff record only. They do not send money through
+        Paystack.
+      </p>
       <form action={releaseAction} className="space-y-3 rounded-xl bg-card p-4 ring-1 ring-border">
         <input type="hidden" name="bookingId" value={bookingId} />
         <h3 className="font-medium">Release deposit</h3>

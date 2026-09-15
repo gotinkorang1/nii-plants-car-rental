@@ -20,6 +20,10 @@ export const bookingIdSchema = z.object({
   bookingId: z.string().uuid("Choose a valid booking."),
 });
 
+export const bookingVehicleAssignmentSchema = bookingIdSchema.extend({
+  vehicleId: z.string().uuid("Choose a valid vehicle."),
+});
+
 export const pickupChecklistSchema = bookingIdSchema.extend({
   identityChecked: z.boolean(),
   licenceChecked: z.boolean(),

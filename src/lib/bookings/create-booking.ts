@@ -13,7 +13,6 @@ import {
   customers,
   quotes,
   vehicleAllocations,
-  vehicles,
 } from "@/lib/db/schema";
 import { generateBookingReference } from "@/lib/bookings/generate-booking-reference";
 import {
@@ -91,12 +90,7 @@ export async function createBookingFromQuote(input: CustomerDetailsValues) {
         throw new BookingError("HOLD_EXPIRED", HOLD_EXPIRED_MESSAGE);
       }
 
-      const [vehicle] = await tx
-        .select({ id: vehicles.id })
-        .from(vehicles)
-        .where(eq(vehicles.id, allocation.vehicleId))
-        .limit(1);
-      if (!vehicle) {
+      if (!allocation.inventorySlotId) {
         throw new BookingError("HOLD_EXPIRED", HOLD_EXPIRED_MESSAGE);
       }
 

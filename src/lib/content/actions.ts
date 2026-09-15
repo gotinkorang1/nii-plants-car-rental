@@ -7,7 +7,13 @@ import { revalidatePath } from "next/cache";
 import { writeAuditLog } from "@/lib/audit/write-audit-log";
 import { requireRoleAction } from "@/lib/auth/require-role";
 import { tryGetDb } from "@/lib/db";
-import { contentPages, faqs, mediaAssets, siteSettings } from "@/lib/db/schema";
+import {
+  contentPageMedia,
+  contentPages,
+  faqs,
+  mediaAssets,
+  siteSettings,
+} from "@/lib/db/schema";
 import {
   type ActionState,
   formCheckbox,
@@ -18,8 +24,10 @@ import { CMS_MANAGE_ROLES } from "@/lib/content/permissions";
 import { deleteWebsiteImageObject, uploadWebsiteImage } from "@/lib/content/storage";
 import {
   contentPageSchema,
+  contentPostSchema,
   faqSchema,
   mediaAssetMetadataSchema,
+  type ContentPostKind,
 } from "@/lib/validation/content";
 import {
   SITE_SETTING_KEYS,
@@ -40,6 +48,187 @@ function parsePageForm(formData: FormData) {
   });
 }
 
+function adminPathForKind(kind: string) {
+  if (kind === "gallery") {
+    return "/admin/content/gallery";
+  }
+  if (kind === "news" || kind === "blog" || kind === "video") {
+    return "/admin/content/stories";
+  }
+  return "/admin/content/pages";
+}
+
+function adminListPath(kind: ContentPostKind) {
+  return adminPathForKind(kind);
+}
+
+function publicPostPath(kind: ContentPostKind, slug: string) {
+  return kind === "gallery" ? "/gallery" : `/news/${slug}`;
+}
+
+function revalidatePost(kind: ContentPostKind, slug: string) {
+  revalidatePath(adminListPath(kind));
+  revalidatePath(publicPostPath(kind, slug));
+  revalidatePath("/news");
+  revalidatePath("/gallery");
+  revalidatePath("/");
+  revalidatePath("/sitemap.xml");
+}
+
+function parsePostForm(formData: FormData) {
+  return contentPostSchema.safeParse({
+    kind: formString(formData, "kind"),
+    title: formString(formData, "title"),
+    slug: formString(formData, "slug"),
+    excerpt: formString(formData, "excerpt"),
+    body: formString(formData, "body"),
+    seoTitle: formString(formData, "seoTitle"),
+    seoDescription: formString(formData, "seoDescription"),
+    coverMediaId: formString(formData, "coverMediaId"),
+    videoUrl: formString(formData, "videoUrl"),
+    publishedOn: formString(formData, "publishedOn"),
+    sortOrder: formString(formData, "sortOrder") || "0",
+    mediaIds: formData.getAll("mediaIds").filter(
+      (value): value is string => typeof value === "string" && value.length > 0,
+    ),
+    published: formCheckbox(formData, "published"),
+  });
+}
+
+function publishedAtFromForm(
+  published: boolean,
+  publishedOn: string | null,
+  previous: Date | null,
+) {
+  if (!published) {
+    return null;
+  }
+  if (publishedOn) {
+    return new Date(`${publishedOn}T12:00:00.000Z`);
+  }
+  return previous ?? new Date();
+}
+
+async function replacePageMedia(
+  pageId: string,
+  mediaIds: string[],
+) {
+  const db = tryGetDb();
+  if (!db) {
+    return;
+  }
+  await db.delete(contentPageMedia).where(eq(contentPageMedia.pageId, pageId));
+  if (mediaIds.length === 0) {
+    return;
+  }
+  await db.insert(contentPageMedia).values(
+    mediaIds.map((mediaId, index) => ({
+      pageId,
+      mediaId,
+      sortOrder: index,
+    })),
+  );
+}
+
+export async function createContentPost(
+  _previous: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  await requireRoleAction(CMS_MANAGE_ROLES);
+  const db = tryGetDb();
+  if (!db) {
+    return { error: "The database is not configured." };
+  }
+
+  const parsed = parsePostForm(formData);
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0]?.message ?? "Check the post details." };
+  }
+
+  const { mediaIds, publishedOn, ...values } = parsed.data;
+
+  try {
+    const [created] = await db
+      .insert(contentPages)
+      .values({
+        ...values,
+        publishedAt: publishedAtFromForm(values.published, publishedOn, null),
+      })
+      .returning({ id: contentPages.id });
+    if (created) {
+      await replacePageMedia(created.id, mediaIds);
+    }
+  } catch (error) {
+    return { error: uniqueMessage(error, "The post could not be saved.") };
+  }
+
+  await writeAuditLog({
+    actorType: "staff",
+    action: "cms.post.create",
+    entityType: "content_page",
+    metadata: { kind: parsed.data.kind },
+  });
+  revalidatePost(parsed.data.kind, parsed.data.slug);
+  redirect(adminListPath(parsed.data.kind));
+}
+
+export async function updateContentPost(
+  id: string,
+  _previous: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  await requireRoleAction(CMS_MANAGE_ROLES);
+  const db = tryGetDb();
+  if (!db) {
+    return { error: "The database is not configured." };
+  }
+
+  const parsed = parsePostForm(formData);
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0]?.message ?? "Check the post details." };
+  }
+
+  const [existing] = await db
+    .select({
+      publishedAt: contentPages.publishedAt,
+      kind: contentPages.kind,
+    })
+    .from(contentPages)
+    .where(eq(contentPages.id, id))
+    .limit(1);
+  if (!existing) {
+    return { error: "That post could not be found." };
+  }
+
+  const { mediaIds, publishedOn, ...values } = parsed.data;
+
+  try {
+    await db
+      .update(contentPages)
+      .set({
+        ...values,
+        publishedAt: publishedAtFromForm(
+          values.published,
+          publishedOn,
+          existing.publishedAt,
+        ),
+      })
+      .where(eq(contentPages.id, id));
+    await replacePageMedia(id, mediaIds);
+  } catch (error) {
+    return { error: uniqueMessage(error, "The post could not be updated.") };
+  }
+
+  await writeAuditLog({
+    actorType: "staff",
+    action: "cms.post.update",
+    entityType: "content_page",
+    entityId: id,
+  });
+  revalidatePost(parsed.data.kind, parsed.data.slug);
+  return { success: "Saved." };
+}
+
 export async function createContentPage(
   _previous: ActionState,
   formData: FormData,
@@ -57,6 +246,7 @@ export async function createContentPage(
 
   try {
     await db.insert(contentPages).values({
+      kind: "page",
       ...parsed.data,
       publishedAt: parsed.data.published ? new Date() : null,
     });
@@ -120,7 +310,7 @@ export async function unpublishContentPage(id: string): Promise<void> {
   }
 
   const [page] = await db
-    .select({ slug: contentPages.slug })
+    .select({ slug: contentPages.slug, kind: contentPages.kind })
     .from(contentPages)
     .where(eq(contentPages.id, id))
     .limit(1);
@@ -130,10 +320,17 @@ export async function unpublishContentPage(id: string): Promise<void> {
     .set({ published: false, publishedAt: null })
     .where(eq(contentPages.id, id));
   if (page) {
-    revalidatePath(`/${page.slug}`);
+    if (page.kind === "news" || page.kind === "blog" || page.kind === "video") {
+      revalidatePost(page.kind, page.slug);
+    } else if (page.kind === "gallery") {
+      revalidatePost("gallery", page.slug);
+    } else {
+      revalidatePath(`/${page.slug}`);
+    }
   }
-  revalidatePath("/admin/content/pages");
-  redirect("/admin/content/pages");
+  const list = adminPathForKind(page?.kind ?? "page");
+  revalidatePath(list);
+  redirect(list);
 }
 
 export async function deleteContentPage(id: string): Promise<void> {
@@ -143,8 +340,19 @@ export async function deleteContentPage(id: string): Promise<void> {
     return;
   }
 
+  const [page] = await db
+    .select({ slug: contentPages.slug, kind: contentPages.kind })
+    .from(contentPages)
+    .where(eq(contentPages.id, id))
+    .limit(1);
+
   await db.delete(contentPages).where(eq(contentPages.id, id));
-  redirect("/admin/content/pages");
+  if (page && (page.kind === "news" || page.kind === "blog" || page.kind === "video")) {
+    revalidatePost(page.kind, page.slug);
+  } else if (page?.kind === "gallery") {
+    revalidatePost("gallery", page.slug);
+  }
+  redirect(adminPathForKind(page?.kind ?? "page"));
 }
 
 function parseFaqForm(formData: FormData) {
@@ -304,12 +512,27 @@ export async function deleteMediaAsset(
     return { error: "That image could not be found." };
   }
 
-  const pages = await db.select({ body: contentPages.body }).from(contentPages);
-  const referenced = pages.some((page) => page.body.includes(asset.storagePath));
+  const pages = await db
+    .select({
+      body: contentPages.body,
+      coverMediaId: contentPages.coverMediaId,
+    })
+    .from(contentPages);
+  const attached = await db
+    .select({ id: contentPageMedia.id })
+    .from(contentPageMedia)
+    .where(eq(contentPageMedia.mediaId, id))
+    .limit(1);
+  const referenced =
+    attached.length > 0 ||
+    pages.some(
+      (page) =>
+        page.coverMediaId === id || page.body.includes(asset.storagePath),
+    );
   if (referenced) {
     return {
       error:
-        "This image is still referenced in a page body. Remove that reference first.",
+        "This image is still used on a page, story, or gallery album. Remove that reference first.",
     };
   }
 

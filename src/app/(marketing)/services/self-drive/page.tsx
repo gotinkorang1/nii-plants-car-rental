@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { ServicePage } from "@/components/marketing/service-page";
 import { PAGE_SEO } from "@/lib/content/company";
+import { marketingImages } from "@/lib/content/marketing-images";
 import { getPublishedFaqs } from "@/lib/content/queries";
 import { pageMetadata } from "@/lib/content/seo";
 import { getSiteSettings } from "@/lib/settings/get-site-settings";
@@ -22,7 +23,8 @@ export default async function SelfDrivePage() {
     <ServicePage
       eyebrow="Self-drive"
       title="Self-drive car rental in Accra and Ghana"
-      lede="Hire a published model or similar and drive yourself. Days are 24 hours. Staff confirm the Ghana cedi rate before you pay. Cars stay inside Ghana."
+      image={marketingImages.selfDrive}
+      lede="Hire a published model or similar and drive yourself. Days are 24 hours. Staff confirm the Ghana cedi rate before you pay. Mileage for ordinary Ghana use is included. Cars stay inside Ghana."
       benefits={[
         {
           title: "Accra and beyond",

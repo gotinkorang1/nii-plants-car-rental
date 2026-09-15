@@ -195,3 +195,11 @@ export const enquirySourceEnum = pgEnum("enquiry_source", [
   "walk_in",
   "other",
 ]);
+
+export const contentKindEnum = pgEnum("content_kind", [
+  "page",
+  "news",
+  "blog",
+  "video",
+  "gallery",
+]);

@@ -15,9 +15,25 @@ export async function uploadFleetImage(input: {
   modelId: string;
   file: File;
 }): Promise<{ storagePath: string; mimeType: string }> {
-  const bytes = new Uint8Array(await input.file.arrayBuffer());
-  const mimeType = validateFleetImageFile({
+  return uploadFleetImageBytes({
+    modelId: input.modelId,
+    bytes: new Uint8Array(await input.file.arrayBuffer()),
     size: input.file.size,
+  });
+}
+
+/**
+ * Shared by staff uploads and provider imports. The MIME type is always taken
+ * from the file's magic bytes, never from a declared content type.
+ */
+export async function uploadFleetImageBytes(input: {
+  modelId: string;
+  bytes: Uint8Array;
+  size: number;
+}): Promise<{ storagePath: string; mimeType: string }> {
+  const bytes = input.bytes;
+  const mimeType = validateFleetImageFile({
+    size: input.size,
     bytes,
   });
   const extension = extensionByMime[mimeType];

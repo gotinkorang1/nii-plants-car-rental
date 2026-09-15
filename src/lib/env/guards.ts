@@ -38,6 +38,10 @@ export function assertProductionEnvironmentSafety(env: ServerEnv): void {
     errors.push("EMAIL_DEV_OUTBOX must not be enabled in production.");
   }
 
+  if (process.env.CARDATABASE_MOCK === "1") {
+    errors.push("CARDATABASE_MOCK must not be enabled in production.");
+  }
+
   if (!asOptionalString(process.env.BOOKING_OTP_SECRET)) {
     errors.push("BOOKING_OTP_SECRET is required in production.");
   }

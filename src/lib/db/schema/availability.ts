@@ -16,6 +16,7 @@ import { locations } from "./locations";
 import { promotions } from "./pricing";
 import { staffProfiles } from "./staff";
 import { vehicleClasses, vehicleModels, vehicles } from "./fleet";
+import { vehicleInventorySlots } from "./inventory";
 
 export const quotes = pgTable(
   "quotes",
@@ -85,8 +86,11 @@ export const vehicleAllocations = pgTable(
   {
     id: uuid("id").defaultRandom().primaryKey(),
     vehicleId: uuid("vehicle_id")
-      .notNull()
       .references(() => vehicles.id, { onDelete: "restrict" }),
+    inventorySlotId: uuid("inventory_slot_id").references(
+      () => vehicleInventorySlots.id,
+      { onDelete: "restrict" },
+    ),
     bookingId: uuid("booking_id"),
     quoteId: uuid("quote_id").references(() => quotes.id, { onDelete: "restrict" }),
     allocationType: allocationTypeEnum("allocation_type").notNull(),

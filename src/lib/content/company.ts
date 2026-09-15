@@ -1,18 +1,28 @@
 import { truncateMetaDescription } from "@/lib/content/seo";
+import { COPY } from "@/lib/content/copy";
 
 /** Confirmed public facts from the live site, AmCham Ghana, Graphic/GTA, JoyOnline, Daily Guide, BFT, GNBCC, and Ghana hire practice. */
+
+const plantsville = {
+  latitude: 5.5448458,
+  longitude: -0.2680674,
+} as const;
 
 export const COMPANY = {
   legalName: "Nii Plants Car Rentals Co. Ltd",
   brandName: "Nii Plants Car Rentals",
   tagline: "Your key to mobility",
   foundedDate: "2007-10-22",
+  commencedDate: "2007-10-23",
   foundedYear: 2007,
+  incorporationStatute: "Companies Code, 1963 (Act 179)",
   streetAddress: "Plantsville, Poultry Farm Avenue, Akokor Foto",
   addressLocality: "Dansoman",
   addressRegion: "Greater Accra",
   addressCountry: "GH",
   postalBox: "P.O. Box MP 2390, Mamprobi, Accra",
+  latitude: plantsville.latitude,
+  longitude: plantsville.longitude,
   mapsUrl: "https://goo.gl/maps/xNq7jWiCySyC6f2z5",
   telephone: "+233593835941",
   telephoneDisplay: "+233 59 383 5941",
@@ -56,12 +66,45 @@ export const MEMBERSHIPS = [
   {
     name: "Ghana Netherlands Business & Culture Council",
     short: "GNBCC",
-    status: "member",
+    status: "Member",
+    detail: "Nii Plants Group is listed as a member.",
   },
   {
     name: "American Chamber of Commerce Ghana",
     short: "AmCham Ghana",
-    status: "profiled",
+    status: "Profiled",
+    detail:
+      "Published a company profile on 4 February 2021 and covered the Plantsville opening on 1 October 2021.",
+  },
+  {
+    name: "Canada Ghana Chamber of Commerce",
+    short: "Canada Ghana Chamber",
+    status: "Featured",
+    detail:
+      "Featured Nii Plants at an in-house presentation in May 2022. That is a speaking appearance, not a membership claim.",
+  },
+] as const;
+
+export const GROUP_OUTFITS = [
+  {
+    name: "Nii Plants Car Rentals",
+    detail:
+      "This site. Self-drive and chauffeur car hire in Ghana since 2007.",
+  },
+  {
+    name: "NiiPlants Logistics",
+    detail:
+      "Haulage from 2020. Trucks, cargo, and earth-moving are booked there, not here.",
+    href: "https://niiplantslogistics.com/",
+  },
+  {
+    name: "Puffs Ghana Limited",
+    detail: "Restaurant established in 2020; puffs (bofrot) and sit-down dining.",
+  },
+  {
+    name: "Plantsville Residences",
+    detail:
+      "Five furnished apartments at the Dansoman campus for visiting hire clients. Booked with staff, not as part of a self-drive checkout.",
   },
 ] as const;
 
@@ -73,33 +116,60 @@ export const MANAGEMENT = {
       "M.Sc. Coastal Engineering (University of Kiel), B.Sc. Geodetic Engineering (KNUST), certificate in project management",
     industryRole:
       "Vice President, Car Rentals Association of Ghana (CRAG), inducted 17 August 2023",
+    establishedNote:
+      "He pioneered the company with his own capital and remains Managing Director and Chief Executive.",
+    amchamNote:
+      "AmCham Ghana’s February 2021 company profile names him Managing Director and Chief Executive, and records that he established Nii Plants.",
   },
   deputyManagingDirector: {
     name: "Mary Ayitey-Adjin",
     role: "Deputy Managing Director and co-owner",
     credentials:
       "Member, Chartered Institute of Bankers (Ghana); B.A. Humanities (University of Ghana); MBA Finance (Paris Graduate School)",
+    roleNote:
+      "She provides financing counsel and operational input as Deputy Managing Director and equal co-owner.",
   },
+  team: [
+    {
+      name: "Theo Ayitey-Adjin",
+      role: "Chief Executive Officer",
+      photo: "theo",
+    },
+    {
+      name: "Emmanuel Nelson",
+      role: "Operations Manager",
+      photo: "emma",
+    },
+    {
+      name: "Daniel Awotwe-Pratt",
+      role: "Finance Manager",
+      photo: "daniel",
+    },
+    {
+      name: "Kingdom Kededor Avisseh",
+      role: "Executive Assistant",
+      photo: "kingdom",
+    },
+  ],
 } as const;
 
 export const PAGE_SEO = {
   home: {
-    title: "Car Rental Accra, Ghana | Self-Drive, Chauffeur & Airport Pickup",
-    description:
-      "Rent a sedan, SUV, 4x4 or van from Nii Plants in Dansoman, Accra. Self-drive, chauffeur, and Kotoka pickup. GTA car-rental awards in 2022 and 2024.",
+    title: "Car Rental Accra, Ghana | Self-Drive, Chauffeur & Kotoka Pickup",
+    description: COPY.heroSubheadline,
   },
   fleet: {
-    title: "Sedans, SUVs, 4x4s and Coaches in Accra",
+    title: "Car Hire Fleet Accra: Saloons, SUVs, 4x4s and Coaches",
     description:
       "Browse Nii Plants car hire in Accra. Compact and mid-size saloons, SUVs, Land Cruiser Prado, Hiace vans and a 30-seater Coaster. Book a model or similar.",
   },
   services: {
-    title: "Car Hire Services in Ghana",
+    title: "Car Hire in Ghana | Self-Drive, Chauffeur, Airport",
     description:
-      "Self-drive car rental in Accra, chauffeur-driven cars, Kotoka airport transfers, long-term hire, weddings and corporate mobility from Nii Plants.",
+      "Self-drive books online. Chauffeur, Kotoka, long-term, events and corporate hire are quoted in Ghana cedis by the Accra team.",
   },
   selfDrive: {
-    title: "Self-Drive Car Rental in Accra",
+    title: "Self-Drive Car Rental in Accra and Ghana",
     description:
       "Hire a car and drive yourself in Ghana. 24-hour rental days, drivers 25+, Ghana Card or passport, and use inside Ghana only. Pickup in Dansoman or at Kotoka.",
   },
@@ -129,14 +199,14 @@ export const PAGE_SEO = {
       "Company travel, visiting staff and client cars in Accra since 2007. GTA award-winning hire, Kotoka meet-and-greet, and hotel desks in Accra and Takoradi.",
   },
   about: {
-    title: "Accra Car Rental Since 2007",
+    title: "About Nii Plants | Accra Car Rental Since 2007",
     description:
       "Ghanaian-owned Accra car hire since 2007. GTA awards in 2022 and 2024. Plantsville HQ in Dansoman. GNBCC member; profiled by AmCham Ghana.",
   },
   contact: {
-    title: "Contact Us in Dansoman, Accra",
+    title: "Contact Nii Plants in Dansoman, Accra",
     description:
-      "Call +233 59 383 5941, WhatsApp, or email info@niiplantsghana.com. Plantsville, Dansoman. Mon–Sat 09:00–17:00. Kotoka pickup by arrangement.",
+      "Call +233 59 383 5941, office +233 30 244 1805, email info@niiplantsghana.com. Plantsville, Dansoman. Monday–Saturday 09:00–17:00. Kotoka pickup by arrangement.",
   },
   help: {
     title: "Car Rental Help in Ghana",
@@ -153,10 +223,30 @@ export const PAGE_SEO = {
     description:
       "Answers on Nii Plants booking, payments, Kotoka pickup, insurance, extra drivers, and free cancellation 48 hours before pickup.",
   },
+  news: {
+    title: "News | Accra GTA Awards, Plantsville, Hotel Desks",
+    description:
+      "Nii Plants news: GTA car-rental awards in 2022 and 2024, the Plantsville office in Dansoman, and pickup at Alisa North Ridge and in Takoradi.",
+  },
+  gallery: {
+    title: "Photo Gallery | Car Hire in Accra and Ghana",
+    description:
+      "Photos of Nii Plants self-drive, chauffeur cars, Kotoka handover, and the Plantsville desk in Dansoman, Accra.",
+  },
+  privacy: {
+    title: "Privacy | Accra Car Hire",
+    description:
+      "How Nii Plants in Dansoman uses booking data under Ghana's Data Protection Act, 2012 (Act 843).",
+  },
+  terms: {
+    title: "Hire Terms | Accra Car Rental",
+    description:
+      "Nii Plants hire rules: 48-hour cancel, Ghana-only use, drivers 25+, 24-hour self-drive days, chauffeur 10-hour days.",
+  },
 } as const;
 
 export function vehicleSeoTitle(make: string, model: string): string {
-  return `${make} ${model} Rental Accra`;
+  return `${make} ${model} Hire Accra | Car Rental Ghana`;
 }
 
 export function vehicleSeoDescription(input: {
@@ -169,7 +259,7 @@ export function vehicleSeoDescription(input: {
   const lead =
     input.description.trim() ||
     `Hire a ${input.make} ${input.modelName} (${input.className}, ${input.seats} seats) from Nii Plants in Accra.`;
-  const suffix = " Car rental in Ghana, model or similar.";
+  const suffix = " Self-drive or chauffeur car rental in Ghana; model or similar.";
   const combined = lead.endsWith(".") ? `${lead}${suffix}` : `${lead}.${suffix}`;
   return truncateMetaDescription(combined) ?? combined;
 }
