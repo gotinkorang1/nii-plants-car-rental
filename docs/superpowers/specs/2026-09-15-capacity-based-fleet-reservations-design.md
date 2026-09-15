@@ -4,6 +4,14 @@
 
 Support a fixed inventory capacity of 10 vehicles for every published vehicle model at every active pickup location. A customer reservation must consume one model/location capacity slot for its date range, while the specific physical car number may be assigned by staff later.
 
+The supported office pickup locations are limited to:
+
+- Alisa Hotel - Ridge
+- Alisa Hotel - Tema
+- Head office - Dansoman
+
+Capacity slots are provisioned only for these locations. Other locations must not appear as office pickup choices unless this list is deliberately expanded.
+
 ## Current constraint
 
 The current reservation flow selects and holds a physical row from `vehicles`. Availability is counted by vehicle class, and the PostgreSQL hold function can select a different model than the requested model. Operations also assumes that every confirmed booking already has a physical `vehicle_id`.
@@ -24,7 +32,7 @@ Add a booking assignment action that validates the selected physical vehicle bel
 
 ## Data flow
 
-1. Availability search counts unexpired holds and active reservations for the requested model, pickup location, and date range, returning `10 - occupied`.
+1. Availability search accepts one of the three supported office locations, then counts unexpired holds and active reservations for the requested model, pickup location, and date range, returning `10 - occupied`.
 2. Quote creation validates the requested model and locations, then atomically reserves one free inventory slot.
 3. Payment and booking transitions continue to operate on the allocation record.
 4. Staff assigns a physical vehicle before handover. Assignment is locked and checked inside a transaction.
