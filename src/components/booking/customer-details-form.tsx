@@ -154,7 +154,10 @@ export function CustomerDetailsForm({
         </DeskPanel>
       </div>
 
-      <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+      <aside
+        className="order-first space-y-4 lg:order-last lg:sticky lg:top-24 lg:self-start"
+        aria-label="Booking summary and next step"
+      >
         <QuoteReview price={price} />
         <div className="sticky bottom-0 z-20 -mx-4 border-t border-border/80 bg-background/95 px-4 py-3 backdrop-blur-md sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:backdrop-blur-none">
           <Button type="submit" size="lg" className="h-11 w-full transition-all duration-300" disabled={pending}>
