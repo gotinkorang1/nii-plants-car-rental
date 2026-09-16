@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useState, type ReactNode } from "react";
-import { LogIn, LogOut as LogOutIcon } from "lucide-react";
+import { LoaderCircle, LogIn, LogOut as LogOutIcon } from "lucide-react";
 
 import { searchAvailabilityAction } from "@/lib/booking/actions";
 import {
@@ -171,7 +171,16 @@ export function BookingSearchForm({
     >
       <span className="absolute inset-x-0 top-0 h-0.5 bg-accent" aria-hidden />
       {pending ? (
-        <div className="absolute inset-0 z-10 flex items-center justify-center rounded-2xl bg-background/60 backdrop-blur-[2px] transition-opacity duration-300" aria-hidden />
+        <div
+          className="absolute inset-0 z-10 flex items-center justify-center rounded-2xl bg-background/70 px-4 backdrop-blur-[2px] transition-opacity duration-300"
+          role="status"
+          aria-live="polite"
+        >
+          <div className="flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium shadow-sm">
+            <LoaderCircle className="size-4 animate-spin motion-reduce:animate-none" aria-hidden />
+            Checking availability…
+          </div>
+        </div>
       ) : null}
       <CardContent className="p-4 sm:p-5">
     <form
