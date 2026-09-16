@@ -44,7 +44,7 @@ export function AdminShell({
       </a>
 
       <div className="lg:grid lg:grid-cols-[16rem_1fr]">
-        <aside className="hidden min-h-screen border-r border-sidebar-border bg-sidebar px-4 py-6 lg:block">
+        <aside className="hidden min-h-screen border-r border-sidebar-border bg-sidebar px-4 py-6 lg:sticky lg:top-0 lg:block lg:h-screen lg:overflow-y-auto">
           <div className="px-3">
             <BrandLogo className="h-12 w-auto" />
             <p className="mt-2 text-xs text-muted-foreground">Staff console</p>
@@ -55,7 +55,7 @@ export function AdminShell({
         </aside>
 
         <div>
-          <header className="flex items-center justify-between gap-3 border-b bg-card px-4 py-3">
+          <header className="sticky top-0 z-40 flex items-center justify-between gap-3 border-b bg-card/95 px-4 py-3 backdrop-blur-md">
             <div className="flex items-center gap-2">
               <Button
                 type="button"
