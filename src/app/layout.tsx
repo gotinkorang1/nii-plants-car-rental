@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 
@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     publicEnv.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
   ),
+  applicationName: "Nii Plants Car Rentals",
   title: {
     default: PAGE_SEO.home.title,
     template: "%s | Nii Plants Car Rentals",
@@ -41,6 +42,23 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Nii Plants Car Rentals",
+  },
+  icons: [
+    {
+      url: "/icons/icon-192.png",
+      type: "image/png",
+      sizes: "192x192",
+    },
+    {
+      url: "/icons/icon-512.png",
+      type: "image/png",
+      sizes: "512x512",
+    },
+  ],
   ...(shouldNoIndexPublicSite()
     ? {
         robots: {
@@ -50,6 +68,13 @@ export const metadata: Metadata = {
         },
       }
     : {}),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1f5c46",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
