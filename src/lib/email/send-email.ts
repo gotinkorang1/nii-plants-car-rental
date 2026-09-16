@@ -80,6 +80,7 @@ export async function sendEmail(input: SendEmailInput): Promise<SendEmailResult>
           text: input.email.text,
           html: input.email.html,
         }),
+        signal: AbortSignal.timeout(10_000),
       });
       if (!response.ok) {
         const detail = await response.text();

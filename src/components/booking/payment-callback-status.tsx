@@ -27,7 +27,7 @@ export function PaymentCallbackStatus({ reference }: { reference: string }) {
       try {
         const response = await fetch(
           `/api/payments/status?reference=${encodeURIComponent(reference)}`,
-          { cache: "no-store" },
+          { cache: "no-store", signal: AbortSignal.timeout(8_000) },
         );
         if (!response.ok) throw new Error("Payment status request failed");
         const payload = (await response.json()) as {
