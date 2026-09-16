@@ -25,13 +25,11 @@ type PageProps = {
 export default async function EditPhysicalVehiclePage({ params }: PageProps) {
   const staff = await requireStaff();
   const { id } = await params;
-  const [item, models, locations, future, history] = await Promise.all([
-    getPhysicalVehicle(id),
-    listModelOptions(),
-    listBranchOptions(),
-    listFutureBlockingAllocations(id),
-    getVehicleOperationalHistory(id),
-  ]);
+  const item = await getPhysicalVehicle(id);
+  const models = await listModelOptions();
+  const locations = await listBranchOptions();
+  const future = await listFutureBlockingAllocations(id);
+  const history = await getVehicleOperationalHistory(id);
 
   if (!item) {
     notFound();

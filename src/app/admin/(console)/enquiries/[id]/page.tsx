@@ -23,11 +23,9 @@ export default async function AdminEnquiryDetailPage({ params }: PageProps) {
   }
 
   const { id } = await params;
-  const [detail, assignableStaff, settings] = await Promise.all([
-    getEnquiryDetail(id),
-    listAssignableStaff(),
-    getSiteSettings(),
-  ]);
+  const detail = await getEnquiryDetail(id);
+  const assignableStaff = await listAssignableStaff();
+  const settings = await getSiteSettings();
 
   if (!detail) {
     notFound();
