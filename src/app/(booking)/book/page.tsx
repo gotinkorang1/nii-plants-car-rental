@@ -51,7 +51,7 @@ export default async function BookSearchPage({ searchParams }: PageProps) {
       step="trip"
       eyebrow="Self-drive booking"
       title="Choose your dates"
-      lede="Choose from the available capacity for each model at our office pickup locations. Chauffeur, airport transfer, and other services remain enquiry-based."
+      lede="Choose from the available vehicles for each model at our office pickup locations. Chauffeur, airport transfer, and other services remain enquiry-based."
     >
       <MarketingPhoto
         image={marketingImages.selfDrive}
