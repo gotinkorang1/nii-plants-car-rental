@@ -9,12 +9,13 @@ import {
   vehicleAllocations,
   vehicleClasses,
   vehicleImages,
+  vehicleInventorySlots,
   vehicleModels,
-  vehicles,
 } from "@/lib/db/schema";
 import { toPublicVehicleModel } from "@/lib/fleet/map-public-model";
 import { log } from "@/lib/logger";
 import { calculateChargeableDays } from "@/lib/pricing/calculate-chargeable-days";
+import { SUPPORTED_OFFICE_PICKUP_LOCATION_SLUGS } from "@/lib/content/location-type";
 import type { AvailabilitySearchValues } from "@/lib/validation/availability";
 
 export type AvailableModelResult = {
@@ -70,6 +71,17 @@ export async function resolveSearchLocations(input: {
     );
   }
 
+  if (
+    !SUPPORTED_OFFICE_PICKUP_LOCATION_SLUGS.includes(
+      pickup.slug as (typeof SUPPORTED_OFFICE_PICKUP_LOCATION_SLUGS)[number],
+    )
+  ) {
+    throw new BookingError(
+      "INVALID_LOCATION",
+      "Choose one of the supported office pickup locations.",
+    );
+  }
+
   return { pickup, dropoff };
 }
 
@@ -84,7 +96,7 @@ export async function getAvailableModels(
     return [];
   }
 
-  await resolveSearchLocations({
+  const { pickup } = await resolveSearchLocations({
     pickupLocation: input.pickupLocation,
     returnLocation: input.returnLocation,
   });
@@ -93,13 +105,13 @@ export async function getAvailableModels(
 
   const occupancy = sql<number>`(
     SELECT count(*)::int
-    FROM ${vehicles}
-    WHERE ${vehicles.vehicleClassId} = ${vehicleClasses.id}
-      AND ${vehicles.status} = 'available'
+    FROM ${vehicleInventorySlots} AS inventory_slot
+    WHERE inventory_slot.vehicle_model_id = ${vehicleModels.id}
+      AND inventory_slot.pickup_location_id = ${pickup.id}
       AND NOT EXISTS (
         SELECT 1
         FROM ${vehicleAllocations}
-        WHERE ${vehicleAllocations.vehicleId} = ${vehicles.id}
+        WHERE ${vehicleAllocations.inventorySlotId} = inventory_slot.id
           AND ${vehicleAllocations.startAt} < ${input.returnAt.toISOString()}::timestamptz
           AND ${vehicleAllocations.endAt} > ${input.pickupAt.toISOString()}::timestamptz
           AND (

@@ -20,8 +20,6 @@ import { getPublicModel } from "@/lib/fleet/get-public-model";
 import { getRelatedModels } from "@/lib/fleet/get-related-models";
 import { kwToHp } from "@/lib/vehicle-data/normalize";
 
-export const dynamic = "force-dynamic";
-
 type VehicleDetailPageProps = {
   params: Promise<{ slug: string }>;
 };

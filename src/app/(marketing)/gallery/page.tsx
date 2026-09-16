@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { unstable_cache } from "next/cache";
 
 import { CtaPanel } from "@/components/marketing/cta-panel";
 import { JsonLd } from "@/components/marketing/json-ld";
@@ -12,7 +13,11 @@ import { listPublishedGalleryAlbums } from "@/lib/content/published-stories";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
 
-export const dynamic = "force-dynamic";
+const getCachedGallery = unstable_cache(
+  () => listPublishedGalleryAlbums(),
+  ["public-gallery"],
+  { revalidate: 300, tags: ["public-gallery"] },
+);
 
 export const metadata: Metadata = pageMetadata({
   title: PAGE_SEO.gallery.title,
@@ -21,7 +26,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default async function GalleryPage() {
-  const albums = await listPublishedGalleryAlbums();
+  const albums = await getCachedGallery();
   const images = albums.flatMap((album) =>
     album.images.map((image) => ({ ...image, albumId: album.id })),
   );

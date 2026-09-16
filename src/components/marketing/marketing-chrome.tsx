@@ -2,15 +2,22 @@ import { PublicActionBar } from "@/components/marketing/public-action-bar";
 import { PublicFooter, PublicHeader } from "@/components/marketing/public-header";
 import { SiteRail } from "@/components/marketing/site-rail";
 import { SkipLink } from "@/components/ui/skip-link";
+import { unstable_cache } from "next/cache";
 import { getSiteSettings } from "@/lib/settings/get-site-settings";
 import { toPublicContact } from "@/lib/settings/public-contact";
+
+const getCachedSiteSettings = unstable_cache(
+  () => getSiteSettings(),
+  ["public-site-settings"],
+  { revalidate: 300, tags: ["public-site-settings"] },
+);
 
 export async function MarketingChrome({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const settings = await getSiteSettings();
+  const settings = await getCachedSiteSettings();
   const contact = toPublicContact(settings);
 
   return (

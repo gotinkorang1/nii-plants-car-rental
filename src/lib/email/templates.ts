@@ -21,6 +21,7 @@ export type BookingEmailCopy = {
   email: string;
   reference: string;
   vehicleLabel: string;
+  assignedVehicleLabel?: string | null;
   pickupLabel: string;
   returnLabel: string;
   rentalTotal: number;
@@ -274,6 +275,7 @@ export function vehicleReadyEmail(input: {
   firstName: string;
   reference: string;
   vehicleLabel: string;
+  assignedVehicleLabel?: string | null;
   pickupLabel: string;
   accessUrl: string;
 }): RenderedEmail {
@@ -285,6 +287,7 @@ export function vehicleReadyEmail(input: {
     "",
     `Reference: ${input.reference}`,
     `Vehicle: ${input.vehicleLabel}`,
+    ...(input.assignedVehicleLabel ? [`Assigned vehicle: ${input.assignedVehicleLabel}`] : []),
     `Pickup: ${input.pickupLabel}`,
     "",
     `View your booking: ${input.accessUrl}`,
@@ -299,7 +302,7 @@ export function vehicleReadyEmail(input: {
       `<p>Hello ${escapeHtml(input.firstName)},</p>
        <p>Your vehicle has been prepared and is ready for pickup.</p>
        <p><strong>Reference:</strong> ${escapeHtml(input.reference)}<br/>
-       <strong>Vehicle:</strong> ${escapeHtml(input.vehicleLabel)}<br/>
+       <strong>Vehicle:</strong> ${escapeHtml(input.vehicleLabel)}${input.assignedVehicleLabel ? `<br/><strong>Assigned vehicle:</strong> ${escapeHtml(input.assignedVehicleLabel)}` : ""}<br/>
        <strong>Pickup:</strong> ${escapeHtml(input.pickupLabel)}</p>
        <p>View your booking at <a href="${escapeHtml(input.accessUrl)}">${escapeHtml(input.accessUrl)}</a>.</p>`,
     ),

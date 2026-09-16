@@ -9,8 +9,6 @@ import { cmsSeoDescription, cmsSeoTitle, pageMetadata } from "@/lib/content/seo"
 import { getPublishedContentPage } from "@/lib/content/queries";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
 
-export const dynamic = "force-dynamic";
-
 type PageProps = {
   params: Promise<{ slug: string }>;
 };

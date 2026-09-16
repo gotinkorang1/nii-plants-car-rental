@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { unstable_cache } from "next/cache";
 import { Building2, Plane } from "lucide-react";
 
 import { BookingSearchWidget } from "@/components/marketing/booking-search-widget";
@@ -17,7 +18,7 @@ import { FeaturedModels } from "@/components/fleet/featured-models";
 import { PAGE_SEO } from "@/lib/content/company";
 import { COPY } from "@/lib/content/copy";
 import { marketingImages } from "@/lib/content/marketing-images";
-import { getPublishedFaqs, getPublicLocations } from "@/lib/content/queries";
+import { getPublishedFaqs, getPublicOfficePickupLocations } from "@/lib/content/queries";
 import { listPublishedStories } from "@/lib/content/published-stories";
 import { pageMetadata } from "@/lib/content/seo";
 import {
@@ -28,7 +29,18 @@ import { getFeaturedModels } from "@/lib/fleet/get-featured-models";
 import { getSiteSettings } from "@/lib/settings/get-site-settings";
 import { toPublicContact } from "@/lib/settings/public-contact";
 
-export const dynamic = "force-dynamic";
+const getCachedHomeData = unstable_cache(
+  async () =>
+    Promise.all([
+      getSiteSettings(),
+      getPublicOfficePickupLocations(),
+      getFeaturedModels(3).catch(() => []),
+      getPublishedFaqs(),
+      listPublishedStories(),
+    ]),
+  ["public-home-data"],
+  { revalidate: 300, tags: ["public-home"] },
+);
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({
@@ -86,13 +98,7 @@ const services = [
 ] as const;
 
 export default async function HomePage() {
-  const [settings, locations, featured, faqs, stories] = await Promise.all([
-    getSiteSettings(),
-    getPublicLocations(),
-    getFeaturedModels(3).catch(() => []),
-    getPublishedFaqs(),
-    listPublishedStories(),
-  ]);
+  const [settings, locations, featured, faqs, stories] = await getCachedHomeData();
   const contact = toPublicContact(settings);
   const previewFaqs = faqs.slice(0, 4);
   const faqSchema = faqPageJsonLd(previewFaqs);

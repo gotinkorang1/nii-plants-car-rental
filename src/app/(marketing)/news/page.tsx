@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { unstable_cache } from "next/cache";
 
 import { CtaPanel } from "@/components/marketing/cta-panel";
 import { JsonLd } from "@/components/marketing/json-ld";
@@ -12,7 +13,11 @@ import { listPublishedStories } from "@/lib/content/published-stories";
 import { pageMetadata } from "@/lib/content/seo";
 import { breadcrumbJsonLd } from "@/lib/content/structured-data";
 
-export const dynamic = "force-dynamic";
+const getCachedNews = unstable_cache(
+  () => listPublishedStories(),
+  ["public-news-index"],
+  { revalidate: 300, tags: ["public-news"] },
+);
 
 export const metadata: Metadata = pageMetadata({
   title: PAGE_SEO.news.title,
@@ -27,7 +32,7 @@ const kindLabel = {
 } as const;
 
 export default async function NewsIndexPage() {
-  const stories = await listPublishedStories();
+  const stories = await getCachedNews();
 
   return (
     <main>

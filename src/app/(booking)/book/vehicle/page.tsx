@@ -5,7 +5,7 @@ import { EmptyAvailability } from "@/components/booking/empty-availability";
 import { TripSummary } from "@/components/booking/trip-summary";
 import { BookingError } from "@/lib/booking/errors";
 import { parseBookingSearchParams } from "@/lib/booking/search-params";
-import { getPublicLocations } from "@/lib/content/queries";
+import { getPublicOfficePickupLocations } from "@/lib/content/queries";
 import { getAvailableModels } from "@/lib/availability/get-available-models";
 import { getSiteSettings } from "@/lib/settings/get-site-settings";
 import { toPublicContact } from "@/lib/settings/public-contact";
@@ -30,7 +30,7 @@ type PageProps = {
 export default async function BookVehicleResultsPage({ searchParams }: PageProps) {
   const params = await searchParams;
   const [locations, settings] = await Promise.all([
-    getPublicLocations(),
+    getPublicOfficePickupLocations(),
     getSiteSettings(),
   ]);
   const contact = toPublicContact(settings);

@@ -53,13 +53,13 @@ export async function hasLatePaymentCapacity(
   const result = await tx.execute(sql`
     SELECT EXISTS (
       SELECT 1
-      FROM vehicles v
-      WHERE v.status = 'available'
-        AND v.vehicle_class_id = ${booking.vehicleClassId}::uuid
+      FROM vehicle_inventory_slots slot
+      WHERE slot.vehicle_model_id = ${booking.vehicleModelId}::uuid
+        AND slot.pickup_location_id = ${booking.pickupLocationId}::uuid
         AND NOT EXISTS (
           SELECT 1
           FROM vehicle_allocations va
-          WHERE va.vehicle_id = v.id
+          WHERE va.inventory_slot_id = slot.id
             AND va.start_at < ${booking.returnAt.toISOString()}::timestamptz
             AND va.end_at > ${booking.pickupAt.toISOString()}::timestamptz
             AND (
@@ -109,8 +109,8 @@ export async function attemptLatePaymentReallocation(
   await tx.execute(sql`SAVEPOINT late_payment_reallocation`);
   try {
     const hold = await createVehicleHold(tx, {
-      vehicleClassId: booking.vehicleClassId,
       vehicleModelId: booking.vehicleModelId,
+      pickupLocationId: booking.pickupLocationId,
       pickupAt: booking.pickupAt,
       returnAt: booking.returnAt,
       quoteId: booking.quoteId,

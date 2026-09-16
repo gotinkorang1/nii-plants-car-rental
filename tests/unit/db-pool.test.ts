@@ -3,16 +3,22 @@ import { describe, expect, it } from "vitest";
 import { resolvePostgresClientOptions } from "@/lib/db/postgres-options";
 
 describe("postgres client pool options", () => {
-  it("uses a small session pool for direct Postgres URLs", () => {
+  it("uses one session connection for direct Postgres URLs", () => {
     expect(
       resolvePostgresClientOptions(
         "postgres://postgres:postgres@127.0.0.1:54322/postgres",
         "",
       ),
     ).toEqual({
-      max: 5,
+      max: 1,
       prepare: true,
       idle_timeout: 20,
+      connect_timeout: 8,
+      max_lifetime: 300,
+      connection: {
+        statement_timeout: 8_000,
+        lock_timeout: 3_000,
+      },
     });
   });
 
@@ -26,6 +32,12 @@ describe("postgres client pool options", () => {
       max: 5,
       prepare: false,
       idle_timeout: 20,
+      connect_timeout: 8,
+      max_lifetime: 300,
+      connection: {
+        statement_timeout: 8_000,
+        lock_timeout: 3_000,
+      },
     });
   });
 
@@ -38,12 +50,12 @@ describe("postgres client pool options", () => {
     ).toBe(1);
   });
 
-  it("caps an explicit DATABASE_POOL_MAX", () => {
+  it("ignores an oversized session pool setting for direct URLs", () => {
     expect(
       resolvePostgresClientOptions(
         "postgres://postgres:postgres@127.0.0.1:54322/postgres",
         "25",
       ).max,
-    ).toBe(10);
+    ).toBe(1);
   });
 });

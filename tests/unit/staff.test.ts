@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { canManageStaff } from "@/lib/staff/permissions";
+import { staffProfileSaveErrorMessage } from "@/lib/staff/errors";
+import { resolveSupabaseAdminKey } from "@/lib/supabase/admin-key";
 import {
   LAST_ADMINISTRATOR_MESSAGE,
   wouldRemoveLastAdministrator,
@@ -138,5 +140,36 @@ describe("staff validation", () => {
         confirmPassword: "different1",
       }).success,
     ).toBe(false);
+  });
+});
+
+describe("staff save errors", () => {
+  it("explains when the Auth user belongs to a different Supabase project", () => {
+    expect(
+      staffProfileSaveErrorMessage({
+        code: "23503",
+        constraint: "staff_profiles_auth_user_id_fkey",
+      }),
+    ).toMatch(/Supabase project/i);
+  });
+
+  it("keeps unrelated database errors safe and actionable", () => {
+    expect(staffProfileSaveErrorMessage({ code: "XX000" })).toMatch(
+      /database connection/i,
+    );
+  });
+});
+
+describe("Supabase admin credentials", () => {
+  it("prefers the current secret key while retaining legacy compatibility", () => {
+    expect(
+      resolveSupabaseAdminKey({
+        SUPABASE_SECRET_KEY: "current-secret",
+        SUPABASE_SERVICE_ROLE_KEY: "legacy-service-role",
+      }),
+    ).toBe("current-secret");
+    expect(
+      resolveSupabaseAdminKey({ SUPABASE_SERVICE_ROLE_KEY: "legacy-service-role" }),
+    ).toBe("legacy-service-role");
   });
 });

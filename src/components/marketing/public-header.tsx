@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CalendarCheck, Menu, MessageCircle, Phone, X } from "lucide-react";
@@ -39,13 +38,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
   const menuId = useId();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
-
-  if (menuPath !== pathname) {
-    setMenuPath(pathname);
-    if (open) {
-      setOpen(false);
-    }
-  }
+  const menuPanelRef = useRef<HTMLDivElement>(null);
 
   const closeMenu = useCallback(() => {
     setOpen(false);
@@ -62,26 +55,51 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const menuOpen = open && menuPath === pathname;
+
   useEffect(() => {
-    if (!open) {
+    if (!menuOpen) {
       return;
     }
 
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     firstLinkRef.current?.focus();
 
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         closeMenu();
+        return;
+      }
+
+      if (event.key !== "Tab" || !menuPanelRef.current) {
+        return;
+      }
+
+      const focusable = Array.from(
+        menuPanelRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     }
 
     document.addEventListener("keydown", onKeyDown);
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [open, closeMenu]);
+  }, [menuOpen, closeMenu]);
 
   const homeTop = pathname === "/" && !scrolled;
 
@@ -89,7 +107,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
     <>
       <header
         className={cn(
-          "site-header relative z-50 flex-none sticky top-0 border-b transition-[background-color,box-shadow,border-color,color] duration-300",
+          "site-header relative z-50 isolate flex-none sticky top-0 border-b transition-[background-color,box-shadow,border-color,color] duration-300",
           homeTop ? "border-transparent bg-transparent" : "backdrop-blur-md",
           !homeTop && scrolled
             ? "border-border/80 bg-background/90 shadow-[0_8px_24px_rgba(24,26,24,0.06)]"
@@ -172,14 +190,24 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
               size="sm"
               className={cn(
                 "lg:hidden",
+                "min-h-11 min-w-11 touch-manipulation",
                 homeTop &&
                   "border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white",
               )}
-              aria-expanded={open}
+              aria-expanded={menuOpen}
               aria-controls={menuId}
-              onClick={() => setOpen((value) => !value)}
+              aria-haspopup="dialog"
+              aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+              onClick={() => {
+                if (menuOpen) {
+                  setOpen(false);
+                } else {
+                  setMenuPath(pathname);
+                  setOpen(true);
+                }
+              }}
             >
-              {open ? (
+              {menuOpen ? (
                 <X aria-hidden className="size-3.5" />
               ) : (
                 <Menu aria-hidden className="size-3.5" />
@@ -189,8 +217,8 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
           </div>
         </div>
       </header>
-      {open ? (
-        <div className="fixed inset-x-0 top-16 bottom-0 z-[60] lg:hidden">
+      {menuOpen ? (
+        <div className="fixed inset-0 z-[70] isolate lg:hidden">
           <button
             type="button"
             aria-label="Close menu"
@@ -198,9 +226,13 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
             onClick={closeMenu}
           />
           <div
+            ref={menuPanelRef}
             id={menuId}
             data-testid="mobile-menu-panel"
-            className="marketing-page-enter relative ml-auto flex h-full w-full max-w-sm flex-col overflow-y-auto border-l border-border bg-background px-4 py-5 shadow-2xl"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+            className="marketing-page-enter absolute inset-x-0 top-16 flex max-h-[calc(100dvh-4rem)] min-h-[calc(100dvh-4rem)] w-full flex-col overflow-y-auto border-t border-border bg-background px-4 py-5 shadow-2xl sm:left-auto sm:max-w-sm sm:border-l sm:border-t-0"
           >
             <nav aria-label="Mobile" className="grid gap-1">
               {PUBLIC_PRIMARY_LINKS.map((item, index) => {
@@ -213,7 +245,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                     aria-current={current ? "page" : undefined}
                     onClick={closeMenu}
                     className={cn(
-                      "rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+                      "min-h-11 rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
                       current && "bg-muted text-primary",
                     )}
                   >
@@ -226,7 +258,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                   <a
                     href={telHref(contact.phone)}
                     onClick={closeMenu}
-                    className="flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    className="flex min-h-11 items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                   >
                     <Phone className="size-4" />
                     Call {contact.phone}
@@ -236,7 +268,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                   <a
                     href={whatsappHref(contact.whatsapp)}
                     onClick={closeMenu}
-                    className="flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    className="flex min-h-11 items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                   >
                     <MessageCircle className="size-4" />
                     WhatsApp
@@ -246,7 +278,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                   <a
                     href={mailHref(contact.email)}
                     onClick={closeMenu}
-                    className="rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    className="min-h-11 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                   >
                     Email
                   </a>

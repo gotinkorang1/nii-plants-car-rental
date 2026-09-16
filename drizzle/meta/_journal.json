@@ -92,6 +92,20 @@
       "when": 1787137200000,
       "tag": "0012_cms_stories_gallery",
       "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1789459080333,
+      "tag": "0013_capacity_based_inventory",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1789459080334,
+      "tag": "0014_fix_vehicle_hold_return",
+      "breakpoints": true
     }
   ]
 }

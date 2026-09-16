@@ -7,6 +7,7 @@ export * from "./customers";
 export * from "./enquiries";
 export * from "./enums";
 export * from "./fleet";
+export * from "./inventory";
 export * from "./locations";
 export * from "./operations";
 export * from "./payments";
