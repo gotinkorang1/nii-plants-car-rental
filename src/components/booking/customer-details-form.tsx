@@ -59,7 +59,16 @@ export function CustomerDetailsForm({
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <Field id="firstName" name="firstName" label="First name" autoComplete="given-name" required />
               <Field id="lastName" name="lastName" label="Last name" autoComplete="family-name" required />
-              <Field id="email" name="email" type="email" label="Email" autoComplete="email" required />
+              <Field
+                id="email"
+                name="email"
+                type="email"
+                label="Email"
+                autoComplete="email"
+                autoCapitalize="none"
+                spellCheck={false}
+                required
+              />
               <Field id="phone" name="phone" type="tel" label="Phone" autoComplete="tel" required />
             </div>
           </section>
@@ -79,6 +88,7 @@ export function CustomerDetailsForm({
                 name="driverAge"
                 type="number"
                 label="Driver age"
+                inputMode="numeric"
                 min={25}
                 max={99}
                 required
@@ -158,6 +168,9 @@ export function CustomerDetailsForm({
               </span>
             ) : "Create booking"}
           </Button>
+          <p className="mt-2 text-center text-xs text-muted-foreground">
+            You will review payment next. This step does not charge you.
+          </p>
         </div>
       </aside>
     </form>
@@ -173,6 +186,9 @@ function Field({
   autoComplete,
   min,
   max,
+  inputMode,
+  autoCapitalize,
+  spellCheck,
 }: {
   id: string;
   name: string;
@@ -182,6 +198,9 @@ function Field({
   autoComplete?: string;
   min?: number;
   max?: number;
+  inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  autoCapitalize?: string;
+  spellCheck?: boolean;
 }) {
   return (
     <div>
@@ -192,6 +211,9 @@ function Field({
         type={type}
         required={required}
         autoComplete={autoComplete}
+        autoCapitalize={autoCapitalize}
+        spellCheck={spellCheck}
+        inputMode={inputMode}
         min={min}
         max={max}
         className="mt-1.5 h-11"
