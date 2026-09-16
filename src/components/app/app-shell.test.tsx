@@ -11,12 +11,15 @@ import { AppShell } from "@/components/app/app-shell";
 import { registerServiceWorker } from "@/lib/pwa/register-service-worker";
 
 const SPLASH_KEY = "nii-plants:splash-seen:v1";
+const INSTALL_DISMISSED_KEY = "nii-plants:install-dismissed:v1";
 
-function setMotionPreference(reducedMotion: boolean) {
+function setBrowserState({ reducedMotion = false, installed = false } = {}) {
   vi.stubGlobal(
     "matchMedia",
     vi.fn((query: string) => ({
-      matches: reducedMotion && query === "(prefers-reduced-motion: reduce)",
+      matches:
+        (reducedMotion && query === "(prefers-reduced-motion: reduce)") ||
+        (installed && query === "(display-mode: standalone)"),
       media: query,
       onchange: null,
       addListener: vi.fn(),
@@ -26,18 +29,23 @@ function setMotionPreference(reducedMotion: boolean) {
       dispatchEvent: vi.fn(),
     })),
   );
+  Object.defineProperty(navigator, "standalone", {
+    configurable: true,
+    value: installed,
+  });
 }
 
 describe("AppShell", () => {
   beforeEach(() => {
     sessionStorage.clear();
-    setMotionPreference(false);
+    setBrowserState();
   });
 
   afterEach(() => {
     cleanup();
     vi.restoreAllMocks();
     vi.unstubAllGlobals();
+    delete (navigator as Navigator & { standalone?: boolean }).standalone;
   });
 
   it("renders children immediately and dismisses the first-session splash", async () => {
@@ -62,7 +70,11 @@ describe("AppShell", () => {
   it("does not show the splash for an existing browser session", async () => {
     sessionStorage.setItem(SPLASH_KEY, "1");
 
-    render(<AppShell><main>Rental content</main></AppShell>);
+    render(
+      <AppShell>
+        <main>Rental content</main>
+      </AppShell>,
+    );
 
     expect(screen.getByText("Rental content")).toBeInTheDocument();
     await waitFor(() => {
@@ -71,7 +83,7 @@ describe("AppShell", () => {
   });
 
   it("does not show the splash when reduced motion is preferred", async () => {
-    setMotionPreference(true);
+    setBrowserState({ reducedMotion: true });
 
     render(
       <AppShell>
@@ -126,6 +138,62 @@ describe("AppShell", () => {
     });
   });
 
+  it("suppresses the install affordance when already installed", async () => {
+    setBrowserState({ installed: true });
+    const installEvent = new Event("beforeinstallprompt", {
+      cancelable: true,
+    });
+
+    render(
+      <AppShell>
+        <main>Rental content</main>
+      </AppShell>,
+    );
+    fireEvent(window, installEvent);
+
+    await waitFor(() => {
+      expect(
+        screen.queryByRole("button", { name: "Install Nii Plants" }),
+      ).not.toBeInTheDocument();
+    });
+  });
+
+  it("dismisses and remembers the install affordance for the session", async () => {
+    const installEvent = new Event("beforeinstallprompt", {
+      cancelable: true,
+    }) as Event & {
+      prompt: () => Promise<void>;
+      userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+    };
+    installEvent.prompt = vi.fn().mockResolvedValue(undefined);
+    installEvent.userChoice = Promise.resolve({ outcome: "dismissed" });
+
+    render(
+      <AppShell>
+        <main>Rental content</main>
+      </AppShell>,
+    );
+    fireEvent(window, installEvent);
+    expect(
+      await screen.findByRole("button", { name: "Install Nii Plants" }),
+    ).toBeInTheDocument();
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Dismiss install prompt" }),
+    );
+    expect(
+      screen.queryByRole("button", { name: "Install Nii Plants" }),
+    ).not.toBeInTheDocument();
+    expect(sessionStorage.getItem(INSTALL_DISMISSED_KEY)).toBe("1");
+
+    fireEvent(window, installEvent);
+    await waitFor(() => {
+      expect(
+        screen.queryByRole("button", { name: "Install Nii Plants" }),
+      ).not.toBeInTheDocument();
+    });
+  });
+
   it("hides the install control when prompting rejects", async () => {
     const prompt = vi.fn().mockRejectedValue(new Error("prompt unavailable"));
     const installEvent = new Event("beforeinstallprompt", {
@@ -137,12 +205,20 @@ describe("AppShell", () => {
     installEvent.prompt = prompt;
     installEvent.userChoice = Promise.resolve({ outcome: "dismissed" });
 
-    render(<AppShell><main>Rental content</main></AppShell>);
+    render(
+      <AppShell>
+        <main>Rental content</main>
+      </AppShell>,
+    );
     fireEvent(window, installEvent);
-    fireEvent.click(await screen.findByRole("button", { name: "Install Nii Plants" }));
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Install Nii Plants" }),
+    );
 
     await waitFor(() => {
-      expect(screen.queryByRole("button", { name: "Install Nii Plants" })).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole("button", { name: "Install Nii Plants" }),
+      ).not.toBeInTheDocument();
     });
   });
 

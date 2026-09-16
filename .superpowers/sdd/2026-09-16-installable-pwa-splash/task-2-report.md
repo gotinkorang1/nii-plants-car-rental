@@ -54,3 +54,21 @@ Task 1 manifest, icon, viewport, and Apple metadata files were not modified.
 
 - The previously documented `vitest.config.mts` source-test include and `src/lib/pwa/register-service-worker.ts` hook remain necessary for the brief’s colocated test and separate registration boundary.
 - P3 unrelated formatting noise was not changed.
+
+## Final review fixes — 2026-09-16
+
+### Findings fixed
+
+- Added `pointer-events: none` to the splash overlay so it cannot intercept input; its existing `aria-hidden="true"` semantics remain intact.
+- Suppressed the install affordance when `(display-mode: standalone)` or `navigator.standalone` indicates an installed app.
+- Added a visible, keyboard-focusable dismiss control with `min-h-11`, persisted dismissal key `nii-plants:install-dismissed:v1`, and ref-backed listener state so later install events remain suppressed for the session.
+- Added explicit Apple touch-icon metadata using `/brand/nii-plants-logo.png`.
+- Replaced the splash logo's native image element with `next/image`.
+
+### Verification
+
+- `npx vitest run --project unit src/components/app/app-shell.test.tsx` — passed, 1 file / 9 tests.
+- `npm run typecheck` — passed, exit code 0.
+- `npx eslint src/components/app/app-shell.tsx src/components/app/app-shell.test.tsx src/lib/pwa/register-service-worker.ts src/app/layout.tsx vitest.config.mts` — passed, exit code 0.
+
+No deployment or push was performed. Unrelated P3 formatting noise was deferred.

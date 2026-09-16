@@ -310,6 +310,7 @@
   background: #153f34;
   color: #fff8ed;
   animation: pwa-splash-out 420ms ease 780ms both;
+  pointer-events: none;
 }
 
 .pwa-splash__glow {
@@ -374,6 +375,36 @@
   font-size: 0.875rem;
   font-weight: 700;
   box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 16%);
+}
+
+.pwa-install-affordance {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.pwa-install-affordance .pwa-install-button {
+  position: static;
+}
+
+.pwa-install-dismiss {
+  display: grid;
+  width: 2.75rem;
+  place-items: center;
+  border: 1px solid rgb(255 248 237 / 35%);
+  border-radius: 999px;
+  background: #153f34;
+  color: #fff8ed;
+  font-size: 1.25rem;
+}
+
+.pwa-install-dismiss:focus-visible {
+  outline: 3px solid #f8c58e;
+  outline-offset: 3px;
 }
 
 .pwa-install-button:hover {

@@ -48,18 +48,21 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "Nii Plants Car Rentals",
   },
-  icons: [
-    {
-      url: "/icons/icon-192.png",
-      type: "image/png",
-      sizes: "192x192",
-    },
-    {
-      url: "/icons/icon-512.png",
-      type: "image/png",
-      sizes: "512x512",
-    },
-  ],
+  icons: {
+    icon: [
+      {
+        url: "/icons/icon-192.png",
+        type: "image/png",
+        sizes: "192x192",
+      },
+      {
+        url: "/icons/icon-512.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    apple: [{ url: "/brand/nii-plants-logo.png", type: "image/png" }],
+  },
   ...(shouldNoIndexPublicSite()
     ? {
         robots: {
