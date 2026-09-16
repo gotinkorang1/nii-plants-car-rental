@@ -12,9 +12,10 @@ describe("capacity hold migration", () => {
       path.join(root, "drizzle/0014_fix_vehicle_hold_return.sql"),
       "utf8",
     );
+    const normalizedSql = sql.replace(/\r\n/g, "\n");
 
-    expect(sql).toContain("RETURNING\n    vehicle_allocations.id,");
-    expect(sql).toContain("vehicle_allocations.inventory_slot_id,");
-    expect(sql).toContain("vehicle_allocations.vehicle_id");
+    expect(normalizedSql).toContain("RETURNING\n    vehicle_allocations.id,");
+    expect(normalizedSql).toContain("vehicle_allocations.inventory_slot_id,");
+    expect(normalizedSql).toContain("vehicle_allocations.vehicle_id");
   });
 });
