@@ -43,8 +43,7 @@ export async function getOperationsDashboard() {
 
   const { start, end } = accraDayBounds();
 
-  const [pickups, returns, rented, maintenance, attention, balances] = await Promise.all([
-    db
+  const pickups = await db
       .select({
         id: bookings.id,
         reference: bookings.reference,
@@ -70,8 +69,8 @@ export async function getOperationsDashboard() {
         ),
       )
       .orderBy(bookings.pickupAt)
-      .limit(20),
-    db
+      .limit(20);
+  const returns = await db
       .select({
         id: bookings.id,
         reference: bookings.reference,
@@ -90,16 +89,16 @@ export async function getOperationsDashboard() {
       .leftJoin(vehicles, eq(bookings.vehicleId, vehicles.id))
       .where(and(eq(bookings.status, "checked_out"), lte(bookings.returnAt, end)))
       .orderBy(bookings.returnAt)
-      .limit(20),
-    db
+      .limit(20);
+  const rented = await db
       .select({ count: sql<number>`count(*)::int` })
       .from(vehicles)
-      .where(eq(vehicles.status, "rented")),
-    db
+      .where(eq(vehicles.status, "rented"));
+  const maintenance = await db
       .select({ count: sql<number>`count(*)::int` })
       .from(vehicles)
-      .where(eq(vehicles.status, "maintenance")),
-    db
+      .where(eq(vehicles.status, "maintenance"));
+  const attention = await db
       .select({ count: sql<number>`count(*)::int` })
       .from(bookings)
       .where(
@@ -107,12 +106,11 @@ export async function getOperationsDashboard() {
           eq(bookings.status, "under_review"),
           and(eq(bookings.status, "payment_pending"), sql`${bookings.pickupAt} < now()`),
         ),
-      ),
-    db
+      );
+  const balances = await db
       .select({ count: sql<number>`count(*)::int` })
       .from(bookings)
-      .where(and(sql`${bookings.remainingBalance} > 0`, inArray(bookings.status, ["confirmed", "ready", "checked_out"]))),
-  ]);
+      .where(and(sql`${bookings.remainingBalance} > 0`, inArray(bookings.status, ["confirmed", "ready", "checked_out"])));
 
   return {
     todayPickups: pickups.length,
@@ -333,8 +331,7 @@ export async function getVehicleOperationalHistory(vehicleId: string) {
     };
   }
 
-  const [maintenance, inspections, rentals] = await Promise.all([
-    db
+  const maintenance = await db
       .select({
         id: maintenanceRecords.id,
         title: maintenanceRecords.title,
@@ -346,8 +343,8 @@ export async function getVehicleOperationalHistory(vehicleId: string) {
       .from(maintenanceRecords)
       .where(eq(maintenanceRecords.vehicleId, vehicleId))
       .orderBy(sql`${maintenanceRecords.startAt} DESC`)
-      .limit(10),
-    db
+      .limit(10);
+  const inspections = await db
       .select({
         id: rentalInspections.id,
         inspectionType: rentalInspections.inspectionType,
@@ -370,8 +367,8 @@ export async function getVehicleOperationalHistory(vehicleId: string) {
         ),
       )
       .orderBy(sql`${rentalInspections.completedAt} DESC`)
-      .limit(10),
-    db
+      .limit(10);
+  const rentals = await db
       .select({
         id: bookings.id,
         reference: bookings.reference,
@@ -386,8 +383,7 @@ export async function getVehicleOperationalHistory(vehicleId: string) {
       .orderBy(
         sql`coalesce(${bookings.completedAt}, ${bookings.checkedOutAt}, ${bookings.pickupAt}) DESC`,
       )
-      .limit(10),
-  ]);
+      .limit(10);
 
   return { maintenance, inspections, rentals };
 }
