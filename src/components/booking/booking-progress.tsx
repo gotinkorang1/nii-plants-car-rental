@@ -15,13 +15,21 @@ export function BookingProgress({ current }: { current: BookingStep }) {
 
   return (
     <nav aria-label="Booking progress" className="mb-8">
-      <div className="relative mb-3 h-1 overflow-hidden rounded-full bg-border">
+      <div
+        className="relative mb-3 h-1 overflow-hidden rounded-full bg-border"
+        role="progressbar"
+        aria-label="Booking progress"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={progressPercent}
+        aria-valuetext={`${STEPS[currentIndex]?.label ?? "Booking"} step of ${STEPS.length}`}
+      >
         <div
           className="absolute inset-y-0 left-0 rounded-full bg-accent transition-[width] duration-700 ease-out"
           style={{ width: `${progressPercent}%` }}
         />
       </div>
-      <ol className="flex flex-wrap gap-2 sm:gap-0">
+      <ol className="grid grid-cols-4 gap-1 sm:flex sm:gap-0">
         {STEPS.map((step, index) => {
           const done = index < currentIndex;
           const active = index === currentIndex;
@@ -29,7 +37,7 @@ export function BookingProgress({ current }: { current: BookingStep }) {
             <li
               key={step.id}
               className={cn(
-                "flex min-w-0 flex-1 items-center gap-2 text-xs font-medium sm:text-sm",
+                "flex min-w-0 flex-col items-center gap-1 text-center text-xs font-medium sm:flex-1 sm:flex-row sm:items-center sm:gap-2 sm:text-left sm:text-sm",
                 "transition-colors duration-300",
               )}
             >
