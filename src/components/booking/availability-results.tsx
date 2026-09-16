@@ -19,7 +19,9 @@ export function AvailabilityResults({
   models: AvailableModelResult[];
   search: AvailabilitySearchInput;
 }) {
-  const query = bookingSearchQuery(search);
+  // The selected model is already represented by the path. Keeping an older
+  // `vehicle` query parameter here can make a copied booking URL contradictory.
+  const query = bookingSearchQuery(search, { includeVehicle: false });
 
   return (
     <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
