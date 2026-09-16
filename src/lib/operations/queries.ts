@@ -246,12 +246,14 @@ export async function listInspectionPhotos(inspectionId: string) {
     .where(eq(inspectionPhotos.inspectionId, inspectionId))
     .orderBy(inspectionPhotos.sortOrder, inspectionPhotos.createdAt);
 
-  return Promise.all(
-    rows.map(async (photo) => ({
+  const photos = [];
+  for (const photo of rows) {
+    photos.push({
       ...photo,
       signedUrl: await getInspectionPhotoSignedUrl(photo.storagePath),
-    })),
-  );
+    });
+  }
+  return photos;
 }
 
 export async function listMaintenanceRecords(input?: {
