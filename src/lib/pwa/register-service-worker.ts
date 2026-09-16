@@ -3,5 +3,11 @@ export function registerServiceWorker() {
     return Promise.resolve(undefined);
   }
 
-  return navigator.serviceWorker.register("/sw.js").catch(() => undefined);
+  try {
+    return Promise.resolve(navigator.serviceWorker.register("/sw.js")).catch(
+      () => undefined,
+    );
+  } catch {
+    return Promise.resolve(undefined);
+  }
 }

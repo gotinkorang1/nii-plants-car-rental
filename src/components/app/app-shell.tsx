@@ -14,7 +14,7 @@ type InstallPromptEvent = Event & {
 };
 
 export function AppShell({ children }: { children: ReactNode }) {
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(false);
   const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(
     null,
   );
@@ -26,13 +26,15 @@ export function AppShell({ children }: { children: ReactNode }) {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     let splashTimer: number | undefined;
+    let splashStartTimer: number | undefined;
 
     try {
       if (sessionStorage.getItem(SPLASH_STORAGE_KEY) === "1" || reducedMotion) {
         sessionStorage.setItem(SPLASH_STORAGE_KEY, "1");
-        splashTimer = window.setTimeout(() => setShowSplash(false), 0);
+        splashTimer = undefined;
       } else {
         sessionStorage.setItem(SPLASH_STORAGE_KEY, "1");
+        splashStartTimer = window.setTimeout(() => setShowSplash(true), 0);
         splashTimer = window.setTimeout(
           () => setShowSplash(false),
           SPLASH_DURATION,
@@ -54,6 +56,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
     return () => {
       if (splashTimer !== undefined) window.clearTimeout(splashTimer);
+      if (splashStartTimer !== undefined) window.clearTimeout(splashStartTimer);
       window.removeEventListener(
         "beforeinstallprompt",
         handleBeforeInstallPrompt,
@@ -64,9 +67,14 @@ export function AppShell({ children }: { children: ReactNode }) {
   async function handleInstall() {
     if (!installPrompt) return;
 
-    await installPrompt.prompt();
-    await installPrompt.userChoice;
-    setInstallPrompt(null);
+    try {
+      await installPrompt.prompt();
+      await installPrompt.userChoice;
+    } catch {
+      // The browser can reject a prompt when installation is no longer available.
+    } finally {
+      setInstallPrompt(null);
+    }
   }
 
   return (

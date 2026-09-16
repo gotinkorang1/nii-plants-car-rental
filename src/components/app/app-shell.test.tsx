@@ -8,6 +8,7 @@ import {
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { AppShell } from "@/components/app/app-shell";
+import { registerServiceWorker } from "@/lib/pwa/register-service-worker";
 
 const SPLASH_KEY = "nii-plants:splash-seen:v1";
 
@@ -47,7 +48,7 @@ describe("AppShell", () => {
     );
 
     expect(screen.getByText("Rental content")).toBeInTheDocument();
-    expect(screen.getByTestId("pwa-splash")).toBeInTheDocument();
+    expect(await screen.findByTestId("pwa-splash")).toBeInTheDocument();
 
     await waitFor(
       () => {
@@ -56,6 +57,17 @@ describe("AppShell", () => {
       { timeout: 2000 },
     );
     expect(sessionStorage.getItem(SPLASH_KEY)).toBe("1");
+  });
+
+  it("does not show the splash for an existing browser session", async () => {
+    sessionStorage.setItem(SPLASH_KEY, "1");
+
+    render(<AppShell><main>Rental content</main></AppShell>);
+
+    expect(screen.getByText("Rental content")).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByTestId("pwa-splash")).not.toBeInTheDocument();
+    });
   });
 
   it("does not show the splash when reduced motion is preferred", async () => {
@@ -114,6 +126,26 @@ describe("AppShell", () => {
     });
   });
 
+  it("hides the install control when prompting rejects", async () => {
+    const prompt = vi.fn().mockRejectedValue(new Error("prompt unavailable"));
+    const installEvent = new Event("beforeinstallprompt", {
+      cancelable: true,
+    }) as Event & {
+      prompt: typeof prompt;
+      userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+    };
+    installEvent.prompt = prompt;
+    installEvent.userChoice = Promise.resolve({ outcome: "dismissed" });
+
+    render(<AppShell><main>Rental content</main></AppShell>);
+    fireEvent(window, installEvent);
+    fireEvent.click(await screen.findByRole("button", { name: "Install Nii Plants" }));
+
+    await waitFor(() => {
+      expect(screen.queryByRole("button", { name: "Install Nii Plants" })).not.toBeInTheDocument();
+    });
+  });
+
   it("does not render an install control when the browser does not support it", async () => {
     render(
       <AppShell>
@@ -126,5 +158,32 @@ describe("AppShell", () => {
         screen.queryByRole("button", { name: "Install Nii Plants" }),
       ).not.toBeInTheDocument();
     });
+  });
+});
+
+describe("registerServiceWorker", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+    Object.defineProperty(navigator, "serviceWorker", {
+      configurable: true,
+      value: undefined,
+    });
+  });
+
+  it("resolves safely for synchronous and rejected registration failures", async () => {
+    const register = vi
+      .fn()
+      .mockImplementationOnce(() => {
+        throw new Error("sync failure");
+      })
+      .mockRejectedValueOnce(new Error("async failure"));
+    Object.defineProperty(navigator, "serviceWorker", {
+      configurable: true,
+      value: { register },
+    });
+
+    await expect(registerServiceWorker()).resolves.toBeUndefined();
+    await expect(registerServiceWorker()).resolves.toBeUndefined();
+    expect(register).toHaveBeenCalledTimes(2);
   });
 });
