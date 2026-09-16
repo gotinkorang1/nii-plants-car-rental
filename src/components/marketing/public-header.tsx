@@ -180,7 +180,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                 <a href={whatsappHref(contact.whatsapp)}>WhatsApp</a>
               </Button>
             ) : null}
-            <Button asChild size="sm">
+            <Button asChild size="sm" className="hidden shrink-0 sm:inline-flex">
               <Link href="/book">Book a Vehicle</Link>
             </Button>
             <Button
@@ -190,7 +190,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
               size="sm"
               className={cn(
                 "lg:hidden",
-                "min-h-11 min-w-11 touch-manipulation",
+                "min-h-11 min-w-11 shrink-0 touch-manipulation",
                 homeTop &&
                   "border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white",
               )}
