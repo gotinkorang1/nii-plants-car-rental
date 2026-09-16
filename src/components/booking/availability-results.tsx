@@ -109,7 +109,7 @@ export function AvailabilityResults({
                 </span>
               </p>
               <p className="text-sm font-medium text-primary">
-                {model.availableCount} {model.availableCount === 1 ? "capacity" : "capacities"} available
+                {model.availableCount} {model.availableCount === 1 ? "vehicle" : "vehicles"} available
               </p>
               <Button asChild className="mt-auto h-11 bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
                 <Link href={`/book/vehicle/${model.slug}?${query}`}>
