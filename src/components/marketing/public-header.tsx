@@ -107,7 +107,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
     <>
       <header
         className={cn(
-          "site-header relative z-50 flex-none sticky top-0 border-b transition-[background-color,box-shadow,border-color,color] duration-300",
+          "site-header relative z-50 isolate flex-none sticky top-0 border-b transition-[background-color,box-shadow,border-color,color] duration-300",
           homeTop ? "border-transparent bg-transparent" : "backdrop-blur-md",
           !homeTop && scrolled
             ? "border-border/80 bg-background/90 shadow-[0_8px_24px_rgba(24,26,24,0.06)]"
@@ -190,11 +190,14 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
               size="sm"
               className={cn(
                 "lg:hidden",
+                "min-h-11 min-w-11 touch-manipulation",
                 homeTop &&
                   "border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white",
               )}
               aria-expanded={menuOpen}
               aria-controls={menuId}
+              aria-haspopup="dialog"
+              aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
               onClick={() => {
                 if (menuOpen) {
                   setOpen(false);
@@ -215,7 +218,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
         </div>
       </header>
       {menuOpen ? (
-        <div className="fixed inset-0 z-[70] lg:hidden">
+        <div className="fixed inset-0 z-[70] isolate lg:hidden">
           <button
             type="button"
             aria-label="Close menu"
@@ -242,7 +245,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                     aria-current={current ? "page" : undefined}
                     onClick={closeMenu}
                     className={cn(
-                      "rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+                      "min-h-11 rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
                       current && "bg-muted text-primary",
                     )}
                   >
@@ -255,7 +258,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                   <a
                     href={telHref(contact.phone)}
                     onClick={closeMenu}
-                    className="flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    className="flex min-h-11 items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                   >
                     <Phone className="size-4" />
                     Call {contact.phone}
@@ -265,7 +268,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                   <a
                     href={whatsappHref(contact.whatsapp)}
                     onClick={closeMenu}
-                    className="flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    className="flex min-h-11 items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                   >
                     <MessageCircle className="size-4" />
                     WhatsApp
@@ -275,7 +278,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
                   <a
                     href={mailHref(contact.email)}
                     onClick={closeMenu}
-                    className="rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    className="min-h-11 rounded-lg px-3 py-3 text-sm font-medium hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                   >
                     Email
                   </a>

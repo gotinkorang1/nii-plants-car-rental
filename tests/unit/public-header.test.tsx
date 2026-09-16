@@ -33,12 +33,14 @@ describe("PublicHeader", () => {
 
   it("traps mobile navigation and restores focus when Escape closes it", () => {
     render(<PublicHeader contact={contact} />);
-    const menuButton = screen.getByRole("button", { name: "Menu" });
+    const menuButton = screen.getByRole("button", { name: "Open navigation menu" });
 
     fireEvent.click(menuButton);
 
     const panel = screen.getByTestId("mobile-menu-panel");
     expect(panel).toHaveAttribute("role", "dialog");
+    expect(menuButton).toHaveAttribute("aria-haspopup", "dialog");
+    expect(menuButton).toHaveAttribute("aria-label", "Close navigation menu");
     expect(document.body.style.overflow).toBe("hidden");
     const firstLink = panel.querySelector('a[href="/fleet"]');
     expect(firstLink).not.toBeNull();
@@ -58,7 +60,7 @@ describe("PublicHeader", () => {
 
   it("closes the mobile menu when the route changes", () => {
     const { rerender } = render(<PublicHeader contact={contact} />);
-    fireEvent.click(screen.getByRole("button", { name: "Menu" }));
+    fireEvent.click(screen.getByRole("button", { name: "Open navigation menu" }));
     expect(screen.getByTestId("mobile-menu-panel")).toBeInTheDocument();
 
     navigation.pathname = "/fleet";
