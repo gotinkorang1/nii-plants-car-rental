@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 
 import { PAGE_SEO } from "@/lib/content/company";
+import { AppShell } from "@/components/app/app-shell";
 import { publicEnv } from "@/lib/env";
 import { shouldNoIndexPublicSite } from "@/lib/env/runtime-environment";
 import { cn } from "@/lib/utils";
@@ -83,7 +84,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={cn("font-sans", sourceSans.variable, sourceSerif.variable)}
     >
-      <body>{children}</body>
+      <body>
+        <AppShell>{children}</AppShell>
+      </body>
     </html>
   );
 }
