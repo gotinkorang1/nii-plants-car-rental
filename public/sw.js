@@ -39,8 +39,13 @@ self.addEventListener("fetch", (event) => {
 
   event.respondWith(
     fetch(request).catch(() =>
-      caches.match(request).then(
-        (cachedResponse) => cachedResponse ?? caches.match("/offline.html"),
+      caches.open(CACHE_NAME).then((cache) =>
+        cache
+          .match(request)
+          .then(
+            (cachedResponse) =>
+              cachedResponse ?? cache.match("/offline.html"),
+          ),
       ),
     ),
   );

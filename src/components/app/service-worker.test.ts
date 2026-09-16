@@ -43,28 +43,69 @@ describe("service worker registration", () => {
 
 describe("safe offline worker", () => {
   it("keeps the precache allowlist limited to the offline shell assets", () => {
-    for (const asset of [
+    const precacheBlock = workerSource.match(
+      /const PRECACHE_URLS = \[([\s\S]*?)\];/,
+    )?.[1];
+    const precacheEntries = precacheBlock
+      ? [...precacheBlock.matchAll(/^\s*"([^"]+)",?$/gm)].map(
+          ([, asset]) => asset,
+        )
+      : [];
+
+    expect(precacheEntries).toEqual([
       "/",
       "/offline.html",
       "/icons/icon-192.png",
       "/icons/icon-512.png",
       "/brand/nii-plants-logo.png",
-    ]) {
-      expect(workerSource).toContain(`"${asset}"`);
-    }
+    ]);
 
     expect(workerSource).toContain('"nii-plants-shell-v1"');
-    expect(workerSource).not.toContain("cache.put(");
-    expect(workerSource).not.toContain("/api/");
-    expect(workerSource).not.toContain("/admin");
-    expect(workerSource).not.toContain("payment");
   });
 
-  it("passes through non-navigation requests and falls back only for navigation", () => {
+  it("uses only the current shell cache for navigation fallbacks", () => {
+    expect(workerSource).toContain("caches.open(CACHE_NAME)");
+    expect(workerSource).toMatch(/cache\s*\.match\(request\)/);
+    expect(workerSource).toMatch(/cache\s*\.match\("\/offline\.html"\)/);
+    expect(workerSource).not.toContain("caches.match(request)");
+  });
+
+  it("deletes only older Nii Plants shell caches during activation", () => {
+    const activateHandler = workerSource.match(
+      /self\.addEventListener\("activate", \(event\) => \{([\s\S]*?)\n\}\);/,
+    )?.[1];
+
+    expect(activateHandler).toBeDefined();
+    expect(activateHandler).toContain(
+      'name.startsWith("nii-plants-shell-") && name !== CACHE_NAME',
+    );
+    expect(activateHandler).toContain("caches.delete(name)");
+    expect(activateHandler).not.toContain("caches.delete(CACHE_NAME)");
+  });
+
+  it("passes through API, admin, payment, and customer requests without caching", () => {
+    const fetchHandler = workerSource.match(
+      /self\.addEventListener\("fetch", \(event\) => \{([\s\S]*?)\n\}\);/,
+    )?.[1];
+
+    expect(fetchHandler).toBeDefined();
+    if (fetchHandler === undefined) {
+      throw new Error("fetch handler not found in service worker source");
+    }
+    expect(fetchHandler).toContain('request.mode !== "navigate"');
+    expect(fetchHandler).toMatch(
+      /if \(request\.mode !== "navigate"\) \{\s*return;\s*\}/,
+    );
+    expect(fetchHandler).toContain("fetch(request)");
+    const nonNavigationBranch = fetchHandler.match(
+      /if \(request\.mode !== "navigate"\) \{([\s\S]*?)\}/,
+    )?.[1];
+    expect(nonNavigationBranch).toBe("\n    return;\n  ");
+    expect(nonNavigationBranch).not.toMatch(/cache|caches|respondWith/);
+    expect(fetchHandler).not.toContain("cache.put");
+    expect(fetchHandler).not.toContain("cache.add");
+    expect(workerSource).not.toMatch(/request\.url.*(?:\/api\/|\/admin|payment|customer)/);
     expect(workerSource).toContain('request.mode !== "navigate"');
-    expect(workerSource).toContain("fetch(request)");
-    expect(workerSource).toContain('caches.match("/offline.html")');
-    expect(workerSource).toContain('name.startsWith("nii-plants-shell-")');
     expect(workerSource).toContain("clients.claim()");
   });
 });
