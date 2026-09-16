@@ -15,10 +15,8 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default async function ChauffeurPage() {
-  const [faqs, vehicleClasses] = await Promise.all([
-    getPublishedFaqs("Support"),
-    listActiveVehicleClassOptions(),
-  ]);
+  const faqs = await getPublishedFaqs("Support");
+  const vehicleClasses = await listActiveVehicleClassOptions();
 
   return (
     <ServicePage

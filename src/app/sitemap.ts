@@ -37,11 +37,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let stories: Awaited<ReturnType<typeof listPublishedStories>> = [];
 
   try {
-    [models, pages, stories] = await Promise.all([
-      getPublicModels(),
-      getPublishedContentPages(),
-      listPublishedStories(),
-    ]);
+    models = await getPublicModels();
+    pages = await getPublishedContentPages();
+    stories = await listPublishedStories();
   } catch (error) {
     log("error", "Failed to load sitemap catalogue entries.", {
       error: error instanceof Error ? error.message : "unknown",

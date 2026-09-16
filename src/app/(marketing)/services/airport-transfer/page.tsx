@@ -15,11 +15,9 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default async function AirportTransferPage() {
-  const [faqs, locations, vehicleClasses] = await Promise.all([
-    getPublishedFaqs("Vehicle pickup"),
-    getPublicLocations(),
-    listActiveVehicleClassOptions(),
-  ]);
+  const faqs = await getPublishedFaqs("Vehicle pickup");
+  const locations = await getPublicLocations();
+  const vehicleClasses = await listActiveVehicleClassOptions();
   const airports = locations.filter((location) => location.type === "airport");
 
   return (

@@ -152,25 +152,23 @@ export async function getEnquiriesDashboard() {
     };
   }
 
-  const [newCount, awaitingResponseCount, quotedCount, followUpCount, priority] =
-    await Promise.all([
-      db
+  const newCount = await db
         .select({ count: sql<number>`count(*)::int` })
         .from(enquiries)
-        .where(eq(enquiries.status, "new")),
-      db
+        .where(eq(enquiries.status, "new"));
+  const awaitingResponseCount = await db
         .select({ count: sql<number>`count(*)::int` })
         .from(enquiries)
-        .where(inArray(enquiries.status, ["new", "in_review", "awaiting_customer"])),
-      db
+        .where(inArray(enquiries.status, ["new", "in_review", "awaiting_customer"]));
+  const quotedCount = await db
         .select({ count: sql<number>`count(*)::int` })
         .from(enquiries)
-        .where(eq(enquiries.status, "quoted")),
-      db
+        .where(eq(enquiries.status, "quoted"));
+  const followUpCount = await db
         .select({ count: sql<number>`count(*)::int` })
         .from(enquiries)
-        .where(inArray(enquiries.status, FOLLOW_UP_ENQUIRY_STATUSES)),
-      db
+        .where(inArray(enquiries.status, FOLLOW_UP_ENQUIRY_STATUSES));
+  const priority = await db
         .select({
           id: enquiries.id,
           reference: enquiries.reference,
@@ -189,8 +187,7 @@ export async function getEnquiriesDashboard() {
           ),
         )
         .orderBy(enquiries.createdAt)
-        .limit(8),
-    ]);
+        .limit(8);
 
   return {
     newCount: newCount[0]?.count ?? 0,
