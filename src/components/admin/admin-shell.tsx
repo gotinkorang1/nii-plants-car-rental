@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { useId, useRef } from "react";
+import { useId, useRef, useState } from "react";
 
 import { AdminNav } from "@/components/admin/admin-nav";
 import { LogoutButton } from "@/components/admin/logout-button";
@@ -24,14 +24,17 @@ export function AdminShell({
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const menuId = useId();
+  const [menuOpen, setMenuOpen] = useState(false);
   const roleLabel = STAFF_ROLE_LABELS[staff.role];
 
   function openMenu() {
     dialogRef.current?.showModal();
+    setMenuOpen(true);
   }
 
   function closeMenu() {
     dialogRef.current?.close();
+    setMenuOpen(false);
   }
 
   return (
@@ -61,9 +64,10 @@ export function AdminShell({
                 type="button"
                 variant="outline"
                 size="icon"
-                className="lg:hidden"
+                className="min-h-11 min-w-11 touch-manipulation lg:hidden"
                 aria-haspopup="dialog"
                 aria-controls={menuId}
+                aria-expanded={menuOpen}
                 onClick={openMenu}
               >
                 <Menu />
@@ -94,11 +98,17 @@ export function AdminShell({
         id={menuId}
         className="max-h-dvh w-[min(20rem,calc(100vw-2rem))] rounded-xl border border-sidebar-border bg-sidebar p-0 text-sidebar-foreground shadow-lg backdrop:bg-foreground/40"
         aria-label="Admin navigation"
-        onClose={closeMenu}
+        onClose={() => setMenuOpen(false)}
       >
         <div className="flex items-center justify-between border-b px-4 py-3">
           <p className="text-sm font-medium">Menu</p>
-          <Button type="button" variant="ghost" size="icon" onClick={closeMenu}>
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="min-h-11 min-w-11"
+            onClick={closeMenu}
+          >
             <X />
             <span className="sr-only">Close navigation</span>
           </Button>
