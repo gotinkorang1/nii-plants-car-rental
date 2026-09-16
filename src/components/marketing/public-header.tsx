@@ -218,7 +218,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
         </div>
       </header>
       {menuOpen ? (
-        <div className="fixed inset-0 z-[70] isolate lg:hidden">
+        <div className="fixed inset-0 z-[95] isolate overscroll-contain lg:hidden">
           <button
             type="button"
             aria-label="Close menu"
@@ -232,7 +232,7 @@ export function PublicHeader({ contact }: { contact: PublicContact }) {
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
-            className="marketing-page-enter absolute inset-x-0 top-16 flex max-h-[calc(100dvh-4rem)] min-h-[calc(100dvh-4rem)] w-full flex-col overflow-y-auto border-t border-border bg-background px-4 py-5 shadow-2xl sm:left-auto sm:max-w-sm sm:border-l sm:border-t-0"
+            className="marketing-page-enter absolute inset-x-0 top-16 flex max-h-[calc(100dvh-4rem)] min-h-[calc(100dvh-4rem)] w-full flex-col overflow-y-auto overscroll-contain border-t border-border bg-background px-4 py-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] shadow-2xl sm:left-auto sm:max-w-sm sm:border-l sm:border-t-0"
           >
             <nav aria-label="Mobile" className="grid gap-1">
               {PUBLIC_PRIMARY_LINKS.map((item, index) => {
