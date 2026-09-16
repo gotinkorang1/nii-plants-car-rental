@@ -39,7 +39,16 @@ export function BookingAccessForm({
       </div>
       <div>
         <Label htmlFor="email">Email</Label>
-        <Input id="email" name="email" type="email" className="mt-1.5 h-11" autoComplete="email" required />
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          className="mt-1.5 h-11"
+          autoComplete="email"
+          autoCapitalize="none"
+          spellCheck={false}
+          required
+        />
       </div>
       <Button type="submit" size="lg" className="h-11 w-full px-4 transition-all duration-300 sm:w-auto" disabled={pending}>
         {pending ? (
