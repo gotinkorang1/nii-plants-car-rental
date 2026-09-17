@@ -67,8 +67,6 @@ export default async function AdminPaymentsPage({ searchParams }: PageProps) {
       <AdminPageHeader
         title="Payments"
         description="Verified Paystack payments only. Staff cannot manually mark provider payments as successful."
-        actionHref="/admin/payments/test"
-        actionLabel="Run GH₵3 live test"
       />
       <form method="get" className="grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-6">
         <Input
