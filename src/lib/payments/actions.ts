@@ -1,6 +1,5 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
 import { requireRoleAction } from "@/lib/auth/require-role";
@@ -47,7 +46,7 @@ export async function initializePaymentAction(
     return { error: publicPaymentMessage(error) };
   }
 
-  redirect(authorizationUrl);
+  return { authorizationUrl };
 }
 
 export async function recheckPaymentAction(

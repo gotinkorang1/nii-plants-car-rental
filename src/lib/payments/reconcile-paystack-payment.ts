@@ -2,9 +2,9 @@ import "server-only";
 
 import { and, eq, inArray } from "drizzle-orm";
 
-import { writeAuditLog } from "@/lib/audit/write-audit-log";
+import { sanitizeAuditMetadata } from "@/lib/audit/sanitize";
 import { tryGetDb } from "@/lib/db";
-import { bookings, payments } from "@/lib/db/schema";
+import { auditLogs, bookings, payments } from "@/lib/db/schema";
 import {
   computeRemainingBalance,
   rentalPaymentPurpose,
@@ -359,27 +359,29 @@ export async function reconcilePaystackPayment(
       // amount mismatch etc - stay payment_pending, money recorded
     }
 
-    await writeAuditLog({
+    await tx.insert(auditLogs).values({
       actorType: "system",
+      actorId: null,
       action: reviewRequired ? "payment_review_required" : "payment_verified",
       entityType: "payment",
       entityId: payment.id,
-      metadata: {
+      metadata: sanitizeAuditMetadata({
         providerReference,
         source,
         reviewReason,
         bookingId: booking.id,
         bookingStatus: nextBookingStatus,
-      },
+      }),
     });
 
     if (bookingConfirmed && previousBookingStatus !== "confirmed") {
-      await writeAuditLog({
+      await tx.insert(auditLogs).values({
         actorType: "system",
+        actorId: null,
         action: "booking_confirmed_from_payment",
         entityType: "booking",
         entityId: booking.id,
-        metadata: { paymentId: payment.id, providerReference },
+        metadata: sanitizeAuditMetadata({ paymentId: payment.id, providerReference }),
       });
       log("info", "booking_confirmation", {
         bookingId: booking.id,

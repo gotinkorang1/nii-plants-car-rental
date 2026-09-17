@@ -1,10 +1,9 @@
 "use client";
 
-import { useActionState } from "react";
+import { useState, useTransition, type FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 import { initializePaymentAction } from "@/lib/payments/actions";
-import type { ActionState } from "@/lib/fleet/action-helpers";
 import { formatGhs } from "@/lib/money";
 
 export function BookingPaymentButton({
@@ -22,13 +21,26 @@ export function BookingPaymentButton({
   remainingAfterPayment: number;
   securityDeposit: number;
 }) {
-  const [state, formAction, pending] = useActionState(
-    initializePaymentAction,
-    null as ActionState,
-  );
+  const [error, setError] = useState<string>();
+  const [pending, startTransition] = useTransition();
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError(undefined);
+    const formData = new FormData(event.currentTarget);
+
+    startTransition(async () => {
+      const result = await initializePaymentAction({}, formData);
+      if (result.authorizationUrl) {
+        window.location.assign(result.authorizationUrl);
+        return;
+      }
+      setError(result.error ?? "We could not open secure payment. Please try again.");
+    });
+  }
 
   return (
-    <form action={formAction} className="space-y-3" aria-label={`${label} securely with Paystack`}>
+    <form onSubmit={handleSubmit} className="space-y-3" aria-label={`${label} securely with Paystack`}>
       <input type="hidden" name="bookingId" value={bookingId} />
       <input type="hidden" name="purpose" value={purpose} />
       <div className="rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm">
@@ -44,9 +56,9 @@ export function BookingPaymentButton({
           Secure checkout by Paystack. The {formatGhs(securityDeposit)} refundable security deposit is handled separately at pickup.
         </p>
       </div>
-      {state?.error ? (
+      {error ? (
         <p role="alert" className="text-sm text-destructive">
-          {state.error}
+          {error}
         </p>
       ) : null}
       <Button type="submit" disabled={pending} aria-busy={pending} size="lg" className="h-11 w-full px-4 transition-all duration-300 sm:w-auto">

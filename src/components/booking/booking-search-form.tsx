@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState, type ReactNode } from "react";
+import { useActionState, useState, type FormEvent, type ReactNode } from "react";
 import { LoaderCircle, LogIn, LogOut as LogOutIcon } from "lucide-react";
 
 import { searchAvailabilityAction } from "@/lib/booking/actions";
@@ -16,7 +16,10 @@ import { Label } from "@/components/ui/label";
 import type { PublicSearchLocation } from "@/lib/content/location-type";
 import { locationOptionLabel } from "@/lib/content/location-type";
 import type { ActionState } from "@/lib/fleet/action-helpers";
-import type { AvailabilitySearchInput } from "@/lib/validation/availability";
+import {
+  availabilitySearchSchema,
+  type AvailabilitySearchInput,
+} from "@/lib/validation/availability";
 import { cn } from "@/lib/utils";
 
 const fieldControlClassName =
@@ -39,6 +42,7 @@ export function BookingSearchForm({
     searchAvailabilityAction,
     null as ActionState,
   );
+  const [clientError, setClientError] = useState<string | null>(null);
   const [hirePreview, setHirePreview] = useState(() =>
     previewHireDuration({
       pickupDate: defaults?.pickupDate,
@@ -47,7 +51,7 @@ export function BookingSearchForm({
       returnTime: defaults?.returnTime || "10:00",
     }),
   );
-  const message = state?.error ?? error;
+  const message = clientError ?? state?.error ?? error;
   const durationCopy = hireDurationMessage(hirePreview);
 
   const pickupLocation = (
@@ -133,6 +137,28 @@ export function BookingSearchForm({
       />
     </Field>
   );
+  const validateForm = (form: HTMLFormElement) => {
+    const data = new FormData(form);
+    const parsed = availabilitySearchSchema.safeParse({
+      pickupLocation: String(data.get("pickup") ?? ""),
+      returnLocation: String(data.get("return") ?? ""),
+      pickupDate: String(data.get("pickupDate") ?? ""),
+      pickupTime: String(data.get("pickupTime") ?? ""),
+      returnDate: String(data.get("returnDate") ?? ""),
+      returnTime: String(data.get("returnTime") ?? ""),
+      vehicle: String(data.get("vehicle") ?? "") || undefined,
+    });
+
+    if (!parsed.success) {
+      setClientError(
+        parsed.error.issues[0]?.message ?? "Check the trip details.",
+      );
+      return false;
+    }
+
+    setClientError(null);
+    return true;
+  };
   const submit = (
     <div
       className={cn(
@@ -146,6 +172,12 @@ export function BookingSearchForm({
         size="lg"
         className={cn("h-11 w-full bg-accent px-5 text-accent-foreground transition-all duration-300 hover:bg-accent/90", !compact && "sm:w-auto")}
         disabled={pending}
+        onClick={(event) => {
+          const form = event.currentTarget.form;
+          if (form && !validateForm(form)) {
+            event.preventDefault();
+          }
+        }}
       >
         {pending ? (
           <span className="flex items-center gap-2">
@@ -187,7 +219,14 @@ export function BookingSearchForm({
       action={formAction}
       aria-labelledby="trip-search-heading"
       aria-busy={pending}
+      noValidate
+      onSubmit={(event: FormEvent<HTMLFormElement>) => {
+        if (!validateForm(event.currentTarget)) {
+          event.preventDefault();
+        }
+      }}
       onInput={(event) => {
+        setClientError(null);
         const form = event.currentTarget;
         const data = new FormData(form);
         setHirePreview(
@@ -229,7 +268,7 @@ export function BookingSearchForm({
       </div>
       {message ? (
         <Alert variant="destructive" className="mb-4 border-destructive/30 bg-destructive/10">
-          <AlertDescription>{message}</AlertDescription>
+          <AlertDescription className="!text-foreground">{message}</AlertDescription>
         </Alert>
       ) : null}
       {defaults?.vehicle ? (
