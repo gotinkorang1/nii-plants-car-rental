@@ -144,7 +144,16 @@ describe("staff validation", () => {
 });
 
 describe("staff save errors", () => {
-  it("explains when the Auth user belongs to a different Supabase project", () => {
+  it("explains a cross-project Auth user from the real postgres.js field (constraint_name)", () => {
+    expect(
+      staffProfileSaveErrorMessage({
+        code: "23503",
+        constraint_name: "staff_profiles_auth_user_id_fkey",
+      }),
+    ).toMatch(/Supabase project/i);
+  });
+
+  it("still accepts the legacy `constraint` field name", () => {
     expect(
       staffProfileSaveErrorMessage({
         code: "23503",
@@ -153,10 +162,25 @@ describe("staff save errors", () => {
     ).toMatch(/Supabase project/i);
   });
 
+  it("unwraps a driver error nested under cause", () => {
+    expect(
+      staffProfileSaveErrorMessage(
+        new Error("insert failed", {
+          cause: { code: "23503", constraint_name: "staff_profiles_auth_user_id_fkey" },
+        }),
+      ),
+    ).toMatch(/Supabase project/i);
+  });
+
+  it("reports a duplicate staff member", () => {
+    expect(staffProfileSaveErrorMessage({ code: "23505" })).toMatch(/already on the staff list/i);
+  });
+
   it("keeps unrelated database errors safe and actionable", () => {
     expect(staffProfileSaveErrorMessage({ code: "XX000" })).toMatch(
       /database connection/i,
     );
+    expect(staffProfileSaveErrorMessage(new Error("boom"))).toMatch(/could not be saved/i);
   });
 });
 
