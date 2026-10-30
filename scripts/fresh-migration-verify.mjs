@@ -284,7 +284,7 @@ async function runIntegrationSuites(env) {
   const results = {};
   for (const [label, file] of suites) {
     const outcome = spawnSync(
-      `npx vitest run --project unit ${file}`,
+      `npx vitest run --project integration ${file}`,
       {
         cwd: root,
         stdio: "inherit",
