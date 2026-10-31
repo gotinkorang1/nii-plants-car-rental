@@ -32,11 +32,12 @@ export default async function BookVehicleExtrasPage({
 }: PageProps) {
   const { slug } = await params;
   const query = await searchParams;
-  const [model, extras, settings] = await Promise.all([
-    getPublicModel(slug),
-    listActiveExtras(),
-    getSiteSettings(),
-  ]);
+  // Keep these reads sequential. Transaction-mode Supavisor can leave
+  // concurrent server-component reads pending while the page is streamed,
+  // which makes the booking step appear frozen.
+  const model = await getPublicModel(slug);
+  const extras = await listActiveExtras();
+  const settings = await getSiteSettings();
 
   if (!model) {
     notFound();

@@ -48,9 +48,14 @@ export function resolvePostgresClientOptions(
   // concurrent queries on one connection when max is 1, which hangs until
   // statement_timeout. Keep the same default as session URLs so Promise.all
   // on public pages can run.
-  const max = hasExplicitMax
-    ? Math.min(parsed, MAX_APP_POOL)
-    : DEFAULT_POOL;
+  // Direct Supabase session URLs consume one limited database session per
+  // live serverless instance. Keep that pool to one connection; transaction
+  // pooler URLs can safely use the configured application pool.
+  const max = transactionPooler
+    ? hasExplicitMax
+      ? Math.min(parsed, MAX_APP_POOL)
+      : DEFAULT_POOL
+    : 1;
 
   return {
     max,

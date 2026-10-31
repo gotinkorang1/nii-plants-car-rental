@@ -33,7 +33,9 @@ test.describe("self-drive booking", () => {
 
     if ((await locationCount(page)) < 2) {
       await page.getByRole("button", { name: "Check availability" }).click();
-      await expect(page.getByRole("alert")).toBeVisible();
+      await expect(
+        page.getByRole("form", { name: "Check availability" }).getByRole("alert"),
+      ).toBeVisible();
       return;
     }
 
@@ -80,7 +82,9 @@ test.describe("self-drive booking", () => {
     await page.goto("/book");
     if ((await locationCount(page)) < 2) {
       await page.getByRole("button", { name: "Check availability" }).click();
-      await expect(page.getByRole("alert")).toBeVisible();
+      await expect(
+        page.getByRole("form", { name: "Check availability" }).getByRole("alert"),
+      ).toBeVisible();
       return;
     }
 
@@ -135,7 +139,9 @@ test.describe("self-drive booking", () => {
     await expect(page.getByRole("button", { name: "Pay reservation" })).toBeVisible();
     await expectNoSeriousA11yViolations(page, "booking-flow");
 
-    const reference = ((await page.locator("p.mt-2.font-medium.tracking-wide").textContent()) ?? "").trim();
+    const reference = (
+      (await page.getByLabel("Booking", { exact: true }).getByText(/^NP-/).textContent()) ?? ""
+    ).trim();
     expect(reference).toMatch(/^NP-/);
 
     await page.getByRole("button", { name: "Sign out of booking" }).click();
@@ -205,7 +211,9 @@ test.describe("self-drive booking", () => {
     await page.getByLabel("Return date").fill("2026-08-20");
     await page.getByLabel("Return time").fill("10:00");
     await page.getByRole("button", { name: "Check availability" }).click();
-    await expect(page.getByRole("alert")).toBeVisible();
+    await expect(
+      page.getByRole("form", { name: "Check availability" }).getByRole("alert"),
+    ).toBeVisible();
   });
 
   test("booking cards remain usable at mobile widths", async ({ page }) => {

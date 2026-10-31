@@ -25,11 +25,9 @@ type PageProps = {
 export default async function EditStoryPage({ params }: PageProps) {
   const staff = await requireStaff();
   const { id } = await params;
-  const [page, assets, attached] = await Promise.all([
-    getContentPageAdmin(id),
-    listMediaAssetsAdmin(),
-    listContentPageMedia(id),
-  ]);
+  const page = await getContentPageAdmin(id);
+  const assets = await listMediaAssetsAdmin();
+  const attached = await listContentPageMedia(id);
 
   if (
     !page ||

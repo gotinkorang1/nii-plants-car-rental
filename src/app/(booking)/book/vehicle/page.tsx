@@ -29,10 +29,8 @@ type PageProps = {
 
 export default async function BookVehicleResultsPage({ searchParams }: PageProps) {
   const params = await searchParams;
-  const [locations, settings] = await Promise.all([
-    getPublicOfficePickupLocations(),
-    getSiteSettings(),
-  ]);
+  const locations = await getPublicOfficePickupLocations();
+  const settings = await getSiteSettings();
   const contact = toPublicContact(settings);
   const raw = parseBookingSearchParams(params);
   const parsed = availabilitySearchSchema.safeParse(raw);

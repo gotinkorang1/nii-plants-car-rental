@@ -146,6 +146,13 @@ export function BookingStatusPanel({
               <BookingPaymentButton
                 bookingId={bookingId}
                 label={booking.initialPaymentLabel}
+                amount={booking.initialPaymentLabel === "Pay rental" ? booking.rentalTotal : booking.reservationPaymentRequired}
+                remainingAfterPayment={Math.max(
+                  0,
+                  booking.rentalTotal - booking.amountPaid -
+                    (booking.initialPaymentLabel === "Pay rental" ? booking.rentalTotal : booking.reservationPaymentRequired),
+                )}
+                securityDeposit={booking.securityDepositRequired}
               />
             </div>
           ) : null}
@@ -158,6 +165,9 @@ export function BookingStatusPanel({
                 bookingId={bookingId}
                 label="Pay remaining balance"
                 purpose="balance"
+                amount={booking.remainingBalance}
+                remainingAfterPayment={0}
+                securityDeposit={booking.securityDepositRequired}
               />
             </div>
           ) : null}

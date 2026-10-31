@@ -15,10 +15,8 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default async function LongTermPage() {
-  const [faqs, vehicleClasses] = await Promise.all([
-    getPublishedFaqs("Booking"),
-    listActiveVehicleClassOptions(),
-  ]);
+  const faqs = await getPublishedFaqs("Booking");
+  const vehicleClasses = await listActiveVehicleClassOptions();
 
   return (
     <ServicePage

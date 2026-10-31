@@ -17,6 +17,7 @@ import {
   isUniqueViolation,
 } from "@/lib/fleet/action-helpers";
 import { createStaffAuthInvite, createStaffRecoveryLink } from "@/lib/staff/invite-auth";
+import { staffProfileSaveErrorMessage } from "@/lib/staff/errors";
 import {
   LAST_ADMINISTRATOR_MESSAGE,
   wouldRemoveLastAdministrator,
@@ -141,7 +142,7 @@ export async function inviteStaffAction(
       return { error: "That email or Auth user is already on the staff list." };
     }
 
-    return { error: "The staff profile could not be saved." };
+    return { error: staffProfileSaveErrorMessage(error) };
   }
 }
 

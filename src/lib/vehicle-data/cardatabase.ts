@@ -236,11 +236,13 @@ export function createCarDatabaseProvider(
 
     const modelPath = `/models/${encodeURIComponent(parsed.brandSlug)}/${encodeURIComponent(parsed.modelSlug)}`;
 
-    const [detailRaw, specsRaw] = await Promise.all([
-      requestJson(modelPath, signal),
-      // Specs are a separate resource; a miss must not fail the whole import.
-      requestJson(`${modelPath}/specs`, signal).catch(() => null),
-    ]);
+    const detailRaw = await requestJson(modelPath, signal);
+    // Keep the optional specs request after the primary response. This avoids
+    // occupying two provider connections during an admin import and still
+    // treats a specs miss as non-fatal.
+    const specsRaw = await requestJson(`${modelPath}/specs`, signal).catch(
+      () => null,
+    );
 
     const detail = normalizeDetail(providerId, detailRaw, specsRaw, allowedOrigin);
     detailCache.set(providerId, detail);

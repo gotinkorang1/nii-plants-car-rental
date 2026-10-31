@@ -30,14 +30,14 @@ import { getSiteSettings } from "@/lib/settings/get-site-settings";
 import { toPublicContact } from "@/lib/settings/public-contact";
 
 const getCachedHomeData = unstable_cache(
-  async () =>
-    Promise.all([
-      getSiteSettings(),
-      getPublicOfficePickupLocations(),
-      getFeaturedModels(3).catch(() => []),
-      getPublishedFaqs(),
-      listPublishedStories(),
-    ]),
+  async () => {
+    const settings = await getSiteSettings();
+    const locations = await getPublicOfficePickupLocations();
+    const featuredModels = await getFeaturedModels(3).catch(() => []);
+    const faqs = await getPublishedFaqs();
+    const stories = await listPublishedStories();
+    return [settings, locations, featuredModels, faqs, stories] as const;
+  },
   ["public-home-data"],
   { revalidate: 300, tags: ["public-home"] },
 );

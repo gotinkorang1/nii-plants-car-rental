@@ -10,6 +10,7 @@ import {
   lockBookingForPayment,
 } from "@/lib/payments/late-reallocation";
 import { transitionBookingStatus } from "@/lib/bookings/transition-booking-status";
+import { getSiteSettings } from "@/lib/settings/get-site-settings";
 import { log } from "@/lib/logger";
 
 export async function confirmReviewBookingFromPayment(input: {
@@ -20,6 +21,11 @@ export async function confirmReviewBookingFromPayment(input: {
   if (!db) {
     throw new BookingError("BOOKING_NOT_FOUND", "That booking was not found.");
   }
+
+  // Resolve settings before the transaction; getSiteSettings borrows a pooled
+  // connection and would deadlock on single-connection DATABASE_URLs if called
+  // while the transaction below holds the only connection.
+  const { holdDurationMinutes } = await getSiteSettings();
 
   await db.transaction(async (tx) => {
     const booking = await lockBookingForPayment(tx, input.bookingId);
@@ -37,7 +43,11 @@ export async function confirmReviewBookingFromPayment(input: {
       await expireStaleAllocation(tx, booking.vehicleAllocationId);
     }
 
-    const reallocated = await attemptLatePaymentReallocation(tx, booking);
+    const reallocated = await attemptLatePaymentReallocation(
+      tx,
+      booking,
+      holdDurationMinutes,
+    );
     if (!reallocated) {
       throw new BookingError(
         "VEHICLE_UNAVAILABLE",

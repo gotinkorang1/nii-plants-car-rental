@@ -41,6 +41,7 @@ export function CustomerDetailsForm({
     <form
       action={formAction}
       className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_22rem]"
+      aria-busy={pending}
     >
       <input type="hidden" name="quoteId" value={quoteId} />
       {state?.error ? (
@@ -58,7 +59,16 @@ export function CustomerDetailsForm({
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <Field id="firstName" name="firstName" label="First name" autoComplete="given-name" required />
               <Field id="lastName" name="lastName" label="Last name" autoComplete="family-name" required />
-              <Field id="email" name="email" type="email" label="Email" autoComplete="email" required />
+              <Field
+                id="email"
+                name="email"
+                type="email"
+                label="Email"
+                autoComplete="email"
+                autoCapitalize="none"
+                spellCheck={false}
+                required
+              />
               <Field id="phone" name="phone" type="tel" label="Phone" autoComplete="tel" required />
             </div>
           </section>
@@ -78,6 +88,7 @@ export function CustomerDetailsForm({
                 name="driverAge"
                 type="number"
                 label="Driver age"
+                inputMode="numeric"
                 min={25}
                 max={99}
                 required
@@ -143,19 +154,27 @@ export function CustomerDetailsForm({
         </DeskPanel>
       </div>
 
-      <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+      <aside
+        className="order-first space-y-4 lg:order-last lg:sticky lg:top-24 lg:self-start"
+        aria-label="Booking summary and next step"
+      >
         <QuoteReview price={price} />
-        <Button type="submit" size="lg" className="h-11 w-full transition-all duration-300" disabled={pending}>
-          {pending ? (
-            <span className="flex items-center gap-2">
-              <svg className="size-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-              </svg>
-              Creating booking…
-            </span>
-          ) : "Create booking"}
-        </Button>
+        <div className="sticky bottom-0 z-20 -mx-4 border-t border-border/80 bg-background/95 px-4 py-3 backdrop-blur-md sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:backdrop-blur-none">
+          <Button type="submit" size="lg" className="h-11 w-full transition-all duration-300" disabled={pending}>
+            {pending ? (
+              <span className="flex items-center gap-2">
+                <svg className="size-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                Creating booking…
+              </span>
+            ) : "Create booking"}
+          </Button>
+          <p className="mt-2 text-center text-xs text-muted-foreground">
+            You will review payment next. This step does not charge you.
+          </p>
+        </div>
       </aside>
     </form>
   );
@@ -170,6 +189,9 @@ function Field({
   autoComplete,
   min,
   max,
+  inputMode,
+  autoCapitalize,
+  spellCheck,
 }: {
   id: string;
   name: string;
@@ -179,6 +201,9 @@ function Field({
   autoComplete?: string;
   min?: number;
   max?: number;
+  inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  autoCapitalize?: string;
+  spellCheck?: boolean;
 }) {
   return (
     <div>
@@ -189,6 +214,9 @@ function Field({
         type={type}
         required={required}
         autoComplete={autoComplete}
+        autoCapitalize={autoCapitalize}
+        spellCheck={spellCheck}
+        inputMode={inputMode}
         min={min}
         max={max}
         className="mt-1.5 h-11"

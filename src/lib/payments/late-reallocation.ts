@@ -5,7 +5,6 @@ import { and, eq, inArray, sql } from "drizzle-orm";
 import { createVehicleHold } from "@/lib/availability/create-hold";
 import type { AppTransaction } from "@/lib/db";
 import { bookings, vehicleAllocations } from "@/lib/db/schema";
-import { getSiteSettings } from "@/lib/settings/get-site-settings";
 import { log } from "@/lib/logger";
 
 export async function expireStaleAllocation(
@@ -95,6 +94,7 @@ export async function hasLatePaymentCapacity(
 export async function attemptLatePaymentReallocation(
   tx: AppTransaction,
   booking: typeof bookings.$inferSelect,
+  holdMinutes: number,
 ) {
   const hasCapacity = await hasLatePaymentCapacity(tx, booking);
   if (!hasCapacity) {
@@ -105,7 +105,6 @@ export async function attemptLatePaymentReallocation(
     return null;
   }
 
-  const settings = await getSiteSettings();
   await tx.execute(sql`SAVEPOINT late_payment_reallocation`);
   try {
     const hold = await createVehicleHold(tx, {
@@ -114,7 +113,7 @@ export async function attemptLatePaymentReallocation(
       pickupAt: booking.pickupAt,
       returnAt: booking.returnAt,
       quoteId: booking.quoteId,
-      holdMinutes: settings.holdDurationMinutes,
+      holdMinutes,
     });
 
     await tx

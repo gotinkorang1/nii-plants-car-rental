@@ -26,14 +26,12 @@ type PageProps = {
 export default async function PhysicalVehiclesPage({ searchParams }: PageProps) {
   const staff = await requireStaff();
   const params = await searchParams;
-  const [rows, classes] = await Promise.all([
-    listPhysicalVehicles({
-      search: params.q,
-      status: params.status,
-      classId: params.classId,
-    }),
-    listClassOptions(),
-  ]);
+  const rows = await listPhysicalVehicles({
+    search: params.q,
+    status: params.status,
+    classId: params.classId,
+  });
+  const classes = await listClassOptions();
   const canWrite = canManageFleet(staff.role);
 
   return (

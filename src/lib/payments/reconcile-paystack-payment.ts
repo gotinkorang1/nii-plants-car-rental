@@ -2,9 +2,9 @@ import "server-only";
 
 import { and, eq, inArray } from "drizzle-orm";
 
-import { writeAuditLog } from "@/lib/audit/write-audit-log";
+import { sanitizeAuditMetadata } from "@/lib/audit/sanitize";
 import { tryGetDb } from "@/lib/db";
-import { bookings, payments } from "@/lib/db/schema";
+import { auditLogs, bookings, payments } from "@/lib/db/schema";
 import {
   computeRemainingBalance,
   rentalPaymentPurpose,
@@ -26,6 +26,7 @@ import type {
   PaystackVerification,
 } from "@/lib/payments/types";
 import { transitionBookingStatus } from "@/lib/bookings/transition-booking-status";
+import { getSiteSettings } from "@/lib/settings/get-site-settings";
 import { log } from "@/lib/logger";
 import { INITIAL_PAYMENT_PURPOSES } from "@/lib/payments/constants";
 
@@ -121,6 +122,12 @@ export async function reconcilePaystackPayment(
       paymentSucceeded: false,
     };
   }
+
+  // Resolve settings before opening the transaction. getSiteSettings borrows a
+  // connection from the shared pool, which deadlocks on single-connection
+  // (direct-session) DATABASE_URLs if called while the transaction below holds
+  // the only connection (late-payment reallocation path).
+  const { holdDurationMinutes } = await getSiteSettings();
 
   const outcome = await db.transaction(async (tx) => {
     const [payment] = await tx
@@ -305,7 +312,11 @@ export async function reconcilePaystackPayment(
         if (booking.vehicleAllocationId) {
           await expireStaleAllocation(tx, booking.vehicleAllocationId);
         }
-        const reallocated = await attemptLatePaymentReallocation(tx, booking);
+        const reallocated = await attemptLatePaymentReallocation(
+          tx,
+          booking,
+          holdDurationMinutes,
+        );
         if (reallocated) {
           await confirmAllocation(tx, reallocated.allocationId);
           await transitionBookingStatus(tx, {
@@ -359,27 +370,29 @@ export async function reconcilePaystackPayment(
       // amount mismatch etc - stay payment_pending, money recorded
     }
 
-    await writeAuditLog({
+    await tx.insert(auditLogs).values({
       actorType: "system",
+      actorId: null,
       action: reviewRequired ? "payment_review_required" : "payment_verified",
       entityType: "payment",
       entityId: payment.id,
-      metadata: {
+      metadata: sanitizeAuditMetadata({
         providerReference,
         source,
         reviewReason,
         bookingId: booking.id,
         bookingStatus: nextBookingStatus,
-      },
+      }),
     });
 
     if (bookingConfirmed && previousBookingStatus !== "confirmed") {
-      await writeAuditLog({
+      await tx.insert(auditLogs).values({
         actorType: "system",
+        actorId: null,
         action: "booking_confirmed_from_payment",
         entityType: "booking",
         entityId: booking.id,
-        metadata: { paymentId: payment.id, providerReference },
+        metadata: sanitizeAuditMetadata({ paymentId: payment.id, providerReference }),
       });
       log("info", "booking_confirmation", {
         bookingId: booking.id,

@@ -22,10 +22,8 @@ export default async function BookingCompletePage({ params }: PageProps) {
     redirect("/booking");
   }
 
-  const [booking, contact] = await Promise.all([
-    loadPublicBooking(record.id),
-    getSupportContact(),
-  ]);
+  const booking = await loadPublicBooking(record.id);
+  const contact = await getSupportContact();
   if (!booking) {
     redirect("/booking");
   }

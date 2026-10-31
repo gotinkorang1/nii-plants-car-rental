@@ -99,6 +99,13 @@
       "when": 1789459080333,
       "tag": "0013_capacity_based_inventory",
       "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1789459080334,
+      "tag": "0014_fix_vehicle_hold_return",
+      "breakpoints": true
     }
   ]
 }

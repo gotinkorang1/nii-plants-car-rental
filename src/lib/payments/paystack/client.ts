@@ -4,6 +4,8 @@ import { createHmac, randomBytes } from "node:crypto";
 
 import { paystackMockEnabled, paystackSecretKey } from "@/lib/payments/paystack/config";
 
+const PAYSTACK_TIMEOUT_MS = 12_000;
+
 export async function paystackRequest<T>(input: {
   path: string;
   method?: "GET" | "POST";
@@ -21,6 +23,7 @@ export async function paystackRequest<T>(input: {
       "Content-Type": "application/json",
     },
     body: input.body ? JSON.stringify(input.body) : undefined,
+    signal: AbortSignal.timeout(PAYSTACK_TIMEOUT_MS),
   });
 
   const payload = (await response.json()) as {

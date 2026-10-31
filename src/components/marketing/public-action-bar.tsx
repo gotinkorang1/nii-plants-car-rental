@@ -26,7 +26,7 @@ export function PublicActionBar({ contact }: { contact: PublicContact }) {
 
   return (
     <>
-      <div className="h-20 sm:hidden" aria-hidden />
+      <div className="h-[calc(5rem+env(safe-area-inset-bottom))] sm:hidden" aria-hidden />
       <div
         className={cn(
           "fixed inset-x-0 bottom-0 z-30 border-t border-border/80 bg-background/95 p-3 shadow-[0_-8px_30px_rgba(24,26,24,0.08)] backdrop-blur-md",

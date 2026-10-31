@@ -15,7 +15,7 @@ export type StaffAuthInvite = {
 };
 
 function inviteFailureMessage() {
-  return "The Auth user could not be created. Check SUPABASE_SERVICE_ROLE_KEY and Auth settings.";
+  return "The Auth user could not be created. Check SUPABASE_SECRET_KEY or SUPABASE_SERVICE_ROLE_KEY and Auth settings.";
 }
 
 export async function createStaffAuthInvite(input: {
@@ -26,7 +26,7 @@ export async function createStaffAuthInvite(input: {
   if (!admin) {
     return {
       error:
-        "Staff invites need NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY on the server.",
+        "Staff invites need NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SECRET_KEY or SUPABASE_SERVICE_ROLE_KEY on the server.",
     };
   }
 
@@ -72,7 +72,7 @@ export async function createStaffRecoveryLink(email: string): Promise<
   if (!admin) {
     return {
       error:
-        "Password links need NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY on the server.",
+        "Password links need NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SECRET_KEY or SUPABASE_SERVICE_ROLE_KEY on the server.",
     };
   }
 

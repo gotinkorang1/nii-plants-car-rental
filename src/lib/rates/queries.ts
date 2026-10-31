@@ -58,13 +58,15 @@ export async function countRateRelatedCatalog() {
     return { extras: 0, promotions: 0 };
   }
 
-  const [extraRows, promoRows] = await Promise.all([
-    db.select({ id: extras.id }).from(extras).where(eq(extras.active, true)),
-    db
-      .select({ id: promotions.id })
-      .from(promotions)
-      .where(eq(promotions.active, true)),
-  ]);
+  // Avoid pipelining concurrent reads on constrained/direct Supabase sessions.
+  const extraRows = await db
+    .select({ id: extras.id })
+    .from(extras)
+    .where(eq(extras.active, true));
+  const promoRows = await db
+    .select({ id: promotions.id })
+    .from(promotions)
+    .where(eq(promotions.active, true));
 
   return {
     extras: extraRows.length,

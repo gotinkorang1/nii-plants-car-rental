@@ -22,10 +22,8 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default async function ContactPage() {
-  const [settings, locations] = await Promise.all([
-    getSiteSettings(),
-    getPublicLocations(),
-  ]);
+  const settings = await getSiteSettings();
+  const locations = await getPublicLocations();
   const contact = toPublicContact(settings);
   const hasDirect =
     Boolean(contact.phone) || Boolean(contact.whatsapp) || Boolean(contact.email);

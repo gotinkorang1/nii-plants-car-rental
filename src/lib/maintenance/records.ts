@@ -3,9 +3,11 @@ import "server-only";
 import { and, eq, gt, inArray, or, sql } from "drizzle-orm";
 
 import { BookingError, mapHoldError } from "@/lib/booking/errors";
+import { sanitizeAuditMetadata } from "@/lib/audit/sanitize";
 import { writeAuditLog } from "@/lib/audit/write-audit-log";
 import type { AppTransaction } from "@/lib/db";
 import {
+  auditLogs,
   bookings,
   maintenanceRecords,
   rentalInspections,
@@ -195,13 +197,20 @@ export async function createMaintenanceFromReturn(
     })
     .returning({ id: maintenanceRecords.id });
 
-  await writeAuditLog({
+  // This helper runs inside the caller's transaction, so the audit row is
+  // inserted through that same `tx`. Calling writeAuditLog here would borrow a
+  // second connection from the pool and deadlock on single-connection
+  // (direct-session) DATABASE_URLs while the transaction holds the only one.
+  await tx.insert(auditLogs).values({
     actorType: "staff",
     actorId: input.staffId,
     action: "maintenance_created",
     entityType: "maintenance_record",
-    entityId: record?.id,
-    metadata: { bookingId: input.booking.id, source: "return_inspection" },
+    entityId: record?.id ?? null,
+    metadata: sanitizeAuditMetadata({
+      bookingId: input.booking.id,
+      source: "return_inspection",
+    }),
   });
 }
 

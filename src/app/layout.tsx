@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 
 import { PAGE_SEO } from "@/lib/content/company";
+import { AppShell } from "@/components/app/app-shell";
 import { publicEnv } from "@/lib/env";
 import { shouldNoIndexPublicSite } from "@/lib/env/runtime-environment";
 import { cn } from "@/lib/utils";
@@ -22,9 +23,10 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  metadataBase: publicEnv.NEXT_PUBLIC_APP_URL
-    ? new URL(publicEnv.NEXT_PUBLIC_APP_URL)
-    : undefined,
+  metadataBase: new URL(
+    publicEnv.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
+  ),
+  applicationName: "Nii Plants Car Rentals",
   title: {
     default: PAGE_SEO.home.title,
     template: "%s | Nii Plants Car Rentals",
@@ -41,6 +43,26 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Nii Plants Car Rentals",
+  },
+  icons: {
+    icon: [
+      {
+        url: "/icons/icon-192.png",
+        type: "image/png",
+        sizes: "192x192",
+      },
+      {
+        url: "/icons/icon-512.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    apple: [{ url: "/brand/nii-plants-logo.png", type: "image/png" }],
+  },
   ...(shouldNoIndexPublicSite()
     ? {
         robots: {
@@ -52,13 +74,22 @@ export const metadata: Metadata = {
     : {}),
 };
 
+export const viewport: Viewport = {
+  themeColor: "#1f5c46",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
       className={cn("font-sans", sourceSans.variable, sourceSerif.variable)}
     >
-      <body>{children}</body>
+      <body>
+        <AppShell>{children}</AppShell>
+      </body>
     </html>
   );
 }

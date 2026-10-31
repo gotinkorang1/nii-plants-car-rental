@@ -32,14 +32,12 @@ export default async function VehicleModelsPage({ searchParams }: PageProps) {
     params.published === "published" || params.published === "unpublished"
       ? params.published
       : "all";
-  const [models, classes] = await Promise.all([
-    listVehicleModels({
-      search: params.q,
-      classId: params.classId,
-      published,
-    }),
-    listClassOptions(),
-  ]);
+  const models = await listVehicleModels({
+    search: params.q,
+    classId: params.classId,
+    published,
+  });
+  const classes = await listClassOptions();
   const canWrite = canManageFleet(staff.role);
 
   return (

@@ -10,10 +10,8 @@ import { FLEET_MANAGE_ROLES } from "@/lib/fleet/permissions";
 
 export default async function NewPhysicalVehiclePage() {
   await requireRole(FLEET_MANAGE_ROLES);
-  const [models, locations] = await Promise.all([
-    listModelOptions(),
-    listBranchOptions(),
-  ]);
+  const models = await listModelOptions();
+  const locations = await listBranchOptions();
 
   return (
     <div className="space-y-6">
