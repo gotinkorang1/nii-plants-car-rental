@@ -2,7 +2,7 @@ import "server-only";
 
 import { and, eq, inArray } from "drizzle-orm";
 
-import { writeAuditLog } from "@/lib/audit/write-audit-log";
+import { writeAuditLog, type WriteAuditLogInput } from "@/lib/audit/write-audit-log";
 import { readBookingGuestSession } from "@/lib/bookings/guest-session";
 import { tryGetDb } from "@/lib/db";
 import { bookings, customers, payments } from "@/lib/db/schema";
@@ -85,8 +85,15 @@ export async function createPaymentAttempt(
   assertSelfDriveBookingEnabled(settings);
   assertOnlinePaymentEnabled(settings);
 
+  // Defer the audit write until after the transaction commits. writeAuditLog
+  // borrows its own connection from the shared pool, so calling it while this
+  // transaction holds the only connection deadlocks on a single-connection
+  // (max:1) pool. Writing it after commit also keeps a failed audit insert from
+  // rolling back a payment whose Paystack transaction was already created.
+  let pendingAudit: WriteAuditLogInput | null = null;
+
   try {
-    return await db.transaction(async (tx) => {
+    const result: CreatePaymentResult = await db.transaction(async (tx) => {
       const booking = await lockBookingForPayment(tx, input.bookingId);
       if (!booking) {
         throw new PaymentError("BOOKING_NOT_FOUND", "That booking was not found.");
@@ -286,7 +293,7 @@ export async function createPaymentAttempt(
         .where(eq(payments.id, created.id))
         .returning();
 
-      await writeAuditLog({
+      pendingAudit = {
         actorType: "customer",
         action: "payment_initialized",
         entityType: "payment",
@@ -297,7 +304,7 @@ export async function createPaymentAttempt(
           amount,
           providerReference,
         },
-      });
+      };
 
       log("info", "payment_initialization", {
         bookingId: booking.id,
@@ -316,6 +323,12 @@ export async function createPaymentAttempt(
         reused: false,
       };
     });
+
+    if (pendingAudit) {
+      await writeAuditLog(pendingAudit);
+    }
+
+    return result;
   } catch (error) {
     if (isUniqueViolation(error)) {
       const [existing] = await db
