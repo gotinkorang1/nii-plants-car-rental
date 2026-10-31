@@ -332,19 +332,21 @@ describe("phase 6 payments", () => {
       SET status = 'expired', expires_at = now() - interval '5 minutes'
       WHERE booking_id = ${booking.id}
     `;
+    // Exhaust capacity by occupying every inventory slot for the booking's
+    // window. Capacity is tracked per inventory slot, so a blocking allocation
+    // must be slot-bound (inventory_slot_id) and overlap the booking dates;
+    // one confirmed allocation per slot leaves no slot free to reallocate.
     await sql`
       INSERT INTO vehicle_allocations (
-        vehicle_id, quote_id, allocation_type, status, start_at, end_at, expires_at
+        inventory_slot_id, vehicle_id, quote_id, allocation_type, status,
+        start_at, end_at, expires_at
       )
-      VALUES (
-        ${fixture.vehicleId},
-        ${fixture.quoteId},
-        'booking',
-        'confirmed',
-        '2031-08-10T10:00:00Z',
-        '2031-08-25T10:00:00Z',
-        null
-      )
+      SELECT slot.id, null, ${fixture.quoteId}, 'booking', 'confirmed',
+             '2031-08-20T10:00:00Z'::timestamptz,
+             '2031-08-22T10:00:00Z'::timestamptz, null
+      FROM vehicle_inventory_slots slot
+      WHERE slot.vehicle_model_id = ${fixture.modelId}
+        AND slot.pickup_location_id = ${locationId}
     `;
     markMockPaystackSuccess(payment.providerReference);
     await reconcilePaystackPayment(payment.providerReference, "webhook");

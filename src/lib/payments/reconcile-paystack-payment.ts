@@ -26,6 +26,7 @@ import type {
   PaystackVerification,
 } from "@/lib/payments/types";
 import { transitionBookingStatus } from "@/lib/bookings/transition-booking-status";
+import { getSiteSettings } from "@/lib/settings/get-site-settings";
 import { log } from "@/lib/logger";
 import { INITIAL_PAYMENT_PURPOSES } from "@/lib/payments/constants";
 
@@ -121,6 +122,12 @@ export async function reconcilePaystackPayment(
       paymentSucceeded: false,
     };
   }
+
+  // Resolve settings before opening the transaction. getSiteSettings borrows a
+  // connection from the shared pool, which deadlocks on single-connection
+  // (direct-session) DATABASE_URLs if called while the transaction below holds
+  // the only connection (late-payment reallocation path).
+  const { holdDurationMinutes } = await getSiteSettings();
 
   const outcome = await db.transaction(async (tx) => {
     const [payment] = await tx
@@ -305,7 +312,11 @@ export async function reconcilePaystackPayment(
         if (booking.vehicleAllocationId) {
           await expireStaleAllocation(tx, booking.vehicleAllocationId);
         }
-        const reallocated = await attemptLatePaymentReallocation(tx, booking);
+        const reallocated = await attemptLatePaymentReallocation(
+          tx,
+          booking,
+          holdDurationMinutes,
+        );
         if (reallocated) {
           await confirmAllocation(tx, reallocated.allocationId);
           await transitionBookingStatus(tx, {

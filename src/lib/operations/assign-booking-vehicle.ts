@@ -41,6 +41,8 @@ export async function assignBookingVehicle(input: {
     throw new OperationsError("INVALID_STATUS_TRANSITION", "The database is not configured.");
   }
 
+  let assignedVehicleCode: string | null = null;
+
   await db.transaction(async (tx) => {
     const [booking] = await tx
       .select()
@@ -110,13 +112,19 @@ export async function assignBookingVehicle(input: {
       .set({ vehicleId: vehicle.id })
       .where(eq(bookings.id, booking.id));
 
-    await writeAuditLog({
-      actorType: "staff",
-      actorId: input.staffId,
-      action: "booking.vehicle.assign",
-      entityType: "booking",
-      entityId: booking.id,
-      metadata: { vehicleId: vehicle.id, internalCode: vehicle.internalCode },
-    });
+    assignedVehicleCode = vehicle.internalCode;
+  });
+
+  // Write the audit log after the transaction commits. writeAuditLog borrows a
+  // connection from the shared pool; on a direct-session DATABASE_URL that pool
+  // is a single connection, so calling it inside the transaction above would
+  // deadlock waiting for the connection the transaction still holds.
+  await writeAuditLog({
+    actorType: "staff",
+    actorId: input.staffId,
+    action: "booking.vehicle.assign",
+    entityType: "booking",
+    entityId: input.bookingId,
+    metadata: { vehicleId: input.vehicleId, internalCode: assignedVehicleCode },
   });
 }

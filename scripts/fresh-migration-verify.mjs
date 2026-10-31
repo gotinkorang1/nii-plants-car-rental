@@ -329,6 +329,9 @@ async function main() {
       NEXT_PUBLIC_SUPABASE_URL: status.API_URL,
       NEXT_PUBLIC_SUPABASE_ANON_KEY: status.ANON_KEY,
       SUPABASE_SERVICE_ROLE_KEY: status.SERVICE_ROLE_KEY,
+      // Payment suites build a Paystack callback URL from this. CI sets it at
+      // the job level; default it here so the harness also runs standalone.
+      NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL ?? "http://127.0.0.1:3001",
       PAYSTACK_MOCK: "1",
       EMAIL_DEV_OUTBOX: "1",
       BOOKING_OTP_SECRET: "fresh-migration-test-otp-secret",
