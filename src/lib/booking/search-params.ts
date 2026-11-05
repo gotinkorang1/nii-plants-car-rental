@@ -1,6 +1,9 @@
 import type { AvailabilitySearchInput } from "@/lib/validation/availability";
 
-export function bookingSearchQuery(values: AvailabilitySearchInput): string {
+export function bookingSearchQuery(
+  values: AvailabilitySearchInput,
+  options: { includeVehicle?: boolean } = {},
+): string {
   const params = new URLSearchParams();
   params.set("pickup", values.pickupLocation);
   if (values.returnLocation) {
@@ -10,7 +13,7 @@ export function bookingSearchQuery(values: AvailabilitySearchInput): string {
   params.set("pickupTime", values.pickupTime);
   params.set("returnDate", values.returnDate);
   params.set("returnTime", values.returnTime);
-  if (values.vehicle) {
+  if (options.includeVehicle !== false && values.vehicle) {
     params.set("vehicle", values.vehicle);
   }
   return params.toString();

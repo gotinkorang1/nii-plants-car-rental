@@ -26,10 +26,8 @@ type PageProps = {
 export default async function EditVehicleModelPage({ params }: PageProps) {
   const staff = await requireStaff();
   const { id } = await params;
-  const [item, classes] = await Promise.all([
-    getVehicleModel(id),
-    listClassOptions(),
-  ]);
+  const item = await getVehicleModel(id);
+  const classes = await listClassOptions();
 
   if (!item) {
     notFound();

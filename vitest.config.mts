@@ -11,7 +11,10 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(rootDirectory, "./src"),
-      "server-only": path.resolve(rootDirectory, "./tests/shims/server-only.ts"),
+      "server-only": path.resolve(
+        rootDirectory,
+        "./tests/shims/server-only.ts",
+      ),
     },
   },
   test: {
@@ -24,8 +27,18 @@ export default defineConfig({
           include: [
             "tests/unit/**/*.test.ts",
             "tests/unit/**/*.test.tsx",
-            "tests/integration/**/*.test.ts",
+            "src/**/*.test.ts",
+            "src/**/*.test.tsx",
           ],
+          setupFiles: ["./tests/setup.ts"],
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: "integration",
+          environment: "node",
+          include: ["tests/integration/**/*.test.ts"],
           setupFiles: ["./tests/setup.ts"],
         },
       },

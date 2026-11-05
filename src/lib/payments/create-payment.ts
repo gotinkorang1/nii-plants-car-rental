@@ -2,10 +2,10 @@ import "server-only";
 
 import { and, eq, inArray } from "drizzle-orm";
 
-import { writeAuditLog } from "@/lib/audit/write-audit-log";
+import { sanitizeAuditMetadata } from "@/lib/audit/sanitize";
 import { readBookingGuestSession } from "@/lib/bookings/guest-session";
 import { tryGetDb } from "@/lib/db";
-import { bookings, customers, payments } from "@/lib/db/schema";
+import { auditLogs, bookings, customers, payments } from "@/lib/db/schema";
 import { isUniqueViolation } from "@/lib/fleet/action-helpers";
 import {
   INITIAL_PAYMENT_PURPOSES,
@@ -86,7 +86,7 @@ export async function createPaymentAttempt(
   assertOnlinePaymentEnabled(settings);
 
   try {
-    return await db.transaction(async (tx) => {
+    const result: CreatePaymentResult = await db.transaction(async (tx) => {
       const booking = await lockBookingForPayment(tx, input.bookingId);
       if (!booking) {
         throw new PaymentError("BOOKING_NOT_FOUND", "That booking was not found.");
@@ -286,17 +286,18 @@ export async function createPaymentAttempt(
         .where(eq(payments.id, created.id))
         .returning();
 
-      await writeAuditLog({
+      await tx.insert(auditLogs).values({
         actorType: "customer",
+        actorId: null,
         action: "payment_initialized",
         entityType: "payment",
         entityId: created.id,
-        metadata: {
+        metadata: sanitizeAuditMetadata({
           bookingId: booking.id,
           purpose,
           amount,
           providerReference,
-        },
+        }),
       });
 
       log("info", "payment_initialization", {
@@ -316,6 +317,8 @@ export async function createPaymentAttempt(
         reused: false,
       };
     });
+
+    return result;
   } catch (error) {
     if (isUniqueViolation(error)) {
       const [existing] = await db

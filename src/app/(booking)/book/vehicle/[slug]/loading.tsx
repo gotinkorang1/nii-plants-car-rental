@@ -2,7 +2,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ExtrasLoading() {
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6" aria-busy="true">
+    <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6" aria-busy="true" role="status">
+      <span className="sr-only">Loading vehicle options</span>
       <div className="mb-8 flex gap-2">
         {Array.from({ length: 4 }).map((_, index) => (
           <Skeleton key={index} className="h-8 flex-1" />
