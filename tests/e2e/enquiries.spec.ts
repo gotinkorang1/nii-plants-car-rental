@@ -15,7 +15,12 @@ test.describe("manual service enquiries", () => {
     await page.getByLabel("Phone").fill("0241234567");
     await page.getByLabel("Pickup location").fill("Kotoka International Airport");
     await page.getByLabel("Destination").fill("East Legon");
-    await page.getByLabel("Pickup date/time").fill("2026-09-01T10:00");
+    // Use a future pickup date: the enquiry schema rejects pickups more than
+    // 24h in the past, so a hard-coded date would rot over time.
+    const pickupAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .slice(0, 16);
+    await page.getByLabel("Pickup date/time").fill(pickupAt);
     await page.getByLabel("Passenger count").fill("2");
 
     await page.getByRole("button", { name: /request chauffeur service/i }).click();
