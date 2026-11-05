@@ -81,7 +81,7 @@ test.describe("public marketing site", () => {
     await expect(page.getByRole("heading", { name: /contact nii plants in accra/i })).toBeVisible();
     await expect(page.getByRole("button", { name: "Send message" })).toBeEnabled();
     await expect(
-      page.getByRole("link", { name: /plantsville on openstreetmap/i }),
+      page.getByRole("link", { name: /open plantsville on google maps/i }),
     ).toBeVisible();
     await expectNoSeriousA11yViolations(page, "contact");
   });
