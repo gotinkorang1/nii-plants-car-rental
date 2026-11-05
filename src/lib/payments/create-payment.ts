@@ -2,10 +2,10 @@ import "server-only";
 
 import { and, eq, inArray } from "drizzle-orm";
 
-import { sanitizeAuditMetadata } from "@/lib/audit/sanitize";
+import { writeAuditLog, type WriteAuditLogInput } from "@/lib/audit/write-audit-log";
 import { readBookingGuestSession } from "@/lib/bookings/guest-session";
 import { tryGetDb } from "@/lib/db";
-import { auditLogs, bookings, customers, payments } from "@/lib/db/schema";
+import { bookings, customers, payments } from "@/lib/db/schema";
 import { isUniqueViolation } from "@/lib/fleet/action-helpers";
 import {
   INITIAL_PAYMENT_PURPOSES,
@@ -84,6 +84,13 @@ export async function createPaymentAttempt(
   const settings = await getSiteSettings();
   assertSelfDriveBookingEnabled(settings);
   assertOnlinePaymentEnabled(settings);
+
+  // Defer the audit write until after the transaction commits. writeAuditLog
+  // borrows its own connection from the shared pool, so calling it while this
+  // transaction holds the only connection deadlocks on a single-connection
+  // (max:1) pool. Writing it after commit also keeps a failed audit insert from
+  // rolling back a payment whose Paystack transaction was already created.
+  let pendingAudit: WriteAuditLogInput | null = null;
 
   try {
     const result: CreatePaymentResult = await db.transaction(async (tx) => {
@@ -286,19 +293,18 @@ export async function createPaymentAttempt(
         .where(eq(payments.id, created.id))
         .returning();
 
-      await tx.insert(auditLogs).values({
+      pendingAudit = {
         actorType: "customer",
-        actorId: null,
         action: "payment_initialized",
         entityType: "payment",
         entityId: created.id,
-        metadata: sanitizeAuditMetadata({
+        metadata: {
           bookingId: booking.id,
           purpose,
           amount,
           providerReference,
-        }),
-      });
+        },
+      };
 
       log("info", "payment_initialization", {
         bookingId: booking.id,
@@ -317,6 +323,10 @@ export async function createPaymentAttempt(
         reused: false,
       };
     });
+
+    if (pendingAudit) {
+      await writeAuditLog(pendingAudit);
+    }
 
     return result;
   } catch (error) {
