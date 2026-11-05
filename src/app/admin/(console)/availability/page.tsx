@@ -36,17 +36,15 @@ export default async function AdminAvailabilityPage({ searchParams }: PageProps)
   const startAt = accraDateTimeToUtc(startDate, "00:00");
   const endAt = accraDateTimeToUtc(endDate, "23:59");
 
-  const [rows, classes, models, vehicles] = await Promise.all([
-    listStaffOccupancy({
-      startAt,
-      endAt,
-      classId: params.classId || undefined,
-      modelId: params.modelId || undefined,
-    }),
-    listClassOptions(),
-    listModelOptions(),
-    listPhysicalVehicles({}),
-  ]);
+  const rows = await listStaffOccupancy({
+    startAt,
+    endAt,
+    classId: params.classId || undefined,
+    modelId: params.modelId || undefined,
+  });
+  const classes = await listClassOptions();
+  const models = await listModelOptions();
+  const vehicles = await listPhysicalVehicles({});
 
   return (
     <div className="space-y-8">

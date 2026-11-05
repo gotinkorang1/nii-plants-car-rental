@@ -132,23 +132,23 @@ export async function listVehicleModels(input: {
     .orderBy(vehicleModels.make, vehicleModels.model);
 
   const modelIds = rows.map((row) => row.model.id);
-  const [unitRows, imageRows] = await Promise.all([
+  const unitRows =
     modelIds.length === 0
-      ? Promise.resolve([])
-      : db
+      ? []
+      : await db
           .select({
             vehicleModelId: vehicles.vehicleModelId,
             id: vehicles.id,
           })
           .from(vehicles)
-          .where(inArray(vehicles.vehicleModelId, modelIds)),
+          .where(inArray(vehicles.vehicleModelId, modelIds));
+  const imageRows =
     modelIds.length === 0
-      ? Promise.resolve([])
-      : db
+      ? []
+      : await db
           .select()
           .from(vehicleImages)
-          .where(inArray(vehicleImages.vehicleModelId, modelIds)),
-  ]);
+          .where(inArray(vehicleImages.vehicleModelId, modelIds));
 
   const unitCount = new Map<string, number>();
   for (const row of unitRows) {

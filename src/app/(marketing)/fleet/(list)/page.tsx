@@ -31,8 +31,11 @@ type FleetPageProps = {
 };
 
 const getCachedFleetData = unstable_cache(
-  async (filters: PublicFleetFilters) =>
-    Promise.all([getPublicModels(filters), getPublicActiveClasses()]),
+  async (filters: PublicFleetFilters) => {
+    const models = await getPublicModels(filters);
+    const classes = await getPublicActiveClasses();
+    return [models, classes] as const;
+  },
   ["public-fleet"],
   { revalidate: 300, tags: ["public-fleet"] },
 );

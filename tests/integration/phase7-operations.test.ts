@@ -29,6 +29,7 @@ import { createPaymentAttempt } from "@/lib/payments/create-payment";
 import { persistBookingGuestSession } from "@/lib/bookings/guest-session";
 import { markMockPaystackSuccess, resetMockPaystackStore } from "@/lib/payments/paystack/mock-store";
 import { reconcilePaystackPayment } from "@/lib/payments/reconcile-paystack-payment";
+import { assignBookingVehicle } from "@/lib/operations/assign-booking-vehicle";
 import { checkoutVehicle } from "@/lib/operations/checkout-vehicle";
 import { completeInspection } from "@/lib/operations/inspections";
 import { completeRental } from "@/lib/operations/complete-rental";
@@ -275,6 +276,13 @@ describe("phase 7 operations", () => {
     const payment = await createPaymentAttempt({ bookingId: booking.id });
     markMockPaystackSuccess(payment.providerReference);
     await reconcilePaystackPayment(payment.providerReference, "webhook");
+    // Operations staff assign a physical vehicle on the pickup page before the
+    // booking can be prepared; the fixture has exactly one matching vehicle.
+    await assignBookingVehicle({
+      bookingId: booking.id,
+      vehicleId: fixture.vehicleId,
+      staffId,
+    });
     return { fixture, booking };
   }
 

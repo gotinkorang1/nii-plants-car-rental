@@ -47,17 +47,15 @@ export default async function AdminEnquiriesPage({ searchParams }: PageProps) {
       ? params.serviceType
       : "";
 
-  const [rows, staff] = await Promise.all([
-    listAdminEnquiries({
-      status,
-      serviceType,
-      assignedTo: params.assignedTo,
-      createdFrom: params.createdFrom,
-      createdTo: params.createdTo,
-      q: params.q,
-    }),
-    listAssignableStaff(),
-  ]);
+  const rows = await listAdminEnquiries({
+    status,
+    serviceType,
+    assignedTo: params.assignedTo,
+    createdFrom: params.createdFrom,
+    createdTo: params.createdTo,
+    q: params.q,
+  });
+  const staff = await listAssignableStaff();
 
   return (
     <div className="space-y-8">

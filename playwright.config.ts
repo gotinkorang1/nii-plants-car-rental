@@ -26,7 +26,11 @@ export default defineConfig({
     timeout: 120000,
     env: {
       ...process.env,
+      APP_ENV: "development",
+      VERCEL_ENV: "development",
+      NEXT_PUBLIC_APP_URL: e2eBaseUrl,
       PAYSTACK_MOCK: "1",
+      PAYSTACK_CALLBACK_URL: `${e2eBaseUrl}/payment/callback`,
       EMAIL_DEV_OUTBOX: "1",
       // Fixture vehicles instead of live CarDatabase calls, so CI never spends
       // provider quota. Image copying is exercised against those fixtures.

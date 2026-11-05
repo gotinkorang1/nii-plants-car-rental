@@ -55,7 +55,6 @@ export function assertProductionEnvironmentSafety(env: ServerEnv): void {
 
   const required: (keyof ServerEnv)[] = [
     "DATABASE_URL",
-    "SUPABASE_SERVICE_ROLE_KEY",
     "PAYSTACK_SECRET_KEY",
     "RESEND_API_KEY",
     "EMAIL_FROM",
@@ -65,6 +64,10 @@ export function assertProductionEnvironmentSafety(env: ServerEnv): void {
     if (!env[key]) {
       errors.push(`${key} is required in production.`);
     }
+  }
+
+  if (!env.SUPABASE_SECRET_KEY && !env.SUPABASE_SERVICE_ROLE_KEY) {
+    errors.push("SUPABASE_SECRET_KEY or SUPABASE_SERVICE_ROLE_KEY is required in production.");
   }
 
   if (!publicEnv.NEXT_PUBLIC_SUPABASE_URL) {

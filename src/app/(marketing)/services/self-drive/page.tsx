@@ -14,10 +14,8 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default async function SelfDrivePage() {
-  const [settings, faqs] = await Promise.all([
-    getSiteSettings(),
-    getPublishedFaqs("Booking"),
-  ]);
+  const settings = await getSiteSettings();
+  const faqs = await getPublishedFaqs("Booking");
 
   return (
     <ServicePage
