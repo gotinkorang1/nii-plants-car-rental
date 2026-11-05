@@ -20,7 +20,8 @@ test.describe("public fleet", () => {
         name: "Cars to hire in Accra: saloons, SUVs, 4x4s and coaches",
       }),
     ).toBeVisible();
-    await expect(page.getByLabel("Vehicle class")).toBeVisible();
+    // exact: true so this doesn't also match the "Vehicle classes" nav landmark.
+    await expect(page.getByLabel("Vehicle class", { exact: true })).toBeVisible();
 
     await page.getByLabel("Minimum seats").fill("5");
     await page.getByRole("button", { name: "Filter fleet" }).click();

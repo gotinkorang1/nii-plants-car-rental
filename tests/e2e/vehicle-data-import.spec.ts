@@ -117,7 +117,7 @@ test.describe("vehicle database import", () => {
 
     await page.getByLabel("Public slug").fill(slug);
     await page.getByLabel("Luggage").fill("3");
-    await page.getByLabel("Published").check();
+    await page.getByRole("checkbox", { name: "Published", exact: true }).check();
 
     await page.getByRole("button", { name: "Create model" }).click();
     await expect(page).toHaveURL(/\/admin\/fleet\/models$/);
