@@ -33,12 +33,10 @@ import { getSiteSettings } from "@/lib/settings/get-site-settings";
 
 export default async function AdminRatesPage() {
   await requireRole(RATES_MANAGE_ROLES);
-  const [classes, models, related, settings] = await Promise.all([
-    listClassRates(),
-    listModelCatalogueRates(),
-    countRateRelatedCatalog(),
-    getSiteSettings(),
-  ]);
+  const classes = await listClassRates();
+  const models = await listModelCatalogueRates();
+  const related = await countRateRelatedCatalog();
+  const settings = await getSiteSettings();
   const unsetGhs = classes.filter((item) => item.defaultDailyRate === 0).length;
 
   return (

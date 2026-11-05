@@ -23,29 +23,27 @@ export default async function AdminDashboardPage() {
   const staff = await requireStaff();
   const showOperations = canViewOperations(staff.role);
   const showEnquiries = canViewEnquiries(staff.role);
-  const [dashboard, enquiriesDashboard] = await Promise.all([
-    showOperations
-      ? getOperationsDashboard()
-      : Promise.resolve({
-          todayPickups: 0,
-          todayReturns: 0,
-          vehiclesRented: 0,
-          vehiclesMaintenance: 0,
-          attentionCount: 0,
-          outstandingBalanceCount: 0,
-          pickups: [],
-          returns: [],
-        }),
-    showEnquiries
-      ? getEnquiriesDashboard()
-      : Promise.resolve({
-          newCount: 0,
-          awaitingResponseCount: 0,
-          quotedCount: 0,
-          followUpCount: 0,
-          priority: [],
-        }),
-  ]);
+  const dashboard = showOperations
+    ? await getOperationsDashboard()
+    : {
+        todayPickups: 0,
+        todayReturns: 0,
+        vehiclesRented: 0,
+        vehiclesMaintenance: 0,
+        attentionCount: 0,
+        outstandingBalanceCount: 0,
+        pickups: [],
+        returns: [],
+      };
+  const enquiriesDashboard = showEnquiries
+    ? await getEnquiriesDashboard()
+    : {
+        newCount: 0,
+        awaitingResponseCount: 0,
+        quotedCount: 0,
+        followUpCount: 0,
+        priority: [],
+      };
 
   return (
     <div className="space-y-8">

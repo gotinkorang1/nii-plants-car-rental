@@ -57,7 +57,7 @@
   --card-foreground: #1a1a1a;
   --popover: #ffffff;
   --popover-foreground: #1a1a1a;
-  --primary: #3C3C3C;
+  --primary: #3c3c3c;
   --primary-foreground: #ffffff;
   --secondary: #f0f0f0;
   --secondary-foreground: #1a1a1a;
@@ -72,7 +72,7 @@
   --success: #2f7d50;
   --warning: #b87524;
   --error: #b83e3e;
-  --chart-1: #3C3C3C;
+  --chart-1: #3c3c3c;
   --chart-2: #984000;
   --chart-3: #2f7d50;
   --chart-4: #b87524;
@@ -80,7 +80,7 @@
   --radius: 0.5rem;
   --sidebar: #ffffff;
   --sidebar-foreground: #1a1a1a;
-  --sidebar-primary: #3C3C3C;
+  --sidebar-primary: #3c3c3c;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f0f0f0;
   --sidebar-accent-foreground: #1a1a1a;
@@ -101,17 +101,17 @@
   --secondary-foreground: #f5f5f5;
   --muted: #262626;
   --muted-foreground: #a3a3a3;
-  --accent: #F0882E;
+  --accent: #f0882e;
   --accent-foreground: #ffffff;
   --destructive: #d15a5a;
   --border: #333333;
   --input: #333333;
-  --ring: #F0882E;
+  --ring: #f0882e;
   --success: #4a9a6a;
   --warning: #d49a45;
   --error: #d15a5a;
   --chart-1: #e5e5e5;
-  --chart-2: #F0882E;
+  --chart-2: #f0882e;
   --chart-3: #4a9a6a;
   --chart-4: #d49a45;
   --chart-5: #a3a3a3;
@@ -122,7 +122,7 @@
   --sidebar-accent: #262626;
   --sidebar-accent-foreground: #f5f5f5;
   --sidebar-border: #333333;
-  --sidebar-ring: #F0882E;
+  --sidebar-ring: #f0882e;
 }
 
 @layer base {
@@ -169,7 +169,7 @@
   }
 
   .text-lede {
-    @apply text-base leading-relaxed text-muted-foreground sm:text-lg;
+    @apply text-muted-foreground text-base leading-relaxed sm:text-lg;
   }
 
   .site-header {
@@ -210,11 +210,21 @@
     animation-range: entry 0% cover 25%;
   }
 
-  .reveal-stagger > *:nth-child(2) { animation-range: entry 3% cover 28%; }
-  .reveal-stagger > *:nth-child(3) { animation-range: entry 6% cover 31%; }
-  .reveal-stagger > *:nth-child(4) { animation-range: entry 9% cover 34%; }
-  .reveal-stagger > *:nth-child(5) { animation-range: entry 12% cover 37%; }
-  .reveal-stagger > *:nth-child(6) { animation-range: entry 15% cover 40%; }
+  .reveal-stagger > *:nth-child(2) {
+    animation-range: entry 3% cover 28%;
+  }
+  .reveal-stagger > *:nth-child(3) {
+    animation-range: entry 6% cover 31%;
+  }
+  .reveal-stagger > *:nth-child(4) {
+    animation-range: entry 9% cover 34%;
+  }
+  .reveal-stagger > *:nth-child(5) {
+    animation-range: entry 12% cover 37%;
+  }
+  .reveal-stagger > *:nth-child(6) {
+    animation-range: entry 15% cover 40%;
+  }
 }
 
 @keyframes marketing-page-enter {
@@ -286,6 +296,163 @@
 
 @view-transition {
   navigation: auto;
+}
+
+.pwa-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: env(safe-area-inset-top) 1.5rem
+    calc(2rem + env(safe-area-inset-bottom));
+  background: #153f34;
+  color: #fff8ed;
+  animation: pwa-splash-out 420ms ease 780ms both;
+  pointer-events: none;
+}
+
+.pwa-splash__glow {
+  position: absolute;
+  width: min(72vw, 32rem);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgb(240 136 46 / 22%), transparent 68%);
+  filter: blur(10px);
+  animation: pwa-glow-breathe 1200ms ease-in-out both;
+}
+
+.pwa-splash__mark {
+  position: relative;
+  display: grid;
+  width: 7.5rem;
+  height: 7.5rem;
+  place-items: center;
+  border: 1px solid rgb(255 248 237 / 35%);
+  border-radius: 2.25rem;
+  background: rgb(255 248 237 / 10%);
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%);
+  animation: pwa-logo-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pwa-splash__logo {
+  width: 5.25rem;
+  height: auto;
+}
+
+.pwa-splash__label {
+  position: absolute;
+  bottom: calc(2rem + env(safe-area-inset-bottom));
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.pwa-splash__progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0.2rem;
+  transform-origin: left;
+  background: #f0882e;
+  animation: pwa-progress 1200ms linear both;
+}
+
+.pwa-install-button {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 90;
+  padding: 0.65rem 1rem;
+  border: 1px solid #f0882e;
+  border-radius: 999px;
+  background: #153f34;
+  color: #fff8ed;
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 16%);
+}
+
+.pwa-install-affordance {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.pwa-install-affordance .pwa-install-button {
+  position: static;
+}
+
+.pwa-install-dismiss {
+  display: grid;
+  width: 2.75rem;
+  place-items: center;
+  border: 1px solid rgb(255 248 237 / 35%);
+  border-radius: 999px;
+  background: #153f34;
+  color: #fff8ed;
+  font-size: 1.25rem;
+}
+
+.pwa-install-dismiss:focus-visible {
+  outline: 3px solid #f8c58e;
+  outline-offset: 3px;
+}
+
+.pwa-install-button:hover {
+  background: #1f5c46;
+}
+.pwa-install-button:focus-visible {
+  outline: 3px solid #f8c58e;
+  outline-offset: 3px;
+}
+
+@keyframes pwa-logo-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pwa-glow-breathe {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pwa-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes pwa-splash-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 ::view-transition-old(root) {
@@ -364,7 +531,15 @@
   .reveal-slide-left,
   .reveal-slide-right,
   .reveal-scale,
-  .reveal-stagger > * {
+  .reveal-stagger > *,
+  .pwa-splash,
+  .pwa-splash__glow,
+  .pwa-splash__mark,
+  .pwa-splash__progress {
     animation: none !important;
+  }
+
+  .pwa-splash {
+    visibility: hidden;
   }
 }

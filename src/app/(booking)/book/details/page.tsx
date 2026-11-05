@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Clock3 } from "lucide-react";
 
 import { BookingPageShell } from "@/components/booking/booking-page-shell";
 import { CustomerDetailsForm } from "@/components/booking/customer-details-form";
+import { DeskPanel } from "@/components/marketing/desk-panel";
 import { Button } from "@/components/ui/button";
 import { utcToAccraDateInput, utcToAccraTimeInput } from "@/lib/booking/timezone";
 import { HOLD_EXPIRED_MESSAGE } from "@/lib/bookings/constants";
@@ -28,12 +30,27 @@ export default async function BookingDetailsPage({ searchParams }: PageProps) {
   if (!holdActive) {
     return (
       <BookingPageShell step="details" title="Hold expired">
-        <p role="alert" className="text-muted-foreground">
-          {HOLD_EXPIRED_MESSAGE}
-        </p>
-        <Button asChild className="mt-6 h-11 px-4" size="lg">
-          <Link href="/book">Check availability</Link>
-        </Button>
+        <DeskPanel bodyClassName="p-6 sm:p-8">
+          <div className="flex items-start gap-4" role="status">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent" aria-hidden>
+              <Clock3 className="size-5" />
+            </span>
+            <div>
+              <h2 className="font-heading text-xl">Your temporary vehicle hold has ended</h2>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                {HOLD_EXPIRED_MESSAGE} No payment was taken from this expired hold.
+              </p>
+            </div>
+          </div>
+          <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+            <Button asChild className="h-11 px-4" size="lg">
+              <Link href="/book">Check availability</Link>
+            </Button>
+            <Button asChild variant="outline" className="h-11 px-4" size="lg">
+              <Link href="/booking">Access an existing booking</Link>
+            </Button>
+          </div>
+        </DeskPanel>
       </BookingPageShell>
     );
   }

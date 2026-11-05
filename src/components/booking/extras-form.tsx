@@ -45,6 +45,7 @@ export function ExtrasAndQuoteForm({
   );
   const [selected, setSelected] = useState<Record<string, number>>({});
   const [promoCode, setPromoCode] = useState("");
+  const [promoPending, setPromoPending] = useState(false);
   const [promoMessage, setPromoMessage] = useState<string | null>(null);
   const [promoOk, setPromoOk] = useState(false);
   const [appliedPromo, setAppliedPromo] = useState<Pick<
@@ -97,16 +98,21 @@ export function ExtrasAndQuoteForm({
   ]);
 
   async function onApplyPromo() {
-    const result = await applyPromoAction(
-      (() => {
-        const data = new FormData();
-        data.set("promoCode", promoCode);
-        return data;
-      })(),
-    );
-    setPromoOk(result.ok);
-    setPromoMessage(result.message);
-    setAppliedPromo(result.ok && result.promotion ? result.promotion : null);
+    setPromoPending(true);
+    try {
+      const result = await applyPromoAction(
+        (() => {
+          const data = new FormData();
+          data.set("promoCode", promoCode);
+          return data;
+        })(),
+      );
+      setPromoOk(result.ok);
+      setPromoMessage(result.message);
+      setAppliedPromo(result.ok && result.promotion ? result.promotion : null);
+    } finally {
+      setPromoPending(false);
+    }
   }
 
   const message = state?.error ?? error;
@@ -226,8 +232,15 @@ export function ExtrasAndQuoteForm({
               autoComplete="off"
               className="h-11"
             />
-            <Button type="button" variant="outline" className="h-11 px-4" onClick={onApplyPromo}>
-              Apply
+            <Button
+              type="button"
+              variant="outline"
+              className="h-11 px-4"
+              onClick={onApplyPromo}
+              disabled={promoPending || !promoCode.trim()}
+              aria-busy={promoPending}
+            >
+              {promoPending ? "Applying…" : "Apply"}
             </Button>
           </div>
           {promoMessage ? (
@@ -241,7 +254,10 @@ export function ExtrasAndQuoteForm({
         </DeskPanel>
       </div>
 
-      <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+      <aside
+        className="order-first space-y-4 lg:order-last lg:sticky lg:top-24 lg:self-start"
+        aria-label="Quote summary and next step"
+      >
         {preview ? <QuoteReview price={preview} live /> : null}
         <p className="text-xs text-muted-foreground">
           Preview only. The server recalculates the final quote before it is secured.

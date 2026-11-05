@@ -13,6 +13,7 @@ import {
   computePaystackSignature,
   verifyPaystackSignature,
 } from "@/lib/payments/paystack/signature";
+import { paymentCallbackPresentation } from "@/lib/payments/status-presentation";
 
 describe("payment utilities", () => {
   it("generates unique payment references", () => {
@@ -70,5 +71,13 @@ describe("payment utilities", () => {
     expect(verifyPaystackSignature(body, signature)).toBe(true);
     expect(verifyPaystackSignature(body, "deadbeef")).toBe(false);
     expect(verifyPaystackSignature(`${body} `, signature)).toBe(false);
+  });
+
+  it("provides safe next-step copy for every payment callback outcome", () => {
+    expect(paymentCallbackPresentation("succeeded").tone).toBe("success");
+    expect(paymentCallbackPresentation("review").description).toContain("safe");
+    expect(paymentCallbackPresentation("failed").description).toContain("try again");
+    expect(paymentCallbackPresentation("error").description).toContain("processing");
+    expect(paymentCallbackPresentation("pending", true).title).toContain("longer");
   });
 });

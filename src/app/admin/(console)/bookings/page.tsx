@@ -36,15 +36,13 @@ export default async function AdminBookingsPage({ searchParams }: PageProps) {
     params.status && BOOKING_STATUSES.includes(params.status as BookingStatus)
       ? (params.status as BookingStatus)
       : "";
-  const [rows, classes] = await Promise.all([
-    listAdminBookings({
-      status,
-      pickupDate: params.pickupDate,
-      classId: params.classId,
-      q: params.q,
-    }),
-    listClassOptions(),
-  ]);
+  const rows = await listAdminBookings({
+    status,
+    pickupDate: params.pickupDate,
+    classId: params.classId,
+    q: params.q,
+  });
+  const classes = await listClassOptions();
 
   return (
     <div className="space-y-8">

@@ -10,6 +10,7 @@ import {
 } from "@/lib/env/guards";
 
 export const serverEnvSchema = z.object({
+  SUPABASE_SECRET_KEY: z.string().min(1).optional(),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
   DATABASE_URL: z.string().min(1).optional(),
   PAYSTACK_SECRET_KEY: z.string().min(1).optional(),
@@ -26,6 +27,7 @@ export type ServerEnv = z.infer<typeof serverEnvSchema>;
 
 function readServerEnv(): ServerEnv {
   const parsed = serverEnvSchema.safeParse({
+    SUPABASE_SECRET_KEY: asOptionalString(process.env.SUPABASE_SECRET_KEY),
     SUPABASE_SERVICE_ROLE_KEY: asOptionalString(
       process.env.SUPABASE_SERVICE_ROLE_KEY,
     ),
