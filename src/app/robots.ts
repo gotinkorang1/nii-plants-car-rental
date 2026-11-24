@@ -10,7 +10,18 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/admin/", "/booking", "/book/complete", "/payment/", "/api/"],
+        // Keep crawlers out of the admin area, the whole transactional booking
+        // funnel, enquiry confirmations, payments and API routes. These are
+        // dynamic, per-request pages that should never be indexed — letting
+        // bots crawl them wastes serverless renders.
+        disallow: [
+          "/admin",
+          "/booking",
+          "/book",
+          "/enquiry/complete",
+          "/payment/",
+          "/api/",
+        ],
       },
     ],
     sitemap: base ? `${base}/sitemap.xml` : undefined,

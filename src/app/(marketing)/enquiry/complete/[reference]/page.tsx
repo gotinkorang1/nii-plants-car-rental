@@ -24,6 +24,9 @@ type PageProps = {
   params: Promise<{ reference: string }>;
 };
 
+// Shows a specific submitted enquiry by reference — transactional, per request.
+export const dynamic = "force-dynamic";
+
 export default async function EnquiryCompletePage({ params }: PageProps) {
   const { reference } = await params;
   const enquiry = await getEnquiryByReference(reference);

@@ -6,7 +6,8 @@ import { publicEnv } from "@/lib/env";
 import { getPublicModels } from "@/lib/fleet/get-public-models";
 import { log } from "@/lib/logger";
 
-export const dynamic = "force-dynamic";
+// Regenerate the sitemap at most once a day instead of on every crawler hit.
+export const revalidate = 86400;
 
 const staticPaths = [
   "/",
