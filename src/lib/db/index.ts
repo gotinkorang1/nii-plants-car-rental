@@ -4,6 +4,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
 import { requireServerEnv, serverEnv } from "@/lib/env.server";
+import { log } from "@/lib/logger";
 
 import { resolvePostgresClientOptions } from "./postgres-options";
 import * as schema from "./schema";
@@ -45,5 +46,16 @@ export function tryGetDb() {
     return null;
   }
 
-  return getDb();
+  try {
+    return getDb();
+  } catch (error) {
+    // A present-but-malformed or otherwise unusable DATABASE_URL (e.g. a
+    // preview/CI environment without a real database) must not crash the
+    // caller. tryGetDb is the graceful variant: callers fall back to safe
+    // defaults when it returns null, so static generation keeps working.
+    log("error", "Failed to initialise database client.", {
+      error: error instanceof Error ? error.message : "unknown",
+    });
+    return null;
+  }
 }
