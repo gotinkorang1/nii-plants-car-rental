@@ -91,6 +91,10 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Static generation of the public pages reads from the (networked) database.
+  // Give each page more than the 60s default so a slow build-time read has
+  // headroom; the real fix for build-time concurrency is in postgres-options.
+  staticPageGenerationTimeout: 120,
   serverExternalPackages: ["postgres", "drizzle-orm"],
   images: {
     remotePatterns,

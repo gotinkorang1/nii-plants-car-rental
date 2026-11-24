@@ -49,13 +49,23 @@ export function resolvePostgresClientOptions(
   // statement_timeout. Keep the same default as session URLs so Promise.all
   // on public pages can run.
   // Direct Supabase session URLs consume one limited database session per
-  // live serverless instance. Keep that pool to one connection; transaction
-  // pooler URLs can safely use the configured application pool.
+  // live serverless instance. Keep that pool to one connection at runtime;
+  // transaction pooler URLs can safely use the configured application pool.
+  //
+  // During `next build` there is a single build process, and static
+  // generation runs several page workers that each read from the database
+  // concurrently. On a direct session URL capped at 1 connection those reads
+  // serialise onto one pipelined connection and blow the per-page build
+  // timeout. Allow a small pool for the build phase only; this never runs on a
+  // live serverless instance, so it does not affect the runtime session count.
+  const isBuildPhase = process.env.NEXT_PHASE === "phase-production-build";
   const max = transactionPooler
     ? hasExplicitMax
       ? Math.min(parsed, MAX_APP_POOL)
       : DEFAULT_POOL
-    : 1;
+    : isBuildPhase
+      ? DEFAULT_POOL
+      : 1;
 
   return {
     max,
