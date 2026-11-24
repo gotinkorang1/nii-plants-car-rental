@@ -46,6 +46,9 @@ export const metadata: Metadata = pageMetadata({
   path: "/fleet",
 });
 
+// Reads search params (filters/pagination), so it renders per request.
+export const dynamic = "force-dynamic";
+
 export default async function FleetPage({ searchParams }: FleetPageProps) {
   const params = await searchParams;
   const filters = parseFleetSearchParams(params);
